@@ -1477,6 +1477,7 @@
                     <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
                     <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
                     <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
+                    <option value="custom">Custom Budget - ปรับบริการตามงบของคุณ</option>
                 </select>
             </div>
             
@@ -1801,9 +1802,11 @@
 
     <!-- Live Chat Widget -->
     <div class="live-chat">
-        <button id="chatButton">
+        <a href="https://lin.ee/482bqDUr" target="_blank" aria-label="Chat on LINE OA">
+  <button id="chatButton">
             <i class="fas fa-comment-dots"></i>
         </button>
+</a>
         <div class="chat-window">
             <!-- Chat interface would be implemented here -->
         </div>
@@ -1994,5 +1997,28 @@
             }
         });
     </script>
+
+
+
+
+<script>
+  const packageSelector = document.getElementById('packageSelect');
+  const allPackages = document.querySelectorAll('.package-details');
+
+  packageSelector.addEventListener('change', function () {
+    const selectedValue = this.value;
+
+    allPackages.forEach(pkg => {
+      pkg.classList.remove('active');
+    });
+
+    const selectedPackage = document.getElementById(selectedValue);
+    if (selectedPackage) {
+      selectedPackage.classList.add('active');
+      selectedPackage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>
+
 </body>
 </html>
