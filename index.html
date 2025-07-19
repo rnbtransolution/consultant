@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -17,6 +18,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hover-animate {
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+.hover-animate:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+  border-color: var(--primary-gold);
+}
+
         :root {
             --primary-gold: #D4AF37;
             --dark-gold: #B8941F;
@@ -809,47 +837,59 @@
         </div>
     </section>
 
-    <section id="services" class="section">
-        <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-                <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
-                <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-users"></i></div>
-                <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
-                <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
-                <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
-                <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-                <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
-                <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
-            </div>
-        </div>
-    </section>
+    
+<section id="services" class="section">
+  <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
+
+  <div class="services-grid">
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+      <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
+      <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+      <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
+      <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-users"></i></div>
+      <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
+      <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+      <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
+      <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+      <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
+      <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-gem"></i></div>
+      <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
+      <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+      <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
+      <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+      <h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
+      <p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
+      <p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
+    </div>
+  </div>
+</section>
+
 
     <section id="packages" class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
         <h2 class="thai-display" style="margin-bottom: 2rem;">แพ็กเกจบริการของเรา</h2>
