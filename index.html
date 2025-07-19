@@ -6,57 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
     
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
-    <!-- Modern Thai Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Sarabun:wght@300;400;600;700&family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Crimson+Text:wght@300;400;600&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-@media (max-width: 992px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 576px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.hover-animate {
-  transition: all 0.4s ease;
-  border: 2px solid transparent;
-}
-.hover-animate:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
-  border-color: var(--primary-gold);
-}
-
         :root {
-            --primary-gold: #D4AF37;
-            --dark-gold: #B8941F;
-            --deep-navy: #0F1419;
-            --charcoal: #1A1F2E;
-            --silver: #C0C0C0;
-            --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --gradient-primary: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
-            --gradient-dark: linear-gradient(135deg, #0F1419 0%, #1A1F2E 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 148, 31, 0.05) 100%);
-            --section-spacing: 5rem;
+            /* Four Seasons Inspired Luxury Palette */
+            --luxury-bronze: #B8860B; /* Rich Bronze */
+            --warm-bronze: #CD853F;
+            --deep-charcoal: #2F2F2F; /* Sophisticated Charcoal */
+            --rich-black: #1C1C1C; /* Deep Black */
+            --ivory: #FFFEF7; /* Warm Ivory */
+            --pearl-white: #F8F6F2; /* Pearl White */
+            --warm-beige: #F5F2E8; /* Warm Beige */
+            --text-charcoal: #3A3A3A;
+            --text-muted: #6B6B6B;
+            --accent-gold: #DAA520; /* Accent Gold */
+            --gradient-luxury: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #CD853F 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(47, 47, 47, 0.95) 0%, rgba(28, 28, 28, 0.98) 100%);
+            --section-spacing: 8rem;
+            --shadow-luxury: 0 20px 60px rgba(28, 28, 28, 0.15);
+            --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         /* ===== BASE STYLES ===== */
@@ -67,31 +41,28 @@
         }
 
         body {
-            font-family: 'Sarabun', sans-serif;
-            font-weight: 400;
-            line-height: 1.6;
-            background: var(--deep-navy);
-            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            background: var(--ivory);
+            color: var(--text-charcoal);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            letter-spacing: 0.3px;
         }
         
-        h1, h2, h3, .thai-display {
-            font-family: 'Chonburi', serif;
-            letter-spacing: 0.5px;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            color: var(--deep-charcoal);
+            line-height: 1.3;
         }
         
-        .english-display {
-            font-family: 'Playfair Display', 'Chonburi', serif;
-        }
-        
-        .thai-sans, .feature-title, .package-title, .floating-nav a {
-            font-family: 'Kanit', sans-serif;
-        }
-
         a {
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s ease;
         }
 
         img {
@@ -102,169 +73,172 @@
         /* ===== HERO SECTION ===== */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 900px;
             background: 
-                linear-gradient(135deg, rgba(15, 20, 25, 0.92) 0%, rgba(26, 31, 46, 0.88) 100%), 
-                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
-            background-size: cover;
-            background-position: center;
+                var(--gradient-hero),
+                url('https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            color: var(--ivory);
         }
 
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite alternate;
-            z-index: 1;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.4; }
-            100% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        .hero-content {
-            z-index: 3;
-            max-width: 900px;
-            padding: 2rem;
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.2rem;
-            line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--silver);
-            margin-bottom: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 0.8px;
-        }
-
-        .hero .description {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ===== BUTTONS ===== */
-        .cta-button {
-            background: var(--gradient-primary);
-            color: var(--deep-navy);
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-            transform: translateX(-100%);
-            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(184, 134, 11, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(218, 165, 32, 0.06) 0%, transparent 50%);
+            animation: luxury-shimmer 20s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes luxury-shimmer {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .hero-content {
+            z-index: 3;
+            max-width: 1000px;
+            padding: 3rem;
+            animation: fadeInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--ivory);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--luxury-bronze);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            font-family: 'Crimson Text', serif;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .hero .description {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 247, 0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== LUXURY BUTTONS ===== */
+        .cta-button {
+            background: transparent;
+            color: var(--ivory);
+            padding: 1.5rem 4rem;
+            font-size: 1rem;
+            font-weight: 400;
+            border: 2px solid var(--luxury-bronze);
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-luxury);
+            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: -1;
         }
 
         .cta-button:hover::before {
-            transform: translateX(0);
+            left: 0;
         }
 
         .cta-button:hover {
+            color: var(--rich-black);
+            border-color: var(--accent-gold);
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+            box-shadow: var(--shadow-luxury);
         }
 
         /* ===== SECTIONS ===== */
         .section {
-            padding: var(--section-spacing) 2rem;
-            max-width: 1300px;
+            padding: var(--section-spacing) 3rem;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
         }
 
         .section h2 {
-            font-size: 2.5rem;
+            font-size: 3.8rem;
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-gold);
+            margin-bottom: 5rem;
+            color: var(--deep-charcoal);
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .section h2::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 70px;
-            height: 2px;
-            background: var(--gradient-primary);
-            border-radius: 3px;
+            width: 80px;
+            height: 1px;
+            background: var(--gradient-luxury);
         }
 
-        /* ===== FEATURES ===== */
+        /* ===== LUXURY FEATURES ===== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .feature-card {
-            background: rgba(26, 31, 46, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background: var(--pearl-white);
+            border-radius: 0;
+            padding: 4rem 3rem;
+            border: 1px solid rgba(184, 134, 11, 0.1);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: var(--shadow-subtle);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
 
         .feature-card::before {
@@ -273,75 +247,122 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--gradient-glass);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            height: 1px;
+            background: var(--gradient-luxury);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
         }
 
         .feature-card:hover::before {
-            opacity: 1;
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-bronze);
+            background: var(--ivory);
         }
 
         .feature-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
-            color: var(--primary-gold);
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--luxury-bronze);
+            opacity: 0.8;
         }
 
         .feature-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary-gold);
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--deep-charcoal);
+            margin-bottom: 1.8rem;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
         }
 
         .feature-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            font-weight: 300;
+            letter-spacing: 0.3px;
         }
 
-        /* ===== PACKAGES DROPDOWN SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hover-animate {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hover-animate:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-luxury);
+        }
+
+        /* ===== LUXURY PACKAGES ===== */
         .package-dropdown-container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: rgba(26, 31, 46, 0.6);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: var(--pearl-white);
+            border-radius: 0;
+            padding: 4rem;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            box-shadow: var(--shadow-luxury);
+            position: relative;
+        }
+
+        .package-dropdown-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-luxury);
         }
 
         .package-select-wrapper {
             position: relative;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .package-select {
             width: 100%;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 0;
+            border: 1px solid var(--luxury-bronze);
+            background: var(--ivory);
+            color: var(--deep-charcoal);
             appearance: none;
             cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .package-select:focus {
             outline: none;
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
         }
 
         .package-select-wrapper::after {
@@ -349,171 +370,217 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            right: 1.5rem;
+            right: 2rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--primary-gold);
+            color: var(--luxury-bronze);
             pointer-events: none;
         }
 
         .package-details {
             display: none;
-            background: rgba(15, 20, 25, 0.7);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: var(--ivory);
+            border-radius: 0;
+            padding: 3rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(184, 134, 11, 0.1);
+            box-shadow: var(--shadow-subtle);
         }
 
         .package-details.active {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: luxuryFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+        @keyframes luxuryFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .package-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
         }
 
         .package-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            color: var(--primary-gold);
+            font-size: 2.2rem;
+            margin-right: 2.5rem;
+            background: var(--gradient-luxury);
+            color: var(--ivory);
             flex-shrink: 0;
+            box-shadow: var(--shadow-subtle);
         }
-
-        .starter { background: rgba(34, 197, 94, 0.15); }
-        .foundation { background: rgba(234, 179, 8, 0.15); }
-        .growth { background: rgba(249, 115, 22, 0.15); }
-        .premium { background: rgba(239, 68, 68, 0.15); }
-        .elite { background: rgba(147, 51, 234, 0.15); }
-        .signature { background: rgba(139, 69, 19, 0.15); }
 
         .package-title-price {
             flex-grow: 1;
         }
 
         .package-title {
-            font-size: 1.3rem;
-            color: var(--primary-gold);
-            margin-bottom: 0.3rem;
+            font-size: 1.8rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
 
         .package-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.8px;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--luxury-bronze);
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
         }
 
         .package-price::before {
             content: 'เริ่มต้นที่ ';
             display: block;
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--silver);
-            margin-bottom: 0.2rem;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .package-duration {
-            color: var(--silver);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            text-align: right;
+            padding-right: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .package-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .package-features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            color: var(--text-charcoal);
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            line-height: 1.8;
         }
 
-        .package-features li:before {
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li::before {
             content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
-            color: var(--primary-gold);
-            margin-right: 0.8rem;
-            font-size: 0.9rem;
+            color: var(--luxury-bronze);
+            margin-right: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
         }
 
         .package-cta {
-            background: var(--gradient-primary);
-            color: var(--deep-navy);
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
+            background: transparent;
+            color: var(--deep-charcoal);
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--luxury-bronze);
+            border-radius: 0;
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 100%;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-luxury);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .package-cta:hover::before {
+            left: 0;
         }
 
         .package-cta:hover {
+            color: var(--ivory);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            box-shadow: var(--shadow-luxury);
         }
 
-        /* ===== FORM STYLES ===== */
+        /* ===== LUXURY FORMS ===== */
         .form-container {
-            background: rgba(26, 31, 46, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 2.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            max-width: 800px;
+            background: var(--pearl-white);
+            border-radius: 0;
+            padding: 4rem;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            max-width: 900px;
             margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-luxury);
         }
 
         .form-title {
-            color: var(--primary-gold);
+            color: var(--deep-charcoal);
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 300;
+            letter-spacing: 1.5px;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--silver);
-            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--deep-charcoal);
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .form-input, 
         .form-select,
         .form-textarea {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-family: 'Sarabun', sans-serif;
+            padding: 1.5rem;
+            border-radius: 0;
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            background: var(--ivory);
+            color: var(--deep-charcoal);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.3px;
             transition: all 0.3s ease;
         }
 
@@ -521,88 +588,115 @@
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+            border-color: var(--luxury-bronze);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
         }
 
         .form-textarea {
-            min-height: 120px;
+            min-height: 160px;
             resize: vertical;
         }
 
         .form-submit {
-            background: var(--gradient-primary);
-            color: var(--deep-navy);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
+            background: transparent;
+            color: var(--deep-charcoal);
+            padding: 1.5rem 3rem;
+            border: 2px solid var(--luxury-bronze);
+            border-radius: 0;
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: block;
             width: 100%;
-            font-size: 1rem;
-            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-luxury);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .form-submit:hover::before {
+            left: 0;
         }
 
         .form-submit:hover {
+            color: var(--ivory);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: var(--shadow-luxury);
         }
 
-        /* Success message */
         .form-success {
             display: none;
             text-align: center;
-            padding: 2rem;
-            color: var(--primary-gold);
-            font-size: 1.2rem;
+            padding: 3rem;
+            color: var(--deep-charcoal);
+            font-size: 1.5rem;
+            background: var(--ivory);
+            border-radius: 0;
+            box-shadow: var(--shadow-subtle);
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .form-success i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-gold);
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--luxury-bronze);
         }
 
-        /* ===== FLOATING NAV ===== */
+        /* ===== LUXURY NAVIGATION ===== */
         .floating-nav {
             position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 3rem;
+            right: 3rem;
             z-index: 1000;
-            background: rgba(26, 31, 46, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 50px;
-            padding: 0.7rem 1.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            background: rgba(248, 246, 242, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 0;
+            padding: 1.5rem 3rem;
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            box-shadow: var(--shadow-luxury);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .floating-nav:hover {
-            border-color: rgba(212, 175, 55, 0.4);
+            border-color: var(--luxury-bronze);
+            transform: translateY(-3px);
         }
 
         .floating-nav a {
-            color: var(--white);
+            color: var(--deep-charcoal);
             text-decoration: none;
-            margin: 0 0.8rem;
-            font-weight: 500;
+            margin: 0 1.5rem;
+            font-weight: 300;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             position: relative;
+            letter-spacing: 0.5px;
         }
 
         .floating-nav a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -8px;
             left: 0;
             width: 0;
-            height: 1.5px;
-            background: var(--primary-gold);
+            height: 1px;
+            background: var(--gradient-luxury);
             transition: width 0.3s ease;
         }
 
@@ -611,102 +705,178 @@
         }
 
         .floating-nav a:hover {
-            color: var(--primary-gold);
+            color: var(--luxury-bronze);
         }
 
         .floating-nav .appointment-btn {
-            background: var(--gradient-primary);
-            color: var(--deep-navy);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
+            background: transparent;
+            color: var(--deep-charcoal);
+            padding: 1rem 2rem;
+            border-radius: 0;
             text-decoration: none;
-            font-weight: 600;
-            margin-left: 0.8rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            font-weight: 400;
+            margin-left: 2rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--luxury-bronze);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-nav .appointment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-luxury);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .floating-nav .appointment-btn:hover::before {
+            left: 0;
         }
 
         .floating-nav .appointment-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            color: var(--ivory);
+            transform: translateY(-3px);
         }
 
         /* ===== SCROLL INDICATOR ===== */
         .scroll-indicator {
             position: absolute;
-            bottom: 2.5rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--primary-gold);
-            font-size: 2.2rem;
-            animation: bounce 2s infinite;
+            color: var(--ivory);
+            font-size: 2rem;
+            animation: luxuryBounce 3s infinite;
             cursor: pointer;
             z-index: 2;
+            opacity: 0.7;
         }
 
-        @keyframes bounce {
+        @keyframes luxuryBounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-12px); }
-            60% { transform: translateX(-50%) translateY(-6px); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
         }
 
         /* ===== CONTACT SECTION ===== */
         .contact-section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+            padding: 6rem 3rem;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .contact-container {
-            background: rgba(26, 31, 46, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 18px;
-            padding: 3rem 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: var(--pearl-white);
+            border-radius: 0;
+            padding: 5rem 4rem;
+            border: 1px solid rgba(184, 134, 11, 0.2);
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: var(--shadow-luxury);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-luxury);
         }
 
         .contact-container:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(28, 28, 28, 0.2);
         }
 
         .contact-container h2 {
-            font-size: 2.2rem;
-            color: var(--primary-gold);
-            margin-bottom: 1.2rem;
+            font-size: 3rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
         }
 
         .contact-container p {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
         }
 
         .contact-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .contact-buttons a {
-            min-width: 180px;
+            min-width: 220px;
             text-align: center;
+            padding: 1.2rem 2.5rem;
+            border-radius: 0;
+            font-weight: 400;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ===== FOOTER ===== */
+        .contact-buttons a { 
+            background: transparent; 
+            color: var(--deep-charcoal);
+            border: 2px solid var(--luxury-bronze);
+        }
+
+        .contact-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-luxury);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .contact-buttons a:hover::before {
+            left: 0;
+        }
+
+        .contact-buttons a:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-luxury);
+            color: var(--ivory);
+        }
+
+        /* ===== LUXURY FOOTER ===== */
         footer {
-            background: var(--charcoal);
-            padding: 1.5rem;
+            background: var(--deep-charcoal);
+            padding: 3rem;
             text-align: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: rgba(255, 255, 247, 0.7);
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(184, 134, 11, 0.3);
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         footer p {
@@ -714,100 +884,183 @@
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
             :root {
-                --section-spacing: 5rem;
+                --section-spacing: 6rem;
             }
             
             .hero h1 {
+                font-size: 4.5rem;
+            }
+            .section h2 {
                 font-size: 3.2rem;
             }
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 4rem;
             }
             
             .section h2 {
-                font-size: 2.2rem;
-                margin-bottom: 2.5rem;
+                font-size: 2.8rem;
+                margin-bottom: 3rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             :root {
                 --section-spacing: 4rem;
             }
             
-            .hero {
-                min-height: 600px;
-            }
-            
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 3.5rem;
             }
             
             .hero .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
             }
             
             .section {
-                padding: 3rem 1.5rem;
+                padding: 3rem 2rem;
             }
             
             .section h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                margin-bottom: 2.5rem;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 1.2rem;
+                gap: 2rem;
             }
             
             .feature-card {
-                padding: 1.5rem;
-            }
-            
-            .form-container {
-                padding: 1.5rem;
-            }
-            
-            .form-title {
-                font-size: 1.5rem;
+                padding: 3rem 2rem;
             }
             
             .floating-nav {
                 display: none;
             }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 700px;
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            
+            .hero .description {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .form-container,
+            .package-dropdown-container,
+            .contact-container {
+                padding: 2.5rem 2rem;
+            }
+            
+            .form-title {
+                font-size: 2rem;
+            }
             
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 1.5rem;
             }
             
             .contact-buttons a {
                 width: 100%;
+                max-width: 300px;
+            }
+            
+            .package-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .package-icon {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
             }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero .subtitle {
                 font-size: 1rem;
+                letter-spacing: 1.5px;
             }
             
             .hero .description {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
             
             .section h2 {
                 font-size: 1.8rem;
+            }
+            
+            .package-dropdown-container,
+            .form-container,
+            .contact-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .package-select {
+                padding: 1.2rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .package-details {
+                padding: 2rem 1.5rem;
+            }
+            
+            .package-title {
+                font-size: 1.5rem;
+            }
+            
+            .package-price {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .contact-container h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-container p {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -823,8 +1076,8 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="english-display">R&B Transolution</h1>
-            <p class="subtitle thai-sans">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
+            <h1>R&B Transolution</h1>
+            <p class="subtitle">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
             <p class="description">
                 เราช่วยยกระดับร้านอาหารและบาร์ให้ประสบความสำเร็จ ด้วยกลยุทธ์ที่ออกแบบเฉพาะสำหรับคุณ 
                 ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า 
@@ -837,62 +1090,60 @@
         </div>
     </section>
 
-    
-<section id="services" class="section">
-  <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
+    <section id="services" class="section">
+        <h2>ทำไมถึงต้องเลือกเรา?</h2>
 
-  <div class="services-grid">
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-      <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-      <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-      <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
-      <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-users"></i></div>
-      <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
-      <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-      <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
-      <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-      <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
-      <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-gem"></i></div>
-      <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
-      <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-      <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
-      <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-      <h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
-      <p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
-    </div>
-    <div class="feature-card hover-animate">
-      <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-      <h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
-      <p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
-    </div>
-  </div>
-</section>
+        <div class="services-grid">
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">ดำเนินการเร็ว เห็นผลไว</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">ผู้เชี่ยวชาญตัวจริง</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">ดูแลครบทุกมิติ</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">ไม่ทิ้งหลังบริการ</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">ชำนาญในตลาดพรีเมียม</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">วิเคราะห์ข้อมูลเชิงลึก</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1556742393-d75f468bfcb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">นวัตกรรมสมัยใหม่</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
+            </div>
+            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="feature-title" style="color: var(--luxury-bronze);">มาตรฐานความปลอดภัย</h3>
+                <p style="color: rgba(255, 255, 247, 0.9);">ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
+            </div>
+        </div>
+    </section>
 
-
-    <section id="packages" class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
-        <h2 class="thai-display" style="margin-bottom: 2rem;">แพ็กเกจบริการของเรา</h2>
+    <section id="packages" class="section" style="padding-top: 5rem; padding-bottom: 5rem;">
+        <h2 style="margin-bottom: 3rem;">แพ็กเกจบริการของเรา</h2>
         
         <div class="package-dropdown-container">
             <div class="package-select-wrapper">
@@ -907,7 +1158,6 @@
                 </select>
             </div>
             
-            <!-- Starter Package -->
             <div class="package-details" id="starter">
                 <div class="package-header">
                     <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
@@ -916,7 +1166,7 @@
                         <div class="package-price">฿3,900</div>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 5 วัน | แก้ไขได้ไม่จำกัด</div>
+                <div class="package-duration">ระยะเวลา: 5 วัน</div>
                 <ul class="package-features">
                     <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
                     <li>คู่มือแผนปฏิบัติแบบตรงจุด</li>
@@ -926,7 +1176,6 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
             
-            <!-- Foundation Package -->
             <div class="package-details" id="foundation">
                 <div class="package-header">
                     <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
@@ -935,7 +1184,7 @@
                         <div class="package-price">฿9,900</div>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 10 วัน | แก้ไขได้ไม่จำกัด</div>
+                <div class="package-duration">ระยะเวลา: 10 วัน</div>
                 <ul class="package-features">
                     <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
                     <li>วิเคราะห์ต้นทุน + แผนลดต้นทุน 15–20%</li>
@@ -946,7 +1195,6 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">ยกระดับระบบงานของคุณ</button>
             </div>
             
-            <!-- Growth Package -->
             <div class="package-details" id="growth">
                 <div class="package-header">
                     <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
@@ -955,7 +1203,7 @@
                         <div class="package-price">฿29,900</div>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 15 วัน | แก้ไขได้ไม่จำกัด</div>
+                <div class="package-duration">ระยะเวลา: 15 วัน</div>
                 <ul class="package-features">
                     <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
                     <li>ปรับเมนูเพื่อเพิ่มกำไร 15%</li>
@@ -967,7 +1215,6 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
             </div>
             
-            <!-- Premium Package -->
             <div class="package-details" id="premium">
                 <div class="package-header">
                     <div class="package-icon premium"><i class="fas fa-crown"></i></div>
@@ -976,7 +1223,7 @@
                         <div class="package-price">฿59,900</div>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 30 วัน | แก้ไขได้ไม่จำกัด</div>
+                <div class="package-duration">ระยะเวลา: 30 วัน</div>
                 <ul class="package-features">
                     <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
                     <li>ออกแบบโครงสร้างการทำงานใหม่ทั้งหมด</li>
@@ -988,7 +1235,6 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
             </div>
             
-            <!-- Elite Package -->
             <div class="package-details" id="elite">
                 <div class="package-header">
                     <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
@@ -997,7 +1243,7 @@
                         <div class="package-price">฿119,000</div>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 60 วัน | แก้ไขได้ไม่จำกัด</div>
+                <div class="package-duration">ระยะเวลา: 60 วัน</div>
                 <ul class="package-features">
                     <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
                     <li>พบกันหน้างานเดือนละครั้ง</li>
@@ -1009,7 +1255,6 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">ปรึกษาแบบ Top Executive</button>
             </div>
             
-            <!-- Signature Package -->
             <div class="package-details" id="signature">
                 <div class="package-header">
                     <div class="package-icon signature"><i class="fas fa-signature"></i></div>
@@ -1036,20 +1281,17 @@
 
     <section id="contact" class="contact-section">
         <div class="contact-container">
-            <h2 class="thai-display">พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
+            <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
             <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
             
             <div class="form-container">
-                <h3 class="form-title thai-display">กรอกข้อมูลเพื่อนัดหมาย</h3>
+                <h3 class="form-title">กรอกข้อมูลเพื่อนัดหมาย</h3>
                 
                 <form id="consultationForm" action="https://formsubmit.co/rnb.transolution@gmail.com" method="POST">
-                    <!-- HoneyPot -->
                     <input type="text" name="_honey" style="display:none">
                     
-                    <!-- Disable Captcha -->
                     <input type="hidden" name="_captcha" value="false">
                     
-                    <!-- Success Redirect -->
                     <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
                     
                     <div class="form-group">
@@ -1101,7 +1343,7 @@
                 </div>
             </div>
             
-            <div class="contact-buttons" style="margin-top: 3rem;">
+            <div class="contact-buttons" style="margin-top: 4rem;">
                 <a href="tel:+66891041992" class="cta-button">
                     <i class="fas fa-phone"></i> โทรเลย
                 </a>
@@ -1141,14 +1383,17 @@
                 nav.style.opacity = '1';
             } else {
                 nav.style.transform = 'translateY(-20px)';
-                nav.style.opacity = '0';
+                nav.style.opacity = '0.9';
             }
         });
 
-        // Initialize floating nav position
-        document.querySelector('.floating-nav').style.transform = 'translateY(-20px)';
-        document.querySelector('.floating-nav').style.opacity = '0';
-        document.querySelector('.floating-nav').style.transition = 'all 0.3s ease';
+        // Initialize floating nav
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.floating-nav');
+            nav.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            nav.style.transform = 'translateY(0)';
+            nav.style.opacity = '1';
+        });
 
         // Form handling
         document.getElementById('consultationForm').addEventListener('submit', function(e) {
