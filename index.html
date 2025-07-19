@@ -6,239 +6,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
     
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Modern Thai Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Sarabun:wght@300;400;600;700&family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Crimson+Text:wght@300;400;600&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            /* Four Seasons Inspired Luxury Palette */
-            --luxury-bronze: #B8860B; /* Rich Bronze */
-            --warm-bronze: #CD853F;
-            --deep-charcoal: #2F2F2F; /* Sophisticated Charcoal */
-            --rich-black: #1C1C1C; /* Deep Black */
-            --ivory: #FFFEF7; /* Warm Ivory */
-            --pearl-white: #F8F6F2; /* Pearl White */
-            --warm-beige: #F5F2E8; /* Warm Beige */
-            --text-charcoal: #3A3A3A;
-            --text-muted: #6B6B6B;
-            --accent-gold: #DAA520; /* Accent Gold */
-            --gradient-luxury: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #CD853F 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(47, 47, 47, 0.95) 0%, rgba(28, 28, 28, 0.98) 100%);
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --deep-navy: #0F1419;
+            --charcoal: #1A1F2E;
+            --silver: #C0C0C0;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --gradient-primary: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+            --gradient-dark: linear-gradient(135deg, #0F1419 0%, #1A1F2E 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 148, 31, 0.05) 100%);
             --section-spacing: 8rem;
-            --shadow-luxury: 0 20px 60px rgba(28, 28, 28, 0.15);
-            --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        /* ===== BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ===== MODERN TYPOGRAPHY ===== */
         body {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            line-height: 1.8;
-            background: var(--ivory);
-            color: var(--text-charcoal);
+            font-family: 'Sarabun', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            background: var(--deep-navy);
+            color: var(--white);
             overflow-x: hidden;
             scroll-behavior: smooth;
-            letter-spacing: 0.3px;
         }
         
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            color: var(--deep-charcoal);
-            line-height: 1.3;
+        /* Thai Display Font */
+        h1, h2, h3, .thai-display {
+            font-family: 'Chonburi', serif;
+            letter-spacing: 0.5px;
         }
         
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
+        /* English Display Pairing */
+        .english-display {
+            font-family: 'Playfair Display', 'Chonburi', serif;
         }
-
-        img {
-            max-width: 100%;
-            height: auto;
+        
+        /* Clean Thai Sans */
+        .thai-sans, .feature-title, .package-title, .floating-nav a {
+            font-family: 'Kanit', sans-serif;
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
             height: 100vh;
-            min-height: 900px;
+            min-height: 800px;
             background: 
-                var(--gradient-hero),
-                url('https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+                linear-gradient(135deg, rgba(15, 20, 25, 0.92) 0%, rgba(26, 31, 46, 0.88) 100%), 
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            color: var(--ivory);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(184, 134, 11, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(218, 165, 32, 0.06) 0%, transparent 50%);
-            animation: luxury-shimmer 20s ease-in-out infinite alternate;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite alternate;
             z-index: 1;
         }
 
-        @keyframes luxury-shimmer {
-            0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(1.05); }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.4; }
+            100% { transform: scale(1.05); opacity: 0.8; }
         }
 
         .hero-content {
             z-index: 3;
-            max-width: 1000px;
-            padding: 3rem;
-            animation: fadeInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
-            font-size: 5.5rem;
-            font-weight: 300;
-            color: var(--ivory);
-            margin-bottom: 2rem;
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            letter-spacing: 3px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         .hero .subtitle {
-            font-size: 1.8rem;
-            color: var(--luxury-bronze);
+            font-size: 1.5rem;
+            color: var(--silver);
             margin-bottom: 2rem;
             font-weight: 300;
-            letter-spacing: 3px;
-            font-family: 'Crimson Text', serif;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
         .hero .description {
-            font-size: 1.3rem;
-            line-height: 1.9;
+            font-size: 1.15rem;
+            line-height: 1.8;
             margin-bottom: 3rem;
-            color: rgba(255, 255, 247, 0.9);
-            max-width: 800px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 0.5px;
         }
 
-        /* ===== LUXURY BUTTONS ===== */
+        /* ===== CTA BUTTON ===== */
         .cta-button {
-            background: transparent;
-            color: var(--ivory);
-            padding: 1.5rem 4rem;
-            font-size: 1rem;
-            font-weight: 400;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
+            background: var(--gradient-primary);
+            color: var(--deep-navy);
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none;
             display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            font-family: 'Inter', sans-serif;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
             z-index: -1;
         }
 
         .cta-button:hover::before {
-            left: 0;
+            transform: translateX(0);
         }
 
         .cta-button:hover {
-            color: var(--rich-black);
-            border-color: var(--accent-gold);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
         }
 
-        /* ===== SECTIONS ===== */
+        /* ===== SECTION STYLING ===== */
         .section {
-            padding: var(--section-spacing) 3rem;
-            max-width: 1400px;
+            padding: var(--section-spacing) 2rem;
+            max-width: 1300px;
             margin: 0 auto;
             position: relative;
         }
 
         .section h2 {
-            font-size: 3.8rem;
+            font-size: 3rem;
             text-align: center;
             margin-bottom: 5rem;
-            color: var(--deep-charcoal);
+            color: var(--primary-gold);
             position: relative;
-            font-weight: 300;
-            letter-spacing: 2px;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .section h2::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 1px;
-            background: var(--gradient-luxury);
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
         }
 
-        /* ===== LUXURY FEATURES ===== */
+        /* ===== FEATURE CARDS ===== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
         }
 
         .feature-card {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 4rem 3rem;
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-subtle);
+            background: rgba(26, 31, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .feature-card::before {
@@ -247,219 +230,142 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 1px;
-            background: var(--gradient-luxury);
-            transform: scaleX(0);
-            transition: transform 0.6s ease;
+            height: 100%;
+            background: var(--gradient-glass);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
         .feature-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-luxury);
-            border-color: var(--luxury-bronze);
-            background: var(--ivory);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 2.5rem;
-            color: var(--luxury-bronze);
-            opacity: 0.8;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
         }
 
         .feature-title {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: var(--deep-charcoal);
-            margin-bottom: 1.8rem;
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
         }
 
         .feature-card p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            font-weight: 300;
-            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
         }
 
-        .services-grid {
+        /* ===== PACKAGE CARDS ===== */
+        .packages-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
         }
 
-        @media (max-width: 1200px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .hover-animate {
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .hover-animate:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        /* ===== LUXURY PACKAGES ===== */
-        .package-dropdown-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 4rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            box-shadow: var(--shadow-luxury);
+        .package-card {
+            background: rgba(26, 31, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .package-dropdown-container::before {
+        .package-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: var(--gradient-luxury);
+            height: 100%;
+            background: var(--gradient-glass);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
-        .package-select-wrapper {
-            position: relative;
-            margin-bottom: 3rem;
+        .package-card:hover::before {
+            opacity: 1;
         }
 
-        .package-select {
-            width: 100%;
-            padding: 1.5rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 0;
-            border: 1px solid var(--luxury-bronze);
-            background: var(--ivory);
-            color: var(--deep-charcoal);
-            appearance: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .package-select:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-        }
-
-        .package-select-wrapper::after {
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--luxury-bronze);
-            pointer-events: none;
-        }
-
-        .package-details {
-            display: none;
-            background: var(--ivory);
-            border-radius: 0;
-            padding: 3rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .package-details.active {
-            display: block;
-            animation: luxuryFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        @keyframes luxuryFadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .package-header {
             display: flex;
             align-items: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+            margin-bottom: 2rem;
         }
 
         .package-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            margin-right: 2.5rem;
-            background: var(--gradient-luxury);
-            color: var(--ivory);
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-gold);
             flex-shrink: 0;
-            box-shadow: var(--shadow-subtle);
         }
 
-        .package-title-price {
-            flex-grow: 1;
-        }
+        .starter { background: rgba(34, 197, 94, 0.15); }
+        .foundation { background: rgba(234, 179, 8, 0.15); }
+        .growth { background: rgba(249, 115, 22, 0.15); }
+        .premium { background: rgba(239, 68, 68, 0.15); }
+        .elite { background: rgba(147, 51, 234, 0.15); }
+        .signature { background: rgba(139, 69, 19, 0.15); }
 
         .package-title {
-            font-size: 1.8rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 0.8rem;
-            font-weight: 400;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 0.3rem;
         }
 
         .package-price {
             font-size: 2.2rem;
-            font-weight: 300;
-            color: var(--luxury-bronze);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
             letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
         }
 
         .package-price::before {
-            content: 'เริ่มต้นที่ ';
+            content: 'เริ่มต้นที่';
             display: block;
-            font-size: 1rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--silver);
+            margin-bottom: 0.3rem;
         }
 
         .package-duration {
-            color: var(--text-muted);
+            color: var(--silver);
             font-size: 1rem;
-            margin-bottom: 2.5rem;
-            text-align: right;
-            padding-right: 1rem;
+            margin-bottom: 2rem;
             font-weight: 300;
-            letter-spacing: 0.5px;
         }
 
         .package-features {
@@ -468,235 +374,80 @@
         }
 
         .package-features li {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
-            align-items: flex-start;
-            color: var(--text-charcoal);
-            font-size: 1.1rem;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            line-height: 1.8;
+            align-items: center;
+            font-size: 1.05rem;
         }
 
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-
-        .package-features li::before {
+        .package-features li:before {
             content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
-            color: var(--luxury-bronze);
-            margin-right: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.8;
-            flex-shrink: 0;
-            margin-top: 0.2rem;
+            color: var(--primary-gold);
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
         }
 
         .package-cta {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 1.2rem 3rem;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
-            font-weight: 400;
+            background: var(--gradient-primary);
+            color: var(--deep-navy);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             width: 100%;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Inter', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .package-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s ease;
-            z-index: -1;
-        }
-
-        .package-cta:hover::before {
-            left: 0;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .package-cta:hover {
-            color: var(--ivory);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
         }
 
-        /* ===== LUXURY FORMS ===== */
-        .form-container {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 4rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .form-title {
-            color: var(--deep-charcoal);
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        .form-group {
-            margin-bottom: 2.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 1rem;
-            color: var(--deep-charcoal);
-            font-weight: 400;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input, 
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 1.5rem;
-            border-radius: 0;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            background: var(--ivory);
-            color: var(--deep-charcoal);
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus, 
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--luxury-bronze);
-            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 160px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 1.5rem 3rem;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: block;
-            width: 100%;
-            font-size: 1.1rem;
-            margin-top: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Inter', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s ease;
-            z-index: -1;
-        }
-
-        .form-submit:hover::before {
-            left: 0;
-        }
-
-        .form-submit:hover {
-            color: var(--ivory);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 3rem;
-            color: var(--deep-charcoal);
-            font-size: 1.5rem;
-            background: var(--ivory);
-            border-radius: 0;
-            box-shadow: var(--shadow-subtle);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .form-success i {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            color: var(--luxury-bronze);
-        }
-
-        /* ===== LUXURY NAVIGATION ===== */
+        /* ===== FLOATING NAV ===== */
         .floating-nav {
             position: fixed;
-            top: 3rem;
-            right: 3rem;
+            top: 2rem;
+            right: 2rem;
             z-index: 1000;
-            background: rgba(248, 246, 242, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 0;
-            padding: 1.5rem 3rem;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            box-shadow: var(--shadow-luxury);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(26, 31, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 0.8rem 1.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .floating-nav:hover {
-            border-color: var(--luxury-bronze);
-            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
         .floating-nav a {
-            color: var(--deep-charcoal);
+            color: var(--white);
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: 300;
+            margin: 0 1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
             font-size: 0.95rem;
             position: relative;
-            letter-spacing: 0.5px;
         }
 
         .floating-nav a::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -5px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--gradient-luxury);
+            height: 2px;
+            background: var(--primary-gold);
             transition: width 0.3s ease;
         }
 
@@ -705,44 +456,24 @@
         }
 
         .floating-nav a:hover {
-            color: var(--luxury-bronze);
+            color: var(--primary-gold);
         }
 
         .floating-nav .appointment-btn {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 1rem 2rem;
-            border-radius: 0;
+            background: var(--gradient-primary);
+            color: var(--deep-navy);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 400;
-            margin-left: 2rem;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid var(--luxury-bronze);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .floating-nav .appointment-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s ease;
-            z-index: -1;
-        }
-
-        .floating-nav .appointment-btn:hover::before {
-            left: 0;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .floating-nav .appointment-btn:hover {
-            color: var(--ivory);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
         }
 
         /* ===== SCROLL INDICATOR ===== */
@@ -751,262 +482,142 @@
             bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--ivory);
-            font-size: 2rem;
-            animation: luxuryBounce 3s infinite;
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
             cursor: pointer;
             z-index: 2;
-            opacity: 0.7;
         }
 
-        @keyframes luxuryBounce {
+        @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
         }
 
         /* ===== CONTACT SECTION ===== */
         .contact-section {
-            padding: 6rem 3rem;
-            max-width: 1300px;
+            padding: 6rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .contact-container {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 5rem 4rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
+            background: rgba(26, 31, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-luxury);
+            transition: all 0.4s ease;
         }
 
         .contact-container:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(28, 28, 28, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
         }
 
         .contact-container h2 {
-            font-size: 3rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 1.5px;
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
         }
 
         .contact-container p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            line-height: 1.8;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
 
         .contact-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .contact-buttons a {
-            min-width: 220px;
+            min-width: 200px;
             text-align: center;
-            padding: 1.2rem 2.5rem;
-            border-radius: 0;
-            font-weight: 400;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-buttons a { 
-            background: transparent; 
-            color: var(--deep-charcoal);
-            border: 2px solid var(--luxury-bronze);
-        }
-
-        .contact-buttons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s ease;
-            z-index: -1;
-        }
-
-        .contact-buttons a:hover::before {
-            left: 0;
-        }
-
-        .contact-buttons a:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-luxury);
-            color: var(--ivory);
-        }
-
-        /* ===== LUXURY FOOTER ===== */
-        footer {
-            background: var(--deep-charcoal);
-            padding: 3rem;
-            text-align: center;
-            color: rgba(255, 255, 247, 0.7);
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(184, 134, 11, 0.3);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        footer p {
-            margin: 0;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1400px) {
+        @media (max-width: 1200px) {
             :root {
                 --section-spacing: 6rem;
             }
             
             .hero h1 {
-                font-size: 4.5rem;
-            }
-            .section h2 {
-                font-size: 3.2rem;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-            
-            .section h2 {
-                font-size: 2.8rem;
-                margin-bottom: 3rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                font-size: 3.8rem;
             }
         }
 
         @media (max-width: 992px) {
-            :root {
-                --section-spacing: 4rem;
-            }
-            
             .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .hero .subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .section {
-                padding: 3rem 2rem;
+                font-size: 3.2rem;
             }
             
             .section h2 {
                 font-size: 2.5rem;
-                margin-bottom: 2.5rem;
+                margin-bottom: 4rem;
             }
             
-            .features-grid {
+            .packages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-spacing: 5rem;
+            }
+            
+            .hero {
+                min-height: 700px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .features-grid,
+            .packages-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .feature-card {
-                padding: 3rem 2rem;
+            .feature-card,
+            .package-card {
+                padding: 2rem;
             }
             
             .floating-nav {
                 display: none;
             }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 700px;
-                padding: 2rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-                letter-spacing: 1px;
-            }
-            
-            .hero .subtitle {
-                font-size: 1.2rem;
-                letter-spacing: 2px;
-            }
-            
-            .hero .description {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .section h2 {
-                font-size: 2.2rem;
-                margin-bottom: 2rem;
-            }
-            
-            .form-container,
-            .package-dropdown-container,
-            .contact-container {
-                padding: 2.5rem 2rem;
-            }
-            
-            .form-title {
-                font-size: 2rem;
-            }
             
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
-                gap: 1.5rem;
             }
             
             .contact-buttons a {
                 width: 100%;
-                max-width: 300px;
-            }
-            
-            .package-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .package-icon {
-                margin-right: 0;
-                margin-bottom: 1.5rem;
             }
         }
 
@@ -1016,8 +627,7 @@
             }
             
             .hero .subtitle {
-                font-size: 1rem;
-                letter-spacing: 1.5px;
+                font-size: 1.1rem;
             }
             
             .hero .description {
@@ -1028,39 +638,13 @@
                 font-size: 1.8rem;
             }
             
-            .package-dropdown-container,
-            .form-container,
-            .contact-container {
-                padding: 2rem 1.5rem;
+            .package-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
             
-            .package-select {
-                padding: 1.2rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .package-details {
-                padding: 2rem 1.5rem;
-            }
-            
-            .package-title {
-                font-size: 1.5rem;
-            }
-            
-            .package-price {
-                font-size: 1.8rem;
-            }
-            
-            .feature-card {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .contact-container h2 {
-                font-size: 2.2rem;
-            }
-            
-            .contact-container p {
-                font-size: 1.1rem;
+            .package-icon {
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -1071,19 +655,19 @@
         <a href="#services">บริการ</a>
         <a href="#packages">แพ็กเกจ</a>
         <a href="#contact">ติดต่อ</a>
-        <a href="#contact" class="appointment-btn">📅 นัดหมาย</a>
+        <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="appointment-btn">📅 นัดหมาย</a>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>R&B Transolution</h1>
-            <p class="subtitle">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
+            <h1 class="english-display">R&B Transolution</h1>
+            <p class="subtitle thai-sans">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
             <p class="description">
                 เราช่วยยกระดับร้านอาหารและบาร์ให้ประสบความสำเร็จ ด้วยกลยุทธ์ที่ออกแบบเฉพาะสำหรับคุณ 
                 ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า 
                 เพื่อให้คุณสามารถแข่งขันได้แม้ในตลาดต่างจังหวัด
             </p>
-            <a href="#contact" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
+            <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
         </div>
         <div class="scroll-indicator" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
             <i class="fas fa-chevron-down"></i>
@@ -1091,100 +675,80 @@
     </section>
 
     <section id="services" class="section">
-        <h2>ทำไมถึงต้องเลือกเรา?</h2>
-
-        <div class="services-grid">
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+        <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
+                <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
+                <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
             </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+            
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">ดำเนินการเร็ว เห็นผลไว</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
+                <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
+                <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
             </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+            
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-users"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">ผู้เชี่ยวชาญตัวจริง</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
+                <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
+                <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
             </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+            
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">ดูแลครบทุกมิติ</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
+                <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
+                <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
             </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+            
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">ไม่ทิ้งหลังบริการ</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
+                <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
+                <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
             </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
+            
+            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">ชำนาญในตลาดพรีเมียม</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
-            </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
-                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">วิเคราะห์ข้อมูลเชิงลึก</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
-            </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1556742393-d75f468bfcb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
-                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">นวัตกรรมสมัยใหม่</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
-            </div>
-            <div class="feature-card hover-animate" style="background-image: linear-gradient(rgba(47, 47, 47, 0.8), rgba(47, 47, 47, 0.8)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'); background-size: cover; background-position: center; color: var(--ivory);">
-                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3 class="feature-title" style="color: var(--luxury-bronze);">มาตรฐานความปลอดภัย</h3>
-                <p style="color: rgba(255, 255, 247, 0.9);">ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
+                <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
+                <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
             </div>
         </div>
     </section>
 
-    <section id="packages" class="section" style="padding-top: 5rem; padding-bottom: 5rem;">
-        <h2 style="margin-bottom: 3rem;">แพ็กเกจบริการของเรา</h2>
+    <section id="packages" class="section">
+        <h2 class="thai-display">แพ็กเกจบริการของเรา</h2>
         
-        <div class="package-dropdown-container">
-            <div class="package-select-wrapper">
-                <select class="package-select" id="packageSelect">
-                    <option value="" disabled selected>เลือกแพ็กเกจที่สนใจ</option>
-                    <option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
-                    <option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
-                    <option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
-                    <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
-                    <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
-                    <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
-                </select>
-            </div>
-            
-            <div class="package-details" id="starter">
+        <div class="packages-grid">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Starter</h3>
-                        <div class="package-price">฿3,900</div>
+                        <p>โซลูชันด่วน ได้ผลจริง</p>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 5 วัน</div>
+                <div class="package-price">฿3,900</div>
+                <div class="package-duration">ระยะเวลา: 5 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
                     <li>คู่มือแผนปฏิบัติแบบตรงจุด</li>
                     <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
                     <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
             
-            <div class="package-details" id="foundation">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Foundation</h3>
-                        <div class="package-price">฿9,900</div>
+                        <p>ตรวจสุขภาพร้านอย่างละเอียด</p>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 10 วัน</div>
+                <div class="package-price">฿9,900</div>
+                <div class="package-duration">ระยะเวลา: 10 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
                     <li>วิเคราะห์ต้นทุน + แผนลดต้นทุน 15–20%</li>
@@ -1192,18 +756,19 @@
                     <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
                     <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">ยกระดับระบบงานของคุณ</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ยกระดับระบบงานของคุณ</button>
             </div>
             
-            <div class="package-details" id="growth">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Growth</h3>
-                        <div class="package-price">฿29,900</div>
+                        <p>ปรับร้านให้เติบโตอย่างมีกลยุทธ์</p>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 15 วัน</div>
+                <div class="package-price">฿29,900</div>
+                <div class="package-duration">ระยะเวลา: 15 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
                     <li>ปรับเมนูเพื่อเพิ่มกำไร 15%</li>
@@ -1212,18 +777,19 @@
                     <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
                     <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
             </div>
             
-            <div class="package-details" id="premium">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon premium"><i class="fas fa-crown"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Premium</h3>
-                        <div class="package-price">฿59,900</div>
+                        <p>ปรับภาพลักษณ์ร้านทั้งระบบ</p>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 30 วัน</div>
+                <div class="package-price">฿59,900</div>
+                <div class="package-duration">ระยะเวลา: 30 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
                     <li>ออกแบบโครงสร้างการทำงานใหม่ทั้งหมด</li>
@@ -1232,18 +798,19 @@
                     <li>พัฒนาแนวทางบริหารทีม</li>
                     <li>วางแผนระยะยาว 3 เดือน</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
             </div>
             
-            <div class="package-details" id="elite">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Elite</h3>
-                        <div class="package-price">฿119,000</div>
+                        <p>ที่ปรึกษาระดับผู้บริหาร</p>
                     </div>
                 </div>
-                <div class="package-duration">ระยะเวลา: 60 วัน</div>
+                <div class="package-price">฿119,000</div>
+                <div class="package-duration">ระยะเวลา: 60 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
                     <li>พบกันหน้างานเดือนละครั้ง</li>
@@ -1252,17 +819,18 @@
                     <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
                     <li>วางแผน 6 เดือนล่วงหน้า</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">ปรึกษาแบบ Top Executive</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ปรึกษาแบบ Top Executive</button>
             </div>
             
-            <div class="package-details" id="signature">
+            <div class="package-card">
                 <div class="package-header">
                     <div class="package-icon signature"><i class="fas fa-signature"></i></div>
-                    <div class="package-title-price">
+                    <div>
                         <h3 class="package-title">Signature</h3>
-                        <div class="package-price">ราคาตามตกลง</div>
+                        <p>ดูแลการตลาดครบวงจร 6 เดือน</p>
                     </div>
                 </div>
+                <div class="package-price">ราคาตามตกลง</div>
                 <div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
                 <ul class="package-features">
                     <li>สร้างแบรนด์ & ออกแบบภาพลักษณ์</li>
@@ -1274,84 +842,24 @@
                     <li>ออกแบบโปรแกรม Loyalty & CRM</li>
                     <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
                 </ul>
-                <button class="package-cta" onclick="window.location.href='#contact'">ติดต่อขอใบเสนอราคา</button>
+                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ติดต่อขอใบเสนอราคา</button>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <div class="contact-container">
-            <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
+            <h2 class="thai-display">พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
             <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
-            
-            <div class="form-container">
-                <h3 class="form-title">กรอกข้อมูลเพื่อนัดหมาย</h3>
-                
-                <form id="consultationForm" action="https://formsubmit.co/rnb.transolution@gmail.com" method="POST">
-                    <input type="text" name="_honey" style="display:none">
-                    
-                    <input type="hidden" name="_captcha" value="false">
-                    
-                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-                    
-                    <div class="form-group">
-                        <label for="name" class="form-label">ชื่อ-นามสกุล</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">อีเมล</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business" class="form-label">ชื่อร้าน/ธุรกิจ</label>
-                        <input type="text" id="business" name="business" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="package" class="form-label">แพ็กเกจที่สนใจ</label>
-                        <select id="package" name="package" class="form-select" required>
-                            <option value="" disabled selected>เลือกแพ็กเกจ</option>
-                            <option value="Starter">Starter (3,900 บาท)</option>
-                            <option value="Foundation">Foundation (9,900 บาท)</option>
-                            <option value="Growth">Growth (29,900 บาท)</option>
-                            <option value="Premium">Premium (59,900 บาท)</option>
-                            <option value="Elite">Elite (119,000 บาท)</option>
-                            <option value="Signature">Signature (ราคาตามตกลง)</option>
-                            <option value="other">ยังไม่แน่ใจ</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">รายละเอียดเพิ่มเติม</label>
-                        <textarea id="message" name="message" class="form-textarea"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">ส่งข้อมูลเพื่อนัดหมาย</button>
-                </form>
-                
-                <div id="formSuccess" class="form-success">
-                    <i class="fas fa-check-circle"></i>
-                    <p>ขอบคุณ! เราได้รับข้อมูลของคุณแล้ว</p>
-                    <p>ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</p>
-                </div>
-            </div>
-            
-            <div class="contact-buttons" style="margin-top: 4rem;">
+            <div class="contact-buttons">
+                <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);">
+                    <i class="fas fa-calendar-alt"></i> นัดหมายปรึกษา
+                </a>
                 <a href="tel:+66891041992" class="cta-button">
                     <i class="fas fa-phone"></i> โทรเลย
                 </a>
                 <a href="https://lin.ee/482bqDUr" target="_blank" class="cta-button">
                     <i class="fab fa-line"></i> LINE
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank" class="cta-button">
-                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
                 <a href="mailto:rnb.transolution@gmail.com" class="cta-button">
                     <i class="fas fa-envelope"></i> อีเมล
@@ -1359,10 +867,6 @@
             </div>
         </div>
     </section>
-
-    <footer>
-        <p>© 2025 R&B Transolution. All Rights Reserved.</p>
-    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -1383,80 +887,14 @@
                 nav.style.opacity = '1';
             } else {
                 nav.style.transform = 'translateY(-20px)';
-                nav.style.opacity = '0.9';
+                nav.style.opacity = '0';
             }
         });
 
-        // Initialize floating nav
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.querySelector('.floating-nav');
-            nav.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            nav.style.transform = 'translateY(0)';
-            nav.style.opacity = '1';
-        });
-
-        // Form handling
-        document.getElementById('consultationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            document.getElementById('consultationForm').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
-            
-            // Submit form data
-            const formData = new FormData(this);
-            
-            // Using FormSubmit.co
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            }).then(data => {
-                console.log('Form submission successful:', data);
-            }).catch(error => {
-                console.error('Error submitting form:', error);
-            });
-            
-            // Optional: Scroll to success message
-            document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Package dropdown functionality
-        document.getElementById('packageSelect').addEventListener('change', function() {
-            // Hide all package details
-            document.querySelectorAll('.package-details').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            
-            // Show selected package
-            const selectedValue = this.value;
-            if (selectedValue) {
-                document.getElementById(selectedValue).classList.add('active');
-                
-                // Scroll to the package details
-                document.getElementById(selectedValue).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-
-        // Optional: Auto-select package if coming from a direct link
-        window.addEventListener('load', function() {
-            const hash = window.location.hash;
-            if (hash && document.getElementById(hash.substring(1))) {
-                const packageId = hash.substring(1);
-                document.getElementById('packageSelect').value = packageId;
-                document.getElementById(packageId).classList.add('active');
-            }
-        });
+        // Initialize floating nav position
+        document.querySelector('.floating-nav').style.transform = 'translateY(-20px)';
+        document.querySelector('.floating-nav').style.opacity = '0';
+        document.querySelector('.floating-nav').style.transition = 'all 0.3s ease';
     </script>
 </body>
 </html>
