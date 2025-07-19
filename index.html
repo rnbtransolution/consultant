@@ -282,65 +282,86 @@
             line-height: 1.6;
         }
 
-        /* ===== PACKAGES ===== */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .package-card {
+        /* ===== PACKAGES DROPDOWN SECTION ===== */
+        .package-dropdown-container {
+            max-width: 800px;
+            margin: 0 auto;
             background: rgba(26, 31, 46, 0.6);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-radius: 16px;
-            padding: 1.8rem;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .package-select-wrapper {
             position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin-bottom: 2rem;
         }
 
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .package-select {
             width: 100%;
-            height: 100%;
-            background: var(--gradient-glass);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            appearance: none;
+            cursor: pointer;
         }
 
-        .package-card:hover::before {
-            opacity: 1;
+        .package-select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
         }
 
-        .package-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.3);
+        .package-select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            pointer-events: none;
+        }
+
+        .package-details {
+            display: none;
+            background: rgba(15, 20, 25, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .package-details.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .package-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .package-icon {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            margin-right: 1rem;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
             background: rgba(255,255,255,0.1);
             color: var(--primary-gold);
             flex-shrink: 0;
@@ -353,23 +374,25 @@
         .elite { background: rgba(147, 51, 234, 0.15); }
         .signature { background: rgba(139, 69, 19, 0.15); }
 
+        .package-title-price {
+            flex-grow: 1;
+        }
+
         .package-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.3rem;
             color: var(--primary-gold);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
         .package-price {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--white);
-            margin: 0.8rem 0;
             letter-spacing: 0.8px;
         }
 
         .package-price::before {
-            content: 'เริ่มต้นที่';
+            content: 'เริ่มต้นที่ ';
             display: block;
             font-size: 0.85rem;
             font-weight: 400;
@@ -379,22 +402,20 @@
 
         .package-duration {
             color: var(--silver);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
 
         .package-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .package-features li {
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
         }
 
         .package-features li:before {
@@ -402,8 +423,8 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             color: var(--primary-gold);
-            margin-right: 0.7rem;
-            font-size: 0.85rem;
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
         }
 
         .package-cta {
@@ -414,16 +435,15 @@
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.3s ease;
             width: 100%;
-            font-size: 0.95rem;
-            letter-spacing: 0.4px;
+            font-size: 1rem;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .package-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
 
         /* ===== FORM STYLES ===== */
@@ -713,14 +733,12 @@
                 margin-bottom: 2rem;
             }
             
-            .features-grid,
-            .packages-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
                 gap: 1.2rem;
             }
             
-            .feature-card,
-            .package-card {
+            .feature-card {
                 padding: 1.5rem;
             }
             
@@ -762,15 +780,6 @@
             
             .section h2 {
                 font-size: 1.8rem;
-            }
-            
-            .package-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .package-icon {
-                margin-bottom: 0.8rem;
             }
         }
     </style>
@@ -829,32 +838,44 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
-                <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
-            </div>
-            
-            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-gem"></i></div>
                 <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
                 <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
+                <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
             </div>
         </div>
     </section>
 
     <section id="packages" class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
-        <h2 class="thai-display" style="margin-bottom: 2.5rem;">แพ็กเกจบริการของเรา</h2>
+        <h2 class="thai-display" style="margin-bottom: 2rem;">แพ็กเกจบริการของเรา</h2>
         
-        <div class="packages-grid">
-            <div class="package-card">
+        <div class="package-dropdown-container">
+            <div class="package-select-wrapper">
+                <select class="package-select" id="packageSelect">
+                    <option value="" disabled selected>เลือกแพ็กเกจที่สนใจ</option>
+                    <option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
+                    <option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
+                    <option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
+                    <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
+                    <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
+                    <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
+                </select>
+            </div>
+            
+            <!-- Starter Package -->
+            <div class="package-details" id="starter">
                 <div class="package-header">
                     <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Starter</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">โซลูชันด่วน ได้ผลจริง</p>
+                        <div class="package-price">฿3,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿3,900</div>
                 <div class="package-duration">ระยะเวลา: 5 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
@@ -865,15 +886,15 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Foundation Package -->
+            <div class="package-details" id="foundation">
                 <div class="package-header">
                     <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Foundation</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">ตรวจสุขภาพร้านอย่างละเอียด</p>
+                        <div class="package-price">฿9,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿9,900</div>
                 <div class="package-duration">ระยะเวลา: 10 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
@@ -885,15 +906,15 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">ยกระดับระบบงานของคุณ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Growth Package -->
+            <div class="package-details" id="growth">
                 <div class="package-header">
                     <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Growth</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">ปรับร้านให้เติบโตอย่างมีกลยุทธ์</p>
+                        <div class="package-price">฿29,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿29,900</div>
                 <div class="package-duration">ระยะเวลา: 15 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
@@ -906,15 +927,15 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
             </div>
             
-            <div class="package-card">
+            <!-- Premium Package -->
+            <div class="package-details" id="premium">
                 <div class="package-header">
                     <div class="package-icon premium"><i class="fas fa-crown"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Premium</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">ปรับภาพลักษณ์ร้านทั้งระบบ</p>
+                        <div class="package-price">฿59,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿59,900</div>
                 <div class="package-duration">ระยะเวลา: 30 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
@@ -927,15 +948,15 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Elite Package -->
+            <div class="package-details" id="elite">
                 <div class="package-header">
                     <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Elite</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">ที่ปรึกษาระดับผู้บริหาร</p>
+                        <div class="package-price">฿119,000</div>
                     </div>
                 </div>
-                <div class="package-price">฿119,000</div>
                 <div class="package-duration">ระยะเวลา: 60 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
@@ -948,15 +969,15 @@
                 <button class="package-cta" onclick="window.location.href='#contact'">ปรึกษาแบบ Top Executive</button>
             </div>
             
-            <div class="package-card">
+            <!-- Signature Package -->
+            <div class="package-details" id="signature">
                 <div class="package-header">
                     <div class="package-icon signature"><i class="fas fa-signature"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Signature</h3>
-                        <p style="font-size: 0.9rem; color: var(--silver);">ดูแลการตลาดครบวงจร 6 เดือน</p>
+                        <div class="package-price">ราคาตามตกลง</div>
                     </div>
                 </div>
-                <div class="package-price">ราคาตามตกลง</div>
                 <div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
                 <ul class="package-features">
                     <li>สร้างแบรนด์ & ออกแบบภาพลักษณ์</li>
@@ -1120,6 +1141,36 @@
             
             // Optional: Scroll to success message
             document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Package dropdown functionality
+        document.getElementById('packageSelect').addEventListener('change', function() {
+            // Hide all package details
+            document.querySelectorAll('.package-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected package
+            const selectedValue = this.value;
+            if (selectedValue) {
+                document.getElementById(selectedValue).classList.add('active');
+                
+                // Scroll to the package details
+                document.getElementById(selectedValue).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Optional: Auto-select package if coming from a direct link
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash && document.getElementById(hash.substring(1))) {
+                const packageId = hash.substring(1);
+                document.getElementById('packageSelect').value = packageId;
+                document.getElementById(packageId).classList.add('active');
+            }
         });
     </script>
 </body>
