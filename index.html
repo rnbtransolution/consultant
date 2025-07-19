@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -53,7 +52,7 @@
             scroll-behavior: smooth;
         }
         
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
             letter-spacing: 1.5px;
@@ -70,6 +69,7 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
 
         /* ===== SECTIONS ===== */
@@ -156,6 +156,12 @@
             line-height: 1.1;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             letter-spacing: 2px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .subtitle {
@@ -199,6 +205,9 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
             font-family: 'Inter', sans-serif;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            min-height: 44px;
         }
 
         .cta-button::before {
@@ -220,7 +229,7 @@
         .cta-button:hover {
             color: var(--rich-black);
             border-color: var(--accent-gold);
-            transform: translateY(-3px);
+            transform: translateY(-3px) rotateX(5deg);
             box-shadow: var(--shadow-luxury);
         }
 
@@ -297,7 +306,7 @@
             right: 1.5rem;
             z-index: 1000;
             background: rgba(248, 246, 242, 0.95);
-            -webkit-backdrop-filter: blur(20px); /* Safari support */
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border-radius: 0;
             padding: 0.8rem 1.5rem;
@@ -308,10 +317,9 @@
             opacity: 1;
             display: flex;
             align-items: center;
-            /* iOS specific fixes */
-            -webkit-transform: translate3d(0,0,0); /* Hardware acceleration */
+            -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
-            will-change: transform; /* Optimize for animations */
+            will-change: transform;
         }
 
         .floating-nav.hidden {
@@ -333,6 +341,10 @@
             font-size: 0.85rem;
             position: relative;
             letter-spacing: 0.5px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .floating-nav a::after {
@@ -369,6 +381,7 @@
             position: relative;
             overflow: hidden;
             font-size: 0.8rem;
+            min-height: 44px;
         }
 
         .floating-nav .appointment-btn::before {
@@ -392,36 +405,135 @@
             transform: translateY(-2px);
         }
 
-        /* Add this media query for mobile devices */
-        @media (max-width: 768px) {
-            .floating-nav {
-                position: absolute; /* Fallback for iOS */
-                top: auto;
-                bottom: 1rem;
-                right: 1rem;
-                left: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-                padding: 0.8rem;
-            }
-            
-            .floating-nav a {
-                margin: 0 0.5rem;
-                font-size: 0.8rem;
-                padding: 0.3rem 0;
-                min-width: 44px; /* Apple's recommended minimum touch target */
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .floating-nav .appointment-btn {
-                margin-left: 0;
-                margin-top: 0.5rem;
-                width: 100%;
-                max-width: 180px;
-            }
+        /* ===== TRENDS SECTION ===== */
+        .trends-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .trend-card {
+            background: var(--pearl-white);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .trend-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trend-icon {
+            font-size: 2rem;
+            color: var(--luxury-bronze);
+            margin-bottom: 1rem;
+        }
+
+        .case-study {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 3rem;
+            margin-top: 4rem;
+            border-radius: 8px;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonial-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .testimonial {
+            display: none;
+            background: var(--pearl-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-content p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 2px solid var(--luxury-bronze);
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--luxury-bronze);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 10;
+        }
+
+        .carousel-prev {
+            left: -50px;
+        }
+
+        .carousel-next {
+            right: -50px;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badges img {
+            height: 80px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .trust-badges img:hover {
+            opacity: 1;
         }
 
         /* ===== PACKAGES SECTION ===== */
@@ -465,6 +577,7 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
+            min-height: 44px;
         }
 
         .package-select:focus {
@@ -620,6 +733,7 @@
             font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
+            min-height: 44px;
         }
 
         .package-cta::before {
@@ -722,6 +836,12 @@
             letter-spacing: 0.3px;
             transition: all 0.3s ease;
             font-size: 1rem;
+            min-height: 44px;
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
         }
 
         .form-input:focus, 
@@ -730,11 +850,6 @@
             outline: none;
             border-color: var(--luxury-bronze);
             box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 140px;
-            resize: vertical;
         }
 
         .form-submit {
@@ -755,6 +870,7 @@
             font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
+            min-height: 44px;
         }
 
         .form-submit::before {
@@ -820,6 +936,7 @@
             position: relative;
             overflow: hidden;
             font-size: 0.9rem;
+            min-height: 44px;
         }
 
         .contact-buttons a::before {
@@ -858,6 +975,68 @@
 
         footer p {
             margin: 0;
+        }
+
+        /* ===== ANIMATION CLASSES ===== */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        [data-animate].animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== LIVE CHAT ===== */
+        .live-chat {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        #chatButton {
+            background: var(--luxury-bronze);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chatButton:hover {
+            transform: scale(1.1);
+            background: var(--accent-gold);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .chat-window.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -916,6 +1095,18 @@
             .floating-nav {
                 display: flex;
             }
+
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-prev {
+                left: 10px;
+            }
+        
+            .carousel-next {
+                right: 10px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -970,6 +1161,42 @@
                 margin-right: 0;
                 margin-bottom: 1.2rem;
             }
+
+            .trust-badges {
+                gap: 1rem;
+            }
+            
+            .trust-badges img {
+                height: 60px;
+            }
+
+            /* Mobile navigation */
+            .floating-nav {
+                position: fixed;
+                bottom: 1rem;
+                top: auto;
+                left: 1rem;
+                right: 1rem;
+                width: calc(100% - 2rem);
+                justify-content: space-around;
+                padding: 0.8rem;
+            }
+
+            .floating-nav a {
+                margin: 0;
+                padding: 0.5rem;
+                font-size: 0.7rem;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .floating-nav .appointment-btn {
+                display: none;
+            }
+
+            .section-indicator {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1010,6 +1237,53 @@
             .feature-card {
                 padding: 1.8rem 1.2rem;
             }
+
+            .live-chat {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .chat-window {
+                width: calc(100% - 2rem);
+                right: 1rem;
+            }
+        }
+
+        /* iOS specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            /* CSS specific to iOS devices */
+            .floating-nav {
+                position: fixed;
+                bottom: 1rem;
+                top: auto;
+                left: 1rem;
+                right: 1rem;
+                width: calc(100% - 2rem);
+            }
+            
+            /* Improve touch targets */
+            a, button, .cta-button, .form-input, .form-select {
+                min-height: 44px;
+            }
+            
+            /* Disable hover effects on touch devices */
+            @media (hover: none) {
+                .cta-button:hover::before, 
+                .feature-card:hover,
+                .floating-nav a:hover::after {
+                    all: unset;
+                }
+            }
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Active section indicator */
@@ -1043,22 +1317,23 @@
             }
         }
     
-#hero .cta-button {
-    color: var(--ivory) !important;
-}
+        #hero .cta-button {
+            color: var(--ivory) !important;
+        }
 
-#hero .cta-button:hover {
-    color: var(--rich-black) !important;
-}
-
-</style>
+        #hero .cta-button:hover {
+            color: var(--rich-black) !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Floating Navigation -->
     <nav class="floating-nav">
         <a href="#hero">หน้าหลัก</a>
         <a href="#services">บริการ</a>
+        <a href="#trends">เทรนด์</a>
         <a href="#packages">แพ็กเกจ</a>
+        <a href="#testimonials">ผลงาน</a>
         <a href="#contact">ติดต่อ</a>
         <a href="#contact" class="appointment-btn">📅 นัดหมาย</a>
     </nav>
@@ -1067,7 +1342,9 @@
     <div class="section-indicator">
         <a href="#hero" class="active"></a>
         <a href="#services"></a>
+        <a href="#trends"></a>
         <a href="#packages"></a>
+        <a href="#testimonials"></a>
         <a href="#contact"></a>
     </div>
 
@@ -1086,7 +1363,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" data-animate>
         <h2>ทำไมถึงต้องเลือกเรา?</h2>
 
         <div class="features-grid">
@@ -1138,8 +1415,54 @@
         </div>
     </section>
 
+    <!-- Trends Section -->
+    <section id="trends" data-animate>
+        <h2>เทรนด์ร้านอาหารปี 2025 ในประเทศไทยและอาเซียน</h2>
+        
+        <div class="trends-container">
+            <div class="trend-card">
+                <div class="trend-icon"><i class="fas fa-leaf"></i></div>
+                <h3>ความยั่งยืน</h3>
+                <p>70% ของผู้บริโภคไทยเลือกร้านอาหารที่เป็นมิตรกับสิ่งแวดล้อม เราช่วยคุณนำแนวคิด Zero Waste มาปรับใช้ในครัว</p>
+            </div>
+            
+            <div class="trend-card">
+                <div class="trend-icon"><i class="fas fa-robot"></i></div>
+                <h3>เทคโนโลยี</h3>
+                <p>เมนู QR Code พนักงานเสิร์ฟ AI และอุปกรณ์ครัวอัจฉริยะ กำลังกลายเป็นมาตรฐานใหม่ของร้านอาหารระดับพรีเมียม</p>
+            </div>
+            
+            <div class="trend-card">
+                <div class="trend-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>สุขภาพ</h3>
+                <p>ความต้องการอาหาร Plant-based และ Functional Food ในไทยเพิ่มขึ้น 300% นับตั้งแต่ปี 2563</p>
+            </div>
+            
+            <div class="trend-card">
+                <div class="trend-icon"><i class="fas fa-home"></i></div>
+                <h3>แนวคิด Hybrid</h3>
+                <p>การผสมผสานระหว่างร้านค้า ร้านอาหาร และ Co-working Space กำลังเป็นเทรนด์ใหม่เพื่อเพิ่มรายได้</p>
+            </div>
+        </div>
+        
+        <div class="case-study">
+            <h3>ผลงานความสำเร็จ: Bistro 45 เชียงใหม่</h3>
+            <p>"R&B ช่วยให้เรามียอดขายเพิ่มขึ้น 120% ใน 3 เดือน ผ่านการปรับเมนูและการฝึกอบรมพนักงาน กลยุทธ์ Digital Transformation ลดค่าใช้จ่ายในการดำเนินงานลง 25%"</p>
+            <div class="before-after">
+                <div>
+                    <h4>ก่อนใช้งานบริการ</h4>
+                    <p>• อัตราการใช้โต๊ะ 60%<br>• ต้นทุนอาหาร 35%<br>• คะแนนรีวิว 2.8/5</p>
+                </div>
+                <div>
+                    <h4>หลังใช้งานบริการ</h4>
+                    <p>• อัตราการใช้โต๊ะ 95%<br>• ต้นทุนอาหาร 28%<br>• คะแนนรีวิว 4.6/5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Packages Section -->
-    <section id="packages">
+    <section id="packages" data-animate>
         <h2>แพ็กเกจบริการของเรา</h2>
         
         <div class="package-dropdown-container">
@@ -1276,8 +1599,63 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" data-animate>
+        <h2>เสียงตอบรับจากลูกค้า</h2>
+        
+        <div class="testimonial-carousel">
+            <div class="testimonial active">
+                <div class="testimonial-content">
+                    <p>"R&B ช่วยเปลี่ยนร้านอาหารของเราจากที่กำลังจะปิดตัว ให้กลายเป็นร้านยอดนิยมในย่านสีลมภายใน 3 เดือน"</p>
+                    <div class="client-info">
+                        <img src="https://i.imgur.com/Jz9JQZx.jpg" alt="ลูกค้าไทย" class="client-photo">
+                        <div>
+                            <h4>สุนิสา วงศ์สวัสดิ์</h4>
+                            <p>เจ้าของร้าน Le Petit Bangkok</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"แพ็กเกจ Digital Transformation คุ้มค่ามาก ยอดสั่งออนไลน์เพิ่มขึ้น 300% ภายใน 2 เดือน"</p>
+                    <div class="client-info">
+                        <img src="https://i.imgur.com/Lx6vQXm.jpg" alt="ลูกค้าไทย" class="client-photo">
+                        <div>
+                            <h4>พงศกร ตันติวัฒน์</h4>
+                            <p>ผู้จัดการ Saap Avenue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"ทีมงาน R&B ช่วยลดอาหารเหลือทิ้งได้ 40% ในขณะที่เพิ่มความพึงพอใจลูกค้า เป็นการเปลี่ยนแปลงที่คุ้มค่าจริงๆ"</p>
+                    <div class="client-info">
+                        <img src="https://i.imgur.com/VvZ4WQc.jpg" alt="ลูกค้าไทย" class="client-photo">
+                        <div>
+                            <h4>ศิริพร กุลศรี</h4>
+                            <p>เจ้าของร้าน Green Terrace</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-prev">❮</button>
+            <button class="carousel-next">❯</button>
+        </div>
+        
+        <div class="trust-badges">
+            <img src="https://via.placeholder.com/150x80?text=รางวัลร้านอาหารไทย" alt="รางวัลร้านอาหารไทย">
+            <img src="https://via.placeholder.com/150x80?text=ASEAN+Quality" alt="ASEAN Quality">
+            <img src="https://via.placeholder.com/150x80?text=ที่ปรึกษายอดเยี่ยม+2567" alt="ที่ปรึกษายอดเยี่ยม 2567">
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" data-animate>
         <div class="contact-container">
             <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
             <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
@@ -1358,8 +1736,18 @@
         </div>
     </section>
 
+    <!-- Live Chat Widget -->
+    <div class="live-chat">
+        <button id="chatButton">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chat-window">
+            <!-- Chat interface would be implemented here -->
+        </div>
+    </div>
+
     <footer>
-        <p>© 2025 R&B Transolution. All Rights Reserved.</p>
+        <p>© 2025 R&B Transolution. สงวนลิขสิทธิ์</p>
     </footer>
 
     <script>
@@ -1411,6 +1799,7 @@
         updateActiveSection();
         
         // Update on scroll
+        let lastScroll = 0;
         window.addEventListener('scroll', function() {
             updateActiveSection();
             
@@ -1425,44 +1814,15 @@
             }
             
             lastScroll = currentScroll;
+            
+            // Parallax effect for hero section
+            const hero = document.getElementById('hero');
+            hero.style.backgroundPositionY = currentScroll * 0.5 + 'px';
         });
-
-        // Floating nav behavior
-        let lastScroll = 0;
-        const floatingNav = document.querySelector('.floating-nav');
-        let ticking = false;
 
         // iOS detection
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-        // iOS-specific touch event handling
-        if (isIOS) {
-            // Make links more touch-friendly
-            document.querySelectorAll('.floating-nav a').forEach(link => {
-                link.style.padding = '0.5rem 0.8rem';
-                link.style.minWidth = '44px'; // Apple's recommended minimum touch target
-                link.style.minHeight = '44px';
-                link.style.display = 'flex';
-                link.style.alignItems = 'center';
-                link.style.justifyContent = 'center';
-            });
-            
-            // Adjust the nav position on iOS
-            floatingNav.style.position = 'absolute';
-            floatingNav.style.top = 'auto';
-            floatingNav.style.bottom = '1rem';
-            floatingNav.style.left = '1rem';
-            floatingNav.style.right = '1rem';
-            floatingNav.style.justifyContent = 'center';
-        }
-
-        // Prevent default on touchstart to avoid delay
-        document.querySelectorAll('.floating-nav a').forEach(link => {
-            link.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-            }, { passive: false });
-        });
 
         // Package dropdown functionality
         document.getElementById('packageSelect').addEventListener('change', function() {
@@ -1479,33 +1839,81 @@
         });
 
         // Form handling
-        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+        document.getElementById('consultationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Show success message
-            document.getElementById('consultationForm').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
+            // Show loading state
+            const submitBtn = this.querySelector('[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง...';
             
-            // Submit form data
-            const formData = new FormData(this);
-            
-            // Using FormSubmit.co
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    document.getElementById('formSuccess').style.display = 'block';
+                    this.reset();
+                    this.style.display = 'none';
+                } else {
+                    throw new Error('Submission failed');
                 }
-            }).then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            }).then(data => {
-                console.log('Form submission successful:', data);
-            }).catch(error => {
-                console.error('Error submitting form:', error);
+            } catch (error) {
+                alert('เกิดข้อผิดพลาดในการส่งแบบฟอร์ม กรุณาลองอีกครั้งหรือติดต่อเราโดยตรง');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'ส่งข้อมูลเพื่อนัดหมาย';
+            }
+        });
+
+        // Testimonial carousel functionality
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const totalTestimonials = testimonials.length;
+
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
             });
+            
+            currentTestimonial = (index + totalTestimonials) % totalTestimonials;
+            testimonials[currentTestimonial].classList.add('active');
+        }
+
+        document.querySelector('.carousel-prev').addEventListener('click', () => {
+            showTestimonial(currentTestimonial - 1);
+        });
+
+        document.querySelector('.carousel-next').addEventListener('click', () => {
+            showTestimonial(currentTestimonial + 1);
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+        }, 8000);
+
+        // Live chat toggle
+        document.getElementById('chatButton').addEventListener('click', function() {
+            document.querySelector('.chat-window').classList.toggle('active');
+        });
+
+        // Intersection Observer for scroll animations
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            animateOnScroll.observe(el);
         });
 
         // Check URL hash on load
