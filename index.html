@@ -1,10 +1,15 @@
 
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
     <!-- Modern Thai Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Sarabun:wght@300;400;600;700&family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
@@ -14,6 +19,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hover-animate {
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+.hover-animate:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+  border-color: var(--primary-gold);
+}
+
         :root {
             --primary-gold: #D4AF37;
             --dark-gold: #B8941F;
@@ -25,40 +57,53 @@
             --gradient-primary: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
             --gradient-dark: linear-gradient(135deg, #0F1419 0%, #1A1F2E 100%);
             --gradient-glass: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 148, 31, 0.05) 100%);
-            --section-spacing: 8rem;
+            --section-spacing: 5rem;
         }
 
-        /* ===== MODERN TYPOGRAPHY ===== */
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Sarabun', sans-serif;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.6;
             background: var(--deep-navy);
             color: var(--white);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
         
-        /* Thai Display Font */
         h1, h2, h3, .thai-display {
             font-family: 'Chonburi', serif;
             letter-spacing: 0.5px;
         }
         
-        /* English Display Pairing */
         .english-display {
             font-family: 'Playfair Display', 'Chonburi', serif;
         }
         
-        /* Clean Thai Sans */
         .thai-sans, .feature-title, .package-title, .floating-nav a {
             font-family: 'Kanit', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
             height: 100vh;
-            min-height: 800px;
+            min-height: 700px;
             background: 
                 linear-gradient(135deg, rgba(15, 20, 25, 0.92) 0%, rgba(26, 31, 46, 0.88) 100%), 
                 url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
@@ -102,47 +147,46 @@
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             line-height: 1.1;
             text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--silver);
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             font-weight: 300;
             letter-spacing: 0.8px;
         }
 
         .hero .description {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
             color: rgba(255, 255, 255, 0.85);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* ===== CTA BUTTON ===== */
+        /* ===== BUTTONS ===== */
         .cta-button {
             background: var(--gradient-primary);
             color: var(--deep-navy);
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
             font-weight: 600;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none;
             display: inline-block;
             position: relative;
             overflow: hidden;
@@ -172,7 +216,7 @@
             box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
         }
 
-        /* ===== SECTION STYLING ===== */
+        /* ===== SECTIONS ===== */
         .section {
             padding: var(--section-spacing) 2rem;
             max-width: 1300px;
@@ -181,9 +225,9 @@
         }
 
         .section h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
             color: var(--primary-gold);
             position: relative;
             display: inline-block;
@@ -194,21 +238,21 @@
         .section h2::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
+            width: 70px;
+            height: 2px;
             background: var(--gradient-primary);
             border-radius: 3px;
         }
 
-        /* ===== FEATURE CARDS ===== */
+        /* ===== FEATURES ===== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .feature-card {
@@ -216,7 +260,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 2rem;
             border: 1px solid rgba(212, 175, 55, 0.15);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
@@ -242,88 +286,110 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
             border-color: rgba(212, 175, 55, 0.3);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
             color: var(--primary-gold);
         }
 
         .feature-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-gold);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             letter-spacing: 0.5px;
         }
 
         .feature-card p {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* ===== PACKAGE CARDS ===== */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .package-card {
+        /* ===== PACKAGES DROPDOWN SECTION ===== */
+        .package-dropdown-container {
+            max-width: 800px;
+            margin: 0 auto;
             background: rgba(26, 31, 46, 0.6);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .package-select-wrapper {
             position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin-bottom: 2rem;
         }
 
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .package-select {
             width: 100%;
-            height: 100%;
-            background: var(--gradient-glass);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            appearance: none;
+            cursor: pointer;
         }
 
-        .package-card:hover::before {
-            opacity: 1;
+        .package-select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
         }
 
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
-            border-color: rgba(212, 175, 55, 0.3);
+        .package-select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            pointer-events: none;
+        }
+
+        .package-details {
+            display: none;
+            background: rgba(15, 20, 25, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .package-details.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .package-header {
             display: flex;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .package-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 18px;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-right: 1.5rem;
             background: rgba(255,255,255,0.1);
             color: var(--primary-gold);
@@ -337,48 +403,48 @@
         .elite { background: rgba(147, 51, 234, 0.15); }
         .signature { background: rgba(139, 69, 19, 0.15); }
 
+        .package-title-price {
+            flex-grow: 1;
+        }
+
         .package-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.3rem;
             color: var(--primary-gold);
             margin-bottom: 0.3rem;
         }
 
         .package-price {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--white);
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
         }
 
         .package-price::before {
-            content: 'เริ่มต้นที่';
+            content: 'เริ่มต้นที่ ';
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 400;
             color: var(--silver);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .package-duration {
             color: var(--silver);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
 
         .package-features {
             list-style: none;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .package-features li {
-            padding: 0.7rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
-            font-size: 1.05rem;
         }
 
         .package-features li:before {
@@ -393,36 +459,126 @@
         .package-cta {
             background: var(--gradient-primary);
             color: var(--deep-navy);
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.3s ease;
             width: 100%;
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
+            font-size: 1rem;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .package-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-container {
+            background: rgba(26, 31, 46, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            color: var(--primary-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--silver);
+            font-weight: 500;
+        }
+
+        .form-input, 
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Sarabun', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, 
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: var(--gradient-primary);
+            color: var(--deep-navy);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Success message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        .form-success i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
         }
 
         /* ===== FLOATING NAV ===== */
         .floating-nav {
             position: fixed;
-            top: 2rem;
-            right: 2rem;
+            top: 1.5rem;
+            right: 1.5rem;
             z-index: 1000;
             background: rgba(26, 31, 46, 0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 50px;
-            padding: 0.8rem 1.8rem;
+            padding: 0.7rem 1.5rem;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -433,20 +589,20 @@
         .floating-nav a {
             color: var(--white);
             text-decoration: none;
-            margin: 0 1rem;
+            margin: 0 0.8rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             position: relative;
         }
 
         .floating-nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1.5px;
             background: var(--primary-gold);
             transition: width 0.3s ease;
         }
@@ -462,11 +618,11 @@
         .floating-nav .appointment-btn {
             background: var(--gradient-primary);
             color: var(--deep-navy);
-            padding: 0.6rem 1.5rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-left: 1rem;
+            margin-left: 0.8rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
@@ -479,11 +635,11 @@
         /* ===== SCROLL INDICATOR ===== */
         .scroll-indicator {
             position: absolute;
-            bottom: 3rem;
+            bottom: 2.5rem;
             left: 50%;
             transform: translateX(-50%);
             color: var(--primary-gold);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             animation: bounce 2s infinite;
             cursor: pointer;
             z-index: 2;
@@ -491,13 +647,13 @@
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-15px); }
-            60% { transform: translateX(-50%) translateY(-7px); }
+            40% { transform: translateX(-50%) translateY(-12px); }
+            60% { transform: translateX(-50%) translateY(-6px); }
         }
 
         /* ===== CONTACT SECTION ===== */
         .contact-section {
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -506,8 +662,8 @@
             background: rgba(26, 31, 46, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 4rem 3rem;
+            border-radius: 18px;
+            padding: 3rem 2rem;
             border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
             transition: all 0.4s ease;
@@ -515,96 +671,112 @@
 
         .contact-container:hover {
             border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
         }
 
         .contact-container h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .contact-container p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.85);
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2.5rem;
         }
 
         .contact-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
 
         .contact-buttons a {
-            min-width: 200px;
+            min-width: 180px;
             text-align: center;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--charcoal);
+            padding: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer p {
+            margin: 0;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             :root {
-                --section-spacing: 6rem;
+                --section-spacing: 5rem;
             }
             
             .hero h1 {
-                font-size: 3.8rem;
+                font-size: 3.2rem;
             }
         }
 
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 3.2rem;
+                font-size: 2.8rem;
             }
             
             .section h2 {
-                font-size: 2.5rem;
-                margin-bottom: 4rem;
-            }
-            
-            .packages-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                font-size: 2.2rem;
+                margin-bottom: 2.5rem;
             }
         }
 
         @media (max-width: 768px) {
             :root {
-                --section-spacing: 5rem;
+                --section-spacing: 4rem;
             }
             
             .hero {
-                min-height: 700px;
+                min-height: 600px;
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
             
             .hero .subtitle {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
             
             .section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.5rem;
             }
             
             .section h2 {
-                font-size: 2.2rem;
-                margin-bottom: 3rem;
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
             
-            .features-grid,
-            .packages-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.2rem;
             }
             
-            .feature-card,
-            .package-card {
-                padding: 2rem;
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .form-title {
+                font-size: 1.5rem;
             }
             
             .floating-nav {
@@ -614,6 +786,7 @@
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
             
             .contact-buttons a {
@@ -623,28 +796,19 @@
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero .subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .hero .description {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             
             .section h2 {
                 font-size: 1.8rem;
-            }
-            
-            .package-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .package-icon {
-                margin-bottom: 1rem;
             }
         }
     </style>
@@ -655,7 +819,7 @@
         <a href="#services">บริการ</a>
         <a href="#packages">แพ็กเกจ</a>
         <a href="#contact">ติดต่อ</a>
-        <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="appointment-btn">📅 นัดหมาย</a>
+        <a href="#contact" class="appointment-btn">📅 นัดหมาย</a>
     </nav>
 
     <section id="home" class="hero">
@@ -667,68 +831,92 @@
                 ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า 
                 เพื่อให้คุณสามารถแข่งขันได้แม้ในตลาดต่างจังหวัด
             </p>
-            <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
+            <a href="#contact" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
         </div>
         <div class="scroll-indicator" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <section id="services" class="section">
-        <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-                <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
-                <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-users"></i></div>
-                <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
-                <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
-                <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
-                <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
-                <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
-            </div>
-        </div>
-    </section>
+    
+<section id="services" class="section">
+  <h2 class="thai-display">ทำไมถึงต้องเลือกเรา?</h2>
 
-    <section id="packages" class="section">
-        <h2 class="thai-display">แพ็กเกจบริการของเรา</h2>
+  <div class="services-grid">
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+      <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
+      <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+      <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
+      <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-users"></i></div>
+      <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
+      <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+      <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
+      <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+      <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
+      <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-gem"></i></div>
+      <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
+      <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+      <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
+      <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+      <h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
+      <p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
+    </div>
+    <div class="feature-card hover-animate">
+      <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
+      <p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
+    </div>
+  </div>
+</section>
+
+
+    <section id="packages" class="section" style="padding-top: 4rem; padding-bottom: 4rem;">
+        <h2 class="thai-display" style="margin-bottom: 2rem;">แพ็กเกจบริการของเรา</h2>
         
-        <div class="packages-grid">
-            <div class="package-card">
+        <div class="package-dropdown-container">
+            <div class="package-select-wrapper">
+                <select class="package-select" id="packageSelect">
+                    <option value="" disabled selected>เลือกแพ็กเกจที่สนใจ</option>
+                    <option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
+                    <option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
+                    <option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
+                    <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
+                    <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
+                    <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
+                </select>
+            </div>
+            
+            <!-- Starter Package -->
+            <div class="package-details" id="starter">
                 <div class="package-header">
                     <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Starter</h3>
-                        <p>โซลูชันด่วน ได้ผลจริง</p>
+                        <div class="package-price">฿3,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿3,900</div>
                 <div class="package-duration">ระยะเวลา: 5 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
@@ -736,18 +924,18 @@
                     <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
                     <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Foundation Package -->
+            <div class="package-details" id="foundation">
                 <div class="package-header">
                     <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Foundation</h3>
-                        <p>ตรวจสุขภาพร้านอย่างละเอียด</p>
+                        <div class="package-price">฿9,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿9,900</div>
                 <div class="package-duration">ระยะเวลา: 10 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
@@ -756,18 +944,18 @@
                     <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
                     <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ยกระดับระบบงานของคุณ</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">ยกระดับระบบงานของคุณ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Growth Package -->
+            <div class="package-details" id="growth">
                 <div class="package-header">
                     <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Growth</h3>
-                        <p>ปรับร้านให้เติบโตอย่างมีกลยุทธ์</p>
+                        <div class="package-price">฿29,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿29,900</div>
                 <div class="package-duration">ระยะเวลา: 15 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
@@ -777,18 +965,18 @@
                     <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
                     <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
             </div>
             
-            <div class="package-card">
+            <!-- Premium Package -->
+            <div class="package-details" id="premium">
                 <div class="package-header">
                     <div class="package-icon premium"><i class="fas fa-crown"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Premium</h3>
-                        <p>ปรับภาพลักษณ์ร้านทั้งระบบ</p>
+                        <div class="package-price">฿59,900</div>
                     </div>
                 </div>
-                <div class="package-price">฿59,900</div>
                 <div class="package-duration">ระยะเวลา: 30 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
@@ -798,18 +986,18 @@
                     <li>พัฒนาแนวทางบริหารทีม</li>
                     <li>วางแผนระยะยาว 3 เดือน</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
             </div>
             
-            <div class="package-card">
+            <!-- Elite Package -->
+            <div class="package-details" id="elite">
                 <div class="package-header">
                     <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Elite</h3>
-                        <p>ที่ปรึกษาระดับผู้บริหาร</p>
+                        <div class="package-price">฿119,000</div>
                     </div>
                 </div>
-                <div class="package-price">฿119,000</div>
                 <div class="package-duration">ระยะเวลา: 60 วัน | แก้ไขได้ไม่จำกัด</div>
                 <ul class="package-features">
                     <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
@@ -819,18 +1007,18 @@
                     <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
                     <li>วางแผน 6 เดือนล่วงหน้า</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ปรึกษาแบบ Top Executive</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">ปรึกษาแบบ Top Executive</button>
             </div>
             
-            <div class="package-card">
+            <!-- Signature Package -->
+            <div class="package-details" id="signature">
                 <div class="package-header">
                     <div class="package-icon signature"><i class="fas fa-signature"></i></div>
-                    <div>
+                    <div class="package-title-price">
                         <h3 class="package-title">Signature</h3>
-                        <p>ดูแลการตลาดครบวงจร 6 เดือน</p>
+                        <div class="package-price">ราคาตามตกลง</div>
                     </div>
                 </div>
-                <div class="package-price">ราคาตามตกลง</div>
                 <div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
                 <ul class="package-features">
                     <li>สร้างแบรนด์ & ออกแบบภาพลักษณ์</li>
@@ -842,7 +1030,7 @@
                     <li>ออกแบบโปรแกรม Loyalty & CRM</li>
                     <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
                 </ul>
-                <button class="package-cta" onclick="window.open('https://fastwork.co/user/rnbtransolution/business-23690251', '_blank')">ติดต่อขอใบเสนอราคา</button>
+                <button class="package-cta" onclick="window.location.href='#contact'">ติดต่อขอใบเสนอราคา</button>
             </div>
         </div>
     </section>
@@ -851,15 +1039,78 @@
         <div class="contact-container">
             <h2 class="thai-display">พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
             <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
-            <div class="contact-buttons">
-                <a href="https://calendar.app.google/zFQsJd8dBHgZwCcY6" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);">
-                    <i class="fas fa-calendar-alt"></i> นัดหมายปรึกษา
-                </a>
+            
+            <div class="form-container">
+                <h3 class="form-title thai-display">กรอกข้อมูลเพื่อนัดหมาย</h3>
+                
+                <form id="consultationForm" action="https://formsubmit.co/rnb.transolution@gmail.com" method="POST">
+                    <!-- HoneyPot -->
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Disable Captcha -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Success Redirect -->
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">ชื่อ-นามสกุล</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">อีเมล</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business" class="form-label">ชื่อร้าน/ธุรกิจ</label>
+                        <input type="text" id="business" name="business" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="package" class="form-label">แพ็กเกจที่สนใจ</label>
+                        <select id="package" name="package" class="form-select" required>
+                            <option value="" disabled selected>เลือกแพ็กเกจ</option>
+                            <option value="Starter">Starter (3,900 บาท)</option>
+                            <option value="Foundation">Foundation (9,900 บาท)</option>
+                            <option value="Growth">Growth (29,900 บาท)</option>
+                            <option value="Premium">Premium (59,900 บาท)</option>
+                            <option value="Elite">Elite (119,000 บาท)</option>
+                            <option value="Signature">Signature (ราคาตามตกลง)</option>
+                            <option value="other">ยังไม่แน่ใจ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">รายละเอียดเพิ่มเติม</label>
+                        <textarea id="message" name="message" class="form-textarea"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">ส่งข้อมูลเพื่อนัดหมาย</button>
+                </form>
+                
+                <div id="formSuccess" class="form-success">
+                    <i class="fas fa-check-circle"></i>
+                    <p>ขอบคุณ! เราได้รับข้อมูลของคุณแล้ว</p>
+                    <p>ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</p>
+                </div>
+            </div>
+            
+            <div class="contact-buttons" style="margin-top: 3rem;">
                 <a href="tel:+66891041992" class="cta-button">
                     <i class="fas fa-phone"></i> โทรเลย
                 </a>
                 <a href="https://lin.ee/482bqDUr" target="_blank" class="cta-button">
                     <i class="fab fa-line"></i> LINE
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank" class="cta-button">
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
                 <a href="mailto:rnb.transolution@gmail.com" class="cta-button">
                     <i class="fas fa-envelope"></i> อีเมล
@@ -867,6 +1118,10 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>© 2025 R&B Transolution. All Rights Reserved.</p>
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -895,6 +1150,69 @@
         document.querySelector('.floating-nav').style.transform = 'translateY(-20px)';
         document.querySelector('.floating-nav').style.opacity = '0';
         document.querySelector('.floating-nav').style.transition = 'all 0.3s ease';
+
+        // Form handling
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.getElementById('consultationForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            
+            // Submit form data
+            const formData = new FormData(this);
+            
+            // Using FormSubmit.co
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            }).then(data => {
+                console.log('Form submission successful:', data);
+            }).catch(error => {
+                console.error('Error submitting form:', error);
+            });
+            
+            // Optional: Scroll to success message
+            document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Package dropdown functionality
+        document.getElementById('packageSelect').addEventListener('change', function() {
+            // Hide all package details
+            document.querySelectorAll('.package-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected package
+            const selectedValue = this.value;
+            if (selectedValue) {
+                document.getElementById(selectedValue).classList.add('active');
+                
+                // Scroll to the package details
+                document.getElementById(selectedValue).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Optional: Auto-select package if coming from a direct link
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash && document.getElementById(hash.substring(1))) {
+                const packageId = hash.substring(1);
+                document.getElementById('packageSelect').value = packageId;
+                document.getElementById(packageId).classList.add('active');
+            }
+        });
     </script>
 </body>
 </html>
