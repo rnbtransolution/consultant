@@ -2,7 +2,9 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -47,7 +49,7 @@
             color: var(--text-charcoal);
             overflow-x: hidden;
             letter-spacing: 0.3px;
-            scroll-behavior: smooth; /* Smooth scroll for anchor links */
+            scroll-behavior: smooth;
         }
         
         h1, h2, h3 {
@@ -69,8 +71,37 @@
             height: auto;
         }
 
+        /* ===== SECTIONS ===== */
+        section {
+            padding: var(--section-spacing) 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep-charcoal);
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--gradient-luxury);
+        }
+
         /* ===== HERO SECTION ===== */
-        .hero {
+        #hero {
             height: 100vh;
             min-height: 700px;
             background: 
@@ -85,7 +116,7 @@
             color: var(--text-charcoal);
         }
 
-        .hero::before {
+        #hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -116,18 +147,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero h1 {
+        #hero h1 {
             font-size: 4rem;
             font-weight: 300;
-            color: var(--text-charcoal);
+            color: var(--luxury-bronze);
             margin-bottom: 1.5rem;
             line-height: 1.1;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             letter-spacing: 2px;
-            color: var(--luxury-bronze) !important; /* Specific override for hero h1 */
         }
 
-        .hero .subtitle {
+        .subtitle {
             font-size: 1.5rem;
             color: var(--luxury-bronze);
             margin-bottom: 1.5rem;
@@ -138,7 +168,7 @@
             text-transform: uppercase;
         }
 
-        .hero .description {
+        .description {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2.5rem;
@@ -153,7 +183,7 @@
         /* ===== LUXURY BUTTONS ===== */
         .cta-button {
             background: transparent;
-            color: var(--text-charcoal); /* Specific override for hero cta-button */
+            color: var(--ivory);
             padding: 1.2rem 3rem;
             font-size: 0.95rem;
             font-weight: 400;
@@ -187,39 +217,10 @@
         }
 
         .cta-button:hover {
-            color: var(--rich-black); /* Specific override for hero cta-button hover */
+            color: var(--rich-black);
             border-color: var(--accent-gold);
             transform: translateY(-3px);
             box-shadow: var(--shadow-luxury);
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: var(--section-spacing) 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .section h2 {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--deep-charcoal);
-            position: relative;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 1px;
-            background: var(--gradient-luxury);
         }
 
         /* ===== LUXURY FEATURES ===== */
@@ -295,6 +296,7 @@
             right: 1.5rem;
             z-index: 1000;
             background: rgba(248, 246, 242, 0.95);
+            -webkit-backdrop-filter: blur(20px); /* Safari support */
             backdrop-filter: blur(20px);
             border-radius: 0;
             padding: 0.8rem 1.5rem;
@@ -305,6 +307,10 @@
             opacity: 1;
             display: flex;
             align-items: center;
+            /* iOS specific fixes */
+            -webkit-transform: translate3d(0,0,0); /* Hardware acceleration */
+            transform: translate3d(0,0,0);
+            will-change: transform; /* Optimize for animations */
         }
 
         .floating-nav.hidden {
@@ -385,7 +391,39 @@
             transform: translateY(-2px);
         }
 
-        /* ===== PACKAGES PAGE ===== */
+        /* Add this media query for mobile devices */
+        @media (max-width: 768px) {
+            .floating-nav {
+                position: absolute; /* Fallback for iOS */
+                top: auto;
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 0.8rem;
+            }
+            
+            .floating-nav a {
+                margin: 0 0.5rem;
+                font-size: 0.8rem;
+                padding: 0.3rem 0;
+                min-width: 44px; /* Apple's recommended minimum touch target */
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .floating-nav .appointment-btn {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                width: 100%;
+                max-width: 180px;
+            }
+        }
+
+        /* ===== PACKAGES SECTION ===== */
         .package-dropdown-container {
             max-width: 900px;
             margin: 0 auto;
@@ -605,7 +643,7 @@
             box-shadow: var(--shadow-luxury);
         }
 
-        /* ===== CONTACT PAGE ===== */
+        /* ===== CONTACT SECTION ===== */
         .contact-container {
             background: var(--pearl-white);
             border-radius: 0;
@@ -633,24 +671,6 @@
         .contact-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 60px rgba(28, 28, 28, 0.15);
-        }
-
-        .contact-container h2 {
-            font-size: 2.5rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        .contact-container p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            line-height: 1.7;
         }
 
         /* ===== FORM STYLES ===== */
@@ -845,11 +865,11 @@
                 --section-spacing: 4rem;
             }
             
-            .hero h1 {
+            #hero h1 {
                 font-size: 3.5rem;
             }
             
-            .section h2 {
+            section h2 {
                 font-size: 2.5rem;
                 margin-bottom: 2.5rem;
             }
@@ -871,19 +891,19 @@
         }
 
         @media (max-width: 992px) {
-            .hero h1 {
+            #hero h1 {
                 font-size: 3rem;
             }
             
-            .hero .subtitle {
+            .subtitle {
                 font-size: 1.3rem;
             }
             
-            .section {
+            section {
                 padding: 3rem 1.5rem;
             }
             
-            .section h2 {
+            section h2 {
                 font-size: 2.2rem;
                 margin-bottom: 2rem;
             }
@@ -893,29 +913,29 @@
             }
             
             .floating-nav {
-                display: none;
+                display: flex;
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
+            #hero {
                 min-height: 600px;
                 padding: 1.5rem;
             }
             
-            .hero h1 {
+            #hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero .subtitle {
+            .subtitle {
                 font-size: 1.1rem;
             }
             
-            .hero .description {
+            .description {
                 font-size: 1rem;
             }
             
-            .section h2 {
+            section h2 {
                 font-size: 2rem;
             }
             
@@ -952,15 +972,15 @@
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
+            #hero h1 {
                 font-size: 2.2rem;
             }
             
-            .hero .subtitle {
+            .subtitle {
                 font-size: 1rem;
             }
             
-            .section h2 {
+            section h2 {
                 font-size: 1.8rem;
             }
             
@@ -989,23 +1009,60 @@
             .feature-card {
                 padding: 1.8rem 1.2rem;
             }
-            
-            .contact-container h2 {
-                font-size: 2rem;
+        }
+
+        /* Active section indicator */
+        .section-indicator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .section-indicator a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(184, 134, 11, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .section-indicator a.active {
+            background: var(--luxury-bronze);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 992px) {
+            .section-indicator {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Navigation -->
     <nav class="floating-nav">
-        <a href="#home">หน้าหลัก</a>
+        <a href="#hero">หน้าหลัก</a>
         <a href="#services">บริการ</a>
         <a href="#packages">แพ็กเกจ</a>
         <a href="#contact">ติดต่อ</a>
         <a href="#contact" class="appointment-btn">📅 นัดหมาย</a>
     </nav>
 
-    <section id="home" class="hero">
+    <!-- Section Indicator (for large screens) -->
+    <div class="section-indicator">
+        <a href="#hero" class="active"></a>
+        <a href="#services"></a>
+        <a href="#packages"></a>
+        <a href="#contact"></a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="hero-content">
             <h1>R&B Transolution</h1>
             <p class="subtitle">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
@@ -1018,7 +1075,8 @@
         </div>
     </section>
 
-    <section id="services" class="section">
+    <!-- Services Section -->
+    <section id="services">
         <h2>ทำไมถึงต้องเลือกเรา?</h2>
 
         <div class="features-grid">
@@ -1070,7 +1128,8 @@
         </div>
     </section>
 
-    <section id="packages" class="section">
+    <!-- Packages Section -->
+    <section id="packages">
         <h2>แพ็กเกจบริการของเรา</h2>
         
         <div class="package-dropdown-container">
@@ -1086,7 +1145,7 @@
                 </select>
             </div>
             
-            <div class="package-details" id="starter-details">
+            <div class="package-details" id="starter">
                 <div class="package-header">
                     <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
                     <div class="package-title-price">
@@ -1101,10 +1160,10 @@
                     <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
                     <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
             
-            <div class="package-details" id="foundation-details">
+            <div class="package-details" id="foundation">
                 <div class="package-header">
                     <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
                     <div class="package-title-price">
@@ -1120,10 +1179,10 @@
                     <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
                     <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">ยกระดับระบบงานของคุณ</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ยกระดับระบบงานของคุณ</button>
             </div>
             
-            <div class="package-details" id="growth-details">
+            <div class="package-details" id="growth">
                 <div class="package-header">
                     <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
                     <div class="package-title-price">
@@ -1140,10 +1199,10 @@
                     <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
                     <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
             </div>
             
-            <div class="package-details" id="premium-details">
+            <div class="package-details" id="premium">
                 <div class="package-header">
                     <div class="package-icon premium"><i class="fas fa-crown"></i></div>
                     <div class="package-title-price">
@@ -1160,10 +1219,10 @@
                     <li>พัฒนาแนวทางบริหารทีม</li>
                     <li>วางแผนระยะยาว 3 เดือน</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
             </div>
             
-            <div class="package-details" id="elite-details">
+            <div class="package-details" id="elite">
                 <div class="package-header">
                     <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
                     <div class="package-title-price">
@@ -1180,10 +1239,10 @@
                     <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
                     <li>วางแผน 6 เดือนล่วงหน้า</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">ปรึกษาแบบ Top Executive</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ปรึกษาแบบ Top Executive</button>
             </div>
             
-            <div class="package-details" id="signature-details">
+            <div class="package-details" id="signature">
                 <div class="package-header">
                     <div class="package-icon signature"><i class="fas fa-signature"></i></div>
                     <div class="package-title-price">
@@ -1202,12 +1261,13 @@
                     <li>ออกแบบโปรแกรม Loyalty & CRM</li>
                     <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
                 </ul>
-                <button class="package-cta" onclick="location.href='#contact'">ติดต่อขอใบเสนอราคา</button>
+                <button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ติดต่อขอใบเสนอราคา</button>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- Contact Section -->
+    <section id="contact">
         <div class="contact-container">
             <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
             <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
@@ -1293,32 +1353,119 @@
     </footer>
 
     <script>
-        // Smooth scroll for internal links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without reload
+                    history.pushState(null, null, targetId);
+                }
             });
+        });
+
+        // Update active section indicator
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.floating-nav a, .section-indicator a');
+        
+        function updateActiveSection() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 200) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Initial call
+        updateActiveSection();
+        
+        // Update on scroll
+        window.addEventListener('scroll', function() {
+            updateActiveSection();
+            
+            // Floating nav behavior
+            const currentScroll = window.scrollY;
+            const floatingNav = document.querySelector('.floating-nav');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                floatingNav.classList.add('hidden');
+            } else if (currentScroll < lastScroll || currentScroll <= 100) {
+                floatingNav.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
         });
 
         // Floating nav behavior
         let lastScroll = 0;
         const floatingNav = document.querySelector('.floating-nav');
-        
-        window.addEventListener('scroll', function() {
-            const currentScroll = window.scrollY;
+        let ticking = false;
+
+        // iOS detection
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        // iOS-specific touch event handling
+        if (isIOS) {
+            // Make links more touch-friendly
+            document.querySelectorAll('.floating-nav a').forEach(link => {
+                link.style.padding = '0.5rem 0.8rem';
+                link.style.minWidth = '44px'; // Apple's recommended minimum touch target
+                link.style.minHeight = '44px';
+                link.style.display = 'flex';
+                link.style.alignItems = 'center';
+                link.style.justifyContent = 'center';
+            });
             
-            // Hide nav when scrolling down, show when scrolling up
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                floatingNav.classList.add('hidden');
-            } else if (currentScroll < lastScroll) {
-                floatingNav.classList.remove('hidden');
+            // Adjust the nav position on iOS
+            floatingNav.style.position = 'absolute';
+            floatingNav.style.top = 'auto';
+            floatingNav.style.bottom = '1rem';
+            floatingNav.style.left = '1rem';
+            floatingNav.style.right = '1rem';
+            floatingNav.style.justifyContent = 'center';
+        }
+
+        // Prevent default on touchstart to avoid delay
+        document.querySelectorAll('.floating-nav a').forEach(link => {
+            link.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+        });
+
+        // Package dropdown functionality
+        document.getElementById('packageSelect').addEventListener('change', function() {
+            // Hide all package details
+            document.querySelectorAll('.package-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected package
+            const selectedValue = this.value;
+            if (selectedValue) {
+                document.getElementById(selectedValue).classList.add('active');
             }
-            
-            lastScroll = currentScroll;
         });
 
         // Form handling
@@ -1351,17 +1498,18 @@
             });
         });
 
-        // Package dropdown functionality
-        document.getElementById('packageSelect').addEventListener('change', function() {
-            // Hide all package details
-            document.querySelectorAll('.package-details').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            
-            // Show selected package
-            const selectedValue = this.value;
-            if (selectedValue) {
-                document.getElementById(`${selectedValue}-details`).classList.add('active');
+        // Check URL hash on load
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
             }
         });
     </script>
