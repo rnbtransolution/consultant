@@ -1,9 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -309,6 +310,7 @@
             right: 1.5rem;
             z-index: 1000;
             background: rgba(248, 246, 242, 0.95);
+            -webkit-backdrop-filter: blur(20px); /* Safari support */
             backdrop-filter: blur(20px);
             border-radius: 0;
             padding: 0.8rem 1.5rem;
@@ -319,6 +321,10 @@
             opacity: 1;
             display: flex;
             align-items: center;
+            /* iOS specific fixes */
+            -webkit-transform: translate3d(0,0,0); /* Hardware acceleration */
+            transform: translate3d(0,0,0);
+            will-change: transform; /* Optimize for animations */
         }
 
         .floating-nav.hidden {
@@ -397,6 +403,38 @@
         .floating-nav .appointment-btn:hover {
             color: var(--text-charcoal);
             transform: translateY(-2px);
+        }
+
+        /* Add this media query for mobile devices */
+        @media (max-width: 768px) {
+            .floating-nav {
+                position: absolute; /* Fallback for iOS */
+                top: auto;
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 0.8rem;
+            }
+            
+            .floating-nav a {
+                margin: 0 0.5rem;
+                font-size: 0.8rem;
+                padding: 0.3rem 0;
+                min-width: 44px; /* Apple's recommended minimum touch target */
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .floating-nav .appointment-btn {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                width: 100%;
+                max-width: 180px;
+            }
         }
 
         /* ===== PACKAGES PAGE ===== */
@@ -907,7 +945,7 @@
             }
             
             .floating-nav {
-                display: none;
+                display: flex;
             }
         }
 
@@ -1363,21 +1401,77 @@
             }
         });
 
-        // Floating nav behavior
+        // Floating nav behavior - improved for iOS
         let lastScroll = 0;
         const floatingNav = document.querySelector('.floating-nav');
-        
-        window.addEventListener('scroll', function() {
+        let ticking = false;
+
+        // iOS detection
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        // Better scroll handling for iOS
+        function handleScroll() {
             const currentScroll = window.scrollY;
             
-            // Hide nav when scrolling down, show when scrolling up
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                floatingNav.classList.add('hidden');
-            } else if (currentScroll < lastScroll) {
-                floatingNav.classList.remove('hidden');
+            // Only update if we're not already waiting for an animation frame
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    // Hide nav when scrolling down, show when scrolling up
+                    if (currentScroll > lastScroll && currentScroll > 100) {
+                        floatingNav.classList.add('hidden');
+                    } else if (currentScroll < lastScroll || currentScroll <= 100) {
+                        floatingNav.classList.remove('hidden');
+                    }
+                    
+                    lastScroll = currentScroll;
+                    ticking = false;
+                });
+                
+                ticking = true;
             }
+        }
+
+        // iOS-specific touch event handling
+        if (isIOS) {
+            // Make links more touch-friendly
+            document.querySelectorAll('.floating-nav a').forEach(link => {
+                link.style.padding = '0.5rem 0.8rem';
+                link.style.minWidth = '44px'; // Apple's recommended minimum touch target
+                link.style.minHeight = '44px';
+                link.style.display = 'flex';
+                link.style.alignItems = 'center';
+                link.style.justifyContent = 'center';
+            });
             
-            lastScroll = currentScroll;
+            // Adjust the nav position on iOS
+            floatingNav.style.position = 'absolute';
+            floatingNav.style.top = 'auto';
+            floatingNav.style.bottom = '1rem';
+            floatingNav.style.left = '1rem';
+            floatingNav.style.right = '1rem';
+            floatingNav.style.justifyContent = 'center';
+            
+            // Reset the scroll handler for iOS
+            window.removeEventListener('scroll', handleScroll);
+            window.addEventListener('touchmove', handleScroll, { passive: true });
+        } else {
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+
+        // Prevent default on touchstart to avoid delay
+        document.querySelectorAll('.floating-nav a').forEach(link => {
+            link.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+            
+            link.addEventListener('touchend', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    const pageId = this.getAttribute('onclick').match(/showPage\('(.*?)'\)/)[1];
+                    showPage(pageId);
+                }
+            }, { passive: true });
         });
 
         // Form handling
