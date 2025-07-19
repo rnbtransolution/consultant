@@ -2,9 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R&B Transolution - ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -49,6 +47,7 @@
             color: var(--text-charcoal);
             overflow-x: hidden;
             letter-spacing: 0.3px;
+            scroll-behavior: smooth; /* Smooth scroll for anchor links */
         }
         
         h1, h2, h3 {
@@ -68,21 +67,6 @@
         img {
             max-width: 100%;
             height: auto;
-        }
-
-        /* ===== PAGE CONTAINER ===== */
-        .page-container {
-            display: none;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .page-container.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         /* ===== HERO SECTION ===== */
@@ -140,6 +124,7 @@
             line-height: 1.1;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             letter-spacing: 2px;
+            color: var(--luxury-bronze) !important; /* Specific override for hero h1 */
         }
 
         .hero .subtitle {
@@ -168,7 +153,7 @@
         /* ===== LUXURY BUTTONS ===== */
         .cta-button {
             background: transparent;
-            color: var(--text-charcoal);
+            color: var(--text-charcoal); /* Specific override for hero cta-button */
             padding: 1.2rem 3rem;
             font-size: 0.95rem;
             font-weight: 400;
@@ -202,7 +187,7 @@
         }
 
         .cta-button:hover {
-            color: var(--rich-black);
+            color: var(--rich-black); /* Specific override for hero cta-button hover */
             border-color: var(--accent-gold);
             transform: translateY(-3px);
             box-shadow: var(--shadow-luxury);
@@ -310,7 +295,6 @@
             right: 1.5rem;
             z-index: 1000;
             background: rgba(248, 246, 242, 0.95);
-            -webkit-backdrop-filter: blur(20px); /* Safari support */
             backdrop-filter: blur(20px);
             border-radius: 0;
             padding: 0.8rem 1.5rem;
@@ -321,10 +305,6 @@
             opacity: 1;
             display: flex;
             align-items: center;
-            /* iOS specific fixes */
-            -webkit-transform: translate3d(0,0,0); /* Hardware acceleration */
-            transform: translate3d(0,0,0);
-            will-change: transform; /* Optimize for animations */
         }
 
         .floating-nav.hidden {
@@ -403,38 +383,6 @@
         .floating-nav .appointment-btn:hover {
             color: var(--text-charcoal);
             transform: translateY(-2px);
-        }
-
-        /* Add this media query for mobile devices */
-        @media (max-width: 768px) {
-            .floating-nav {
-                position: absolute; /* Fallback for iOS */
-                top: auto;
-                bottom: 1rem;
-                right: 1rem;
-                left: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-                padding: 0.8rem;
-            }
-            
-            .floating-nav a {
-                margin: 0 0.5rem;
-                font-size: 0.8rem;
-                padding: 0.3rem 0;
-                min-width: 44px; /* Apple's recommended minimum touch target */
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .floating-nav .appointment-btn {
-                margin-left: 0;
-                margin-top: 0.5rem;
-                width: 100%;
-                max-width: 180px;
-            }
         }
 
         /* ===== PACKAGES PAGE ===== */
@@ -945,7 +893,7 @@
             }
             
             .floating-nav {
-                display: flex;
+                display: none;
             }
         }
 
@@ -1046,432 +994,331 @@
                 font-size: 2rem;
             }
         }
-    
-.hero .cta-button {
-    color: var(--ivory);
-}
-
-.hero .cta-button:hover {
-    color: var(--rich-black);
-}
-
-
-.hero h1 {
-    color: var(--luxury-bronze) !important;
-}
-
-</style>
+    </style>
 </head>
 <body>
-    <!-- Floating Navigation -->
     <nav class="floating-nav">
-        <a href="#" onclick="showPage('home')">หน้าหลัก</a>
-        <a href="#" onclick="showPage('services')">บริการ</a>
-        <a href="#" onclick="showPage('packages')">แพ็กเกจ</a>
-        <a href="#" onclick="showPage('contact')">ติดต่อ</a>
-        <a href="#" onclick="showPage('contact')" class="appointment-btn">📅 นัดหมาย</a>
+        <a href="#home">หน้าหลัก</a>
+        <a href="#services">บริการ</a>
+        <a href="#packages">แพ็กเกจ</a>
+        <a href="#contact">ติดต่อ</a>
+        <a href="#contact" class="appointment-btn">📅 นัดหมาย</a>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home-page" class="page-container active">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>R&B Transolution</h1>
-                <p class="subtitle">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
-                <p class="description">
-                    เราช่วยยกระดับร้านอาหารและบาร์ให้ประสบความสำเร็จ ด้วยกลยุทธ์ที่ออกแบบเฉพาะสำหรับคุณ 
-                    ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า 
-                    เพื่อให้คุณสามารถแข่งขันได้แม้ในตลาดต่างจังหวัด
-                </p>
-                <a href="#" onclick="showPage('contact')" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>R&B Transolution</h1>
+            <p class="subtitle">ที่ปรึกษาด้านร้านอาหารระดับพรีเมียม</p>
+            <p class="description">
+                เราช่วยยกระดับร้านอาหารและบาร์ให้ประสบความสำเร็จ ด้วยกลยุทธ์ที่ออกแบบเฉพาะสำหรับคุณ 
+                ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า 
+                เพื่อให้คุณสามารถแข่งขันได้แม้ในตลาดต่างจังหวัด
+            </p>
+            <a href="#contact" class="cta-button">📅 นัดหมายปรึกษาฟรี</a>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2>ทำไมถึงต้องเลือกเรา?</h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
+                <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
             </div>
-        </section>
-    </div>
-
-    <!-- Services Page -->
-    <div id="services-page" class="page-container">
-        <section class="section">
-            <h2>ทำไมถึงต้องเลือกเรา?</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                    <h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-                    <p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
-                    <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
-                    <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                    <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
-                    <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-                    <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
-                    <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                    <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
-                    <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
-                    <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
-                    <p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
-                    <p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
+                <p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
             </div>
-        </section>
-    </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
+                <p>ทีมของเรามีประสบการณ์มากกว่า 20 ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3 class="feature-title">ดูแลครบทุกมิติ</h3>
+                <p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
+                <p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
+                <p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ และโรงแรม 5 ดาวทั่วประเทศ</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
+                <p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
+                <p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
+                <p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Packages Page -->
-    <div id="packages-page" class="page-container">
-        <section class="section">
-            <h2>แพ็กเกจบริการของเรา</h2>
+    <section id="packages" class="section">
+        <h2>แพ็กเกจบริการของเรา</h2>
+        
+        <div class="package-dropdown-container">
+            <div class="package-select-wrapper">
+                <select class="package-select" id="packageSelect">
+                    <option value="" disabled selected>เลือกแพ็กเกจที่สนใจ</option>
+                    <option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
+                    <option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
+                    <option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
+                    <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
+                    <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
+                    <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
+                </select>
+            </div>
             
-            <div class="package-dropdown-container">
-                <div class="package-select-wrapper">
-                    <select class="package-select" id="packageSelect">
-                        <option value="" disabled selected>เลือกแพ็กเกจที่สนใจ</option>
-                        <option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
-                        <option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
-                        <option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
-                        <option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
-                        <option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
-                        <option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
-                    </select>
-                </div>
-                
-                <div class="package-details" id="starter">
-                    <div class="package-header">
-                        <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Starter</h3>
-                            <div class="package-price">฿3,900</div>
-                        </div>
+            <div class="package-details" id="starter-details">
+                <div class="package-header">
+                    <div class="package-icon starter"><i class="fas fa-seedling"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Starter</h3>
+                        <div class="package-price">฿3,900</div>
                     </div>
-                    <div class="package-duration">ระยะเวลา: 5 วัน</div>
-                    <ul class="package-features">
-                        <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
-                        <li>คู่มือแผนปฏิบัติแบบตรงจุด</li>
-                        <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
-                        <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
                 </div>
-                
-                <div class="package-details" id="foundation">
-                    <div class="package-header">
-                        <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Foundation</h3>
-                            <div class="package-price">฿9,900</div>
-                        </div>
-                    </div>
-                    <div class="package-duration">ระยะเวลา: 10 วัน</div>
-                    <ul class="package-features">
-                        <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
-                        <li>วิเคราะห์ต้นทุน + แผนลดต้นทุน 15–20%</li>
-                        <li>ปรับปรุงโฟลว์การทำงาน เพิ่มประสิทธิภาพ 15%</li>
-                        <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
-                        <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">ยกระดับระบบงานของคุณ</button>
-                </div>
-                
-                <div class="package-details" id="growth">
-                    <div class="package-header">
-                        <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Growth</h3>
-                            <div class="package-price">฿29,900</div>
-                        </div>
-                    </div>
-                    <div class="package-duration">ระยะเวลา: 15 วัน</div>
-                    <ul class="package-features">
-                        <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
-                        <li>ปรับเมนูเพื่อเพิ่มกำไร 15%</li>
-                        <li>ทำคู่มือปฏิบัติการทั้งระบบ</li>
-                        <li>ทดสอบระบบก่อนเปิดจริง 1 สัปดาห์</li>
-                        <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
-                        <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
-                </div>
-                
-                <div class="package-details" id="premium">
-                    <div class="package-header">
-                        <div class="package-icon premium"><i class="fas fa-crown"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Premium</h3>
-                            <div class="package-price">฿59,900</div>
-                        </div>
-                    </div>
-                    <div class="package-duration">ระยะเวลา: 30 วัน</div>
-                    <ul class="package-features">
-                        <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
-                        <li>ออกแบบโครงสร้างการทำงานใหม่ทั้งหมด</li>
-                        <li>วางระบบแบรนด์ให้ครบทุกมิติ</li>
-                        <li>กลยุทธ์เพิ่มกำไรแบบขั้นสูง</li>
-                        <li>พัฒนาแนวทางบริหารทีม</li>
-                        <li>วางแผนระยะยาว 3 เดือน</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
-                </div>
-                
-                <div class="package-details" id="elite">
-                    <div class="package-header">
-                        <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Elite</h3>
-                            <div class="package-price">฿119,000</div>
-                        </div>
-                    </div>
-                    <div class="package-duration">ระยะเวลา: 60 วัน</div>
-                    <ul class="package-features">
-                        <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
-                        <li>พบกันหน้างานเดือนละครั้ง</li>
-                        <li>วิเคราะห์ผลประกอบการแบบเจาะลึก</li>
-                        <li>เปรียบเทียบกับคู่แข่งในพื้นที่</li>
-                        <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
-                        <li>วางแผน 6 เดือนล่วงหน้า</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">ปรึกษาแบบ Top Executive</button>
-                </div>
-                
-                <div class="package-details" id="signature">
-                    <div class="package-header">
-                        <div class="package-icon signature"><i class="fas fa-signature"></i></div>
-                        <div class="package-title-price">
-                            <h3 class="package-title">Signature</h3>
-                            <div class="package-price">ราคาตามตกลง</div>
-                        </div>
-                    </div>
-                    <div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
-                    <ul class="package-features">
-                        <li>สร้างแบรนด์ & ออกแบบภาพลักษณ์</li>
-                        <li>วางแผนการตลาดออนไลน์ & ทำโฆษณา</li>
-                        <li>ดูแลโซเชียลมีเดีย + ผลิตคอนเทนต์</li>
-                        <li>ทำเว็บไซต์ + ปรับ SEO</li>
-                        <li>ติดต่อสื่อ/ทำแคมเปญ PR</li>
-                        <li>รายงานผลการตลาดรายเดือน</li>
-                        <li>ออกแบบโปรแกรม Loyalty & CRM</li>
-                        <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
-                    </ul>
-                    <button class="package-cta" onclick="showPage('contact')">ติดต่อขอใบเสนอราคา</button>
-                </div>
+                <div class="package-duration">ระยะเวลา: 5 วัน</div>
+                <ul class="package-features">
+                    <li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
+                    <li>คู่มือแผนปฏิบัติแบบตรงจุด</li>
+                    <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
+                    <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
             </div>
-        </section>
-    </div>
+            
+            <div class="package-details" id="foundation-details">
+                <div class="package-header">
+                    <div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Foundation</h3>
+                        <div class="package-price">฿9,900</div>
+                    </div>
+                </div>
+                <div class="package-duration">ระยะเวลา: 10 วัน</div>
+                <ul class="package-features">
+                    <li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
+                    <li>วิเคราะห์ต้นทุน + แผนลดต้นทุน 15–20%</li>
+                    <li>ปรับปรุงโฟลว์การทำงาน เพิ่มประสิทธิภาพ 15%</li>
+                    <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
+                    <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">ยกระดับระบบงานของคุณ</button>
+            </div>
+            
+            <div class="package-details" id="growth-details">
+                <div class="package-header">
+                    <div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Growth</h3>
+                        <div class="package-price">฿29,900</div>
+                    </div>
+                </div>
+                <div class="package-duration">ระยะเวลา: 15 วัน</div>
+                <ul class="package-features">
+                    <li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
+                    <li>ปรับเมนูเพื่อเพิ่มกำไร 15%</li>
+                    <li>ทำคู่มือปฏิบัติการทั้งระบบ</li>
+                    <li>ทดสอบระบบก่อนเปิดจริง 1 สัปดาห์</li>
+                    <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
+                    <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
+            </div>
+            
+            <div class="package-details" id="premium-details">
+                <div class="package-header">
+                    <div class="package-icon premium"><i class="fas fa-crown"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Premium</h3>
+                        <div class="package-price">฿59,900</div>
+                    </div>
+                </div>
+                <div class="package-duration">ระยะเวลา: 30 วัน</div>
+                <ul class="package-features">
+                    <li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
+                    <li>ออกแบบโครงสร้างการทำงานใหม่ทั้งหมด</li>
+                    <li>วางระบบแบรนด์ให้ครบทุกมิติ</li>
+                    <li>กลยุทธ์เพิ่มกำไรแบบขั้นสูง</li>
+                    <li>พัฒนาแนวทางบริหารทีม</li>
+                    <li>วางแผนระยะยาว 3 เดือน</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
+            </div>
+            
+            <div class="package-details" id="elite-details">
+                <div class="package-header">
+                    <div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Elite</h3>
+                        <div class="package-price">฿119,000</div>
+                    </div>
+                </div>
+                <div class="package-duration">ระยะเวลา: 60 วัน</div>
+                <ul class="package-features">
+                    <li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
+                    <li>พบกันหน้างานเดือนละครั้ง</li>
+                    <li>วิเคราะห์ผลประกอบการแบบเจาะลึก</li>
+                    <li>เปรียบเทียบกับคู่แข่งในพื้นที่</li>
+                    <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
+                    <li>วางแผน 6 เดือนล่วงหน้า</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">ปรึกษาแบบ Top Executive</button>
+            </div>
+            
+            <div class="package-details" id="signature-details">
+                <div class="package-header">
+                    <div class="package-icon signature"><i class="fas fa-signature"></i></div>
+                    <div class="package-title-price">
+                        <h3 class="package-title">Signature</h3>
+                        <div class="package-price">ราคาตามตกลง</div>
+                    </div>
+                </div>
+                <div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
+                <ul class="package-features">
+                    <li>สร้างแบรนด์ & ออกแบบภาพลักษณ์</li>
+                    <li>วางแผนการตลาดออนไลน์ & ทำโฆษณา</li>
+                    <li>ดูแลโซเชียลมีเดีย + ผลิตคอนเทนต์</li>
+                    <li>ทำเว็บไซต์ + ปรับ SEO</li>
+                    <li>ติดต่อสื่อ/ทำแคมเปญ PR</li>
+                    <li>รายงานผลการตลาดรายเดือน</li>
+                    <li>ออกแบบโปรแกรม Loyalty & CRM</li>
+                    <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
+                </ul>
+                <button class="package-cta" onclick="location.href='#contact'">ติดต่อขอใบเสนอราคา</button>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contact Page -->
-    <div id="contact-page" class="page-container">
-        <section class="section">
-            <div class="contact-container">
-                <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
-                <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <h2>พร้อมที่จะยกระดับร้านของคุณแล้วหรือยัง?</h2>
+            <p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
+            
+            <div class="form-container">
+                <h3 class="form-title">กรอกข้อมูลเพื่อนัดหมาย</h3>
                 
-                <div class="form-container">
-                    <h3 class="form-title">กรอกข้อมูลเพื่อนัดหมาย</h3>
+                <form id="consultationForm" action="https://formsubmit.co/rnb.transolution@gmail.com" method="POST">
+                    <input type="text" name="_honey" style="display:none">
                     
-                    <form id="consultationForm" action="https://formsubmit.co/rnb.transolution@gmail.com" method="POST">
-                        <input type="text" name="_honey" style="display:none">
-                        
-                        <input type="hidden" name="_captcha" value="false">
-                        
-                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-                        
-                        <div class="form-group">
-                            <label for="name" class="form-label">ชื่อ-นามสกุล</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">อีเมล</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="business" class="form-label">ชื่อร้าน/ธุรกิจ</label>
-                            <input type="text" id="business" name="business" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="package" class="form-label">แพ็กเกจที่สนใจ</label>
-                            <select id="package" name="package" class="form-select" required>
-                                <option value="" disabled selected>เลือกแพ็กเกจ</option>
-                                <option value="Starter">Starter (3,900 บาท)</option>
-                                <option value="Foundation">Foundation (9,900 บาท)</option>
-                                <option value="Growth">Growth (29,900 บาท)</option>
-                                <option value="Premium">Premium (59,900 บาท)</option>
-                                <option value="Elite">Elite (119,000 บาท)</option>
-                                <option value="Signature">Signature (ราคาตามตกลง)</option>
-                                <option value="other">ยังไม่แน่ใจ</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">รายละเอียดเพิ่มเติม</label>
-                            <textarea id="message" name="message" class="form-textarea"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-submit">ส่งข้อมูลเพื่อนัดหมาย</button>
-                    </form>
+                    <input type="hidden" name="_captcha" value="false">
                     
-                    <div id="formSuccess" class="form-success">
-                        <i class="fas fa-check-circle"></i>
-                        <p>ขอบคุณ! เราได้รับข้อมูลของคุณแล้ว</p>
-                        <p>ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</p>
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">ชื่อ-นามสกุล</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">อีเมล</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business" class="form-label">ชื่อร้าน/ธุรกิจ</label>
+                        <input type="text" id="business" name="business" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="package" class="form-label">แพ็กเกจที่สนใจ</label>
+                        <select id="package" name="package" class="form-select" required>
+                            <option value="" disabled selected>เลือกแพ็กเกจ</option>
+                            <option value="Starter">Starter (3,900 บาท)</option>
+                            <option value="Foundation">Foundation (9,900 บาท)</option>
+                            <option value="Growth">Growth (29,900 บาท)</option>
+                            <option value="Premium">Premium (59,900 บาท)</option>
+                            <option value="Elite">Elite (119,000 บาท)</option>
+                            <option value="Signature">Signature (ราคาตามตกลง)</option>
+                            <option value="other">ยังไม่แน่ใจ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">รายละเอียดเพิ่มเติม</label>
+                        <textarea id="message" name="message" class="form-textarea"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">ส่งข้อมูลเพื่อนัดหมาย</button>
+                </form>
                 
-                <div class="contact-buttons">
-                    <a href="tel:+66891041992" class="cta-button">
-                        <i class="fas fa-phone"></i> โทรเลย
-                    </a>
-                    <a href="https://lin.ee/482bqDUr" target="_blank" class="cta-button">
-                        <i class="fab fa-line"></i> LINE
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank" class="cta-button">
-                        <i class="fab fa-facebook-f"></i> Facebook
-                    </a>
-                    <a href="mailto:rnb.transolution@gmail.com" class="cta-button">
-                        <i class="fas fa-envelope"></i> อีเมล
-                    </a>
+                <div id="formSuccess" class="form-success">
+                    <i class="fas fa-check-circle"></i>
+                    <p>ขอบคุณ! เราได้รับข้อมูลของคุณแล้ว</p>
+                    <p>ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</p>
                 </div>
             </div>
-        </section>
-    </div>
+            
+            <div class="contact-buttons">
+                <a href="tel:+66891041992" class="cta-button">
+                    <i class="fas fa-phone"></i> โทรเลย
+                </a>
+                <a href="https://lin.ee/482bqDUr" target="_blank" class="cta-button">
+                    <i class="fab fa-line"></i> LINE
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank" class="cta-button">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="mailto:rnb.transolution@gmail.com" class="cta-button">
+                    <i class="fas fa-envelope"></i> อีเมล
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>© 2025 R&B Transolution. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Show specific page and hide others
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-container').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(`${pageId}-page`).classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-            
-            // Update URL without reload
-            history.pushState(null, null, `#${pageId}`);
-        }
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-        // Check URL hash on load
-        window.addEventListener('load', function() {
-            const hash = window.location.hash.substring(1);
-            const validPages = ['home', 'services', 'packages', 'contact'];
-            
-            if (hash && validPages.includes(hash)) {
-                showPage(hash);
-            } else {
-                showPage('home');
-            }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        // Floating nav behavior - improved for iOS
+        // Floating nav behavior
         let lastScroll = 0;
         const floatingNav = document.querySelector('.floating-nav');
-        let ticking = false;
-
-        // iOS detection
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-        // Better scroll handling for iOS
-        function handleScroll() {
+        
+        window.addEventListener('scroll', function() {
             const currentScroll = window.scrollY;
             
-            // Only update if we're not already waiting for an animation frame
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    // Hide nav when scrolling down, show when scrolling up
-                    if (currentScroll > lastScroll && currentScroll > 100) {
-                        floatingNav.classList.add('hidden');
-                    } else if (currentScroll < lastScroll || currentScroll <= 100) {
-                        floatingNav.classList.remove('hidden');
-                    }
-                    
-                    lastScroll = currentScroll;
-                    ticking = false;
-                });
-                
-                ticking = true;
+            // Hide nav when scrolling down, show when scrolling up
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                floatingNav.classList.add('hidden');
+            } else if (currentScroll < lastScroll) {
+                floatingNav.classList.remove('hidden');
             }
-        }
-
-        // iOS-specific touch event handling
-        if (isIOS) {
-            // Make links more touch-friendly
-            document.querySelectorAll('.floating-nav a').forEach(link => {
-                link.style.padding = '0.5rem 0.8rem';
-                link.style.minWidth = '44px'; // Apple's recommended minimum touch target
-                link.style.minHeight = '44px';
-                link.style.display = 'flex';
-                link.style.alignItems = 'center';
-                link.style.justifyContent = 'center';
-            });
             
-            // Adjust the nav position on iOS
-            floatingNav.style.position = 'absolute';
-            floatingNav.style.top = 'auto';
-            floatingNav.style.bottom = '1rem';
-            floatingNav.style.left = '1rem';
-            floatingNav.style.right = '1rem';
-            floatingNav.style.justifyContent = 'center';
-            
-            // Reset the scroll handler for iOS
-            window.removeEventListener('scroll', handleScroll);
-            window.addEventListener('touchmove', handleScroll, { passive: true });
-        } else {
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
-
-        // Prevent default on touchstart to avoid delay
-        document.querySelectorAll('.floating-nav a').forEach(link => {
-            link.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-            }, { passive: false });
-            
-            link.addEventListener('touchend', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#') {
-                    const pageId = this.getAttribute('onclick').match(/showPage\('(.*?)'\)/)[1];
-                    showPage(pageId);
-                }
-            }, { passive: true });
+            lastScroll = currentScroll;
         });
 
         // Form handling
@@ -1514,7 +1361,7 @@
             // Show selected package
             const selectedValue = this.value;
             if (selectedValue) {
-                document.getElementById(selectedValue).classList.add('active');
+                document.getElementById(`${selectedValue}-details`).classList.add('active');
             }
         });
     </script>
