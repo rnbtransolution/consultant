@@ -12,6 +12,7 @@
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&amp;family=Crimson+Text:wght@300;400;600&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 <style>
         :root {
             /* Four Seasons Inspired Luxury Palette */
@@ -2116,6 +2117,36 @@ document.querySelectorAll('a.back-to-top').forEach(btn => {
 <a href="#hero" class="back-to-top" aria-label="กลับไปด้านบน">
   <i class="fas fa-arrow-up"></i>
 </a>
+
+
+
+
+
+<!-- Overlay Google Font Arrow -->
+<div id="scroll-arrow-overlay">
+  <a href="#services">
+    <span class="material-symbols-outlined scroll-arrow-icon">expand_more</span>
+  </a>
+</div>
+<style>
+.scroll-arrow-icon {
+  font-family: 'Material Symbols Outlined';
+  font-size: 48px;
+  color: #DAA520;
+  animation: bounce 2s infinite;
+}
+#scroll-arrow-overlay {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+</style>
 
 </body>
 </html>
