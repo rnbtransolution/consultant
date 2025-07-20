@@ -1337,6 +1337,45 @@ h1, h2, h3, h4 {
   color: #000;
 }
 
+
+/* === Cookie Consent === */
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--deep-charcoal);
+  color: var(--ivory);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  font-size: 0.95rem;
+}
+
+.cookie-consent p {
+  margin: 0;
+  flex: 1;
+}
+
+.cookie-consent .cta-button {
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid var(--luxury-bronze);
+  color: var(--ivory);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cookie-consent .cta-button:hover {
+  background: var(--gradient-luxury);
+  color: var(--rich-black);
+}
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -1972,6 +2011,28 @@ h1, h2, h3, h4 {
       selectedPackage.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+
+// Show cookie banner if not accepted
+window.addEventListener('load', function () {
+  if (!localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookieConsent').style.display = 'flex';
+  }
+
+  document.getElementById('acceptCookies').addEventListener('click', function () {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookieConsent').style.display = 'none';
+  });
+});
+
 </script>
+
+<div id="cookieConsent" class="cookie-consent">
+  <p>
+    เว็บไซต์นี้ใช้คุกกี้เพื่อปรับปรุงประสบการณ์ของคุณ <a href="#" style="text-decoration: underline;">เรียนรู้เพิ่มเติม</a>
+  </p>
+  <button id="acceptCookies" class="cta-button">ยอมรับทั้งหมด</button>
+</div>
+
 </body>
 </html>
