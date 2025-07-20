@@ -1391,6 +1391,32 @@ h1, h2, h3, h4 {
   }
 }
 
+
+/* === Back to Top Button === */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: var(--luxury-bronze);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.back-to-top:hover {
+  background: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -2040,6 +2066,20 @@ window.addEventListener('load', function () {
   });
 });
 
+
+
+// Smooth scroll for back-to-top button
+document.querySelectorAll('a.back-to-top').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
 </script>
 
 <div id="cookieConsent" class="cookie-consent">
@@ -2048,6 +2088,12 @@ window.addEventListener('load', function () {
   </p>
   <button id="acceptCookies" class="cta-button">ยอมรับทั้งหมด</button>
 </div>
+
+
+<!-- Back to Top Button -->
+<a href="#hero" class="back-to-top" aria-label="กลับไปด้านบน">
+  <i class="fas fa-arrow-up"></i>
+</a>
 
 </body>
 </html>
