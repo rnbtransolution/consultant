@@ -1427,18 +1427,126 @@ h1, h2, h3, h4 {
 }
 </style>
 
+
+
+
+
+
+<style>
+#floating-bar {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+}
+#floating-bar a {
+  display: block;
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 500;
+  border: 2px solid #DAA520;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+#floating-bar a:hover {
+  background-color: #DAA520;
+  color: #000;
+}
+</style>
+
+
+
+
+
 </head>
 <body>
+
+<style>
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 14px 0;
+  z-index: 10000;
+}
+#topbar a {
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  padding: 8px 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+#topbar a:hover {
+  color: #DAA520;
+}
+body {
+  padding-top: 70px;
+}
+</style>
+<div id="topbar">
+  <a href="#hero">หน้าหลัก</a>
+  <a href="#services">บริการ</a>
+  <a href="#trends">เทรนด์</a>
+  <a href="#packages">แพ็กเกจ</a>
+  <a href="#case-studies">ผลงาน</a>
+  <a href="#contact">ติดต่อ</a>
+  <a href="#contact">📅 นัดหมาย</a>
+</div>
+
+
+
+<style>
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 14px 0;
+  z-index: 10000;
+}
+#topbar a {
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  padding: 8px 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+#topbar a:hover {
+  color: #DAA520;
+}
+body {
+  padding-top: 70px;
+}
+</style>
+
+
+
+
 <!-- Floating Navigation -->
-<nav class="floating-nav">
-<a href="#hero">หน้าหลัก</a>
-<a href="#services">บริการ</a>
-<a href="#trends">เทรนด์</a>
-<a href="#packages">แพ็กเกจ</a>
-<a href="#testimonials">ผลงาน</a>
-<a href="#contact">ติดต่อ</a>
-<a class="appointment-btn" href="#contact">📅 นัดหมาย</a>
-</nav>
+
 <!-- Section Indicator (for large screens) -->
 <div class="section-indicator">
 <a class="active" href="#hero"></a>
@@ -1583,7 +1691,7 @@ h1, h2, h3, h4 {
 <li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
 <li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">เริ่มต้นเปลี่ยนแปลงร้านของคุณ</button>
+
 </div>
 <div class="package-details" id="foundation">
 <div class="package-header">
@@ -1601,7 +1709,7 @@ h1, h2, h3, h4 {
 <li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
 <li>สนับสนุนการลงมือ 5 วันเต็ม</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ยกระดับระบบงานของคุณ</button>
+
 </div>
 <div class="package-details" id="growth">
 <div class="package-header">
@@ -1620,7 +1728,7 @@ h1, h2, h3, h4 {
 <li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
 <li>แดชบอร์ดวัดผลรายสัปดาห์</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">พาร้านคุณสู่ความสำเร็จที่แท้จริง</button>
+
 </div>
 <div class="package-details" id="premium">
 <div class="package-header">
@@ -1639,7 +1747,7 @@ h1, h2, h3, h4 {
 <li>พัฒนาแนวทางบริหารทีม</li>
 <li>วางแผนระยะยาว 3 เดือน</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">พลิกภาพลักษณ์ร้านอย่างมืออาชีพ</button>
+
 </div>
 <div class="package-details" id="elite">
 <div class="package-header">
@@ -1658,7 +1766,7 @@ h1, h2, h3, h4 {
 <li>พัฒนาทักษะผู้นำระดับบริหาร</li>
 <li>วางแผน 6 เดือนล่วงหน้า</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ปรึกษาแบบ Top Executive</button>
+
 </div>
 <div class="package-details" id="signature">
 <div class="package-header">
@@ -1679,7 +1787,7 @@ h1, h2, h3, h4 {
 <li>ออกแบบโปรแกรม Loyalty &amp; CRM</li>
 <li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
 </ul>
-<button class="package-cta" onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })">ติดต่อขอใบเสนอราคา</button>
+
 </div>
 </div>
 </section>
@@ -2121,20 +2229,14 @@ document.querySelectorAll('a.back-to-top').forEach(btn => {
 
 
 <!-- Back to Top Button -->
-<a href="#hero" class="back-to-top" aria-label="กลับไปด้านบน">
-  <i class="fas fa-arrow-up"></i>
-</a>
+
 
 
 
 
 
 <!-- Overlay Google Font Arrow -->
-<div id="scroll-arrow-overlay">
-  <a href="#services">
-    <span class="material-symbols-outlined scroll-arrow-icon">expand_more</span>
-  </a>
-</div>
+
 <style>
 .scroll-arrow-icon {
   font-family: 'Material Symbols Outlined';
@@ -2154,6 +2256,50 @@ document.querySelectorAll('a.back-to-top').forEach(btn => {
   50%      { transform: translateY(10px); }
 }
 </style>
+
+
+
+
+
+
+<style>
+#floating-bar {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+}
+#floating-bar a {
+  display: block;
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 500;
+  border: 2px solid #DAA520;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+#floating-bar a:hover {
+  background-color: #DAA520;
+  color: #000;
+}
+</style>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
