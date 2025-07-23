@@ -1493,6 +1493,7 @@ body {
 <div style="color: #B8860B; font-size: 1.4rem; font-weight: 600;">R &amp; B</div>
 <div style="color: #1C1C1C; font-size: 0.9rem; letter-spacing: 0.08em;">TRANSOLUTION</div>
 </div>
+
 <a href="#hero">หน้าหลัก</a>
 <a href="#services">บริการ</a>
 <a href="#trends">เทรนด์</a>
@@ -1920,7 +1921,7 @@ body {
 <form action="https://formsubmit.co/rnb.transolution@gmail.com" id="consultationForm" method="POST">
 <input name="_honey" style="display:none" type="text"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://rnbtransolution.github.io/"/>
+<input name="_next" type="hidden" value="https://yourwebsite.com/thank-you.html"/>
 <div class="form-group">
 <label class="form-label" for="name">ชื่อ-นามสกุล</label>
 <input class="form-input" id="name" name="name" required="" type="text"/>
@@ -2081,37 +2082,7 @@ body {
         });
 
         // Form handling
-        document.getElementById('consultationForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitBtn = this.querySelector('[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง...';
-            
-            try {
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: new FormData(this),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    document.getElementById('formSuccess').style.display = 'block';
-                    this.reset();
-                    this.style.display = 'none';
-                } else {
-                    throw new Error('Submission failed');
-                }
-            } catch (error) {
-                alert('เกิดข้อผิดพลาดในการส่งแบบฟอร์ม กรุณาลองอีกครั้งหรือติดต่อเราโดยตรง');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'ส่งข้อมูลเพื่อนัดหมาย';
-            }
-        });
+        
 
         // Testimonial carousel functionality
         let currentTestimonial = 0;
