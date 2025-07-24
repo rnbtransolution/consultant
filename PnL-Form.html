@@ -533,8 +533,23 @@
             element.textContent = percentage.toFixed(2);
             element.classList.remove('positive', 'negative');
 
-            // Get the corresponding budget percentage for comparison
-            const budgetId = id.replace('Percent', 'Budget'); // e.g., 'foodCostPercent' -> 'foodCostBudget'
+            // List of IDs for Operating Expenses percentages that should NOT have color changes
+            const noColorChangeIds = [
+                'salariesWagesPercent', 'rentPercent', 'utilitiesPercent', 'marketingPercent',
+                'maintenancePercent', 'cleaningPercent', 'officeSuppliesPercent', 'uniformsPercent',
+                'bankChargesPercent', 'creditCardFeesPercent', 'deliveryFeesPercent',
+                'travelEntertainmentPercent', 'trainingPercent', 'insurancePercent',
+                'depreciationPercent', 'interestExpensePercent', 'otherExpensesPercent',
+                'totalOperatingExpensesPercent'
+            ];
+
+            if (noColorChangeIds.includes(id)) {
+                // Do not apply positive/negative classes for these specific IDs
+                return; 
+            }
+
+            // Existing logic for applying positive/negative classes based on variance
+            const budgetId = id.replace('Percent', 'Budget'); 
             const budgetValue = getFloatValue(budgetId);
             let budgetPercentage = 0;
             const totalRevenueBudget = getFloatValue('totalRevenueBudget'); 
@@ -544,15 +559,15 @@
             }
 
             if (isCostOrExpense) {
-                if (percentage < budgetPercentage) { // Actual % is lower than budget % for costs/expenses (good)
+                if (percentage < budgetPercentage) { 
                     element.classList.add('positive');
-                } else if (percentage > budgetPercentage) { // Actual % is higher than budget % for costs/expenses (bad)
+                } else if (percentage > budgetPercentage) { 
                     element.classList.add('negative');
                 }
-            } else { // For revenue and profit percentages
-                if (percentage > budgetPercentage) { // Actual % is higher than budget % for revenue/profit (good)
+            } else { 
+                if (percentage > budgetPercentage) { 
                     element.classList.add('positive');
-                } else if (percentage < budgetPercentage) { // Actual % is lower than budget % for revenue/profit (bad)
+                } else if (percentage < budgetPercentage) { 
                     element.classList.add('negative');
                 }
             }
