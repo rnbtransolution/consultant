@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&B Transolution - F&B Profit & Loss Statement (THB)</title>
+    <title>R&B Transolution - Restaurant Profit & Loss Statement (THB)</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
     <style>
         body {
@@ -23,6 +23,14 @@
             margin-bottom: 30px;
             border-bottom: 2px solid #DAA520;
             padding-bottom: 10px;
+            /* --- Header Freeze Styles --- */
+            position: sticky;
+            top: 0;
+            background-color: #FFFEF7; /* Match body background or choose a contrasting one */
+            z-index: 1000; /* Ensure it stays on top of other content */
+            padding-top: 20px; /* Add some padding to the top */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: add shadow for better visual separation */
+            /* --- End Header Freeze Styles --- */
         }
         .form-container {
             background-color: white;
@@ -131,6 +139,18 @@
         .negative {
             color: red;
         }
+        /* --- Footer Styles --- */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            color: #6a6a6a;
+            font-size: 0.9rem;
+            background-color: #f0f0f0;
+            border-top: 1px solid #e0dcc8;
+            border-radius: 0 0 8px 8px; /* Match form container's border radius bottom */
+        }
+        /* --- End Footer Styles --- */
         @media (max-width: 768px) {
             .row {
                 flex-direction: column;
@@ -439,6 +459,10 @@
         <button class="btn" onclick="calculateAll()">Calculate P&L</button>
     </div>
 
+    <footer>
+        © 2025 R&B Transolution. All rights reserved.
+    </footer>
+
     <script>
         function getFloatValue(id) {
             return parseFloat(document.getElementById(id).value) || 0;
@@ -461,7 +485,7 @@
             if (budget !== 0) {
                 percentageChange = (variance / budget) * 100;
             } else if (actual !== 0) {
-                percentageChange = 100; // If budget is 0 and actual is not, it's a 100% increase
+                percentageChange = 100; // If budget is 0 and actual is not, it's a 100% change (increase)
             }
 
             varianceElement.textContent = `${variance.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} (${percentageChange.toFixed(2)}%)`;
@@ -553,9 +577,6 @@
 
             // Number of Guests Variance
             setVarianceResult('numGuestsVariance', numGuests, numGuestsBudget);
-
-            // If you want a variance for avgCheck, you need an element like id="avgCheckVariance"
-            // For now, average check is just a calculated value.
 
             return { totalRevenue, totalRevenueBudget, avgCheck };
         }
