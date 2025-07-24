@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&B Transolution - Restaurant Profit & Loss Statement (THB)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>R&amp;B Transolution - Restaurant Profit &amp; Loss Statement (THB)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;family=Inter&amp;display=swap" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -170,300 +171,264 @@
                 align-items: flex-start;
             }
         }
-    </style>
-</head>
+    
+body { font-family: 'Inter', 'Noto Sans Thai', sans-serif; }</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&amp;display=swap" rel="stylesheet"/></head>
 <body>
-    <h1>Restaurant Profit & Loss Statement (THB)</h1>
-
-    <div class="form-container">
-
-        <div class="section">
-            <div class="section-title">Revenue</div>
-            <div class="row header-row">
-                <div class="label"></div>
-                <div class="input-col">Actual</div>
-                <div class="budget-col">Budget</div>
-                <div class="calc-col"></div>
-                <div class="variance-col">Actual vs Budget</div>
-            </div>
-
-            <div class="row">
-                <div class="label">Food Revenue</div>
-                <div class="input-col"><input type="number" id="foodRevenue" value="1200000"></div>
-                <div class="budget-col"><input type="number" id="foodRevenueBudget" value="1150000"></div>
-                <div class="calc-col">Food / Person: <span class="result" id="foodPerPerson">0</span></div>
-                <div class="variance-col"><span class="result" id="foodRevenueVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Beverage Revenue</div>
-                <div class="input-col"><input type="number" id="beverageRevenue" value="300000"></div>
-                <div class="budget-col"><input type="number" id="beverageRevenueBudget" value="280000"></div>
-                <div class="calc-col">Beverage / Person: <span class="result" id="beveragePerPerson">0</span></div>
-                <div class="variance-col"><span class="result" id="beverageRevenueVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Other Revenue</div>
-                <div class="input-col"><input type="number" id="otherRevenue" value="5000"></div>
-                <div class="budget-col"><input type="number" id="otherRevenueBudget" value="4000"></div>
-                <div class="calc-col"></div>
-                <div class="variance-col"><span class="result" id="otherRevenueVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Number of Guests</div>
-                <div class="input-col"><input type="number" id="numGuests" value="1200"></div>
-                <div class="budget-col"><input type="number" id="numGuestsBudget" value="1100"></div>
-                <div class="calc-col">AVG CHECK: <span class="result" id="avgCheck">0</span></div>
-                <div class="variance-col"><span class="result" id="numGuestsVariance">0</span></div>
-            </div>
-            
-            <div class="row summary-row">
-                <div class="label">Total Revenue</div>
-                <div class="input-col"><span class="result" id="totalRevenue">0</span></div>
-                <div class="budget-col"><span class="result" id="totalRevenueBudget">0</span></div>
-                <div class="calc-col"></div>
-                <div class="variance-col"><span class="result" id="totalRevenueVariance">0</span></div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Cost of Sales</div>
-            <div class="row header-row">
-                <div class="label"></div>
-                <div class="input-col">Actual</div>
-                <div class="budget-col">Budget</div>
-                <div class="calc-col">Actual %</div>
-                <div class="variance-col">Actual vs Budget</div>
-            </div>
-
-            <div class="row">
-                <div class="label">Food Cost</div>
-                <div class="input-col"><input type="number" id="foodCost" value="350000"></div>
-                <div class="budget-col"><input type="number" id="foodCostBudget" value="320000"></div>
-                <div class="calc-col"><span class="result" id="foodCostPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="foodCostVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Beverage Cost</div>
-                <div class="input-col"><input type="number" id="beverageCost" value="80000"></div>
-                <div class="budget-col"><input type="number" id="beverageCostBudget" value="75000"></div>
-                <div class="calc-col"><span class="result" id="beverageCostPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="beverageCostVariance">0</span></div>
-            </div>
-
-            <div class="row summary-row">
-                <div class="label">Total Cost of Sales</div>
-                <div class="input-col"><span class="result" id="totalCostOfSales">0</span></div>
-                <div class="budget-col"><span class="result" id="totalCostOfSalesBudget">0</span></div>
-                <div class="calc-col"><span class="result" id="totalCostOfSalesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="totalCostOfSalesVariance">0</span></div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Gross Profit</div>
-            <div class="row header-row">
-                <div class="label"></div>
-                <div class="input-col">Actual</div>
-                <div class="budget-col">Budget</div>
-                <div class="calc-col">Actual %</div>
-                <div class="variance-col">Actual vs Budget</div>
-            </div>
-
-            <div class="row summary-row">
-                <div class="label">Gross Profit</div>
-                <div class="input-col"><span class="result" id="grossProfit">0</span></div>
-                <div class="budget-col"><span class="result" id="grossProfitBudget">0</span></div>
-                <div class="calc-col"><span class="result" id="grossProfitPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="grossProfitVariance">0</span></div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Operating Expenses</div>
-            <div class="row header-row">
-                <div class="label"></div>
-                <div class="input-col">Actual</div>
-                <div class="budget-col">Budget</div>
-                <div class="calc-col">Actual %</div>
-                <div class="variance-col">Actual vs Budget</div>
-            </div>
-
-            <div class="row">
-                <div class="label">Salaries & Wages</div>
-                <div class="input-col"><input type="number" id="salariesWages" value="250000"></div>
-                <div class="budget-col"><input type="number" id="salariesWagesBudget" value="240000"></div>
-                <div class="calc-col"><span class="result" id="salariesWagesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="salariesWagesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Rent</div>
-                <div class="input-col"><input type="number" id="rent" value="80000"></div>
-                <div class="budget-col"><input type="number" id="rentBudget" value="80000"></div>
-                <div class="calc-col"><span class="result" id="rentPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="rentVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Utilities</div>
-                <div class="input-col"><input type="number" id="utilities" value="30000"></div>
-                <div class="budget-col"><input type="number" id="utilitiesBudget" value="28000"></div>
-                <div class="calc-col"><span class="result" id="utilitiesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="utilitiesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Marketing</div>
-                <div class="input-col"><input type="number" id="marketing" value="20000"></div>
-                <div class="budget-col"><input type="number" id="marketingBudget" value="22000"></div>
-                <div class="calc-col"><span class="result" id="marketingPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="marketingVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Maintenance</div>
-                <div class="input-col"><input type="number" id="maintenance" value="10000"></div>
-                <div class="budget-col"><input type="number" id="maintenanceBudget" value="9000"></div>
-                <div class="calc-col"><span class="result" id="maintenancePercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="maintenanceVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Cleaning</div>
-                <div class="input-col"><input type="number" id="cleaning" value="8000"></div>
-                <div class="budget-col"><input type="number" id="cleaningBudget" value="8500"></div>
-                <div class="calc-col"><span class="result" id="cleaningPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="cleaningVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Office Supplies</div>
-                <div class="input-col"><input type="number" id="officeSupplies" value="2000"></div>
-                <div class="budget-col"><input type="number" id="officeSuppliesBudget" value="2500"></div>
-                <div class="calc-col"><span class="result" id="officeSuppliesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="officeSuppliesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Uniforms</div>
-                <div class="input-col"><input type="number" id="uniforms" value="3000"></div>
-                <div class="budget-col"><input type="number" id="uniformsBudget" value="2800"></div>
-                <div class="calc-col"><span class="result" id="uniformsPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="uniformsVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Bank Charges</div>
-                <div class="input-col"><input type="number" id="bankCharges" value="1500"></div>
-                <div class="budget-col"><input type="number" id="bankChargesBudget" value="1200"></div>
-                <div class="calc-col"><span class="result" id="bankChargesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="bankChargesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Credit Card Fees</div>
-                <div class="input-col"><input type="number" id="creditCardFees" value="7000"></div>
-                <div class="budget-col"><input type="number" id="creditCardFeesBudget" value="6500"></div>
-                <div class="calc-col"><span class="result" id="creditCardFeesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="creditCardFeesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Delivery Fees</div>
-                <div class="input-col"><input type="number" id="deliveryFees" value="5000"></div>
-                <div class="budget-col"><input type="number" id="deliveryFeesBudget" value="4800"></div>
-                <div class="calc-col"><span class="result" id="deliveryFeesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="deliveryFeesVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Travel & Entertainment</div>
-                <div class="input-col"><input type="number" id="travelEntertainment" value="2000"></div>
-                <div class="budget-col"><input type="number" id="travelEntertainmentBudget" value="1500"></div>
-                <div class="calc-col"><span class="result" id="travelEntertainmentPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="travelEntertainmentVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Training</div>
-                <div class="input-col"><input type="number" id="training" value="1000"></div>
-                <div class="budget-col"><input type="number" id="trainingBudget" value="800"></div>
-                <div class="calc-col"><span class="result" id="trainingPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="trainingVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Insurance</div>
-                <div class="input-col"><input type="number" id="insurance" value="4000"></div>
-                <div class="budget-col"><input type="number" id="insuranceBudget" value="4000"></div>
-                <div class="calc-col"><span class="result" id="insurancePercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="insuranceVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Depreciation</div>
-                <div class="input-col"><input type="number" id="depreciation" value="10000"></div>
-                <div class="budget-col"><input type="number" id="depreciationBudget" value="10000"></div>
-                <div class="calc-col"><span class="result" id="depreciationPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="depreciationVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Interest Expense</div>
-                <div class="input-col"><input type="number" id="interestExpense" value="2000"></div>
-                <div class="budget-col"><input type="number" id="interestExpenseBudget" value="2500"></div>
-                <div class="calc-col"><span class="result" id="interestExpensePercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="interestExpenseVariance">0</span></div>
-            </div>
-
-            <div class="row">
-                <div class="label">Other Expenses</div>
-                <div class="input-col"><input type="number" id="otherExpenses" value="15000"></div>
-                <div class="budget-col"><input type="number" id="otherExpensesBudget" value="10000"></div>
-                <div class="calc-col"><span class="result" id="otherExpensesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="otherExpensesVariance">0</span></div>
-            </div>
-
-            <div class="row summary-row">
-                <div class="label">Total Operating Expenses</div>
-                <div class="input-col"><span class="result" id="totalOperatingExpenses">0</span></div>
-                <div class="budget-col"><span class="result" id="totalOperatingExpensesBudget">0</span></div>
-                <div class="calc-col"><span class="result" id="totalOperatingExpensesPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="totalOperatingExpensesVariance">0</span></div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Gross Operating Profit (GOP)</div>
-            <div class="row header-row">
-                <div class="label"></div>
-                <div class="input-col">Actual</div>
-                <div class="budget-col">Budget</div>
-                <div class="calc-col">Actual %</div>
-                <div class="variance-col">Actual vs Budget</div>
-            </div>
-
-            <div class="row summary-row">
-                <div class="label">Gross Operating Profit</div>
-                <div class="input-col"><span class="result" id="gop">0</span></div>
-                <div class="budget-col"><span class="result" id="gopBudget">0</span></div>
-                <div class="calc-col"><span class="result" id="gopPercent">0</span>%</div>
-                <div class="variance-col"><span class="result" id="gopVariance">0</span></div>
-            </div>
-        </div>
-
-        <button class="btn" onclick="calculateAll()">Calculate P&L</button>
-    </div>
-
-    <footer>
-        © 2025 R&B Transolution. All rights reserved.
+<h1>แบบฟอร์มรายงานกำไรขาดทุนร้านอาหาร (บาท)</h1>
+<div class="form-container">
+<div class="section">
+<div class="section-title">รายได้</div>
+<div class="row header-row">
+<div class="label"></div>
+<div class="input-col">ผลจริง</div>
+<div class="budget-col">งบประมาณ</div>
+<div class="calc-col"></div>
+<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
+</div>
+<div class="row">
+<div class="label">รายได้จากอาหาร</div>
+<div class="input-col"><input id="foodRevenue" type="number" value="1200000"/></div>
+<div class="budget-col"><input id="foodRevenueBudget" type="number" value="1150000"/></div>
+<div class="calc-col">อาหาร / คน: <span class="result" id="foodPerPerson">0</span></div>
+<div class="variance-col"><span class="result" id="foodRevenueVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">รายได้จากเครื่องดื่ม</div>
+<div class="input-col"><input id="beverageRevenue" type="number" value="300000"/></div>
+<div class="budget-col"><input id="beverageRevenueBudget" type="number" value="280000"/></div>
+<div class="calc-col">เครื่องดื่ม / คน: <span class="result" id="beveragePerPerson">0</span></div>
+<div class="variance-col"><span class="result" id="beverageRevenueVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">รายได้อื่น ๆ</div>
+<div class="input-col"><input id="otherRevenue" type="number" value="5000"/></div>
+<div class="budget-col"><input id="otherRevenueBudget" type="number" value="4000"/></div>
+<div class="calc-col"></div>
+<div class="variance-col"><span class="result" id="otherRevenueVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">จำนวนลูกค้า</div>
+<div class="input-col"><input id="numGuests" type="number" value="1200"/></div>
+<div class="budget-col"><input id="numGuestsBudget" type="number" value="1100"/></div>
+<div class="calc-col">AVG CHECK: <span class="result" id="avgCheck">0</span></div>
+<div class="variance-col"><span class="result" id="numGuestsVariance">0</span></div>
+</div>
+<div class="row summary-row">
+<div class="label">รายได้รวม</div>
+<div class="input-col"><span class="result" id="totalRevenue">0</span></div>
+<div class="budget-col"><span class="result" id="totalRevenueBudget">0</span></div>
+<div class="calc-col"></div>
+<div class="variance-col"><span class="result" id="totalRevenueVariance">0</span></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">ต้นทุนขาย</div>
+<div class="row header-row">
+<div class="label"></div>
+<div class="input-col">ผลจริง</div>
+<div class="budget-col">งบประมาณ</div>
+<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
+<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
+</div>
+<div class="row">
+<div class="label">ต้นทุนอาหาร</div>
+<div class="input-col"><input id="foodCost" type="number" value="350000"/></div>
+<div class="budget-col"><input id="foodCostBudget" type="number" value="320000"/></div>
+<div class="calc-col"><span class="result" id="foodCostPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="foodCostVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ต้นทุนเครื่องดื่ม</div>
+<div class="input-col"><input id="beverageCost" type="number" value="80000"/></div>
+<div class="budget-col"><input id="beverageCostBudget" type="number" value="75000"/></div>
+<div class="calc-col"><span class="result" id="beverageCostPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="beverageCostVariance">0</span></div>
+</div>
+<div class="row summary-row">
+<div class="label">ต้นทุนขายรวม</div>
+<div class="input-col"><span class="result" id="totalCostOfSales">0</span></div>
+<div class="budget-col"><span class="result" id="totalCostOfSalesBudget">0</span></div>
+<div class="calc-col"><span class="result" id="totalCostOfSalesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="totalCostOfSalesVariance">0</span></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">กำไรขั้นต้น</div>
+<div class="row header-row">
+<div class="label"></div>
+<div class="input-col">ผลจริง</div>
+<div class="budget-col">งบประมาณ</div>
+<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
+<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
+</div>
+<div class="row summary-row">
+<div class="label">กำไรขั้นต้น</div>
+<div class="input-col"><span class="result" id="grossProfit">0</span></div>
+<div class="budget-col"><span class="result" id="grossProfitBudget">0</span></div>
+<div class="calc-col"><span class="result" id="grossProfitPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="grossProfitVariance">0</span></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">ค่าใช้จ่ายในการดำเนินงาน</div>
+<div class="row header-row">
+<div class="label"></div>
+<div class="input-col">ผลจริง</div>
+<div class="budget-col">งบประมาณ</div>
+<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
+<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
+</div>
+<div class="row">
+<div class="label">เงินเดือนและค่าจ้าง</div>
+<div class="input-col"><input id="salariesWages" type="number" value="250000"/></div>
+<div class="budget-col"><input id="salariesWagesBudget" type="number" value="240000"/></div>
+<div class="calc-col"><span class="result" id="salariesWagesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="salariesWagesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าเช่า</div>
+<div class="input-col"><input id="rent" type="number" value="80000"/></div>
+<div class="budget-col"><input id="rentBudget" type="number" value="80000"/></div>
+<div class="calc-col"><span class="result" id="rentPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="rentVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าสาธารณูปโภค</div>
+<div class="input-col"><input id="utilities" type="number" value="30000"/></div>
+<div class="budget-col"><input id="utilitiesBudget" type="number" value="28000"/></div>
+<div class="calc-col"><span class="result" id="utilitiesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="utilitiesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าใช้จ่ายทางการตลาด</div>
+<div class="input-col"><input id="marketing" type="number" value="20000"/></div>
+<div class="budget-col"><input id="marketingBudget" type="number" value="22000"/></div>
+<div class="calc-col"><span class="result" id="marketingPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="marketingVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าบำรุงรักษา</div>
+<div class="input-col"><input id="maintenance" type="number" value="10000"/></div>
+<div class="budget-col"><input id="maintenanceBudget" type="number" value="9000"/></div>
+<div class="calc-col"><span class="result" id="maintenancePercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="maintenanceVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าทำความสะอาด</div>
+<div class="input-col"><input id="cleaning" type="number" value="8000"/></div>
+<div class="budget-col"><input id="cleaningBudget" type="number" value="8500"/></div>
+<div class="calc-col"><span class="result" id="cleaningPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="cleaningVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">อุปกรณ์สำนักงาน</div>
+<div class="input-col"><input id="officeSupplies" type="number" value="2000"/></div>
+<div class="budget-col"><input id="officeSuppliesBudget" type="number" value="2500"/></div>
+<div class="calc-col"><span class="result" id="officeSuppliesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="officeSuppliesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ยูนิฟอร์ม</div>
+<div class="input-col"><input id="uniforms" type="number" value="3000"/></div>
+<div class="budget-col"><input id="uniformsBudget" type="number" value="2800"/></div>
+<div class="calc-col"><span class="result" id="uniformsPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="uniformsVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าธรรมเนียมธนาคาร</div>
+<div class="input-col"><input id="bankCharges" type="number" value="1500"/></div>
+<div class="budget-col"><input id="bankChargesBudget" type="number" value="1200"/></div>
+<div class="calc-col"><span class="result" id="bankChargesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="bankChargesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าธรรมเนียมบัตรเครดิต</div>
+<div class="input-col"><input id="creditCardFees" type="number" value="7000"/></div>
+<div class="budget-col"><input id="creditCardFeesBudget" type="number" value="6500"/></div>
+<div class="calc-col"><span class="result" id="creditCardFeesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="creditCardFeesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าจัดส่ง</div>
+<div class="input-col"><input id="deliveryFees" type="number" value="5000"/></div>
+<div class="budget-col"><input id="deliveryFeesBudget" type="number" value="4800"/></div>
+<div class="calc-col"><span class="result" id="deliveryFeesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="deliveryFeesVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าเดินทางและสันทนาการ</div>
+<div class="input-col"><input id="travelEntertainment" type="number" value="2000"/></div>
+<div class="budget-col"><input id="travelEntertainmentBudget" type="number" value="1500"/></div>
+<div class="calc-col"><span class="result" id="travelEntertainmentPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="travelEntertainmentVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าอบรม</div>
+<div class="input-col"><input id="training" type="number" value="1000"/></div>
+<div class="budget-col"><input id="trainingBudget" type="number" value="800"/></div>
+<div class="calc-col"><span class="result" id="trainingPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="trainingVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ประกันภัย</div>
+<div class="input-col"><input id="insurance" type="number" value="4000"/></div>
+<div class="budget-col"><input id="insuranceBudget" type="number" value="4000"/></div>
+<div class="calc-col"><span class="result" id="insurancePercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="insuranceVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าเสื่อมราคา</div>
+<div class="input-col"><input id="depreciation" type="number" value="10000"/></div>
+<div class="budget-col"><input id="depreciationBudget" type="number" value="10000"/></div>
+<div class="calc-col"><span class="result" id="depreciationPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="depreciationVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ดอกเบี้ยจ่าย</div>
+<div class="input-col"><input id="interestExpense" type="number" value="2000"/></div>
+<div class="budget-col"><input id="interestExpenseBudget" type="number" value="2500"/></div>
+<div class="calc-col"><span class="result" id="interestExpensePercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="interestExpenseVariance">0</span></div>
+</div>
+<div class="row">
+<div class="label">ค่าใช้จ่ายอื่น ๆ</div>
+<div class="input-col"><input id="otherExpenses" type="number" value="15000"/></div>
+<div class="budget-col"><input id="otherExpensesBudget" type="number" value="10000"/></div>
+<div class="calc-col"><span class="result" id="otherExpensesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="otherExpensesVariance">0</span></div>
+</div>
+<div class="row summary-row">
+<div class="label">ค่าใช้จ่ายดำเนินงานรวม</div>
+<div class="input-col"><span class="result" id="totalOperatingExpenses">0</span></div>
+<div class="budget-col"><span class="result" id="totalOperatingExpensesBudget">0</span></div>
+<div class="calc-col"><span class="result" id="totalOperatingExpensesPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="totalOperatingExpensesVariance">0</span></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">กำไรจากการดำเนินงาน (GOP)</div>
+<div class="row header-row">
+<div class="label"></div>
+<div class="input-col">ผลจริง</div>
+<div class="budget-col">งบประมาณ</div>
+<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
+<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
+</div>
+<div class="row summary-row">
+<div class="label">กำไรจากการดำเนินงาน</div>
+<div class="input-col"><span class="result" id="gop">0</span></div>
+<div class="budget-col"><span class="result" id="gopBudget">0</span></div>
+<div class="calc-col"><span class="result" id="gopPercent">0</span>%</div>
+<div class="variance-col"><span class="result" id="gopVariance">0</span></div>
+</div>
+</div>
+<button class="btn" onclick="calculateAll()">คำนวณรายงานกำไรขาดทุน</button>
+</div>
+<footer>
+        © 2025 R&amp;B Transolution. All rights reserved.
     </footer>
-
-    <script>
+<script>
         function getFloatValue(id) {
             const element = document.getElementById(id);
             if (!element) return 0; // Handle case where element might not exist
