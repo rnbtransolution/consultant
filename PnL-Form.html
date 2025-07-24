@@ -98,6 +98,12 @@
             font-weight: bold;
             color: #1C1C1C;
         }
+        .result.positive {
+            color: green;
+        }
+        .result.negative {
+            color: red;
+        }
         .divider {
             border-top: 1px solid #E0DBC8;
             margin: 20px 0;
@@ -132,12 +138,6 @@
         .percentage {
             color: #B8860B;
             font-weight: 600;
-        }
-        .positive {
-            color: green;
-        }
-        .negative {
-            color: red;
         }
         /* --- Footer Styles --- */
         footer {
@@ -500,19 +500,25 @@
             varianceElement.textContent = `${variance.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} (${percentageChange.toFixed(2)}%)`;
             varianceElement.classList.remove('positive', 'negative');
             
-            // Determine if the variance is "good" or "bad" based on expense/revenue context
+            // Determine if the variance is "good" or "bad"
+            // Assume negative variance is good by default for costs/expenses
+            let isPositiveVarianceGood = false; 
+
             if (id.includes('RevenueVariance') || id.includes('ProfitVariance') || id.includes('gopVariance') || id.includes('numGuestsVariance')) {
-                // For revenue, profit, GOP, and guests: higher actual is positive
+                isPositiveVarianceGood = true; // For these, a positive variance (actual > budget) is good.
+            }
+            // For all other cases (costs/expenses), a negative variance (actual < budget) is good.
+
+            if (isPositiveVarianceGood) {
                 if (variance > 0) {
                     varianceElement.classList.add('positive');
                 } else if (variance < 0) {
                     varianceElement.classList.add('negative');
                 }
-            } else if (id.includes('CostVariance') || id.includes('ExpensesVariance')) {
-                // For costs and expenses: lower actual is positive
-                if (variance < 0) {
+            } else { // This branch handles all costs and expenses
+                if (variance < 0) { // Actual is less than budget (favorable)
                     varianceElement.classList.add('positive');
-                } else if (variance > 0) {
+                } else if (variance > 0) { // Actual is greater than budget (unfavorable)
                     varianceElement.classList.add('negative');
                 }
             }
@@ -531,7 +537,7 @@
             const budgetId = id.replace('Percent', 'Budget'); // e.g., 'foodCostPercent' -> 'foodCostBudget'
             const budgetValue = getFloatValue(budgetId);
             let budgetPercentage = 0;
-            const totalRevenueBudget = getFloatValue('totalRevenueBudget'); // This will now correctly get from span
+            const totalRevenueBudget = getFloatValue('totalRevenueBudget'); 
 
             if (totalRevenueBudget !== 0) {
                 budgetPercentage = (budgetValue / totalRevenueBudget) * 100;
@@ -726,7 +732,7 @@
             setResult('gopBudget', gopBudget);
             setVarianceResult('gopVariance', gop, gopBudget);
             
-            const totalRevenue = getFloatValue('totalRevenue'); // This will now correctly get from span
+            const totalRevenue = getFloatValue('totalRevenue'); 
             setPercentageResult('gopPercent', gop, totalRevenue, false); // false for isCostOrExpense (it's profit)
         }
 
