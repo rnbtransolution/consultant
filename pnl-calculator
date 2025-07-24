@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&B Transolution - Restaurant Profit & Loss Statement (THB)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            max-width: 1200px; /* Increased max-width to accommodate new columns */
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #FFFEF7;
+            color: #2F2F2F;
+        }
+        h1 {
+            text-align: center;
+            color: #1C1C1C;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #DAA520;
+            padding-bottom: 10px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(47, 47, 47, 0.1);
+            border: 1px solid #F5F2E8;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #F9F7F0;
+            border-radius: 6px;
+            border-left: 4px solid #B8860B;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1C1C1C;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+        .row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .header-row {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-row > div {
+            flex: 1;
+            padding: 5px;
+        }
+        .label {
+            flex: 2;
+            font-weight: 600;
+            color: #2F2F2F;
+        }
+        .input-col, .budget-col, .calc-col, .variance-col {
+            flex: 1;
+            min-width: 100px; /* Adjusted min-width for more columns */
+            text-align: right;
+            padding-right: 15px;
+            color: #2F2F2F;
+            font-size: 0.9rem;
+        }
+        .input-col input, .budget-col input {
+            width: 90%;
+            padding: 8px 12px;
+            border: 1px solid #E0DBC8;
+            border-radius: 4px;
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #DAA520;
+            box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.2);
+        }
+        .result {
+            font-weight: bold;
+            color: #1C1C1C;
+        }
+        .divider {
+            border-top: 1px solid #E0DBC8;
+            margin: 20px 0;
+        }
+        .btn {
+            background-color: #B8860B;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 30px auto 0;
+            width: 200px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #DAA520;
+        }
+        .summary-row {
+            background-color: #F5F2E8;
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .percentage {
+            color: #B8860B;
+            font-weight: 600;
+        }
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .input-col, .budget-col, .calc-col, .variance-col {
+                width: 100%;
+                margin-top: 5px;
+                padding-right: 0;
+                text-align: left;
+            }
+            input {
+                width: 95%;
+            }
+            .header-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Restaurant Profit & Loss Statement (THB)</h1>
+    
+    <div class="form-container">
+        
+        <div class="section">
+            <div class="section-title">Revenue</div>
+            <div class="row header-row">
+                <div class="label"></div>
+                <div class="input-col">Actual</div>
+                <div class="budget-col">Budget</div>
+                <div class="calc-col"></div>
+                <div class="variance-col">Actual vs Budget</div>
+            </div>
+
+            <div class="row">
+                <div class="label">Food Revenue</div>
+                <div class="input-col"><input type="number" id="foodRevenue" value="1200000"></div>
+                <div class="budget-col"><input type="number" id="foodRevenueBudget" value="1150000"></div>
+                <div class="calc-col">Food / Person: <span class="result" id="foodPerPerson">0</span></div>
+                <div class="variance-col"><span class="result" id="foodRevenueVariance">0</span></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Beverage Revenue</div>
+                <div class="input-col"><input type="number" id="beverageRevenue" value="300000"></div>
+                <div class="budget-col"><input type="number" id="beverageRevenueBudget" value="280000"></div>
+                <div class="calc-col">Beverage / Person: <span class="result" id="beveragePerPerson">0</span></div>
+                <div class="variance-col"><span class="result" id="beverageRevenueVariance">0</span></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Other Revenue</div>
+                <div class="input-col"><input type="number" id="otherRevenue" value="5000"></div>
+                <div class="budget-col"><input type="number" id="otherRevenueBudget" value="4000"></div>
+                <div class="calc-col"></div>
+                <div class="variance-col"><span class="result" id="otherRevenueVariance">0</span></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Number of Guests</div>
+                <div class="input-col"><input type="number" id="numGuests" value="1200"></div>
+                <div class="budget-col"><input type="number" id="numGuestsBudget" value="1100"></div>
+                <div class="calc-col">AVG CHECK: <span class="result" id="avgCheck">0</span></div>
+                <div class="variance-col"><span class="result" id="numGuestsVariance">0</span></div>
+            </div>
+
+            <div class="row summary-row">
+                <div class="label">Total Revenue</div>
+                <div class="input-col"><span class="result" id="totalRevenue">0</span></div>
+                <div class="budget-col"><span class="result" id="totalRevenueBudget">0</span></div>
+                <div class="calc-col"></div>
+                <div class="variance-col"><span class="result" id="totalRevenueVariance">0</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Cost of Sales</div>
+            <div class="row header-row">
+                <div class="label"></div>
+                <div class="input-col">Actual</div>
+                <div class="budget-col">Budget</div>
+                <div class="calc-col"></div>
+                <div class="variance-col">Actual vs Budget</div>
+            </div>
+            <div class="row">
+                <div class="label">Food Cost</div>
+                <div class="input-col"><input type="number" id="foodCost" value="130000"></div>
+                <div class="budget-col"><input type="number" id="foodCostBudget" value="125000"></div>
+                <div class="calc-col">Food Cost %: <span class="result percentage" id="foodCostPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="foodCostVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Beverage Cost</div>
+                <div class="input-col"><input type="number" id="beverageCost" value="3500"></div>
+                <div class="budget-col"><input type="number" id="beverageCostBudget" value="3000"></div>
+                <div class="calc-col">Beverage Cost %: <span class="result percentage" id="beverageCostPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="beverageCostVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Other Cost</div>
+                <div class="input-col"><input type="number" id="otherCost" value="500"></div>
+                <div class="budget-col"><input type="number" id="otherCostBudget" value="400"></div>
+                <div class="calc-col">Other Cost %: <span class="result percentage" id="otherCostPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="otherCostVariance">0</span></div>
+            </div>
+            <div class="row summary-row">
+                <div class="label">Total Cost of Sales</div>
+                <div class="input-col"><span class="result" id="totalCostSales">0</span></div>
+                <div class="budget-col"><span class="result" id="totalCostSalesBudget">0</span></div>
+                <div class="calc-col">% of Revenue: <span class="result percentage" id="totalCostSalesPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="totalCostSalesVariance">0</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Operating Expenses</div>
+            <div class="row header-row">
+                <div class="label"></div>
+                <div class="input-col">Actual</div>
+                <div class="budget-col">Budget</div>
+                <div class="calc-col"></div>
+                <div class="variance-col">Actual vs Budget</div>
+            </div>
+            <div class="row">
+                <div class="label">Banquet Expenses</div>
+                <div class="input-col"><input type="number" id="banquetExpenses" value="0"></div>
+                <div class="budget-col"><input type="number" id="banquetExpensesBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="banquetPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="banquetExpensesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Chinaware</div>
+                <div class="input-col"><input type="number" id="chinaware" value="150"></div>
+                <div class="budget-col"><input type="number" id="chinawareBudget" value="100"></div>
+                <div class="calc-col">%: <span class="result percentage" id="chinawarePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="chinawareVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Cleaning Supplies</div>
+                <div class="input-col"><input type="number" id="cleaningSupplies" value="40"></div>
+                <div class="budget-col"><input type="number" id="cleaningSuppliesBudget" value="50"></div>
+                <div class="calc-col">%: <span class="result percentage" id="cleaningPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="cleaningSuppliesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Complimentary Service & Gift</div>
+                <div class="input-col"><input type="number" id="complimentary" value="0"></div>
+                <div class="budget-col"><input type="number" id="complimentaryBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="complimentaryPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="complimentaryVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Contract Services</div>
+                <div class="input-col"><input type="number" id="contractServices" value="0"></div>
+                <div class="budget-col"><input type="number" id="contractServicesBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="contractPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="contractServicesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Decorations</div>
+                <div class="input-col"><input type="number" id="decorations" value="400"></div>
+                <div class="budget-col"><input type="number" id="decorationsBudget" value="350"></div>
+                <div class="calc-col">%: <span class="result percentage" id="decorationsPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="decorationsVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Dishwashing Supplies</div>
+                <div class="input-col"><input type="number" id="dishwashing" value="120"></div>
+                <div class="budget-col"><input type="number" id="dishwashingBudget" value="100"></div>
+                <div class="calc-col">%: <span class="result percentage" id="dishwashingPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="dishwashingVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Dues & Subscription</div>
+                <div class="input-col"><input type="number" id="dues" value="0"></div>
+                <div class="budget-col"><input type="number" id="duesBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="duesPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="duesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Equipment Rental</div>
+                <div class="input-col"><input type="number" id="equipmentRental" value="300"></div>
+                <div class="budget-col"><input type="number" id="equipmentRentalBudget" value="250"></div>
+                <div class="calc-col">%: <span class="result percentage" id="equipmentPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="equipmentRentalVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Flatware</div>
+                <div class="input-col"><input type="number" id="flatware" value="0"></div>
+                <div class="budget-col"><input type="number" id="flatwareBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="flatwarePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="flatwareVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Glassware</div>
+                <div class="input-col"><input type="number" id="glassware" value="200"></div>
+                <div class="budget-col"><input type="number" id="glasswareBudget" value="180"></div>
+                <div class="calc-col">%: <span class="result percentage" id="glasswarePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="glasswareVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Ice</div>
+                <div class="input-col"><input type="number" id="ice" value="60"></div>
+                <div class="budget-col"><input type="number" id="iceBudget" value="50"></div>
+                <div class="calc-col">%: <span class="result percentage" id="icePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="iceVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">LPG Gas</div>
+                <div class="input-col"><input type="number" id="lpgGas" value="600"></div>
+                <div class="budget-col"><input type="number" id="lpgGasBudget" value="550"></div>
+                <div class="calc-col">%: <span class="result percentage" id="lpgPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="lpgGasVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Laundry & Dry Cleaning - Linen</div>
+                <div class="input-col"><input type="number" id="laundry" value="0"></div>
+                <div class="budget-col"><input type="number" id="laundryBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="laundryPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="laundryVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Licenses & Permits</div>
+                <div class="input-col"><input type="number" id="licenses" value="0"></div>
+                <div class="budget-col"><input type="number" id="licensesBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="licensesPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="licensesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Salary</div>
+                <div class="input-col"><input type="number" id="salary" value="20000"></div>
+                <div class="budget-col"><input type="number" id="salaryBudget" value="21000"></div>
+                <div class="calc-col">%: <span class="result percentage" id="salaryPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="salaryVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Menu & Beverages List</div>
+                <div class="input-col"><input type="number" id="menuBeverages" value="260"></div>
+                <div class="budget-col"><input type="number" id="menuBeveragesBudget" value="250"></div>
+                <div class="calc-col">%: <span class="result percentage" id="menuPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="menuBeveragesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Music & Entertainment</div>
+                <div class="input-col"><input type="number" id="music" value="4000"></div>
+                <div class="budget-col"><input type="number" id="musicBudget" value="3800"></div>
+                <div class="calc-col">%: <span class="result percentage" id="musicPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="musicVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Operating Supplies</div>
+                <div class="input-col"><input type="number" id="operatingSupplies" value="0"></div>
+                <div class="budget-col"><input type="number" id="operatingSuppliesBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="operatingPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="operatingSuppliesVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Paper & Plastics</div>
+                <div class="input-col"><input type="number" id="paperPlastics" value="120"></div>
+                <div class="budget-col"><input type="number" id="paperPlasticsBudget" value="100"></div>
+                <div class="calc-col">%: <span class="result percentage" id="paperPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="paperPlasticsVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Printing & Stationery</div>
+                <div class="input-col"><input type="number" id="printing" value="200"></div>
+                <div class="budget-col"><input type="number" id="printingBudget" value="180"></div>
+                <div class="calc-col">%: <span class="result percentage" id="printingPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="printingVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Telephone Cost</div>
+                <div class="input-col"><input type="number" id="telephone" value="399"></div>
+                <div class="budget-col"><input type="number" id="telephoneBudget" value="400"></div>
+                <div class="calc-col">%: <span class="result percentage" id="telephonePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="telephoneVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Training</div>
+                <div class="input-col"><input type="number" id="training" value="0"></div>
+                <div class="budget-col"><input type="number" id="trainingBudget" value="0"></div>
+                <div class="calc-col">%: <span class="result percentage" id="trainingPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="trainingVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Visit Customer</div>
+                <div class="input-col"><input type="number" id="visitCustomer" value="75"></div>
+                <div class="budget-col"><input type="number" id="visitCustomerBudget" value="80"></div>
+                <div class="calc-col">%: <span class="result percentage" id="visitPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="visitCustomerVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Uniform Laundry</div>
+                <div class="input-col"><input type="number" id="uniformLaundry" value="180"></div>
+                <div class="budget-col"><input type="number" id="uniformLaundryBudget" value="150"></div>
+                <div class="calc-col">%: <span class="result percentage" id="uniformLaundryPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="uniformLaundryVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Uniforms</div>
+                <div class="input-col"><input type="number" id="uniforms" value="300"></div>
+                <div class="budget-col"><input type="number" id="uniformsBudget" value="280"></div>
+                <div class="calc-col">%: <span class="result percentage" id="uniformsPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="uniformsVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Casual - Service</div>
+                <div class="input-col"><input type="number" id="casualService" value="1200"></div>
+                <div class="budget-col"><input type="number" id="casualServiceBudget" value="1100"></div>
+                <div class="calc-col">%: <span class="result percentage" id="casualServicePercent">0</span></div>
+                <div class="variance-col"><span class="result" id="casualServiceVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Casual - Kitchen</div>
+                <div class="input-col"><input type="number" id="casualKitchen" value="800"></div>
+                <div class="budget-col"><input type="number" id="casualKitchenBudget" value="750"></div>
+                <div class="calc-col">%: <span class="result percentage" id="casualKitchenPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="casualKitchenVariance">0</span></div>
+            </div>
+            <div class="row">
+                <div class="label">Casual - Steward</div>
+                <div class="input-col"><input type="number" id="casualSteward" value="800"></div>
+                <div class="budget-col"><input type="number" id="casualStewardBudget" value="750"></div>
+                <div class="calc-col">%: <span class="result percentage" id="casualStewardPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="casualStewardVariance">0</span></div>
+            </div>
+            <div class="row summary-row">
+                <div class="label">Total Operating Expenses</div>
+                <div class="input-col"><span class="result" id="totalOperatingExpenses">0</span></div>
+                <div class="budget-col"><span class="result" id="totalOperatingExpensesBudget">0</span></div>
+                <div class="calc-col">% of Revenue: <span class="result percentage" id="totalOperatingPercent">0</span></div>
+                <div class="variance-col"><span class="result" id="totalOperatingExpensesVariance">0</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Profit Summary</div>
+            <div class="row header-row">
+                <div class="label"></div>
+                <div class="input-col">Actual</div>
+                <div class="budget-col">Budget</div>
+                <div class="calc-col"></div>
+                <div class="variance-col">Actual vs Budget</div>
+            </div>
+            <div class="row summary-row">
+                <div class="label">Gross Operating Profit (GOP)</div>
+                <div class="input-col"><span class="result" id="gop">0</span></div>
+                <div class="budget-col"><span class="result" id="gopBudget">0</span></div>
+                <div class="calc-col"></div>
+                <div class="variance-col"><span class="result" id="gopVariance">0</span></div>
+            </div>
+            <div class="row summary-row">
+                <div class="label">GOP Percentage</div>
+                <div class="input-col"><span class="result percentage" id="gopPercent">0</span>%</div>
+                <div class="budget-col"><span class="result percentage" id="gopPercentBudget">0</span>%</div>
+                <div class="calc-col"></div>
+                <div class="variance-col"><span class="result" id="gopPercentVariance">0</span>%</div>
+            </div>
+        </div>
+
+        <button class="btn" onclick="calculateAll()">Calculate Statement</button>
+    </div>
+
+    <script>
+        function calculateAll() {
+            // Helper function to get value from input or budget input
+            const getValue = (id) => parseFloat(document.getElementById(id).value) || 0;
+            const getBudget = (id) => parseFloat(document.getElementById(id + 'Budget').value) || 0;
+
+            // Function to update variance and apply color
+            const updateVariance = (actualId, budgetId, varianceId, isExpense = false) => {
+                const actual = parseFloat(document.getElementById(actualId).textContent.replace(/,/g, '')) || 0;
+                const budget = parseFloat(document.getElementById(budgetId).textContent.replace(/,/g, '')) || 0;
+                const variance = actual - budget;
+                const varianceElement = document.getElementById(varianceId);
+                varianceElement.textContent = variance.toLocaleString();
+                varianceElement.classList.remove('positive', 'negative');
+                if (variance > 0) {
+                    varianceElement.classList.add(isExpense ? 'negative' : 'positive');
+                } else if (variance < 0) {
+                    varianceElement.classList.add(isExpense ? 'positive' : 'negative');
+                }
+            };
+
+            const updatePercentageVariance = (actualId, budgetId, varianceId, isExpense = false) => {
+                const actual = parseFloat(document.getElementById(actualId).textContent.replace(/,/g, '')) || 0;
+                const budget = parseFloat(document.getElementById(budgetId).textContent.replace(/,/g, '')) || 0;
+                const variance = actual - budget;
+                const varianceElement = document.getElementById(varianceId);
+                varianceElement.textContent = variance.toFixed(2);
+                varianceElement.classList.remove('positive', 'negative');
+                if (variance > 0) {
+                    varianceElement.classList.add(isExpense ? 'negative' : 'positive');
+                } else if (variance < 0) {
+                    varianceElement.classList.add(isExpense ? 'positive' : 'negative');
+                }
+            };
+
+            // Revenue Actual
+            const foodRevenue = getValue('foodRevenue');
+            const beverageRevenue = getValue('beverageRevenue');
+            const otherRevenue = getValue('otherRevenue');
+            const numGuests = getValue('numGuests');
+            
+            // Revenue Budget
+            const foodRevenueBudget = getBudget('foodRevenue');
+            const beverageRevenueBudget = getBudget('beverageRevenue');
+            const otherRevenueBudget = getBudget('otherRevenue');
+            const numGuestsBudget = getBudget('numGuests');
+            
+            // Calculate revenue metrics (Actual)
+            const totalRevenue = foodRevenue + beverageRevenue + otherRevenue;
+            const foodPerPerson = numGuests > 0 ? foodRevenue / numGuests : 0;
+            const beveragePerPerson = numGuests > 0 ? beverageRevenue / numGuests : 0;
+            const avgCheck = numGuests > 0 ? totalRevenue / numGuests : 0;
+
+            // Calculate revenue metrics (Budget)
+            const totalRevenueBudget = foodRevenueBudget + beverageRevenueBudget + otherRevenueBudget;
+            
+            // Cost of Sales Actual
+            const foodCost = getValue('foodCost');
+            const beverageCost = getValue('beverageCost');
+            const otherCost = getValue('otherCost');
+            
+            // Cost of Sales Budget
+            const foodCostBudget = getBudget('foodCost');
+            const beverageCostBudget = getBudget('beverageCost');
+            const otherCostBudget = getBudget('otherCost');
+
+            // Calculate cost percentages (Actual)
+            const foodCostPercent = foodRevenue > 0 ? (foodCost / foodRevenue) * 100 : 0;
+            const beverageCostPercent = beverageRevenue > 0 ? (beverageCost / beverageRevenue) * 100 : 0;
+            const otherCostPercent = otherRevenue > 0 ? (otherCost / otherRevenue) * 100 : 0;
+            const totalCostSales = foodCost + beverageCost + otherCost;
+            const totalCostSalesPercent = totalRevenue > 0 ? (totalCostSales / totalRevenue) * 100 : 0;
+
+            // Calculate cost percentages (Budget)
+            const foodCostPercentBudget = foodRevenueBudget > 0 ? (foodCostBudget / foodRevenueBudget) * 100 : 0;
+            const beverageCostPercentBudget = beverageRevenueBudget > 0 ? (beverageCostBudget / beverageRevenueBudget) * 100 : 0;
+            const otherCostPercentBudget = otherRevenueBudget > 0 ? (otherCostBudget / otherRevenueBudget) * 100 : 0;
+            const totalCostSalesBudget = foodCostBudget + beverageCostBudget + otherCostBudget;
+            const totalCostSalesPercentBudget = totalRevenueBudget > 0 ? (totalCostSalesBudget / totalRevenueBudget) * 100 : 0;
+            
+            // Operating Expenses Actual
+            const banquetExpenses = getValue('banquetExpenses');
+            const chinaware = getValue('chinaware');
+            const cleaningSupplies = getValue('cleaningSupplies');
+            const complimentary = getValue('complimentary');
+            const contractServices = getValue('contractServices');
+            const decorations = getValue('decorations');
+            const dishwashing = getValue('dishwashing');
+            const dues = getValue('dues');
+            const equipmentRental = getValue('equipmentRental');
+            const flatware = getValue('flatware');
+            const glassware = getValue('glassware');
+            const ice = getValue('ice');
+            const lpgGas = getValue('lpgGas');
+            const laundry = getValue('laundry');
+            const licenses = getValue('licenses');
+            const salary = getValue('salary');
+            const menuBeverages = getValue('menuBeverages');
+            const music = getValue('music');
+            const operatingSupplies = getValue('operatingSupplies');
+            const paperPlastics = getValue('paperPlastics');
+            const printing = getValue('printing');
+            const telephone = getValue('telephone');
+            const training = getValue('training');
+            const visitCustomer = getValue('visitCustomer');
+            const uniformLaundry = getValue('uniformLaundry');
+            const uniforms = getValue('uniforms');
+            const casualService = getValue('casualService');
+            const casualKitchen = getValue('casualKitchen');
+            const casualSteward = getValue('casualSteward');
+
+            // Operating Expenses Budget
+            const banquetExpensesBudget = getBudget('banquetExpenses');
+            const chinawareBudget = getBudget('chinaware');
+            const cleaningSuppliesBudget = getBudget('cleaningSupplies');
+            const complimentaryBudget = getBudget('complimentary');
+            const contractServicesBudget = getBudget('contractServices');
+            const decorationsBudget = getBudget('decorations');
+            const dishwashingBudget = getBudget('dishwashing');
+            const duesBudget = getBudget('dues');
+            const equipmentRentalBudget = getBudget('equipmentRental');
+            const flatwareBudget = getBudget('flatware');
+            const glasswareBudget = getBudget('glassware');
+            const iceBudget = getBudget('ice');
+            const lpgGasBudget = getBudget('lpgGas');
+            const laundryBudget = getBudget('laundry');
+            const licensesBudget = getBudget('licenses');
+            const salaryBudget = getBudget('salary');
+            const menuBeveragesBudget = getBudget('menuBeverages');
+            const musicBudget = getBudget('music');
+            const operatingSuppliesBudget = getBudget('operatingSupplies');
+            const paperPlasticsBudget = getBudget('paperPlastics');
+            const printingBudget = getBudget('printing');
+            const telephoneBudget = getBudget('telephone');
+            const trainingBudget = getBudget('training');
+            const visitCustomerBudget = getBudget('visitCustomer');
+            const uniformLaundryBudget = getBudget('uniformLaundry');
+            const uniformsBudget = getBudget('uniforms');
+            const casualServiceBudget = getBudget('casualService');
+            const casualKitchenBudget = getBudget('casualKitchen');
+            const casualStewardBudget = getBudget('casualSteward');
+            
+            // Calculate total operating expenses (Actual)
+            const totalOperatingExpenses = banquetExpenses + chinaware + cleaningSupplies + complimentary + 
+                                         contractServices + decorations + dishwashing + dues + equipmentRental + 
+                                         flatware + glassware + ice + lpgGas + laundry + licenses + salary + 
+                                         menuBeverages + music + operatingSupplies + paperPlastics + printing + 
+                                         telephone + training + visitCustomer + uniformLaundry + uniforms + 
+                                         casualService + casualKitchen + casualSteward;
+            
+            const totalOperatingPercent = totalRevenue > 0 ? (totalOperatingExpenses / totalRevenue) * 100 : 0;
+
+            // Calculate total operating expenses (Budget)
+            const totalOperatingExpensesBudget = banquetExpensesBudget + chinawareBudget + cleaningSuppliesBudget + complimentaryBudget + 
+                                         contractServicesBudget + decorationsBudget + dishwashingBudget + duesBudget + equipmentRentalBudget + 
+                                         flatwareBudget + glasswareBudget + iceBudget + lpgGasBudget + laundryBudget + licensesBudget + salaryBudget + 
+                                         menuBeveragesBudget + musicBudget + operatingSuppliesBudget + paperPlasticsBudget + printingBudget + 
+                                         telephoneBudget + trainingBudget + visitCustomerBudget + uniformLaundryBudget + uniformsBudget + 
+                                         casualServiceBudget + casualKitchenBudget + casualStewardBudget;
+            
+            const totalOperatingPercentBudget = totalRevenueBudget > 0 ? (totalOperatingExpensesBudget / totalRevenueBudget) * 100 : 0;
+            
+            // Calculate profit metrics (Actual)
+            const gop = totalRevenue - (totalCostSales + totalOperatingExpenses);
+            const gopPercent = totalRevenue > 0 ? (gop / totalRevenue) * 100 : 0;
+
+            // Calculate profit metrics (Budget)
+            const gopBudget = totalRevenueBudget - (totalCostSalesBudget + totalOperatingExpensesBudget);
+            const gopPercentBudget = totalRevenueBudget > 0 ? (gopBudget / totalRevenueBudget) * 100 : 0;
+            
+            // Update all displayed values (Actual)
+            document.getElementById('totalRevenue').textContent = totalRevenue.toLocaleString();
+            document.getElementById('foodPerPerson').textContent = foodPerPerson.toFixed(2);
+            document.getElementById('beveragePerPerson').textContent = beveragePerPerson.toFixed(2);
+            document.getElementById('avgCheck').textContent = avgCheck.toFixed(2);
+            
+            document.getElementById('foodCostPercent').textContent = foodCostPercent.toFixed(2);
+            document.getElementById('beverageCostPercent').textContent = beverageCostPercent.toFixed(2);
+            document.getElementById('otherCostPercent').textContent = otherCostPercent.toFixed(2);
+            document.getElementById('totalCostSales').textContent = totalCostSales.toLocaleString();
+            document.getElementById('totalCostSalesPercent').textContent = totalCostSalesPercent.toFixed(2);
+            
+            // Update all operating expense percentages (Actual)
+            document.getElementById('banquetPercent').textContent = (banquetExpenses / totalRevenue * 100).toFixed(2);
+            document.getElementById('chinawarePercent').textContent = (chinaware / totalRevenue * 100).toFixed(2);
+            document.getElementById('cleaningPercent').textContent = (cleaningSupplies / totalRevenue * 100).toFixed(2);
+            document.getElementById('complimentaryPercent').textContent = (complimentary / totalRevenue * 100).toFixed(2);
+            document.getElementById('contractPercent').textContent = (contractServices / totalRevenue * 100).toFixed(2);
+            document.getElementById('decorationsPercent').textContent = (decorations / totalRevenue * 100).toFixed(2);
+            document.getElementById('dishwashingPercent').textContent = (dishwashing / totalRevenue * 100).toFixed(2);
+            document.getElementById('duesPercent').textContent = (dues / totalRevenue * 100).toFixed(2);
+            document.getElementById('equipmentPercent').textContent = (equipmentRental / totalRevenue * 100).toFixed(2);
+            document.getElementById('flatwarePercent').textContent = (flatware / totalRevenue * 100).toFixed(2);
+            document.getElementById('glasswarePercent').textContent = (glassware / totalRevenue * 100).toFixed(2);
+            document.getElementById('icePercent').textContent = (ice / totalRevenue * 100).toFixed(2);
+            document.getElementById('lpgPercent').textContent = (lpgGas / totalRevenue * 100).toFixed(2);
+            document.getElementById('laundryPercent').textContent = (laundry / totalRevenue * 100).toFixed(2);
+            document.getElementById('licensesPercent').textContent = (licenses / totalRevenue * 100).toFixed(2);
+            document.getElementById('salaryPercent').textContent = (salary / totalRevenue * 100).toFixed(2);
+            document.getElementById('menuPercent').textContent = (menuBeverages / totalRevenue * 100).toFixed(2);
+            document.getElementById('musicPercent').textContent = (music / totalRevenue * 100).toFixed(2);
+            document.getElementById('operatingPercent').textContent = (operatingSupplies / totalRevenue * 100).toFixed(2);
+            document.getElementById('paperPercent').textContent = (paperPlastics / totalRevenue * 100).toFixed(2);
+            document.getElementById('printingPercent').textContent = (printing / totalRevenue * 100).toFixed(2);
+            document.getElementById('telephonePercent').textContent = (telephone / totalRevenue * 100).toFixed(2);
+            document.getElementById('trainingPercent').textContent = (training / totalRevenue * 100).toFixed(2);
+            document.getElementById('visitPercent').textContent = (visitCustomer / totalRevenue * 100).toFixed(2);
+            document.getElementById('uniformLaundryPercent').textContent = (uniformLaundry / totalRevenue * 100).toFixed(2);
+            document.getElementById('uniformsPercent').textContent = (uniforms / totalRevenue * 100).toFixed(2);
+            document.getElementById('casualServicePercent').textContent = (casualService / totalRevenue * 100).toFixed(2);
+            document.getElementById('casualKitchenPercent').textContent = (casualKitchen / totalRevenue * 100).toFixed(2);
+            document.getElementById('casualStewardPercent').textContent = (casualSteward / totalRevenue * 100).toFixed(2);
+            
+            document.getElementById('totalOperatingExpenses').textContent = totalOperatingExpenses.toLocaleString();
+            document.getElementById('totalOperatingPercent').textContent = totalOperatingPercent.toFixed(2);
+            
+            document.getElementById('gop').textContent = gop.toLocaleString();
+            document.getElementById('gopPercent').textContent = gopPercent.toFixed(2);
+
+            // Update all displayed values (Budget)
+            document.getElementById('totalRevenueBudget').textContent = totalRevenueBudget.toLocaleString();
+            document.getElementById('totalCostSalesBudget').textContent = totalCostSalesBudget.toLocaleString();
+            document.getElementById('totalOperatingExpensesBudget').textContent = totalOperatingExpensesBudget.toLocaleString();
+            document.getElementById('gopBudget').textContent = gopBudget.toLocaleString();
+            document.getElementById('gopPercentBudget').textContent = gopPercentBudget.toFixed(2);
+
+            // Update variances
+            updateVariance('foodRevenue', 'foodRevenueBudget', 'foodRevenueVariance');
+            updateVariance('beverageRevenue', 'beverageRevenueBudget', 'beverageRevenueVariance');
+            updateVariance('otherRevenue', 'otherRevenueBudget', 'otherRevenueVariance');
+            document.getElementById('numGuestsVariance').textContent = (numGuests - numGuestsBudget).toLocaleString(); // No color for guests
+            updateVariance('totalRevenue', 'totalRevenueBudget', 'totalRevenueVariance');
+
+            updateVariance('foodCost', 'foodCostBudget', 'foodCostVariance', true); // Expenses are negative variance if actual > budget
+            updateVariance('beverageCost', 'beverageCostBudget', 'beverageCostVariance', true);
+            updateVariance('otherCost', 'otherCostBudget', 'otherCostVariance', true);
+            updateVariance('totalCostSales', 'totalCostSalesBudget', 'totalCostSalesVariance', true);
+
+            updateVariance('banquetExpenses', 'banquetExpensesBudget', 'banquetExpensesVariance', true);
+            updateVariance('chinaware', 'chinawareBudget', 'chinawareVariance', true);
+            updateVariance('cleaningSupplies', 'cleaningSuppliesBudget', 'cleaningSuppliesVariance', true);
+            updateVariance('complimentary', 'complimentaryBudget', 'complimentaryVariance', true);
+            updateVariance('contractServices', 'contractServicesBudget', 'contractServicesVariance', true);
+            updateVariance('decorations', 'decorationsBudget', 'decorationsVariance', true);
+            updateVariance('dishwashing', 'dishwashingBudget', 'dishwashingVariance', true);
+            updateVariance('dues', 'duesBudget', 'duesVariance', true);
+            updateVariance('equipmentRental', 'equipmentRentalBudget', 'equipmentRentalVariance', true);
+            updateVariance('flatware', 'flatwareBudget', 'flatwareVariance', true);
+            updateVariance('glassware', 'glasswareBudget', 'glasswareVariance', true);
+            updateVariance('ice', 'iceBudget', 'iceVariance', true);
+            updateVariance('lpgGas', 'lpgGasBudget', 'lpgGasVariance', true);
+            updateVariance('laundry', 'laundryBudget', 'laundryVariance', true);
+            updateVariance('licenses', 'licensesBudget', 'licensesVariance', true);
+            updateVariance('salary', 'salaryBudget', 'salaryVariance', true);
+            updateVariance('menuBeverages', 'menuBeveragesBudget', 'menuBeveragesVariance', true);
+            updateVariance('music', 'musicBudget', 'musicVariance', true);
+            updateVariance('operatingSupplies', 'operatingSuppliesBudget', 'operatingSuppliesVariance', true);
+            updateVariance('paperPlastics', 'paperPlasticsBudget', 'paperPlasticsVariance', true);
+            updateVariance('printing', 'printingBudget', 'printingVariance', true);
+            updateVariance('telephone', 'telephoneBudget', 'telephoneVariance', true);
+            updateVariance('training', 'trainingBudget', 'trainingVariance', true);
+            updateVariance('visitCustomer', 'visitCustomerBudget', 'visitCustomerVariance', true);
+            updateVariance('uniformLaundry', 'uniformLaundryBudget', 'uniformLaundryVariance', true);
+            updateVariance('uniforms', 'uniformsBudget', 'uniformsVariance', true);
+            updateVariance('casualService', 'casualServiceBudget', 'casualServiceVariance', true);
+            updateVariance('casualKitchen', 'casualKitchenBudget', 'casualKitchenVariance', true);
+            updateVariance('casualSteward', 'casualStewardBudget', 'casualStewardVariance', true);
+            updateVariance('totalOperatingExpenses', 'totalOperatingExpensesBudget', 'totalOperatingExpensesVariance', true);
+
+            updateVariance('gop', 'gopBudget', 'gopVariance');
+            updatePercentageVariance('gopPercent', 'gopPercentBudget', 'gopPercentVariance');
+
+            // Apply color to GOP based on its value
+            const gopElement = document.getElementById('gop');
+            gopElement.classList.remove('positive', 'negative');
+            if (gop > 0) {
+                gopElement.classList.add('positive');
+            } else if (gop < 0) {
+                gopElement.classList.add('negative');
+            }
+
+            const gopPercentElement = document.getElementById('gopPercent');
+            gopPercentElement.classList.remove('positive', 'negative');
+            if (gopPercent > 0) {
+                gopPercentElement.classList.add('positive');
+            } else if (gopPercent < 0) {
+                gopPercentElement.classList.add('negative');
+            }
+        }
+        
+        // Calculate on page load
+        window.onload = calculateAll;
+        
+        // Add event listeners to all input fields to recalculate when values change
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculateAll);
+        });
+    </script>
+</body>
+</html>
