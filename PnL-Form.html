@@ -531,46 +531,11 @@
                 percentage = (actualValue / totalRevenue) * 100;
             }
             element.textContent = percentage.toFixed(2);
+            // Always remove color classes to ensure standard color
             element.classList.remove('positive', 'negative');
-
-            // List of IDs for Operating Expenses percentages that should NOT have color changes
-            const noColorChangeIds = [
-                'salariesWagesPercent', 'rentPercent', 'utilitiesPercent', 'marketingPercent',
-                'maintenancePercent', 'cleaningPercent', 'officeSuppliesPercent', 'uniformsPercent',
-                'bankChargesPercent', 'creditCardFeesPercent', 'deliveryFeesPercent',
-                'travelEntertainmentPercent', 'trainingPercent', 'insurancePercent',
-                'depreciationPercent', 'interestExpensePercent', 'otherExpensesPercent',
-                'totalOperatingExpensesPercent'
-            ];
-
-            if (noColorChangeIds.includes(id)) {
-                // Do not apply positive/negative classes for these specific IDs
-                return; 
-            }
-
-            // Existing logic for applying positive/negative classes based on variance
-            const budgetId = id.replace('Percent', 'Budget'); 
-            const budgetValue = getFloatValue(budgetId);
-            let budgetPercentage = 0;
-            const totalRevenueBudget = getFloatValue('totalRevenueBudget'); 
-
-            if (totalRevenueBudget !== 0) {
-                budgetPercentage = (budgetValue / totalRevenueBudget) * 100;
-            }
-
-            if (isCostOrExpense) {
-                if (percentage < budgetPercentage) { 
-                    element.classList.add('positive');
-                } else if (percentage > budgetPercentage) { 
-                    element.classList.add('negative');
-                }
-            } else { 
-                if (percentage > budgetPercentage) { 
-                    element.classList.add('positive');
-                } else if (percentage < budgetPercentage) { 
-                    element.classList.add('negative');
-                }
-            }
+            
+            // No conditional logic here to add 'positive' or 'negative' classes,
+            // ensuring that "Actual %" always remains a standard color.
         }
         
         function calculateRevenue() {
