@@ -465,7 +465,16 @@
 
     <script>
         function getFloatValue(id) {
-            return parseFloat(document.getElementById(id).value) || 0;
+            const element = document.getElementById(id);
+            if (!element) return 0; // Handle case where element might not exist
+
+            // Check if it's an input element (e.g., actual/budget values)
+            if (element.tagName === 'INPUT') {
+                return parseFloat(element.value) || 0;
+            } else { // Assume it's a display element like a span (e.g., calculated results)
+                // Remove commas from the text content before parsing, as toLocaleString adds them
+                return parseFloat(element.textContent.replace(/,/g, '')) || 0;
+            }
         }
 
         function setResult(id, value, isCurrency = true) {
@@ -522,7 +531,7 @@
             const budgetId = id.replace('Percent', 'Budget'); // e.g., 'foodCostPercent' -> 'foodCostBudget'
             const budgetValue = getFloatValue(budgetId);
             let budgetPercentage = 0;
-            const totalRevenueBudget = getFloatValue('totalRevenueBudget');
+            const totalRevenueBudget = getFloatValue('totalRevenueBudget'); // This will now correctly get from span
 
             if (totalRevenueBudget !== 0) {
                 budgetPercentage = (budgetValue / totalRevenueBudget) * 100;
@@ -717,7 +726,7 @@
             setResult('gopBudget', gopBudget);
             setVarianceResult('gopVariance', gop, gopBudget);
             
-            const totalRevenue = getFloatValue('totalRevenue'); 
+            const totalRevenue = getFloatValue('totalRevenue'); // This will now correctly get from span
             setPercentageResult('gopPercent', gop, totalRevenue, false); // false for isCostOrExpense (it's profit)
         }
 
