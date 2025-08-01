@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แบบประเมินความพร้อมธุรกิจร้านอาหาร</title>
+    <title>แบบประเมินความพร้อมธุรกิจร้านอาหาร - R&B Transolution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,15 +13,15 @@
         }
 
         body {
-            font-family: 'Sarabun', 'Georgia', serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, #1C1C1C 0%, #2F2F2F 100%);
             min-height: 100vh;
-            color: #fff;
-            line-height: 1.6;
+            color: #FFFEF7;
+            line-height: 1.8;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -28,126 +29,174 @@
         .header {
             text-align: center;
             margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 2rem;
+            background: rgba(245, 242, 232, 0.95);
             border-radius: 15px;
-            border: 2px solid #d4af37;
+            border: 2px solid #B8860B;
+            color: #1C1C1C;
+        }
+
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+
+        .logo-mockup {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-main {
+            font-size: 2.2rem;
+            color: #B8860B;
+            font-weight: 600;
+        }
+
+        .logo-sub {
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: #1C1C1C;
+            font-weight: 400;
+        }
+
+        .logo-tag {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            font-size: 0.9rem;
+            color: #2F2F2F;
+            margin-top: 0.5rem;
         }
 
         .header h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: #d4af37;
+            color: #1C1C1C;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
         }
 
         .header p {
             font-size: 1.2rem;
-            color: #e8e8e8;
+            color: #2F2F2F;
             font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #B8860B;
+            font-weight: 500;
+            margin-top: 1rem;
         }
 
         .section {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(245, 242, 232, 0.1);
             margin-bottom: 2rem;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 12px;
-            border-left: 5px solid #d4af37;
+            border-left: 4px solid #B8860B;
             backdrop-filter: blur(10px);
         }
 
         .section h2 {
-            color: #d4af37;
-            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: #B8860B;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            font-weight: 600;
         }
 
         .section-icon {
-            width: 30px;
-            height: 30px;
-            background: #d4af37;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a1a2e;
-            font-weight: bold;
+            color: #FFFEF7;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .question {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            margin-bottom: 1.8rem;
+            padding: 1.5rem;
+            background: rgba(245, 242, 232, 0.08);
+            border-radius: 10px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(184, 134, 11, 0.2);
         }
 
         .question:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateX(5px);
+            background: rgba(184, 134, 11, 0.15);
+            transform: translateX(8px);
+            border-color: rgba(184, 134, 11, 0.4);
         }
 
         .question label {
             flex: 1;
             font-size: 1.1rem;
-            color: #f0f0f0;
+            color: #F5F2E8;
             cursor: pointer;
-            padding-right: 1rem;
+            padding-right: 1.5rem;
+            font-weight: 400;
         }
 
         .checkbox-container {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .checkbox-option {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .custom-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #d4af37;
-            border-radius: 4px;
+            width: 26px;
+            height: 26px;
+            border: 3px solid #B8860B;
+            border-radius: 6px;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(28, 28, 28, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .custom-checkbox:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #f4d03f;
+            background: rgba(184, 134, 11, 0.2);
+            border-color: #DAA520;
+            box-shadow: 0 0 15px rgba(184, 134, 11, 0.3);
         }
 
         .custom-checkbox.checked {
-            background: #d4af37;
-            border-color: #d4af37;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+            border-color: #DAA520;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
         }
 
         .custom-checkbox.checked::after {
             content: '✓';
-            color: #1a1a2e;
-            font-weight: bold;
+            color: #FFFEF7;
+            font-weight: 600;
             font-size: 18px;
             line-height: 1;
         }
 
         .checkbox-label {
-            color: #e8e8e8;
+            color: #F5F2E8;
             font-weight: 500;
             cursor: pointer;
+            font-size: 1rem;
         }
 
         input[type="radio"] {
@@ -156,82 +205,93 @@
 
         .submit-section {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .submit-btn {
-            background: linear-gradient(45deg, #d4af37, #f4d03f);
-            color: #1a1a2e;
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+            color: #FFFEF7;
             border: none;
-            padding: 1rem 3rem;
+            padding: 1.2rem 4rem;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.6);
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
         }
 
         .result-section {
             display: none;
             text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
+            margin-top: 4rem;
+            padding: 3rem;
             border-radius: 15px;
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeIn 0.6s ease-in;
+            border: 2px solid #B8860B;
         }
 
         .result-excellent {
-            background: linear-gradient(135deg, #1e7e34, #28a745);
-            border: 3px solid #d4af37;
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.9), rgba(40, 167, 69, 0.9));
+            color: #FFFEF7;
         }
 
         .result-good {
-            background: linear-gradient(135deg, #856404, #ffc107);
-            color: #1a1a2e;
-            border: 3px solid #d4af37;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.9), rgba(218, 165, 32, 0.9));
+            color: #FFFEF7;
         }
 
         .result-needs-improvement {
-            background: linear-gradient(135deg, #721c24, #dc3545);
-            border: 3px solid #d4af37;
+            background: linear-gradient(135deg, rgba(139, 34, 34, 0.9), rgba(220, 53, 69, 0.9));
+            color: #FFFEF7;
         }
 
         .result-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .result-score {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #DAA520;
         }
 
         .result-description {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .recommendations {
             text-align: left;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
+            background: rgba(28, 28, 28, 0.4);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2.5rem;
+            border: 1px solid rgba(184, 134, 11, 0.3);
         }
 
         .recommendations h3 {
-            color: #d4af37;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #DAA520;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
         .recommendations ul {
@@ -240,44 +300,75 @@
         }
 
         .recommendations li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+            font-size: 1.1rem;
         }
 
         .recommendations li:before {
             content: '→ ';
-            color: #d4af37;
-            font-weight: bold;
+            color: #B8860B;
+            font-weight: 600;
+            margin-right: 0.5rem;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .progress-bar {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            height: 10px;
+            background: rgba(47, 47, 47, 0.3);
+            border-radius: 5px;
             margin: 2rem 0;
             overflow: hidden;
+            border: 1px solid rgba(184, 134, 11, 0.3);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #d4af37, #f4d03f);
+            background: linear-gradient(90deg, #B8860B, #DAA520);
             width: 0%;
-            transition: width 0.3s ease;
-            border-radius: 4px;
+            transition: width 0.4s ease;
+            border-radius: 5px;
+        }
+
+        .brand-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(245, 242, 232, 0.05);
+            border-radius: 10px;
+            border-top: 2px solid #B8860B;
+        }
+
+        .brand-footer p {
+            color: #F5F2E8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            color: #B8860B;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🍽️ แบบประเมินความพร้อมธุรกิจร้านอาหาร</h1>
-            <p>ประเมินความพร้อมของร้านอาหารในด้านต่างๆ ที่สำคัญต่อธุรกิจ</p>
+            <div class="logo-section">
+                <div class="logo-mockup">
+                    <div class="logo-main">R & B</div>
+                    <div class="logo-sub">TRANSOLUTION</div>
+                    <div class="logo-tag">CONSULTING</div>
+                </div>
+            </div>
+            <h1>แบบประเมินความพร้อมธุรกิจร้านอาหาร</h1>
+            <p>วิเคราะห์จุดแข็ง จุดอ่อน และโอกาสในการพัฒนาธุรกิจของคุณ<br>ด้วยระบบประเมินมาตรฐานสากล</p>
+            <div class="tagline">ยกระดับร้านอาหาร เปลี่ยนผลลัพธ์ให้ดีขึ้น</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -303,7 +394,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณได้ระบุและแก้ไขจุดอ่อนหลักของร้านแล้วหรือไม่?</label>
+                    <label>คุณได้ระบุและจัดการกับจุดอ่อนหลักของร้านอย่างเป็นระบบแล้วหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="swot2" data-value="yes"></div>
@@ -318,7 +409,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณวิเคราะห์โอกาสในตลาดเพื่อการเติบโตอย่างสม่ำเสมอหรือไม่?</label>
+                    <label>คุณติดตามและวิเคราะห์โอกาสทางธุรกิจในตลาดอย่างสม่ำเสมอหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="swot3" data-value="yes"></div>
@@ -333,7 +424,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณได้เตรียมกลยุทธ์เพื่อลดอุปสรรคที่อาจเกิดขึ้นหรือไม่?</label>
+                    <label>คุณมีแผนรับมือกับอุปสรรคและความเสี่ยงที่อาจเกิดขึ้นหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="swot4" data-value="yes"></div>
@@ -353,7 +444,7 @@
             <div class="section">
                 <h2><span class="section-icon">₿</span>การจัดการทางการเงิน</h2>
                 <div class="question">
-                    <label>คุณมีเงินทุนเริ่มต้นหรือเงินสำรองหมุนเวียนที่เพียงพอหรือไม่?</label>
+                    <label>คุณมีเงินทุนหมุนเวียนและเงินสำรองที่เพียงพอสำหรับการดำเนินงานหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="finance1" data-value="yes"></div>
@@ -368,7 +459,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณติดตามต้นทุนอาหารและรักษาให้อยู่ต่ำกว่า 30% ของรายได้หรือไม่?</label>
+                    <label>คุณควบคุมต้นทุนอาหารให้อยู่ในระดับที่เหมาะสม (ไม่เกิน 30% ของรายได้) หรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="finance2" data-value="yes"></div>
@@ -383,7 +474,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีงบประมาณรายเดือนและการคาดการณ์กระแสเงินสดที่ละเอียดหรือไม่?</label>
+                    <label>คุณมีระบบงบประมาณและการคาดการณ์กระแสเงินสดที่ชัดเจนหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="finance3" data-value="yes"></div>
@@ -398,7 +489,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>อัตรากำไรของคุณอยู่ในระดับที่ดี (โดยทั่วไป 10-15% กำไรสุทธิ) หรือไม่?</label>
+                    <label>อัตรากำไรสุทธิของคุณอยู่ในเกณฑ์มาตรฐาน (10-15%) หรือดีกว่าหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="finance4" data-value="yes"></div>
@@ -418,7 +509,7 @@
             <div class="section">
                 <h2><span class="section-icon">★</span>ความพึงพอใจของลูกค้า</h2>
                 <div class="question">
-                    <label>คุณเก็บและวิเคราะห์ความคิดเห็นของลูกค้าอย่างสม่ำเสมอหรือไม่?</label>
+                    <label>คุณมีระบบการรวบรวมและวิเคราะห์ข้อมูลความพึงพอใจของลูกค้าอย่างสม่ำเสมอหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="guest1" data-value="yes"></div>
@@ -433,7 +524,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คะแนนเฉลี่ยของลูกค้าในแพลตฟอร์มรีวิวสูงกว่า 4.0 ดาวหรือไม่?</label>
+                    <label>คะแนนรีวิวเฉลี่ยของร้านอยู่ที่ 4.0 ดาวขึ้นไปในแพลตฟอร์มออนไลน์หรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="guest2" data-value="yes"></div>
@@ -448,7 +539,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีระบบการจัดการข้อร้องเรียนและการแก้ไขปัญหาหรือไม่?</label>
+                    <label>คุณมีกระบวนการจัดการข้อร้องเรียนและแก้ไขปัญหาที่เป็นระบบหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="guest3" data-value="yes"></div>
@@ -463,7 +554,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีโปรแกรมสร้างความภักดีหรือโปรแกรมสำหรับลูกค้าประจำหรือไม่?</label>
+                    <label>คุณมีโปรแกรมสร้างความผูกพันและรักษาลูกค้าประจำหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="guest4" data-value="yes"></div>
@@ -481,9 +572,9 @@
 
             <!-- Employee Management Section -->
             <div class="section">
-                <h2><span class="section-icon">👥</span>การจัดการพนักงาน</h2>
+                <h2><span class="section-icon">👥</span>การจัดการทรัพยากรบุคคล</h2>
                 <div class="question">
-                    <label>อัตราการเปลี่ยนแปลงพนักงานของคุณต่ำกว่า 100% ต่อปีหรือไม่?</label>
+                    <label>อัตราการลาออกของพนักงานอยู่ในระดับที่ยอมรับได้ (ต่ำกว่า 100% ต่อปี) หรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="employee1" data-value="yes"></div>
@@ -498,7 +589,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีโปรแกรมการฝึกอบรมที่มีโครงสร้างสำหรับทุกตำแหน่งหรือไม่?</label>
+                    <label>คุณมีโปรแกรมการอบรมและพัฒนาพนักงานที่เป็นระบบสำหรับทุกตำแหน่งหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="employee2" data-value="yes"></div>
@@ -513,7 +604,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณเสนอเงินเดือนและสวัสดิการที่แข่งขันได้ในตลาดหรือไม่?</label>
+                    <label>คุณเสนอค่าตอบแทนและสวัสดิการที่แข่งขันได้ในตลาดแรงงานหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="employee3" data-value="yes"></div>
@@ -528,7 +619,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีคำอธิบายงานและมาตรฐานการปฏิบัติงานที่ชัดเจนหรือไม่?</label>
+                    <label>คุณมีคำอธิบายลักษณะงานและเกณฑ์การประเมินผลงานที่ชัดเจนหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="employee4" data-value="yes"></div>
@@ -548,7 +639,7 @@
             <div class="section">
                 <h2><span class="section-icon">📢</span>การตลาดและการสร้างแบรนด์</h2>
                 <div class="question">
-                    <label>คุณมีการทำโซเชียลมีเดียอย่างสม่ำเสมอหรือไม่?</label>
+                    <label>คุณมีการสื่อสารกับลูกค้าผ่านช่องทางดิจิทัลอย่างสม่ำเสมอและมีประสิทธิภาพหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="marketing1" data-value="yes"></div>
@@ -563,7 +654,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีเว็บไซต์ที่ดูมืออาชีพพร้อมระบบสั่งอาหารออนไลน์หรือไม่?</label>
+                    <label>คุณมีเว็บไซต์ที่ทันสมัยพร้อมระบบสั่งอาหารออนไลน์หรือบริการจองโต๊ะหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="marketing2" data-value="yes"></div>
@@ -578,7 +669,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีเอกลักษณ์ของแบรนด์และข้อความที่ชัดเจนสม่ำเสมอหรือไม่?</label>
+                    <label>คุณมีเอกลักษณ์ของแบรนด์และข้อความหลักที่สื่อสารอย่างสม่ำเสมอหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="marketing3" data-value="yes"></div>
@@ -593,7 +684,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณติดตามผลตอบแทนจากการลงทุนทางการตลาดและปรับกลยุทธ์ตามผลงานหรือไม่?</label>
+                    <label>คุณติดตามและวิเคราะห์ผลตอบแทนจากการลงทุนด้านการตลาดอย่างเป็นระบบหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="marketing4" data-value="yes"></div>
@@ -611,9 +702,9 @@
 
             <!-- Operations Section -->
             <div class="section">
-                <h2><span class="section-icon">⚙️</span>การดำเนินงาน</h2>
+                <h2><span class="section-icon">⚙️</span>การดำเนินงานและควบคุมคุณภาพ</h2>
                 <div class="question">
-                    <label>คุณมีสูตรอาหารมาตรฐานและระบบควบคุมส่วนผสมหรือไม่?</label>
+                    <label>คุณมีสูตรอาหารมาตรฐานและระบบควบคุมปริมาณที่สม่ำเสมอหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="operations1" data-value="yes"></div>
@@ -628,7 +719,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีการจัดการสินค้าคงคลังที่มีประสิทธิภาพและความสัมพันธ์ที่ดีกับผู้จำหน่ายหรือไม่?</label>
+                    <label>คุณมีระบบการจัดการสินค้าคงคลังและความสัมพันธ์ที่ดีกับผู้จำหน่ายหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="operations2" data-value="yes"></div>
@@ -643,7 +734,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณปฏิบัติตามข้อกำหนดด้านสุขภาพ ความปลอดภัย และใบอนุญาทั้งหมดหรือไม่?</label>
+                    <label>คุณปฏิบัติตามมาตรฐานด้านสุขอนามัย ความปลอดภัย และกฎหมายที่เกี่ยวข้องอย่างครบถ้วนหรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="operations3" data-value="yes"></div>
@@ -658,7 +749,7 @@
                     </div>
                 </div>
                 <div class="question">
-                    <label>คุณมีระบบเทคโนโลยี (POS, การจัดตารางงาน ฯลฯ) ที่สนับสนุนประสิทธิภาพหรือไม่?</label>
+                    <label>คุณใช้เทคโนโลยีสำหรับเพิ่มประสิทธิภาพการดำเนินงาน (ระบบ POS, การจัดตาราง, ฯลฯ) หรือไม่?</label>
                     <div class="checkbox-container">
                         <div class="checkbox-option">
                             <div class="custom-checkbox" data-name="operations4" data-value="yes"></div>
@@ -675,12 +766,17 @@
             </div>
 
             <div class="submit-section">
-                <button type="submit" class="submit-btn">คำนวณความพร้อมของร้านอาหาร</button>
+                <button type="submit" class="submit-btn">วิเคราะห์ความพร้อมธุรกิจของคุณ</button>
             </div>
         </form>
 
         <div id="resultSection" class="result-section">
             <div id="resultContent"></div>
+        </div>
+
+        <div class="brand-footer">
+            <p>© 2025 R&B Transolution. All rights reserved.</p>
+            <p class="contact-info">ปรึกษาฟรี | ติดต่อ LINE: @rnbtransolution</p>
         </div>
     </div>
 
@@ -746,48 +842,56 @@
             
             if (percentage >= 80) {
                 resultClass = 'result-excellent';
-                title = '🌟 ยอดเยี่ยม';
-                description = 'ยินดีด้วย! ร้านอาหารของคุณแสดงให้เห็นถึงความพร้อมที่โดดเด่นในทุกด้านสำคัญของธุรกิจ คุณได้สร้างรากฐานที่แข็งแกร่งสำหรับความสำเร็จและการเติบโตอย่างยั่งยืน';
+                title = '🌟 ความพร้อมระดับเป็นเลิศ';
+                description = 'ยินดีด้วย! ร้านอาหารของคุณมีความพร้อมในระดับที่ยอดเยี่ยม คุณได้สร้างรากฐานที่แข็งแกร่งสำหรับการเติบโตอย่างยั่งยืนและสามารถแข่งขันได้อย่างมีประสิทธิภาพในตลาด';
                 recommendations = [
-                    'รักษาความได้เปลี่ยนและปรับปรุงระบบที่มีอยู่อย่างต่อเนื่อง',
-                    'ขยายตลาดและพิจารณาการเปิดสาขาใหม่',
-                    'แบ่งปันประสบการณ์ความสำเร็จกับผู้ประกอบการรายอื่น',
-                    'พัฒนานวัตกรรมใหม่ๆ เพื่อคงความเป็นผู้นำในตลาด'
+                    'เน้นการปรับปรุงอย่างต่อเนื่องเพื่อรักษาความเป็นเลิศ',
+                    'พิจารณาการขยายธุรกิจหรือเพิ่มสาขาใหม่',
+                    'พัฒนานวัตกรรมใหม่ๆ เพื่อคงความเป็นผู้นำ',
+                    'แบ่งปันความรู้และประสบการณ์กับเครือข่ายธุรกิจ',
+                    'เป็นต้นแบบสำหรับร้านอาหารอื่นๆ ในอุตสาหกรรม'
                 ];
             } else if (percentage >= 60) {
                 resultClass = 'result-good';
-                title = '👍 ดี';
-                description = 'ร้านอาหารของคุณมีรากฐานที่แข็งแกร่งและพร้อมสำหรับการดำเนินธุรกิจ มีพื้นที่สำหรับการปรับปรุงในบางด้านที่จะช่วยให้คุณก้าวไปสู่ระดับที่ยอดเยี่ยม';
+                title = '👍 ความพร้อมระดับดี';
+                description = 'ร้านอาหารของคุณมีรากฐานที่มั่นคงและพร้อมสำหรับการดำเนินธุรกิจ แต่ยังมีโอกาสในการปรับปรุงเพื่อก้าวสู่ความเป็นเลิศ การลงทุนในการพัฒนาด้านที่ยังขาดจะช่วยเพิ่มศักยภาพในการแข่งขัน';
                 recommendations = [
-                    'ระบุและปรับปรุงด้านที่ได้คะแนน "ไม่ใช่" ให้เป็นลำดับความสำคัญ',
-                    'เพิ่มการลงทุนในการตลาดดิจิทัลและโซเชียลมีเดีย',
-                    'พัฒนาระบบการจัดการข้อมูลลูกค้าและความสัมพันธ์',
-                    'ปรับปรุงกระบวนการฝึกอบรมพนักงานและระบบรางวัล',
-                    'ติดตั้งระบบการติดตามและวิเคราะห์ผลการดำเนินงาน'
+                    'วิเคราะห์และปรับปรุงด้านที่ได้คะแนนต่ำเป็นลำดับแรก',
+                    'เพิ่มการลงทุนในเทคโนโลยีและระบบดิจิทัล',
+                    'พัฒนากลยุทธ์การตลาดให้มีประสิทธิภาพมากขึ้น',
+                    'ปรับปรุงระบบการจัดการข้อมูลลูกค้า',
+                    'เสริมสร้างทักษะให้กับทีมงานอย่างเป็นระบบ',
+                    'ติดตั้งระบบการวัดผลและติดตามประสิทธิภาพ'
                 ];
             } else {
                 resultClass = 'result-needs-improvement';
-                title = '⚠️ ต้องปรับปรุง';
-                description = 'ร้านอาหารของคุณต้องการการปรับปรุงในหลายด้าน เพื่อให้สามารถแข่งขันได้อย่างมีประสิทธิภาพและประสบความสำเร็จในระยะยาว';
+                title = '⚠️ ต้องการการพัฒนาเร่งด่วน';
+                description = 'ผลการประเมินแสดงให้เห็นว่าร้านอาหารของคุณต้องการการปรับปรุงในหลายด้านเพื่อให้สามารถแข่งขันได้อย่างมีประสิทธิภาพ การลงทุนในการพัฒนาอย่างเป็นระบบจะช่วยให้ธุรกิจของคุณก้าวไปสู่ความสำเร็จ';
                 recommendations = [
-                    'วางแผนการปรับปรุงทีละด้านตามลำดับความสำคัญ',
-                    'เริ่มต้นจากการจัดการทางการเงินและการควบคุมต้นทุน',
-                    'ลงทุนในการฝึกอบรมพนักงานและการพัฒนาทีมงาน',
-                    'สร้างระบบการรับฟังและตอบสนองความต้องการลูกค้า',
-                    'พัฒนาแผนการตลาดที่ชัดเจนและมีงบประมาณ',
-                    'ปรึกษาผู้เชี่ยวชาญหรือที่ปรึกษาทางธุรกิจ'
+                    'จัดทำแผนการปรับปรุงทีละด้านตามลำดับความสำคัญ',
+                    'เริ่มต้นจากการจัดการทางการเงินและควบคุมต้นทุน',
+                    'พัฒนาระบบการบริการและคุณภาพอาหาร',
+                    'ลงทุนในการฝึกอบรมพนักงานและการจัดการทีม',
+                    'สร้างระบบการตลาดและการสื่อสารที่มีประสิทธิภาพ',
+                    'ปรึกษาผู้เชี่ยวชาญด้านการจัดการร้านอาหาร',
+                    'พิจารณาใช้บริการที่ปรึกษาเพื่อการเปลี่ยนแปลงที่ยั่งยืน'
                 ];
             }
             
             resultContent.innerHTML = `
                 <div class="result-title">${title}</div>
-                <div class="result-score">${yesCount}/${totalQuestions} (${Math.round(percentage)}%)</div>
+                <div class="result-score">${yesCount}/${totalQuestions} คะแนน (${Math.round(percentage)}%)</div>
                 <div class="result-description">${description}</div>
                 <div class="recommendations">
-                    <h3>คำแนะนำสำหรับการพัฒนา:</h3>
+                    <h3>แนวทางการพัฒนาที่แนะนำ:</h3>
                     <ul>
                         ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
                     </ul>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(184, 134, 11, 0.3); text-align: center;">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #DAA520;">สนใจปรึกษาเพิ่มเติมหรือรับการวิเคราะห์เชิงลึก?</p>
+                    <p style="font-size: 1rem; color: #F5F2E8;">ติดต่อทีมงาน R&B Transolution เพื่อรับคำปรึกษาฟรี</p>
+                    <p style="font-size: 1rem; color: #B8860B; font-weight: 600; margin-top: 0.5rem;">LINE: @rnbtransolution | โทร: 02-XXX-XXXX</p>
                 </div>
             `;
             
