@@ -32,9 +32,6 @@
             min-height: 100vh;
             padding: 20px;
         }
-            min-height: 100vh;
-            padding: 20px;
-        }
 
         .container {
             max-width: 1400px;
@@ -54,12 +51,6 @@
 
         .header {
             background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
             color: white;
             padding: 30px;
             text-align: center;
@@ -120,9 +111,6 @@
         }
 
         .form-section::before { content: ''; position: absolute; top:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--brand-gold), #a3851a); transform: scaleX(0); transition: transform 0.3s ease; }
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
 
         .form-section:hover::before {
             transform: scaleX(1);
@@ -480,13 +468,11 @@
         
         <div class="form-container">
             <form id="dutyLogForm" action="https://formspree.io/f/mvgqvnql" method="POST">
-                <!-- Formspree required fields -->
                 <input type="hidden" name="_replyto" value="neawla@gmail.com">
                 <input type="hidden" name="_subject" value="R&B Duty Log Submission">
                 <input type="email" name="email" style="display:none" value="neawla@gmail.com">
                 
                 <div class="form-grid">
-                    <!-- ข้อมูลพื้นฐาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-info-circle"></i>
@@ -530,7 +516,6 @@
                         </div>
                     </div>
 
-                    <!-- รายได้แยกตามประเภท -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-chart-line"></i>
@@ -568,7 +553,6 @@
                         </div>
                     </div>
 
-                    <!-- ข้อมูลลูกค้า -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-users"></i>
@@ -608,7 +592,6 @@
                         </div>
                     </div>
 
-                    <!-- ข้อมูลพนักงาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-user-tie"></i>
@@ -656,7 +639,6 @@
                         </div>
                     </div>
 
-                    <!-- บันทึกการปฏิบัติงาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-exclamation-triangle"></i>
@@ -688,12 +670,10 @@
 
                 
                 <div class="submit-section" style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-                    <!-- Button A: ส่งรายงาน -->
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i>
                         ส่งรายงาน
                     </button>
-                    <!-- Button B: Print -->
                     <button type="button" class="submit-btn" onclick="window.print()">
                         <i class="fas fa-print"></i>
                         Print
@@ -926,7 +906,6 @@
         updateCalculations();
     </script>
 
-    <!-- In-browser AI with WebLLM (no API keys) -->
     <script type="module">
     import { CreateWebWorkerMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
 
