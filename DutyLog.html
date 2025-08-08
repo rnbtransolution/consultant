@@ -561,7 +561,7 @@
                         <div class="kpi-display">
                             <div class="kpi-row">
                                 <div class="kpi-item">
-                                    <div class="kpi-value" id="total-revenue">฿0.00</div>
+                                    <div class="kpi-value" id="total-revenue">0.00</div>
                                     <div class="kpi-label">รายได้รวม</div>
                                 </div>
                                 <div class="kpi-item">
@@ -604,7 +604,7 @@
                         <div class="kpi-display">
                             <div class="kpi-row">
                                 <div class="kpi-item">
-                                    <div class="kpi-value" id="avg-spend">฿0.00</div>
+                                    <div class="kpi-value" id="avg-spend">0.00</div>
                                     <div class="kpi-label">ค่าใช้จ่าย<br>เฉลี่ย/คน</div>
                                 </div>
                                 <div class="kpi-item">
@@ -655,7 +655,7 @@
                                     <div class="kpi-label">ลูกค้า/เสิร์ฟ</div>
                                 </div>
                                 <div class="kpi-item">
-                                    <div class="kpi-value" id="revenue-per-staff">฿0</div>
+                                    <div class="kpi-value" id="revenue-per-staff">0</div>
                                     <div class="kpi-label">รายได้/พนักงาน</div>
                                 </div>
                             </div>
@@ -720,16 +720,18 @@
 
         // Real-time calculations
         function updateCalculations() {
-            const foodRevenue = parseFloat(document.getElementById('food-revenue').value) || 0;
-            const beverageRevenue = parseFloat(document.getElementById('beverage-revenue').value) || 0;
-            const otherRevenue = parseFloat(document.getElementById('other-revenue').value) || 0;
+            // Corrected to handle comma-formatted numbers
+            const foodRevenue = parseFloat(document.getElementById('food-revenue').value.replace(/,/g, '')) || 0;
+            const beverageRevenue = parseFloat(document.getElementById('beverage-revenue').value.replace(/,/g, '')) || 0;
+            const otherRevenue = parseFloat(document.getElementById('other-revenue').value.replace(/,/g, '')) || 0;
+            
             const totalGuests = parseInt(document.getElementById('total-guests').value) || 0;
             const reservations = parseInt(document.getElementById('reservations').value) || 0;
             const servers = parseInt(document.getElementById('servers').value) || 0;
 
             // Revenue calculations
             const totalRevenue = foodRevenue + beverageRevenue + otherRevenue;
-            document.getElementById('total-revenue').textContent = `฿${formatNumber(totalRevenue.toFixed(2))}`;
+            document.getElementById('total-revenue').textContent = `${formatNumber(totalRevenue.toFixed(2))}`;
             
             const foodPercentage = totalRevenue > 0 ? (foodRevenue / totalRevenue * 100) : 0;
             const beveragePercentage = totalRevenue > 0 ? (beverageRevenue / totalRevenue * 100) : 0;
@@ -738,7 +740,7 @@
 
             // Guest calculations
             const avgSpend = totalGuests > 0 ? totalRevenue / totalGuests : 0;
-            document.getElementById('avg-spend').textContent = `฿${formatNumber(avgSpend.toFixed(2))}`;
+            document.getElementById('avg-spend').textContent = `${formatNumber(avgSpend.toFixed(2))}`;
             
             const reservationRate = totalGuests > 0 ? (reservations / totalGuests * 100) : 0;
             document.getElementById('reservation-rate').textContent = `${reservationRate.toFixed(1)}%`;
@@ -755,7 +757,7 @@
             document.getElementById('guests-per-server').textContent = guestsPerServer.toFixed(1);
 
             const revenuePerStaff = totalStaff > 0 ? (totalRevenue / totalStaff) : 0;
-            document.getElementById('revenue-per-staff').textContent = `฿${formatNumber(revenuePerStaff.toFixed(0))}`;
+            document.getElementById('revenue-per-staff').textContent = `${formatNumber(revenuePerStaff.toFixed(0))}`;
         }
 
         // Add event listeners for real-time calculations
@@ -771,9 +773,9 @@
 
         // Auto-generate manager comments in Thai
         function generateComments() {
-            const totalRevenue = parseNumber(document.getElementById('total-revenue').textContent.replace('฿', ''));
+            const totalRevenue = parseNumber(document.getElementById('total-revenue').textContent);
             const totalGuests = parseInt(document.getElementById('total-guests').value) || 0;
-            const avgSpend = parseNumber(document.getElementById('avg-spend').textContent.replace('฿', ''));
+            const avgSpend = parseNumber(document.getElementById('avg-spend').textContent);
             const weather = document.getElementById('weather').value;
             const shift = document.getElementById('shift').value;
             const specialEvents = document.getElementById('special-events').value;
@@ -801,11 +803,11 @@
             // Revenue analysis
             if (totalRevenue > 0) {
                 if (avgSpend > 800) {
-                    comments.push(`ผลการดำเนินงานดีเยี่ยม ค่าใช้จ่ายเฉลี่ยสูงที่ ฿${formatNumber(avgSpend.toFixed(0))} ต่อคน`);
+                    comments.push(`ผลการดำเนินงานดีเยี่ยม ค่าใช้จ่ายเฉลี่ยสูงที่ ${formatNumber(avgSpend.toFixed(0))} ต่อคน`);
                 } else if (avgSpend < 400) {
-                    comments.push(`ค่าใช้จ่ายเฉลี่ยต่ำที่ ฿${formatNumber(avgSpend.toFixed(0))} ควรพิจารณาการขายเพิ่มเติม`);
+                    comments.push(`ค่าใช้จ่ายเฉลี่ยต่ำที่ ${formatNumber(avgSpend.toFixed(0))} ควรพิจารณาการขายเพิ่มเติม`);
                 } else {
-                    comments.push(`ผลการดำเนินงานคงที่ ค่าใช้จ่ายเฉลี่ย ฿${formatNumber(avgSpend.toFixed(0))} ต่อคน`);
+                    comments.push(`ผลการดำเนินงานคงที่ ค่าใช้จ่ายเฉลี่ย ${formatNumber(avgSpend.toFixed(0))} ต่อคน`);
                 }
             }
 
@@ -905,7 +907,7 @@
             const field = document.getElementById(fieldId);
             field.addEventListener('blur', function() {
                 if (this.value) {
-                    const value = parseFloat(this.value);
+                    const value = parseFloat(this.value.replace(/,/g, ''));
                     if (!isNaN(value)) {
                         this.value = formatNumber(value.toFixed(2));
                     }
