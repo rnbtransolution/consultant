@@ -9,6 +9,17 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
         
+        :root{
+            --brand-green-dark:#0b3d2e;
+            --brand-green:#0f5132;
+            --brand-gold:#C9A227;
+            --brand-black:#000000;
+            --brand-grey:#6c757d;
+            --brand-grey-light:#f4f5f7;
+            --brand-white:#ffffff;
+        }
+
+        
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +28,10 @@
 
         body {
             font-family: 'Sarabun', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
             min-height: 100vh;
             padding: 20px;
         }
@@ -39,7 +53,13 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
             color: white;
             padding: 30px;
             text-align: center;
@@ -99,14 +119,7 @@
             overflow: hidden;
         }
 
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+        .form-section::before { content: ''; position: absolute; top:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--brand-gold), #a3851a); transform: scaleX(0); transition: transform 0.3s ease; }
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -118,23 +131,17 @@
         .form-section:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: #667eea;
+            border-color: var(--brand-gold);
         }
 
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
+        .section-title { font-size: 1.3rem; font-weight: 600; color: var(--brand-green-dark);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section-title i {
-            color: #667eea;
-            font-size: 1.4rem;
-        }
+        .section-title i { color: var(--brand-gold); font-size: 1.4rem; }
 
         .form-group {
             margin-bottom: 20px;
@@ -180,62 +187,29 @@
             font-family: inherit;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            transform: translateY(-1px);
-        }
+        input:focus, select:focus, textarea:focus { outline:none; border-color: var(--brand-green-dark); box-shadow: 0 0 0 3px rgba(11, 61, 46, 0.1); transform: translateY(-1px);}
 
         textarea {
             resize: vertical;
             min-height: 120px;
         }
 
-        .submit-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .submit-section { background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             margin-top: 30px;
         }
 
-        .submit-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: inherit;
-        }
+        .submit-btn { background: var(--brand-green-dark); color: white; border: 2px solid var(--brand-gold); padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: inherit; }
 
-        .submit-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+        .submit-btn:hover { background: var(--brand-green); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
 
         .submit-btn:active {
             transform: translateY(0);
         }
 
-        .kpi-display {
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            border-left: 4px solid #667eea;
-        }
+        .kpi-display { background: linear-gradient(135deg, var(--brand-grey-light) 0%, var(--brand-white) 100%); border-radius: 15px; padding: 20px; margin-top: 20px; border-left: 4px solid var(--brand-gold); }
 
         .kpi-row {
             display: grid;
@@ -265,35 +239,13 @@
             line-height: 1.2;
         }
 
-        .generate-btn, .clear-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 0.3px;
-            font-family: inherit;
-        }
+        .generate-btn, .clear-btn { background: var(--brand-grey); color: white; border: 1px solid var(--brand-black); }
 
-        .clear-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-        }
+        .clear-btn { background: var(--brand-grey); color: white; border: 1px solid var(--brand-black); }
 
-        .generate-btn:hover, .clear-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+        .generate-btn:hover, .clear-btn:hover { background: var(--brand-black); color: white; }
 
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        .success-message { display:none; background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
             color: white;
             padding: 20px;
             border-radius: 10px;
@@ -342,6 +294,26 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        
+        /* Local AI status pill */
+        .ai-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            padding: 6px 10px;
+            border: 1px solid var(--brand-gold);
+            border-radius: 999px;
+            color: var(--brand-gold);
+            background: rgba(201,162,39,0.08);
+        }
+        .ai-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--brand-gold);
+            animation: aiPulse 1.2s infinite ease-in-out;
+        }
+        @keyframes aiPulse { 0%{opacity:.4} 50%{opacity:1} 100%{opacity:.4} }
 
         /* Print Styles */
         @media print {
@@ -700,7 +672,8 @@
                         </div>
                         <div class="form-group">
                             <label for="manager-comments">ความเห็นผู้จัดการ:</label>
-                            <div style="display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+                            <div style="display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; align-items:center;">
+                                <span id="aiStatus" class="ai-status" style="display:none;"><span class="ai-dot"></span><span>กำลังโหลดโมเดล AI ในเบราว์เซอร์…</span></span>
                                 <button type="button" class="generate-btn" onclick="generateComments()">
                                     <i class="fas fa-magic"></i> สร้างอัตโนมัติ
                                 </button>
@@ -952,5 +925,125 @@
         // Initialize calculations on page load
         updateCalculations();
     </script>
+
+    <!-- In-browser AI with WebLLM (no API keys) -->
+    <script type="module">
+    import { CreateWebWorkerMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+
+    // One-time engine holder
+    let aiEngine = null;
+    let aiLoading = false;
+
+    const modelConfig = {
+      // Small instruct model that can run in-browser; adjust if device is strong
+      model_id: "Llama-3.2-1B-instruct-q4f16_1-MLC",
+      // Alternative options you can try:
+      // "Phi-3.5-mini-instruct-q4f16_1-MLC"
+      // "Qwen2.5-1.5B-Instruct-q4f16_1-MLC"
+    };
+
+    async function ensureAI() {
+      if (aiEngine || aiLoading) return aiEngine;
+      aiLoading = true;
+      const status = document.getElementById('aiStatus');
+      if (status) status.style.display = 'inline-flex';
+      try {
+        aiEngine = await CreateWebWorkerMLCEngine(
+          new Worker("https://esm.run/@mlc-ai/web-llm/workers/engine-worker?module"),
+          modelConfig.model_id,
+          { initProgressCallback: (report) => {
+              if (status) status.querySelector('span:last-child').textContent = report.text || 'กำลังเตรียมโมเดล…';
+            }
+          }
+        );
+        if (status) status.querySelector('span:last-child').textContent = 'พร้อมใช้งาน AI ในเครื่อง';
+        return aiEngine;
+      } catch (e) {
+        console.error('AI init failed', e);
+        if (status) { status.style.display = 'none'; }
+        throw e;
+      } finally {
+        aiLoading = false;
+      }
+    }
+
+    // Fallback generator cloned from your original logic (kept minimal)
+    window.generateCommentsFallback = function() {
+      const avgSpend = parseFloat((document.getElementById('avg-spend').textContent || '0').replace(/,/g,''))||0;
+      const totalGuests = parseInt(document.getElementById('total-guests').value||'0')||0;
+      const shift = document.getElementById('shift').value;
+      const foodPct = parseFloat((document.getElementById('food-percentage').textContent||'0').replace('%',''))||0;
+      const bevPct = parseFloat((document.getElementById('beverage-percentage').textContent||'0').replace('%',''))||0;
+      const shiftThai = {'breakfast':'อาหารเช้า','lunch':'อาหารกลางวัน','dinner':'อาหารเย็น','all-day':'ตลอดวัน'};
+      const parts = [];
+      if (avgSpend > 800) parts.push(`ค่าใช้จ่ายเฉลี่ยสูง ${avgSpend.toFixed(0)}/คน ผลการดำเนินงานดี`);
+      else if (avgSpend < 400) parts.push(`ค่าใช้จ่ายเฉลี่ยต่ำ ${avgSpend.toFixed(0)}/คน ควรเน้นการขายเพิ่ม`);
+      else parts.push(`ค่าใช้จ่ายเฉลี่ยปานกลาง ${avgSpend.toFixed(0)}/คน`);
+      parts.push(`จำนวนลูกค้าในกะ${shiftThai[shift]||shift}: ${totalGuests} คน`);
+      if (bevPct < 25) parts.push(`สัดส่วนยอดขายเครื่องดื่มต่ำ (${bevPct.toFixed(1)}%)`);
+      if (bevPct > 40) parts.push(`สัดส่วนยอดขายเครื่องดื่มสูง (${bevPct.toFixed(1)}%)`);
+      parts.push('รักษามาตรฐานการบริการ และติดตามผลการขายในกะถัดไป');
+      document.getElementById('manager-comments').value = parts.join(' • ');
+    }
+
+    // Replace the existing button handler
+    window.generateComments = async function() {
+      // Collect structured data
+      const data = {
+        date: document.getElementById('date').value,
+        shift: document.getElementById('shift').value,
+        weather: document.getElementById('weather').value,
+        specialEvents: document.getElementById('special-events').value,
+        customerFeedback: document.getElementById('customer-feedback').value,
+        operationalIssues: document.getElementById('operational-issues').value,
+        totalRevenue: document.getElementById('total-revenue').textContent,
+        foodPct: document.getElementById('food-percentage').textContent,
+        bevPct: document.getElementById('beverage-percentage').textContent,
+        totalGuests: document.getElementById('total-guests').value,
+        reservations: document.getElementById('reservations').value,
+        walkIns: document.getElementById('walk-ins').value,
+        noShows: document.getElementById('no-shows').value,
+        avgSpend: document.getElementById('avg-spend').textContent,
+        servers: document.getElementById('servers').value,
+        bartenders: document.getElementById('bartenders').value,
+        kitchenStaff: document.getElementById('kitchen-staff').value,
+        supportStaff: document.getElementById('support-staff').value,
+        managerOnDuty: document.getElementById('manager-on-duty').value
+      };
+
+      // Compose Thai instruction
+      const userPrompt = `
+คุณเป็นผู้จัดการร้านอาหารระดับลักชัวรี่ เขียน "ความเห็นผู้จัดการ" ภาษาไทยแบบมืออาชีพ กระชับ อ่านง่าย
+สรุป: ภาพรวมยอดขาย/ลูกค้า, จุดเด่น, ปัญหา/สาเหตุที่เป็นไปได้ (ถ้ามี), และข้อเสนอแนะที่ทำได้จริงในกะถัดไป
+อ่านและสรุปหัวข้อ "ความคิดเห็นลูกค้า" และ "ปัญหาการดำเนินงาน" ให้ชัดเจน (เช่น ประเด็นหลัก แนวโน้ม ความเร่งด่วน) โดยไม่เปิดเผยข้อมูลส่วนบุคคลของลูกค้า
+ใช้น้ำเสียงบวก ไม่กล่าวโทษ ปิดท้ายด้วย Action items 2–4 ข้อเป็น bullet
+ข้อมูล: ${JSON.stringify(data)}
+`.trim();
+
+      // Try Local AI
+      try {
+        const engine = await ensureAI();
+        const out = await engine.chat.completions.create({
+          messages: [
+            { role: "system", content: "คุณคือผู้จัดการปฏิบัติการร้านอาหารระดับลักชัวรี่ เขียนรายงานสั้น ชัดเจน" },
+            { role: "user", content: userPrompt }
+          ],
+          temperature: 0.4,
+          stream: false
+        });
+        const text = out?.choices?.[0]?.message?.content?.trim();
+        if (text && text.length > 0) {
+          document.getElementById('manager-comments').value = text;
+          return;
+        }
+        // fallback if empty
+        window.generateCommentsFallback();
+      } catch (e) {
+        console.warn('Local AI failed, fallback to rules', e);
+        window.generateCommentsFallback();
+      }
+    }
+    </script>
+
 </body>
 </html>
