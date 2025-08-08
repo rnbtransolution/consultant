@@ -1,704 +1,345 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>R&amp;B Transolution - Restaurant Profit &amp; Loss Statement (THB)</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;family=Inter&amp;display=swap" rel="stylesheet"/>
-<style>
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            max-width: 1200px; /* Increased max-width to accommodate new columns */
-            margin: 0 auto;
-            padding: 30px;
-            background-color: #FFFEF7;
-            color: #2F2F2F;
-        }
-        h1 {
-            text-align: center;
-            color: #1C1C1C;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #DAA520;
-            padding-bottom: 10px;
-            /* --- Header Freeze Styles --- */
-            position: sticky;
-            top: 0;
-            background-color: #FFFEF7; /* Match body background or choose a contrasting one */
-            z-index: 1000; /* Ensure it stays on top of other content */
-            padding-top: 20px; /* Add some padding to the top */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: add shadow for better visual separation */
-            /* --- End Header Freeze Styles --- */
-        }
-        .form-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(47, 47, 47, 0.1);
-            border: 1px solid #F5F2E8;
-        }
-        .section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: #F9F7F0;
-            border-radius: 6px;
-            border-left: 4px solid #B8860B;
-        }
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #1C1C1C;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-        }
-        .row {
-            display: flex;
-            margin-bottom: 10px;
-            align-items: center;
-        }
-        .header-row {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header-row > div {
-            flex: 1;
-            padding: 5px;
-        }
-        .label {
-            flex: 2;
-            font-weight: 600;
-            color: #2F2F2F;
-        }
-        .input-col, .budget-col, .calc-col, .variance-col {
-            flex: 1;
-            min-width: 100px; /* Adjusted min-width for more columns */
-            text-align: right;
-            padding-right: 15px;
-            color: #2F2F2F;
-            font-size: 0.9rem;
-        }
-        .input-col input, .budget-col input {
-            width: 90%;
-            padding: 8px 12px;
-            border: 1px solid #E0DBC8;
-            border-radius: 4px;
-            background-color: white;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
-        }
-        input:focus {
-            outline: none;
-            border-color: #DAA520;
-            box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.2);
-        }
-        .result {
-            font-weight: bold;
-            color: #1C1C1C;
-        }
-        .result.positive {
-            color: green;
-        }
-        .result.negative {
-            color: red;
-        }
-        .divider {
-            border-top: 1px solid #E0DBC8;
-            margin: 20px 0;
-        }
-        .btn {
-            background-color: #B8860B;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s;
-            display: block;
-            margin: 30px auto 0;
-            width: 200px;
-            text-align: center;
-        }
-        .btn:hover {
-            background-color: #DAA520;
-        }
-        .summary-row {
-            background-color: #F5F2E8;
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-        .percentage {
-            color: #B8860B;
-            font-weight: 600;
-        }
-        /* --- Footer Styles --- */
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            color: #6a6a6a;
-            font-size: 0.9rem;
-            background-color: #f0f0f0;
-            border-top: 1px solid #e0dcc8;
-            border-radius: 0 0 8px 8px; /* Match form container's border radius bottom */
-        }
-        /* --- End Footer Styles --- */
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .input-col, .budget-col, .calc-col, .variance-col {
-                width: 100%;
-                margin-top: 5px;
-                padding-right: 0;
-                text-align: left;
-            }
-            input {
-                width: 95%;
-            }
-            .header-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    
-body { font-family: 'Inter', 'Noto Sans Thai', sans-serif; }</style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&amp;display=swap" rel="stylesheet"/></head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurant Budget Form — R&B Transolution</title>
+  <style>
+    :root{
+      /* R&B Transolution palette */
+      --deep:#0b2f25;   /* deep green */
+      --bg:#0b2f25;     /* background deep green */
+      --bg-2:#113a2d;   /* panel deep green */
+      --ink:#ffffff;    /* white */
+      --muted:#9aa3ab;  /* grey */
+      --gold:#c7a047;   /* gold */
+      --line:#2a3f36;   /* divider grey/green */
+      --accent:#0f241d; /* hover darker */
+      --black:#000000;  /* black */
+      --grey:#9aa3ab;   /* grey alias */
+      --bad:#b91c1c;    /* error */
+      --good:#166534;   /* success */
+    }
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 "Inter",system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial}
+    .wrap{max-width:1200px;margin:24px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    h1{font-size:20px;margin:0;color:var(--gold)}
+    .badge{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:6px 10px;border-radius:999px;font-size:12px}
+    .card{background:var(--bg-2);border:1px solid var(--gold);border-radius:12px;padding:14px;box-shadow:0 0 0 1px rgba(199,160,71,0.15) inset}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+    button{appearance:none;border:1px solid var(--gold);background:transparent;color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+    button:hover{background:var(--accent)}
+    button.secondary{border-color:var(--line)}
+    button.danger{border-color:var(--bad);color:#fee2e2}
+    .hint{color:var(--muted);font-size:12px}
+    .scroll{overflow:auto;border:1px solid var(--line);border-radius:12px}
+    table{border-collapse:separate;border-spacing:0;width:100%;min-width:1024px}
+    th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:middle}
+    th:first-child,td:first-child{border-left:1px solid var(--line)}
+    thead th{position:sticky;top:0;background:linear-gradient(180deg,#12211b,#0f201a)}
+    thead .month{font-weight:700;text-align:center}
+    thead .sub{font-weight:600;font-size:12px;color:var(--muted)}
+    tbody tr.section>td{background:#10261f;font-weight:700;color:var(--gold)}
+    tbody tr.total>td:first-child{font-weight:700}
+    input[type="number"]{width:110px;box-sizing:border-box;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 8px;text-align:right}
+    .money{text-align:right;display:inline-block;min-width:90px}
+    .sticky-left{position:sticky;left:0;background:var(--bg-2);z-index:3;box-shadow:1px 0 0 var(--line)}
+    .footer{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    a.inline{color:var(--gold)}
+  </style>
+</head>
 <body>
-<h1>แบบฟอร์มรายงานกำไรขาดทุนร้านอาหาร (บาท)</h1>
-<div class="form-container">
-<div class="section">
-<div class="section-title">รายได้</div>
-<div class="row header-row">
-<div class="label"></div>
-<div class="input-col">ผลจริง</div>
-<div class="budget-col">งบประมาณ</div>
-<div class="calc-col"></div>
-<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
-</div>
-<div class="row">
-<div class="label">รายได้จากอาหาร</div>
-<div class="input-col"><input id="foodRevenue" type="number" value="1200000"/></div>
-<div class="budget-col"><input id="foodRevenueBudget" type="number" value="1150000"/></div>
-<div class="calc-col">อาหาร / คน: <span class="result" id="foodPerPerson">0</span></div>
-<div class="variance-col"><span class="result" id="foodRevenueVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">รายได้จากเครื่องดื่ม</div>
-<div class="input-col"><input id="beverageRevenue" type="number" value="300000"/></div>
-<div class="budget-col"><input id="beverageRevenueBudget" type="number" value="280000"/></div>
-<div class="calc-col">เครื่องดื่ม / คน: <span class="result" id="beveragePerPerson">0</span></div>
-<div class="variance-col"><span class="result" id="beverageRevenueVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">รายได้อื่น ๆ</div>
-<div class="input-col"><input id="otherRevenue" type="number" value="5000"/></div>
-<div class="budget-col"><input id="otherRevenueBudget" type="number" value="4000"/></div>
-<div class="calc-col"></div>
-<div class="variance-col"><span class="result" id="otherRevenueVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">จำนวนลูกค้า</div>
-<div class="input-col"><input id="numGuests" type="number" value="1200"/></div>
-<div class="budget-col"><input id="numGuestsBudget" type="number" value="1100"/></div>
-<div class="calc-col">AVG CHECK: <span class="result" id="avgCheck">0</span></div>
-<div class="variance-col"><span class="result" id="numGuestsVariance">0</span></div>
-</div>
-<div class="row summary-row">
-<div class="label">รายได้รวม</div>
-<div class="input-col"><span class="result" id="totalRevenue">0</span></div>
-<div class="budget-col"><span class="result" id="totalRevenueBudget">0</span></div>
-<div class="calc-col"></div>
-<div class="variance-col"><span class="result" id="totalRevenueVariance">0</span></div>
-</div>
-</div>
-<div class="section">
-<div class="section-title">ต้นทุนขาย</div>
-<div class="row header-row">
-<div class="label"></div>
-<div class="input-col">ผลจริง</div>
-<div class="budget-col">งบประมาณ</div>
-<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
-<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
-</div>
-<div class="row">
-<div class="label">ต้นทุนอาหาร</div>
-<div class="input-col"><input id="foodCost" type="number" value="350000"/></div>
-<div class="budget-col"><input id="foodCostBudget" type="number" value="320000"/></div>
-<div class="calc-col"><span class="result" id="foodCostPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="foodCostVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ต้นทุนเครื่องดื่ม</div>
-<div class="input-col"><input id="beverageCost" type="number" value="80000"/></div>
-<div class="budget-col"><input id="beverageCostBudget" type="number" value="75000"/></div>
-<div class="calc-col"><span class="result" id="beverageCostPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="beverageCostVariance">0</span></div>
-</div>
-<div class="row summary-row">
-<div class="label">ต้นทุนขายรวม</div>
-<div class="input-col"><span class="result" id="totalCostOfSales">0</span></div>
-<div class="budget-col"><span class="result" id="totalCostOfSalesBudget">0</span></div>
-<div class="calc-col"><span class="result" id="totalCostOfSalesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="totalCostOfSalesVariance">0</span></div>
-</div>
-</div>
-<div class="section">
-<div class="section-title">กำไรขั้นต้น</div>
-<div class="row header-row">
-<div class="label"></div>
-<div class="input-col">ผลจริง</div>
-<div class="budget-col">งบประมาณ</div>
-<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
-<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
-</div>
-<div class="row summary-row">
-<div class="label">กำไรขั้นต้น</div>
-<div class="input-col"><span class="result" id="grossProfit">0</span></div>
-<div class="budget-col"><span class="result" id="grossProfitBudget">0</span></div>
-<div class="calc-col"><span class="result" id="grossProfitPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="grossProfitVariance">0</span></div>
-</div>
-</div>
-<div class="section">
-<div class="section-title">ค่าใช้จ่ายในการดำเนินงาน</div>
-<div class="row header-row">
-<div class="label"></div>
-<div class="input-col">ผลจริง</div>
-<div class="budget-col">งบประมาณ</div>
-<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
-<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
-</div>
-<div class="row">
-<div class="label">เงินเดือนและค่าจ้าง</div>
-<div class="input-col"><input id="salariesWages" type="number" value="250000"/></div>
-<div class="budget-col"><input id="salariesWagesBudget" type="number" value="240000"/></div>
-<div class="calc-col"><span class="result" id="salariesWagesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="salariesWagesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าเช่า</div>
-<div class="input-col"><input id="rent" type="number" value="80000"/></div>
-<div class="budget-col"><input id="rentBudget" type="number" value="80000"/></div>
-<div class="calc-col"><span class="result" id="rentPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="rentVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าสาธารณูปโภค</div>
-<div class="input-col"><input id="utilities" type="number" value="30000"/></div>
-<div class="budget-col"><input id="utilitiesBudget" type="number" value="28000"/></div>
-<div class="calc-col"><span class="result" id="utilitiesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="utilitiesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าใช้จ่ายทางการตลาด</div>
-<div class="input-col"><input id="marketing" type="number" value="20000"/></div>
-<div class="budget-col"><input id="marketingBudget" type="number" value="22000"/></div>
-<div class="calc-col"><span class="result" id="marketingPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="marketingVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าบำรุงรักษา</div>
-<div class="input-col"><input id="maintenance" type="number" value="10000"/></div>
-<div class="budget-col"><input id="maintenanceBudget" type="number" value="9000"/></div>
-<div class="calc-col"><span class="result" id="maintenancePercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="maintenanceVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าทำความสะอาด</div>
-<div class="input-col"><input id="cleaning" type="number" value="8000"/></div>
-<div class="budget-col"><input id="cleaningBudget" type="number" value="8500"/></div>
-<div class="calc-col"><span class="result" id="cleaningPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="cleaningVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">อุปกรณ์สำนักงาน</div>
-<div class="input-col"><input id="officeSupplies" type="number" value="2000"/></div>
-<div class="budget-col"><input id="officeSuppliesBudget" type="number" value="2500"/></div>
-<div class="calc-col"><span class="result" id="officeSuppliesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="officeSuppliesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ยูนิฟอร์ม</div>
-<div class="input-col"><input id="uniforms" type="number" value="3000"/></div>
-<div class="budget-col"><input id="uniformsBudget" type="number" value="2800"/></div>
-<div class="calc-col"><span class="result" id="uniformsPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="uniformsVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าธรรมเนียมธนาคาร</div>
-<div class="input-col"><input id="bankCharges" type="number" value="1500"/></div>
-<div class="budget-col"><input id="bankChargesBudget" type="number" value="1200"/></div>
-<div class="calc-col"><span class="result" id="bankChargesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="bankChargesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าธรรมเนียมบัตรเครดิต</div>
-<div class="input-col"><input id="creditCardFees" type="number" value="7000"/></div>
-<div class="budget-col"><input id="creditCardFeesBudget" type="number" value="6500"/></div>
-<div class="calc-col"><span class="result" id="creditCardFeesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="creditCardFeesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าจัดส่ง</div>
-<div class="input-col"><input id="deliveryFees" type="number" value="5000"/></div>
-<div class="budget-col"><input id="deliveryFeesBudget" type="number" value="4800"/></div>
-<div class="calc-col"><span class="result" id="deliveryFeesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="deliveryFeesVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าเดินทางและสันทนาการ</div>
-<div class="input-col"><input id="travelEntertainment" type="number" value="2000"/></div>
-<div class="budget-col"><input id="travelEntertainmentBudget" type="number" value="1500"/></div>
-<div class="calc-col"><span class="result" id="travelEntertainmentPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="travelEntertainmentVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าอบรม</div>
-<div class="input-col"><input id="training" type="number" value="1000"/></div>
-<div class="budget-col"><input id="trainingBudget" type="number" value="800"/></div>
-<div class="calc-col"><span class="result" id="trainingPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="trainingVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ประกันภัย</div>
-<div class="input-col"><input id="insurance" type="number" value="4000"/></div>
-<div class="budget-col"><input id="insuranceBudget" type="number" value="4000"/></div>
-<div class="calc-col"><span class="result" id="insurancePercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="insuranceVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าเสื่อมราคา</div>
-<div class="input-col"><input id="depreciation" type="number" value="10000"/></div>
-<div class="budget-col"><input id="depreciationBudget" type="number" value="10000"/></div>
-<div class="calc-col"><span class="result" id="depreciationPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="depreciationVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ดอกเบี้ยจ่าย</div>
-<div class="input-col"><input id="interestExpense" type="number" value="2000"/></div>
-<div class="budget-col"><input id="interestExpenseBudget" type="number" value="2500"/></div>
-<div class="calc-col"><span class="result" id="interestExpensePercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="interestExpenseVariance">0</span></div>
-</div>
-<div class="row">
-<div class="label">ค่าใช้จ่ายอื่น ๆ</div>
-<div class="input-col"><input id="otherExpenses" type="number" value="15000"/></div>
-<div class="budget-col"><input id="otherExpensesBudget" type="number" value="10000"/></div>
-<div class="calc-col"><span class="result" id="otherExpensesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="otherExpensesVariance">0</span></div>
-</div>
-<div class="row summary-row">
-<div class="label">ค่าใช้จ่ายดำเนินงานรวม</div>
-<div class="input-col"><span class="result" id="totalOperatingExpenses">0</span></div>
-<div class="budget-col"><span class="result" id="totalOperatingExpensesBudget">0</span></div>
-<div class="calc-col"><span class="result" id="totalOperatingExpensesPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="totalOperatingExpensesVariance">0</span></div>
-</div>
-</div>
-<div class="section">
-<div class="section-title">กำไรจากการดำเนินงาน (GOP)</div>
-<div class="row header-row">
-<div class="label"></div>
-<div class="input-col">ผลจริง</div>
-<div class="budget-col">งบประมาณ</div>
-<div class="calc-col">เปอร์เซ็นต์ผลจริง</div>
-<div class="variance-col">ผลจริง เทียบกับ งบประมาณ</div>
-</div>
-<div class="row summary-row">
-<div class="label">กำไรจากการดำเนินงาน</div>
-<div class="input-col"><span class="result" id="gop">0</span></div>
-<div class="budget-col"><span class="result" id="gopBudget">0</span></div>
-<div class="calc-col"><span class="result" id="gopPercent">0</span>%</div>
-<div class="variance-col"><span class="result" id="gopVariance">0</span></div>
-</div>
-</div>
-<button class="btn" onclick="calculateAll()">คำนวณรายงานกำไรขาดทุน</button>
-</div>
-<footer>
-        © 2025 R&amp;B Transolution. All rights reserved.
-    </footer>
+  <div class="wrap">
+    <header>
+      <h1>Restaurant Budget (Jan–Dec)</h1>
+      <span class="badge">R&B Transolution • Budget v1.2</span>
+    </header>
+
+    <div class="card">
+      <div class="controls">
+        <button id="seedDummy" class="secondary">Seed demo data</button>
+        <button id="clearAll" class="danger">Clear all</button>
+        <button id="downloadCsv">Download CSV</button>
+        <button id="printView" class="secondary">Print</button>
+        <button id="runTests" class="secondary">Run self‑tests</button>
+      </div>
+      <div class="hint">Inputs: <strong>Guests</strong>, <strong>Avg CHK Food</strong>, <strong>Avg CHK Bev</strong>, <strong>Other Revenue</strong>, <strong>Food/Bev %</strong>, <strong>Other Cost</strong>, and <strong>all expense lines</strong>. Everything else auto-calculates. Full Year totals compute from the 12 months; ratio rows display as proper percentages.</div>
+    </div>
+
+    <div class="scroll" style="margin-top:14px">
+      <table id="pnlTable"></table>
+    </div>
+
+    <div class="footer hint">
+      <span>Palette: Gold, Deep Green, White, Black, Grey. Percentages show with a % sign; money shows with thousands separators.</span>
+    </div>
+  </div>
+
 <script>
-        function getFloatValue(id) {
-            const element = document.getElementById(id);
-            if (!element) return 0; // Handle case where element might not exist
+(function(){
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const table = document.getElementById('pnlTable');
 
-            // Check if it's an input element (e.g., actual/budget values)
-            if (element.tagName === 'INPUT') {
-                return parseFloat(element.value) || 0;
-            } else { // Assume it's a display element like a span (e.g., calculated results)
-                // Remove commas from the text content before parsing, as toLocaleString adds them
-                return parseFloat(element.textContent.replace(/,/g, '')) || 0;
-            }
+  const ROWS = [
+    {type:'section', label:'Revenue'},
+    {id:'guests', label:'Number of Guests', input:'number'},
+    {id:'avg_food', label:'Avg CHK Food', input:'money'},
+    {id:'avg_bev', label:'Avg CHK Bev', input:'money'},
+    {id:'rev_other', label:'Other Revenue', input:'money'},
+    {id:'rev_food', label:'Food Revenue (Guests × Avg CHK Food)', calc:'money'},
+    {id:'rev_bev', label:'Beverage Revenue (Guests × Avg CHK Bev)', calc:'money'},
+    {id:'rev_total', label:'Total Revenue', calc:'money', total:true},
+
+    {type:'section', label:'Cost of Sale'},
+    {id:'pct_food', label:'Food Cost % (0–100)', input:'percent'},
+    {id:'cos_food', label:'Food Cost Amount', calc:'money'},
+    {id:'pct_bev', label:'Beverage Cost % (0–100)', input:'percent'},
+    {id:'cos_bev', label:'Beverage Cost Amount', calc:'money'},
+    {id:'cos_other', label:'Other Cost (Amount)', input:'money'},
+    {id:'cos_total', label:'Total Cost of Sale', calc:'money', total:true},
+    {id:'cos_ratio', label:'COS % of Revenue', calc:'ratio'},
+
+    {type:'section', label:'Gross Profit'},
+    {id:'gp', label:'Gross Profit', calc:'money'},
+    {id:'gp_ratio', label:'Gross Profit %', calc:'ratio'},
+
+    {type:'section', label:'Operating Expenses'},
+  ];
+
+  const defaultExpenses = [
+    'Labor Cost & Related (Wages, SSO, Benefits)','Guest Supplies','Utilities (Electricity/Water/Gas)','Rent & Lease','Marketing & Advertising','Repairs & Maintenance','Cleaning & Sanitation','Office Supplies','Uniforms & Laundry','Bank Fees','Credit Card Fees','Delivery Platform Commissions','Delivery & Courier','Transportation & Travel','Recruitment & Training','Insurance','Licenses & Permits','IT & Software (POS/SaaS)','Internet & Phone','Security','Waste Disposal','Smallwares & Replacements','Printing & Stationery','Professional Fees (Accounting/Legal)','Other Operating Expenses'
+  ];
+
+  function buildTable(){
+    table.innerHTML = '';
+
+    // Header
+    const thead = document.createElement('thead');
+    const tr1 = document.createElement('tr');
+    const th0 = document.createElement('th'); th0.className='sticky-left'; th0.textContent='Category'; tr1.appendChild(th0);
+    months.forEach(m=>{const th=document.createElement('th'); th.className='month'; th.textContent=m; tr1.appendChild(th)});
+    const thFY = document.createElement('th'); thFY.textContent='Full Year'; tr1.appendChild(thFY);
+    thead.appendChild(tr1);
+
+    const tr2 = document.createElement('tr');
+    const th00 = document.createElement('th'); th00.className='sticky-left sub'; th00.textContent=''; tr2.appendChild(th00);
+    months.forEach(()=>{const th=document.createElement('th'); th.className='sub'; th.textContent='Amount'; tr2.appendChild(th)});
+    const thFY2 = document.createElement('th'); thFY2.className='sub'; thFY2.textContent='Total'; tr2.appendChild(thFY2);
+    thead.appendChild(tr2);
+
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+
+    // Pre-expense rows
+    for(const r of ROWS){
+      if(r.type==='section'){
+        const tr = document.createElement('tr'); tr.className='section';
+        const td = document.createElement('td'); td.className='sticky-left'; td.colSpan=months.length+2; td.textContent=r.label; tr.appendChild(td); tbody.appendChild(tr);
+      } else {
+        tbody.appendChild(buildRow(r.id, r.label, r.input, r.calc, !!r.total));
+      }
+    }
+
+    // Expense rows
+    expenseRows.forEach((name, idx)=> tbody.appendChild(buildExpenseRow(idx, name)) );
+
+    // Opex totals and GOP
+    tbody.appendChild(buildRow('opex_total','Total Operating Expenses', null,'money', true,'total'));
+    tbody.appendChild(buildRow('opex_ratio','Opex % of Revenue', null,'ratio', false,'total'));
+    tbody.appendChild(sectionBreak('Operating Profit (GOP)'));
+    tbody.appendChild(buildRow('gop','GOP', null,'money', false,'total'));
+    tbody.appendChild(buildRow('gop_ratio','GOP % of Revenue', null,'ratio', false,'total'));
+
+    table.appendChild(tbody);
+  }
+
+  function sectionBreak(title){
+    const tr = document.createElement('tr'); tr.className='section';
+    const td = document.createElement('td'); td.className='sticky-left'; td.colSpan=months.length+2; td.textContent=title; tr.appendChild(td); return tr;
+  }
+
+  function buildRow(id, label, inputType, calcType, fullYearSum=false, extraClass=''){
+    const tr = document.createElement('tr'); if(extraClass) tr.classList.add(extraClass);
+    const left = document.createElement('td'); left.className='sticky-left'; left.textContent=label; tr.appendChild(left);
+    months.forEach((m,mi)=>{
+      const td=document.createElement('td');
+      if(inputType){
+        const inp=document.createElement('input'); inp.type='number'; inp.step='0.01'; inp.className='money'; inp.dataset.key=`${id}_${mi}`; td.appendChild(inp);
+      } else {
+        const span=document.createElement('span'); span.className='money'; span.dataset.key=`${id}_${mi}`; span.textContent='0'; td.appendChild(span);
+      }
+      tr.appendChild(td);
+    });
+    const fy=document.createElement('td'); const fySpan=document.createElement('span'); fySpan.className='money'; fySpan.dataset.key=`${id}_fy`; fySpan.textContent='0'; fy.appendChild(fySpan); tr.appendChild(fy);
+    tr.dataset.id=id; tr.dataset.calc=calcType||''; tr.dataset.sum=fullYearSum?'1':'0';
+    return tr;
+  }
+
+  function buildExpenseRow(idx, name){
+    const tr=document.createElement('tr');
+    const left=document.createElement('td'); left.className='sticky-left';
+    const nameInput=document.createElement('input'); nameInput.type='text'; nameInput.value=name; nameInput.dataset.expenseIndex=idx; nameInput.addEventListener('input', ()=>{ expenseRows[idx]=nameInput.value; });
+    left.appendChild(nameInput); tr.appendChild(left);
+    months.forEach((m,mi)=>{
+      const td=document.createElement('td'); const inp=document.createElement('input'); inp.type='number'; inp.step='0.01'; inp.className='money'; inp.dataset.key=`exp_${idx}_${mi}`; td.appendChild(inp); tr.appendChild(td);
+    });
+    const fy=document.createElement('td'); const fySpan=document.createElement('span'); fySpan.className='money'; fySpan.dataset.key=`exp_${idx}_fy`; fySpan.textContent='0'; fy.appendChild(fySpan); tr.appendChild(fy);
+    tr.dataset.expenseIndex=idx; return tr;
+  }
+
+  // State
+  let expenseRows=[...defaultExpenses];
+
+  // Helpers
+  function num(v){ const n=parseFloat(v); return isNaN(n)?0:n; }
+  function fmtMoney(n){ return Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2}); }
+  function fmtPercent(n){ return (Number(n||0)*100).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2})+"%"; }
+  function getVal(key){ const el=document.querySelector(`[data-key="${key}"]`); if(!el) return 0; return el.tagName==='INPUT'? num(el.value): num(el.textContent); }
+  function setMoney(key,val){ const el=document.querySelector(`[data-key="${key}"]`); if(!el) return; if(el.tagName==='INPUT'){ el.value=val; } else { el.textContent=fmtMoney(val); } }
+  function setPercent(key,val){ const el=document.querySelector(`[data-key="${key}"]`); if(!el) return; if(el.tagName==='INPUT'){ el.value=val; } else { el.textContent=fmtPercent(val); } }
+
+  function recalc(){
+    for(let mi=0; mi<12; mi++){
+      const guests = getVal(`guests_${mi}`);
+      const avgFood = getVal(`avg_food_${mi}`);
+      const avgBev  = getVal(`avg_bev_${mi}`);
+      const otherRev = getVal(`rev_other_${mi}`);
+      const foodRev = guests*avgFood;
+      const bevRev  = guests*avgBev;
+      const totalRev = foodRev+bevRev+otherRev;
+      setMoney(`rev_food_${mi}`, foodRev);
+      setMoney(`rev_bev_${mi}`, bevRev);
+      setMoney(`rev_total_${mi}`, totalRev);
+
+      const pctFood = getVal(`pct_food_${mi}`)/100;
+      const pctBev  = getVal(`pct_bev_${mi}`)/100;
+      const cosFood = foodRev*pctFood;
+      const cosBev  = bevRev *pctBev;
+      const cosOther= getVal(`cos_other_${mi}`);
+      const cosTotal= cosFood+cosBev+cosOther;
+      setMoney(`cos_food_${mi}`, cosFood);
+      setMoney(`cos_bev_${mi}`,  cosBev);
+      setMoney(`cos_total_${mi}`, cosTotal);
+      setPercent(`cos_ratio_${mi}`, totalRev? (cosTotal/totalRev):0);
+
+      const gp = totalRev-cosTotal;
+      setMoney(`gp_${mi}`, gp);
+      setPercent(`gp_ratio_${mi}`, totalRev? (gp/totalRev):0);
+
+      // OPEX
+      let opex=0; for(let ei=0; ei<expenseRows.length; ei++){ opex += getVal(`exp_${ei}_${mi}`); }
+      setMoney(`opex_total_${mi}`, opex);
+      setPercent(`opex_ratio_${mi}`, totalRev? (opex/totalRev):0);
+
+      const gop = gp-opex;
+      setMoney(`gop_${mi}`, gop);
+      setPercent(`gop_ratio_${mi}`, totalRev? (gop/totalRev):0);
+    }
+
+    // FY totals & FY ratios
+    document.querySelectorAll('#pnlTable tbody tr').forEach(tr=>{
+      const id = tr.dataset.id; if(!id) return;
+      const calc = tr.dataset.calc;
+      if(calc==='ratio'){
+        const map={ cos_ratio:['cos_total','rev_total'], gp_ratio:['gp','rev_total'], opex_ratio:['opex_total','rev_total'], gop_ratio:['gop','rev_total'] };
+        if(map[id]){
+          const numFY = sumFY(map[id][0]);
+          const denFY = sumFY(map[id][1]);
+          setPercent(`${id}_fy`, denFY? (numFY/denFY):0);
         }
+      } else {
+        setMoney(`${id}_fy`, sumFY(id));
+      }
+    });
 
-        function setResult(id, value, isCurrency = true) {
-            const element = document.getElementById(id);
-            if (isCurrency) {
-                element.textContent = value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-            } else {
-                element.textContent = value.toFixed(2);
-            }
-        }
+    // Expense FY
+    for(let ei=0; ei<expenseRows.length; ei++) setMoney(`exp_${ei}_fy`, sumFY(`exp_${ei}`));
+  }
 
-        function setVarianceResult(id, actual, budget) {
-            const variance = actual - budget;
-            const varianceElement = document.getElementById(id);
-            
-            let percentageChange = 0;
-            if (budget !== 0) {
-                percentageChange = (variance / budget) * 100;
-            } else if (actual !== 0) {
-                percentageChange = 100; // If budget is 0 and actual is not, it's a 100% change (increase)
-            }
+  function sumFY(base){ let s=0; for(let mi=0; mi<12; mi++){ s += getVal(`${base}_${mi}`); } return s; }
 
-            varianceElement.textContent = `${variance.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} (${percentageChange.toFixed(2)}%)`;
-            varianceElement.classList.remove('positive', 'negative');
-            
-            // Determine if the variance is "good" or "bad"
-            // Assume negative variance is good by default for costs/expenses
-            let isPositiveVarianceGood = false; 
+  function attachHandlers(){ table.addEventListener('input', e=>{ if(e.target && e.target.matches('input')) recalc(); }); }
 
-            if (id.includes('RevenueVariance') || id.includes('ProfitVariance') || id.includes('gopVariance') || id.includes('numGuestsVariance')) {
-                isPositiveVarianceGood = true; // For these, a positive variance (actual > budget) is good.
-            }
-            // For all other cases (costs/expenses), a negative variance (actual < budget) is good.
+  function toCSV(){
+    const rows=[]; rows.push(['Category',...months,'Full Year']);
+    function pushRow(label, id){ const line=[label]; for(let mi=0; mi<12; mi++){ const el=document.querySelector(`[data-key="${id}_${mi}"]`); line.push(el? (el.tagName==='INPUT'? el.value: el.textContent):''); } const fy=document.querySelector(`[data-key="${id}_fy"]`); line.push(fy? fy.textContent:''); rows.push(line); }
+    document.querySelectorAll('#pnlTable tbody tr').forEach(tr=>{
+      if(tr.classList.contains('section')){ rows.push([tr.textContent]); return; }
+      const id = tr.dataset.id; const label = tr.querySelector('td.sticky-left').innerText.trim();
+      if(id) pushRow(label,id); else if(tr.dataset.expenseIndex){ const idx=tr.dataset.expenseIndex; const name=tr.querySelector('td.sticky-left input').value; pushRow(name,`exp_${idx}`); }
+    });
+    // Use regex replace for broader browser support instead of String.replaceAll
+    const csv = rows.map(r=>r.map(x=> '"' + String(x).replace(/"/g,'""') + '"').join(',')).join('\n');
+    return csv;
+  }
 
-            if (isPositiveVarianceGood) {
-                if (variance > 0) {
-                    varianceElement.classList.add('positive');
-                } else if (variance < 0) {
-                    varianceElement.classList.add('negative');
-                }
-            } else { // This branch handles all costs and expenses
-                if (variance < 0) { // Actual is less than budget (favorable)
-                    varianceElement.classList.add('positive');
-                } else if (variance > 0) { // Actual is greater than budget (unfavorable)
-                    varianceElement.classList.add('negative');
-                }
-            }
-        }
+  function download(filename, text){ const blob=new Blob([text],{type:'text/csv;charset=utf-8;'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; a.click(); setTimeout(()=>URL.revokeObjectURL(url), 1000); }
 
-        function setPercentageResult(id, actualValue, totalRevenue, isCostOrExpense = false) {
-            const element = document.getElementById(id);
-            let percentage = 0;
-            if (totalRevenue !== 0) {
-                percentage = (actualValue / totalRevenue) * 100;
-            }
-            element.textContent = percentage.toFixed(2);
-            // Always remove color classes to ensure standard color
-            element.classList.remove('positive', 'negative');
-            
-            // No conditional logic here to add 'positive' or 'negative' classes,
-            // ensuring that "Actual %" always remains a standard color.
-        }
-        
-        function calculateRevenue() {
-            const foodRevenue = getFloatValue('foodRevenue');
-            const beverageRevenue = getFloatValue('beverageRevenue');
-            const otherRevenue = getFloatValue('otherRevenue');
-            const numGuests = getFloatValue('numGuests');
+  function seedDemo(){
+    for(let mi=0; mi<12; mi++){
+      document.querySelector(`[data-key="guests_${mi}"]`).value = 1500 + mi*20;
+      document.querySelector(`[data-key="avg_food_${mi}"]`).value = 380;
+      document.querySelector(`[data-key="avg_bev_${mi}"]`).value  = 140;
+      document.querySelector(`[data-key="rev_other_${mi}"]`).value = 15000;
+      document.querySelector(`[data-key="pct_food_${mi}"]`).value = 33;
+      document.querySelector(`[data-key="pct_bev_${mi}"]`).value  = 28;
+      document.querySelector(`[data-key="cos_other_${mi}"]`).value = 8000;
+      for(let ei=0; ei<expenseRows.length; ei++){
+        const base = ei===0? 450000 : (ei<5? 30000 : 8000);
+        const el = document.querySelector(`[data-key="exp_${ei}_${mi}"]`); if(el) el.value = base;
+      }
+    }
+    recalc();
+  }
 
-            const foodRevenueBudget = getFloatValue('foodRevenueBudget');
-            const beverageRevenueBudget = getFloatValue('beverageRevenueBudget');
-            const otherRevenueBudget = getFloatValue('otherRevenueBudget');
-            const numGuestsBudget = getFloatValue('numGuestsBudget');
+  function clearAll(){ document.querySelectorAll('#pnlTable input').forEach(inp=> inp.value=''); document.querySelectorAll('#pnlTable [data-key$="_fy"]').forEach(s=> s.textContent='0'); recalc(); }
 
-            const totalRevenue = foodRevenue + beverageRevenue + otherRevenue;
-            const totalRevenueBudget = foodRevenueBudget + beverageRevenueBudget + otherRevenueBudget;
+  function printView(){ window.print(); }
 
-            setResult('totalRevenue', totalRevenue);
-            setResult('totalRevenueBudget', totalRevenueBudget);
-            setVarianceResult('totalRevenueVariance', totalRevenue, totalRevenueBudget);
+  // --- Minimal Self Tests ---
+  function assert(cond, msg){ if(!cond){ throw new Error(msg||'Assertion failed'); } }
+  function runTests(){
+    try{
+      clearAll();
+      // Seed a tiny deterministic scenario in Jan
+      document.querySelector('[data-key="guests_0"]').value = 100;
+      document.querySelector('[data-key="avg_food_0"]').value = 200; // 20,000
+      document.querySelector('[data-key="avg_bev_0"]').value  = 50;  // 5,000
+      document.querySelector('[data-key="rev_other_0"]').value = 1000; // +1,000
+      document.querySelector('[data-key="pct_food_0"]').value = 25; // 25%
+      document.querySelector('[data-key="pct_bev_0"]').value  = 20; // 20%
+      document.querySelector('[data-key="cos_other_0"]').value = 100;
+      recalc();
 
-            // Per Person Calculations
-            const foodPerPerson = numGuests !== 0 ? foodRevenue / numGuests : 0;
-            const beveragePerPerson = numGuests !== 0 ? beverageRevenue / numGuests : 0;
-            const avgCheck = numGuests !== 0 ? totalRevenue / numGuests : 0;
-            
-            setResult('foodPerPerson', foodPerPerson, false);
-            setResult('beveragePerPerson', beveragePerPerson, false);
-            setResult('avgCheck', avgCheck, false);
+      // Check derived values (not visible in UI, but computed)
+      const totalRevJan = getVal('rev_total_0');
+      assert(Math.abs(totalRevJan - 26000) < 0.001, 'Total Revenue Jan should be 26,000');
 
-            // Variances for individual revenue items
-            setVarianceResult('foodRevenueVariance', foodRevenue, foodRevenueBudget);
-            setVarianceResult('beverageRevenueVariance', beverageRevenue, beverageRevenueBudget);
-            setVarianceResult('otherRevenueVariance', otherRevenue, otherRevenueBudget);
+      const csv = toCSV();
+      assert(csv.includes('"Category"'), 'CSV should include quoted header');
+      assert(csv.indexOf('\n') !== -1, 'CSV should contain newlines');
 
-            // Number of Guests Variance
-            setVarianceResult('numGuestsVariance', numGuests, numGuestsBudget);
+      alert('Self-tests passed.');
+    }catch(e){
+      console.error(e);
+      alert('Self-tests failed: ' + e.message);
+    }
+  }
 
-            return { totalRevenue, totalRevenueBudget, avgCheck };
-        }
+  // Init
+  buildTable();
+  attachHandlers();
+  recalc();
 
-        function calculateCostOfSales(totalRevenue, totalRevenueBudget) {
-            const foodCost = getFloatValue('foodCost');
-            const beverageCost = getFloatValue('beverageCost');
-
-            const foodCostBudget = getFloatValue('foodCostBudget');
-            const beverageCostBudget = getFloatValue('beverageCostBudget');
-
-            const totalCostOfSales = foodCost + beverageCost;
-            const totalCostOfSalesBudget = foodCostBudget + beverageCostBudget;
-
-            setResult('totalCostOfSales', totalCostOfSales);
-            setResult('totalCostOfSalesBudget', totalCostOfSalesBudget);
-            setVarianceResult('totalCostOfSalesVariance', totalCostOfSales, totalCostOfSalesBudget);
-
-            setPercentageResult('foodCostPercent', foodCost, totalRevenue, true); // true for isCostOrExpense
-            setPercentageResult('beverageCostPercent', beverageCost, totalRevenue, true); // true for isCostOrExpense
-            setPercentageResult('totalCostOfSalesPercent', totalCostOfSales, totalRevenue, true); // true for isCostOrExpense
-
-            // Variances for individual cost items
-            setVarianceResult('foodCostVariance', foodCost, foodCostBudget);
-            setVarianceResult('beverageCostVariance', beverageCost, beverageCostBudget);
-
-            return { totalCostOfSales, totalCostOfSalesBudget };
-        }
-
-        function calculateGrossProfit(totalRevenue, totalCostOfSales, totalRevenueBudget, totalCostOfSalesBudget) {
-            const grossProfit = totalRevenue - totalCostOfSales;
-            const grossProfitBudget = totalRevenueBudget - totalCostOfSalesBudget;
-
-            setResult('grossProfit', grossProfit);
-            setResult('grossProfitBudget', grossProfitBudget);
-            setVarianceResult('grossProfitVariance', grossProfit, grossProfitBudget);
-            setPercentageResult('grossProfitPercent', grossProfit, totalRevenue, false); // false for isCostOrExpense (it's profit)
-
-            return { grossProfit, grossProfitBudget };
-        }
-
-        function calculateOperatingExpenses(totalRevenue, totalRevenueBudget) {
-            const salariesWages = getFloatValue('salariesWages');
-            const rent = getFloatValue('rent');
-            const utilities = getFloatValue('utilities');
-            const marketing = getFloatValue('marketing');
-            const maintenance = getFloatValue('maintenance');
-            const cleaning = getFloatValue('cleaning');
-            const officeSupplies = getFloatValue('officeSupplies');
-            const uniforms = getFloatValue('uniforms');
-            const bankCharges = getFloatValue('bankCharges');
-            const creditCardFees = getFloatValue('creditCardFees');
-            const deliveryFees = getFloatValue('deliveryFees');
-            const travelEntertainment = getFloatValue('travelEntertainment');
-            const training = getFloatValue('training');
-            const insurance = getFloatValue('insurance');
-            const depreciation = getFloatValue('depreciation');
-            const interestExpense = getFloatValue('interestExpense');
-            const otherExpenses = getFloatValue('otherExpenses');
-
-            const salariesWagesBudget = getFloatValue('salariesWagesBudget');
-            const rentBudget = getFloatValue('rentBudget');
-            const utilitiesBudget = getFloatValue('utilitiesBudget');
-            const marketingBudget = getFloatValue('marketingBudget');
-            const maintenanceBudget = getFloatValue('maintenanceBudget');
-            const cleaningBudget = getFloatValue('cleaningBudget');
-            const officeSuppliesBudget = getFloatValue('officeSuppliesBudget');
-            const uniformsBudget = getFloatValue('uniformsBudget');
-            const bankChargesBudget = getFloatValue('bankChargesBudget');
-            const creditCardFeesBudget = getFloatValue('creditCardFeesBudget');
-            const deliveryFeesBudget = getFloatValue('deliveryFeesBudget');
-            const travelEntertainmentBudget = getFloatValue('travelEntertainmentBudget');
-            const trainingBudget = getFloatValue('trainingBudget');
-            const insuranceBudget = getFloatValue('insuranceBudget');
-            const depreciationBudget = getFloatValue('depreciationBudget');
-            const interestExpenseBudget = getFloatValue('interestExpenseBudget');
-            const otherExpensesBudget = getFloatValue('otherExpensesBudget');
-
-            const totalOperatingExpenses = salariesWages + rent + utilities + marketing + maintenance + cleaning + 
-                                            officeSupplies + uniforms + bankCharges + creditCardFees + deliveryFees + 
-                                            travelEntertainment + training + insurance + depreciation + interestExpense + otherExpenses;
-            
-            const totalOperatingExpensesBudget = salariesWagesBudget + rentBudget + utilitiesBudget + marketingBudget + maintenanceBudget + cleaningBudget +
-                                                 officeSuppliesBudget + uniformsBudget + bankChargesBudget + creditCardFeesBudget + deliveryFeesBudget +
-                                                 travelEntertainmentBudget + trainingBudget + insuranceBudget + depreciationBudget + interestExpenseBudget + otherExpensesBudget;
-
-            setResult('totalOperatingExpenses', totalOperatingExpenses);
-            setResult('totalOperatingExpensesBudget', totalOperatingExpensesBudget);
-            setVarianceResult('totalOperatingExpensesVariance', totalOperatingExpenses, totalOperatingExpensesBudget);
-            setPercentageResult('totalOperatingExpensesPercent', totalOperatingExpenses, totalRevenue, true); // true for isCostOrExpense
-
-            // Variances for individual expense items
-            setVarianceResult('salariesWagesVariance', salariesWages, salariesWagesBudget);
-            setVarianceResult('rentVariance', rent, rentBudget);
-            setVarianceResult('utilitiesVariance', utilities, utilitiesBudget);
-            setVarianceResult('marketingVariance', marketing, marketingBudget);
-            setVarianceResult('maintenanceVariance', maintenance, maintenanceBudget);
-            setVarianceResult('cleaningVariance', cleaning, cleaningBudget);
-            setVarianceResult('officeSuppliesVariance', officeSupplies, officeSuppliesBudget);
-            setVarianceResult('uniformsVariance', uniforms, uniformsBudget);
-            setVarianceResult('bankChargesVariance', bankCharges, bankChargesBudget);
-            setVarianceResult('creditCardFeesVariance', creditCardFees, creditCardFeesBudget);
-            setVarianceResult('deliveryFeesVariance', deliveryFees, deliveryFeesBudget);
-            setVarianceResult('travelEntertainmentVariance', travelEntertainment, travelEntertainmentBudget);
-            setVarianceResult('trainingVariance', training, trainingBudget);
-            setVarianceResult('insuranceVariance', insurance, insuranceBudget);
-            setVarianceResult('depreciationVariance', depreciation, depreciationBudget);
-            setVarianceResult('interestExpenseVariance', interestExpense, interestExpenseBudget);
-            setVarianceResult('otherExpensesVariance', otherExpenses, otherExpensesBudget);
-
-
-            setPercentageResult('salariesWagesPercent', salariesWages, totalRevenue, true);
-            setPercentageResult('rentPercent', rent, totalRevenue, true);
-            setPercentageResult('utilitiesPercent', utilities, totalRevenue, true);
-            setPercentageResult('marketingPercent', marketing, totalRevenue, true);
-            setPercentageResult('maintenancePercent', maintenance, totalRevenue, true);
-            setPercentageResult('cleaningPercent', cleaning, totalRevenue, true);
-            setPercentageResult('officeSuppliesPercent', officeSupplies, totalRevenue, true);
-            setPercentageResult('uniformsPercent', uniforms, totalRevenue, true);
-            setPercentageResult('bankChargesPercent', bankCharges, totalRevenue, true);
-            setPercentageResult('creditCardFeesPercent', creditCardFees, totalRevenue, true);
-            setPercentageResult('deliveryFeesPercent', deliveryFees, totalRevenue, true);
-            setPercentageResult('travelEntertainmentPercent', travelEntertainment, totalRevenue, true);
-            setPercentageResult('trainingPercent', training, totalRevenue, true);
-            setPercentageResult('insurancePercent', insurance, totalRevenue, true);
-            setPercentageResult('depreciationPercent', depreciation, totalRevenue, true);
-            setPercentageResult('interestExpensePercent', interestExpense, totalRevenue, true);
-            setPercentageResult('otherExpensesPercent', otherExpenses, totalRevenue, true);
-
-            return { totalOperatingExpenses, totalOperatingExpensesBudget };
-        }
-
-        function calculateGOP(grossProfit, totalOperatingExpenses, grossProfitBudget, totalOperatingExpensesBudget) {
-            const gop = grossProfit - totalOperatingExpenses;
-            const gopBudget = grossProfitBudget - totalOperatingExpensesBudget;
-
-            setResult('gop', gop);
-            setResult('gopBudget', gopBudget);
-            setVarianceResult('gopVariance', gop, gopBudget);
-            
-            const totalRevenue = getFloatValue('totalRevenue'); 
-            setPercentageResult('gopPercent', gop, totalRevenue, false); // false for isCostOrExpense (it's profit)
-        }
-
-        function calculateAll() {
-            const { totalRevenue, totalRevenueBudget } = calculateRevenue();
-            const { totalCostOfSales, totalCostOfSalesBudget } = calculateCostOfSales(totalRevenue, totalRevenueBudget);
-            const { grossProfit, grossProfitBudget } = calculateGrossProfit(totalRevenue, totalCostOfSales, totalRevenueBudget, totalCostOfSalesBudget);
-            const { totalOperatingExpenses, totalOperatingExpensesBudget } = calculateOperatingExpenses(totalRevenue, totalRevenueBudget);
-            calculateGOP(grossProfit, totalOperatingExpenses, grossProfitBudget, totalOperatingExpensesBudget);
-        }
-
-        // Calculate on page load
-        window.onload = calculateAll;
-
-        // Add event listeners to input fields to recalculate on change
-        document.addEventListener('DOMContentLoaded', () => {
-            const inputs = document.querySelectorAll('input[type="number"]');
-            inputs.forEach(input => {
-                input.addEventListener('input', calculateAll);
-            });
-        });
-    </script>
+  // Buttons
+  document.getElementById('seedDummy').onclick = seedDemo;
+  document.getElementById('clearAll').onclick = clearAll;
+  document.getElementById('downloadCsv').onclick = ()=> download('restaurant_budget.csv', toCSV());
+  document.getElementById('printView').onclick = printView;
+  document.getElementById('runTests').onclick = runTests;
+})();
+</script>
 </body>
 </html>
