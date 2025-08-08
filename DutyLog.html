@@ -547,15 +547,15 @@
                         <div class="form-row-three">
                             <div>
                                 <label for="food-revenue">รายได้อาหาร:</label>
-                                <input type="number" id="food-revenue" name="food-revenue" step="0.01" min="0" required>
+                                <input type="text" id="food-revenue" name="food-revenue" required>
                             </div>
                             <div>
                                 <label for="beverage-revenue">รายได้เครื่องดื่ม:</label>
-                                <input type="number" id="beverage-revenue" name="beverage-revenue" step="0.01" min="0" required>
+                                <input type="text" id="beverage-revenue" name="beverage-revenue" required>
                             </div>
                             <div>
                                 <label for="other-revenue">รายได้อื่นๆ:</label>
-                                <input type="number" id="other-revenue" name="other-revenue" step="0.01" min="0">
+                                <input type="text" id="other-revenue" name="other-revenue">
                             </div>
                         </div>
                         <div class="kpi-display">
@@ -773,6 +773,7 @@
 
         // Auto-generate manager comments in Thai
         function generateComments() {
+            // Updated to get number from the text content
             const totalRevenue = parseNumber(document.getElementById('total-revenue').textContent);
             const totalGuests = parseInt(document.getElementById('total-guests').value) || 0;
             const avgSpend = parseNumber(document.getElementById('avg-spend').textContent);
