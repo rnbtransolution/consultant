@@ -441,11 +441,10 @@
                 min-height: auto !important;
             }
 
-            /* --- Corrected Print CSS for Textarea --- */
             textarea {
                 min-height: 40px !important;
                 height: auto !important; /* This is the key change */
-                overflow: visible !important;
+                overflow: visible !important; /* Ensure content is visible */
             }
 
             .kpi-display {
@@ -497,8 +496,9 @@
         </div>
         
         <div class="form-container">
-            <form id="dutyLogForm">
+            <form id="dutyLogForm" action="https://formspree.io/f/your-form-id" method="POST">
                 <div class="form-grid">
+                    <!-- ข้อมูลพื้นฐาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-info-circle"></i>
@@ -542,6 +542,7 @@
                         </div>
                     </div>
 
+                    <!-- รายได้แยกตามประเภท -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-chart-line"></i>
@@ -579,6 +580,7 @@
                         </div>
                     </div>
 
+                    <!-- ข้อมูลลูกค้า -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-users"></i>
@@ -618,6 +620,7 @@
                         </div>
                     </div>
 
+                    <!-- ข้อมูลพนักงาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-user-tie"></i>
@@ -665,6 +668,7 @@
                         </div>
                     </div>
 
+                    <!-- บันทึกการปฏิบัติงาน -->
                     <div class="form-section">
                         <div class="section-title">
                             <i class="fas fa-exclamation-triangle"></i>
@@ -695,12 +699,12 @@
 
                 <div class="submit-section">
                     <button type="submit" class="submit-btn">
-                        <i class="fas fa-print"></i>
-                        พิมพ์รายงาน
+                        <i class="fas fa-paper-plane"></i>
+                        ส่งรายงานทางอีเมล
                     </button>
                     <div class="success-message" id="success-message">
                         <i class="fas fa-check-circle"></i>
-                        รายงานพร้อมสำหรับพิมพ์!
+                        รายงานถูกส่งทางอีเมลแล้ว!
                     </div>
                 </div>
             </form>
@@ -723,7 +727,6 @@
 
         // Real-time calculations
         function updateCalculations() {
-            // Corrected to handle comma-formatted numbers
             const foodRevenue = parseFloat(document.getElementById('food-revenue').value.replace(/,/g, '')) || 0;
             const beverageRevenue = parseFloat(document.getElementById('beverage-revenue').value.replace(/,/g, '')) || 0;
             const otherRevenue = parseFloat(document.getElementById('other-revenue').value.replace(/,/g, '')) || 0;
@@ -776,7 +779,6 @@
 
         // Auto-generate manager comments in Thai
         function generateComments() {
-            // Updated to get number from the text content
             const totalRevenue = parseNumber(document.getElementById('total-revenue').textContent);
             const totalGuests = parseInt(document.getElementById('total-guests').value) || 0;
             const avgSpend = parseNumber(document.getElementById('avg-spend').textContent);
@@ -865,47 +867,47 @@
         }
 
         // Form submission
-        document.getElementById('dutyLogForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('dutyLogForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission initially
             
-            // Collect form data
-            const formData = new FormData(this);
-            const data = {};
-            
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-
-            // Add calculated values
-            data.calculatedFields = {
-                totalRevenue: document.getElementById('total-revenue').textContent,
-                foodPercentage: document.getElementById('food-percentage').textContent,
-                beveragePercentage: document.getElementById('beverage-percentage').textContent,
-                avgSpendPerGuest: document.getElementById('avg-spend').textContent,
-                reservationRate: document.getElementById('reservation-rate').textContent,
-                totalStaff: document.getElementById('total-staff').textContent,
-                guestsPerServer: document.getElementById('guests-per-server').textContent,
-                revenuePerStaff: document.getElementById('revenue-per-staff').textContent
-            };
-
-            // Show success message and trigger print
+            // Show success message immediately
             document.getElementById('success-message').style.display = 'block';
-            
-            // Small delay to show success message, then print
-            setTimeout(() => {
-                window.print();
-            }, 500);
 
-            // Reset form after printing
-            setTimeout(() => {
-                this.reset();
-                document.getElementById('date').valueAsDate = new Date();
-                updateCalculations();
-                document.getElementById('success-message').style.display = 'none';
-            }, 3000);
+            const form = e.target;
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form), // Use new FormData(form) to send current form data
+                    headers: {
+                        'Accept': 'application/json' // Essential for Formspree to return JSON
+                    }
+                });
+
+                if (response.ok) {
+                    console.log('Form submitted successfully via Formspree!');
+                    // Reset form after successful submission
+                    setTimeout(() => {
+                        form.reset();
+                        document.getElementById('date').valueAsDate = new Date();
+                        updateCalculations();
+                        document.getElementById('success-message').style.display = 'none';
+                    }, 3000);
+                } else {
+                    console.error('Formspree submission failed:', response.statusText);
+                    // In a real application, you'd show a user-friendly error message,
+                    // potentially using a custom modal instead of alert.
+                    alert('การส่งรายงานล้มเหลว. โปรดลองอีกครั้งในภายหลัง.'); 
+                    document.getElementById('success-message').style.display = 'none'; // Hide success if failed
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                // In a real application, you'd show a user-friendly error message.
+                alert('เกิดข้อผิดพลาดในการส่งรายงาน. โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต.');
+                document.getElementById('success-message').style.display = 'none'; // Hide success if failed
+            }
         });
 
-        // Add comma formatting to number inputs
+        // Add comma formatting to number inputs (now type="text")
         const numberFields = ['food-revenue', 'beverage-revenue', 'other-revenue'];
         numberFields.forEach(fieldId => {
             const field = document.getElementById(fieldId);
@@ -923,7 +925,7 @@
             });
         });
 
-        // Initialize calculations
+        // Initialize calculations on page load
         updateCalculations();
     </script>
 </body>
