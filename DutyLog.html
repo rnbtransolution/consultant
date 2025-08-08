@@ -443,8 +443,8 @@
 
             textarea {
                 min-height: 40px !important;
-                height: auto !important; /* This is the key change */
-                overflow: visible !important; /* Ensure content is visible */
+                height: auto !important;
+                overflow: visible !important;
             }
 
             .kpi-display {
@@ -497,9 +497,10 @@
         
         <div class="form-container">
             <form id="dutyLogForm" action="https://formspree.io/f/mvgqvnql" method="POST">
-                <input type="hidden" name="_emailto" value="neawla@gmail.com">
+                <!-- Formspree required fields -->
+                <input type="hidden" name="_replyto" value="neawla@gmail.com">
                 <input type="hidden" name="_subject" value="R&B Duty Log Submission">
-                <input type="hidden" name="_cc" value="neawla@gmail.com">
+                <input type="email" name="email" style="display:none" value="neawla@gmail.com">
                 
                 <div class="form-grid">
                     <!-- ข้อมูลพื้นฐาน -->
@@ -872,23 +873,25 @@
 
         // Form submission
         document.getElementById('dutyLogForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // Prevent default form submission initially
+            e.preventDefault();
             
             // Show success message immediately
             document.getElementById('success-message').style.display = 'block';
 
             const form = e.target;
+            const formData = new FormData(form);
+            
             try {
                 const response = await fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form), // Use new FormData(form) to send current form data
+                    method: 'POST',
+                    body: formData,
                     headers: {
-                        'Accept': 'application/json' // Essential for Formspree to return JSON
+                        'Accept': 'application/json'
                     }
                 });
 
                 if (response.ok) {
-                    console.log('Form submitted successfully via Formspree!');
+                    console.log('Form submitted successfully!');
                     // Reset form after successful submission
                     setTimeout(() => {
                         form.reset();
@@ -897,17 +900,15 @@
                         document.getElementById('success-message').style.display = 'none';
                     }, 3000);
                 } else {
-                    console.error('Formspree submission failed:', response.statusText);
-                    // In a real application, you'd show a user-friendly error message,
-                    // potentially using a custom modal instead of alert.
-                    alert('การส่งรายงานล้มเหลว. โปรดลองอีกครั้งในภายหลัง.'); 
-                    document.getElementById('success-message').style.display = 'none'; // Hide success if failed
+                    const errorData = await response.json();
+                    console.error('Submission error:', errorData);
+                    alert('การส่งรายงานล้มเหลว: ' + (errorData.error || 'โปรดลองอีกครั้ง'));
+                    document.getElementById('success-message').style.display = 'none';
                 }
             } catch (error) {
-                console.error('Error submitting form:', error);
-                // In a real application, you'd show a user-friendly error message.
-                alert('เกิดข้อผิดพลาดในการส่งรายงาน. โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต.');
-                document.getElementById('success-message').style.display = 'none'; // Hide success if failed
+                console.error('Network error:', error);
+                alert('เกิดข้อผิดพลาดในการเชื่อมต่อ: ' + error.message);
+                document.getElementById('success-message').style.display = 'none';
             }
         });
 
