@@ -4,50 +4,95 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Restaurant Budget Form — R&B Transolution</title>
-  <style>
-    :root{
-      /* R&B Transolution palette */
-      --deep:#0b2f25;   /* deep green */
-      --bg:#0b2f25;     /* background deep green */
-      --bg-2:#113a2d;   /* panel deep green */
-      --ink:#ffffff;    /* white */
-      --muted:#9aa3ab;  /* grey */
-      --gold:#c7a047;   /* gold */
-      --line:#2a3f36;   /* divider grey/green */
-      --accent:#0f241d; /* hover darker */
-      --black:#000000;  /* black */
-      --grey:#9aa3ab;   /* grey alias */
-      --bad:#b91c1c;    /* error */
-      --good:#166534;   /* success */
-    }
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 "Inter",system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial}
-    .wrap{max-width:1200px;margin:24px auto;padding:0 16px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    h1{font-size:20px;margin:0;color:var(--gold)}
-    .badge{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:6px 10px;border-radius:999px;font-size:12px}
-    .card{background:var(--bg-2);border:1px solid var(--gold);border-radius:12px;padding:14px;box-shadow:0 0 0 1px rgba(199,160,71,0.15) inset}
-    .controls{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
-    button{appearance:none;border:1px solid var(--gold);background:transparent;color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
-    button:hover{background:var(--accent)}
-    button.secondary{border-color:var(--line)}
-    button.danger{border-color:var(--bad);color:#fee2e2}
-    .hint{color:var(--muted);font-size:12px}
-    .scroll{overflow:auto;border:1px solid var(--line);border-radius:12px}
-    table{border-collapse:separate;border-spacing:0;width:100%;min-width:1024px}
-    th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:middle}
-    th:first-child,td:first-child{border-left:1px solid var(--line)}
-    thead th{position:sticky;top:0;background:linear-gradient(180deg,#12211b,#0f201a)}
-    thead .month{font-weight:700;text-align:center}
-    thead .sub{font-weight:600;font-size:12px;color:var(--muted)}
-    tbody tr.section>td{background:#10261f;font-weight:700;color:var(--gold)}
-    tbody tr.total>td:first-child{font-weight:700}
-    input[type="number"]{width:110px;box-sizing:border-box;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 8px;text-align:right}
-    .money{text-align:right;display:inline-block;min-width:90px}
-    .sticky-left{position:sticky;left:0;background:var(--bg-2);z-index:3;box-shadow:1px 0 0 var(--line)}
-    .footer{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
-    a.inline{color:var(--gold)}
-  </style>
+  
+<style>
+:root {
+  /* R&B Transolution Official Palette */
+  --luxury-bronze: #B8860B;   /* Primary brand bronze */
+  --accent-gold:   #DAA520;   /* Accent gold */
+  --deep-charcoal: #2F2F2F;   /* Primary text/dark UI */
+  --rich-black:    #1C1C1C;   /* Headlines/dark backgrounds */
+  --warm-beige:    #F5F2E8;   /* Light background */
+  --ivory:         #FFFEF7;   /* Page background */
+  --muted:         #6B6B6B;   /* Muted text */
+  --line:          rgba(184,134,11,0.3); /* Divider lines */
+  --bad:           #b91c1c;   /* Error */
+  --good:          #166534;   /* Success */
+}
+
+html, body {height:100%;}
+body {
+  margin:0;
+  background: var(--ivory);
+  color: var(--deep-charcoal);
+  font:14px/1.4 "Inter","Noto Sans Thai",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+.wrap {max-width:1200px;margin:24px auto;padding:0 16px;}
+header {display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+h1 {font-size:20px;margin:0;color: var(--luxury-bronze);}
+.badge {
+  background:transparent;
+  color: var(--luxury-bronze);
+  border:1px solid var(--luxury-bronze);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.card {
+  background: var(--warm-beige);
+  border:1px solid var(--luxury-bronze);
+  border-radius:12px;
+  padding:14px;
+  box-shadow:0 0 0 1px rgba(184,134,11,0.15) inset;
+}
+.controls {display:flex;flex-wrap:wrap;gap:8px;margin:6px 0;}
+button {
+  appearance:none;
+  border:1px solid var(--luxury-bronze);
+  background:transparent;
+  color: var(--deep-charcoal);
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+button:hover {background: rgba(184,134,11,0.08);}
+button.secondary {border-color: var(--line);}
+button.danger {
+  border-color: #D35400; /* Deep Orange */
+  color: #D35400;
+  background: rgba(211, 84, 0, 0.1); /* Soft background tint */
+}
+.hint {color: var(--muted);font-size:12px;}
+.scroll {overflow:auto;border:1px solid var(--line);border-radius:12px;}
+table {border-collapse:separate;border-spacing:0;width:100%;min-width:1024px;}
+th, td {border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:middle;}
+th:first-child, td:first-child {border-left:1px solid var(--line);}
+thead th {position:sticky;top:0;background:linear-gradient(180deg, var(--warm-beige), var(--ivory));}
+thead .month {font-weight:700;text-align:center;}
+thead .sub {font-weight:600;font-size:12px;color: var(--muted);}
+tbody tr.section > td {
+  background: var(--warm-beige);
+  font-weight:700;
+  color: var(--luxury-bronze);
+}
+tbody tr.total > td:first-child {font-weight:700;}
+input[type="number"] {
+  width:110px;
+  box-sizing:border-box;
+  background:transparent;
+  border:1px solid var(--line);
+  color: var(--deep-charcoal);
+  border-radius:8px;
+  padding:6px 8px;
+  text-align:right;
+}
+.money {text-align:right;display:inline-block;min-width:90px;}
+.sticky-left {position:sticky;left:0;background: var(--warm-beige);z-index:3;box-shadow:1px 0 0 var(--line);}
+.footer {display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;}
+a.inline {color: var(--luxury-bronze);}
+</style>
+
 </head>
 <body>
   <div class="wrap">
