@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&B Duty Log</title>
+    <title>Luxury Duty Log</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
         
         :root{
-            --brand-green-dark:#0b3d2e;
-            --brand-green:#0f5132;
-            --brand-gold:#C9A227;
+            --luxury-gold:#d4af37;
+            --luxury-gold-dark:#b8941f;
+            --luxury-gold-light:#f4e97d;
             --brand-black:#000000;
             --brand-grey:#6c757d;
             --brand-grey-light:#f4f5f7;
             --brand-white:#ffffff;
+            --brand-green:#0f5132;
+            --brand-green-dark:#0b3d2e;
         }
 
         
@@ -28,7 +30,7 @@
 
         body {
             font-family: 'Sarabun', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
+            background: linear-gradient(135deg, var(--luxury-gold-dark) 0%, var(--brand-black) 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -50,7 +52,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-dark) 50%, var(--luxury-gold) 100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -65,7 +67,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);
             animation: float 20s infinite linear;
         }
 
@@ -80,13 +82,15 @@
             position: relative;
             z-index: 1;
             font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header .subtitle {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.95;
             position: relative;
             z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         .form-container {
@@ -110,7 +114,7 @@
             overflow: hidden;
         }
 
-        .form-section::before { content: ''; position: absolute; top:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--brand-gold), #a3851a); transform: scaleX(0); transition: transform 0.3s ease; }
+        .form-section::before { content: ''; position: absolute; top:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--luxury-gold), var(--luxury-gold-dark)); transform: scaleX(0); transition: transform 0.3s ease; }
 
         .form-section:hover::before {
             transform: scaleX(1);
@@ -119,7 +123,7 @@
         .form-section:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: var(--brand-gold);
+            border-color: var(--luxury-gold);
         }
 
         .section-title { font-size: 1.3rem; font-weight: 600; color: var(--brand-green-dark);
@@ -129,7 +133,7 @@
             gap: 10px;
         }
 
-        .section-title i { color: var(--brand-gold); font-size: 1.4rem; }
+        .section-title i { color: var(--luxury-gold); font-size: 1.4rem; }
 
         .form-group {
             margin-bottom: 20px;
@@ -175,29 +179,91 @@
             font-family: inherit;
         }
 
-        input:focus, select:focus, textarea:focus { outline:none; border-color: var(--brand-green-dark); box-shadow: 0 0 0 3px rgba(11, 61, 46, 0.1); transform: translateY(-1px);}
+        input:focus, select:focus, textarea:focus { 
+            outline:none; 
+            border-color: var(--luxury-gold); 
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); 
+            transform: translateY(-1px);
+        }
 
         textarea {
             resize: vertical;
             min-height: 120px;
         }
 
-        .submit-section { background: linear-gradient(135deg, var(--brand-green-dark) 0%, var(--brand-black) 100%);
+        /* Expanded manager comments section */
+        #manager-comments {
+            min-height: 200px !important;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .manager-comments-section {
+            grid-column: 1 / -1; /* Span full width */
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+            border: 2px solid var(--luxury-gold);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .manager-comments-section .section-title {
+            color: var(--luxury-gold-dark);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+        }
+
+        .comment-tools {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .submit-section { 
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-dark) 100%);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             margin-top: 30px;
         }
 
-        .submit-btn { background: var(--brand-green-dark); color: white; border: 2px solid var(--brand-gold); padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: inherit; }
+        .submit-btn { 
+            background: var(--luxury-gold-dark); 
+            color: white; 
+            border: 2px solid white; 
+            padding: 15px 40px; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-family: inherit; 
+        }
 
-        .submit-btn:hover { background: var(--brand-green); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+        .submit-btn:hover { 
+            background: white; 
+            color: var(--luxury-gold-dark);
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
 
         .submit-btn:active {
             transform: translateY(0);
         }
 
-        .kpi-display { background: linear-gradient(135deg, var(--brand-grey-light) 0%, var(--brand-white) 100%); border-radius: 15px; padding: 20px; margin-top: 20px; border-left: 4px solid var(--brand-gold); }
+        .kpi-display { 
+            background: linear-gradient(135deg, var(--brand-grey-light) 0%, var(--brand-white) 100%); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-left: 4px solid var(--luxury-gold); 
+        }
 
         .kpi-row {
             display: grid;
@@ -227,13 +293,26 @@
             line-height: 1.2;
         }
 
-        .generate-btn, .clear-btn { background: var(--brand-grey); color: white; border: 1px solid var(--brand-black); }
+        .generate-btn, .clear-btn { 
+            background: var(--brand-grey); 
+            color: white; 
+            border: 1px solid var(--brand-black); 
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-        .clear-btn { background: var(--brand-grey); color: white; border: 1px solid var(--brand-black); }
+        .generate-btn:hover, .clear-btn:hover { 
+            background: var(--luxury-gold); 
+            color: white; 
+            border-color: var(--luxury-gold);
+        }
 
-        .generate-btn:hover, .clear-btn:hover { background: var(--brand-black); color: white; }
-
-        .success-message { display:none; background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
+        .success-message { 
+            display:none; 
+            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
             color: white;
             padding: 20px;
             border-radius: 10px;
@@ -281,22 +360,30 @@
             .kpi-row {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .manager-comments-section {
+                padding: 20px;
+            }
         }
 
         
         /* Print Styles */
         @media print {
-    textarea {
-        width: 100% !important;
-        min-height: 150px !important;
-        height: auto !important;
-        display: block !important;
-        overflow: visible !important;
-    }
+            textarea {
+                width: 100% !important;
+                min-height: 150px !important;
+                height: auto !important;
+                display: block !important;
+                overflow: visible !important;
+            }
 
-    .form-section {
-        grid-column: 1 / -1 !important; /* Span full width in print */
-    }
+            #manager-comments {
+                min-height: 200px !important;
+            }
+
+            .form-section {
+                grid-column: 1 / -1 !important;
+            }
 
             body {
                 background: white !important;
@@ -315,7 +402,7 @@
             }
 
             .header {
-                background: #2c3e50 !important;
+                background: var(--luxury-gold) !important;
                 color: white !important;
                 padding: 15px !important;
                 margin-bottom: 20px;
@@ -347,13 +434,19 @@
                 gap: 15px !important;
             }
 
-            .form-section {
+            .form-section, .manager-comments-section {
                 background: white !important;
                 border: 1px solid #ddd !important;
                 border-radius: 0 !important;
                 padding: 12px !important;
                 margin-bottom: 10px !important;
                 page-break-inside: avoid;
+            }
+
+            .manager-comments-section {
+                grid-column: 1 / -1 !important;
+                border: 2px solid var(--luxury-gold) !important;
+                padding: 15px !important;
             }
 
             .form-section::before {
@@ -402,6 +495,10 @@
                 overflow: visible !important;
             }
 
+            #manager-comments {
+                min-height: 80px !important;
+            }
+
             .kpi-display {
                 background: #f8f9fa !important;
                 border: 1px solid #ddd !important;
@@ -437,7 +534,7 @@
                 line-height: 1.1;
             }
 
-            .submit-section, .generate-btn, .clear-btn, .success-message {
+            .submit-section, .generate-btn, .clear-btn, .success-message, .comment-tools {
                 display: none !important;
             }
         }
@@ -446,14 +543,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-clipboard-list"></i> R&B บันทึกการปฏิบัติงานประจำวัน</h1>
+            <h1><i class="fas fa-clipboard-list"></i> บันทึกการปฏิบัติงานประจำวัน</h1>
             <div class="subtitle">ระบบติดตามการดำเนินงานและผลการปฏิบัติงานรายวัน</div>
         </div>
         
         <div class="form-container">
             <form id="dutyLogForm" action="https://formspree.io/f/mvgqvnql" method="POST">
                 <input type="hidden" name="_replyto" value="neawla@gmail.com">
-                <input type="hidden" name="_subject" value="R&B Duty Log Submission">
+                <input type="hidden" name="_subject" value="Daily Operations Log Submission">
                 <input type="email" name="email" style="display:none" value="neawla@gmail.com">
                 
                 <div class="form-grid">
@@ -487,6 +584,7 @@
                                 <label for="weather">สภาพอากาศ:</label>
                                 <select id="weather" name="weather">
                                     <option value="">เลือกสภาพอากาศ</option>
+                                    <option value="nice">อากาศดี</option>
                                     <option value="sunny">แสงแดดดี</option>
                                     <option value="cloudy">มีเมฆมาก</option>
                                     <option value="rainy">ฝนตก</option>
@@ -636,17 +734,25 @@
                             <label for="operational-issues">ปัญหาการดำเนินงาน:</label>
                             <textarea id="operational-issues" name="operational-issues" placeholder="ปัญหาอุปกรณ์ การขาดแคลนสินค้า เหตุการณ์พนักงาน..."></textarea>
                         </div>
+                    </div>
+
+                    <!-- Expanded Manager Comments Section -->
+                    <div class="form-section manager-comments-section">
+                        <div class="section-title">
+                            <i class="fas fa-user-shield"></i>
+                            ความเห็นผู้จัดการ
+                        </div>
+                        <div class="comment-tools">
+                            <button type="button" class="generate-btn" onclick="generateComments()">
+                                <i class="fas fa-magic"></i> สร้างอัตโนมัติ
+                            </button>
+                            <button type="button" class="clear-btn" onclick="clearComments()">
+                                <i class="fas fa-eraser"></i> ล้าง
+                            </button>
+                        </div>
                         <div class="form-group">
-                            <label for="manager-comments">ความเห็นผู้จัดการ:</label>
-                            <div style="display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; align-items:center;">
-                                <button type="button" class="generate-btn" onclick="generateComments()">
-                                    <i class="fas fa-magic"></i> สร้างอัตโนมัติ
-                                </button>
-                                <button type="button" class="clear-btn" onclick="clearComments()">
-                                    <i class="fas fa-eraser"></i> ล้าง
-                                </button>
-                            </div>
-                            <textarea id="manager-comments" name="manager-comments" placeholder="ข้อสังเกตรายวัน คำแนะนำ การติดตาม..." required></textarea>
+                            <label for="manager-comments">บันทึกรายละเอียด:</label>
+                            <textarea id="manager-comments" name="manager-comments" placeholder="ข้อสังเกตรายวัน คำแนะนำ การติดตาม แผนงานวันถัดไป การประเมินทีมงาน ปัญหาที่ต้องแก้ไข และข้อเสนอแนะเพื่อการปรับปรุง..." required></textarea>
                         </div>
                     </div>
                 </div>
@@ -760,6 +866,7 @@
 
             // Weather translation
             const weatherThai = {
+                'nice': 'อากาศดี',
                 'sunny': 'แสงแดดดี',
                 'cloudy': 'มีเมฆมาก',
                 'rainy': 'ฝนตก',
@@ -789,7 +896,7 @@
             // Weather impact
             if (weather === 'rainy' || weather === 'stormy') {
                 comments.push(`สภาพอากาศ${weatherThai[weather] || weather}ส่งผลกระทบต่อจำนวนลูกค้า`);
-            } else if (weather === 'sunny') {
+            } else if (weather === 'sunny' || weather === 'nice') {
                 comments.push(`สภาพอากาศ${weatherThai[weather] || weather}ช่วยให้มีลูกค้าเข้ามามากขึ้น`);
             }
 
