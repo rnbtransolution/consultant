@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Duty Log</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
@@ -226,6 +228,11 @@
             padding: 30px;
             text-align: center;
             margin-top: 30px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 15px; 
+            flex-wrap: wrap;
         }
 
         .submit-btn { 
@@ -311,7 +318,7 @@
         }
 
         .success-message { 
-            display:none; 
+            display: none; 
             background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
             color: white;
             padding: 20px;
@@ -319,6 +326,7 @@
             text-align: center;
             margin-top: 20px;
             animation: fadeIn 0.5s ease-in;
+            width: 100%;
         }
 
         @keyframes fadeIn {
@@ -538,6 +546,13 @@
                 display: none !important;
             }
         }
+
+        .pdf-container {
+            background: white;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -736,7 +751,6 @@
                         </div>
                     </div>
 
-                    <!-- Expanded Manager Comments Section -->
                     <div class="form-section manager-comments-section">
                         <div class="section-title">
                             <i class="fas fa-user-shield"></i>
@@ -758,19 +772,24 @@
                 </div>
 
                 
-                <div class="submit-section" style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <div class="submit-section">
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i>
                         ส่งรายงาน
                     </button>
+                    <button type="button" class="submit-btn" onclick="savePDF()">
+                        <i class="fas fa-file-pdf"></i>
+                        สร้าง PDF
+                    </button>
                     <button type="button" class="submit-btn" onclick="window.print()">
                         <i class="fas fa-print"></i>
-                        Print
+                        PRINT
                     </button>
-                    <div class="success-message" id="success-message" style="width: 100%;">
-                        <i class="fas fa-check-circle"></i>
-                        รายงานถูกส่งทางอีเมลแล้ว!
-                    </div>
+                </div>
+
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    รายงานถูกส่งทางอีเมลแล้ว!
                 </div>
 
             </form>
@@ -933,13 +952,90 @@
             document.getElementById('manager-comments').value = '';
         }
 
+        // PDF generation function - FIXED
+        async function savePDF() {
+            // Show loading message
+            const originalText = document.querySelector('.submit-section').innerHTML;
+            document.querySelector('.submit-section').innerHTML = '<div style="color: white; padding: 20px;">กำลังสร้าง PDF...</div>';
+            
+            try {
+                // Hide elements that shouldn't appear in PDF
+                const elementsToHide = document.querySelectorAll('.submit-section, .comment-tools');
+                elementsToHide.forEach(el => {
+                    el.style.display = 'none';
+                });
+
+                // Use a container for the PDF content to ensure proper capture
+                const pdfContainer = document.querySelector('.container');
+                
+                // Wait a moment for elements to hide
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                // Capture the container as canvas with improved options
+                const canvas = await html2canvas(pdfContainer, {
+                    scale: 2, // Increase resolution for better quality
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    // Set explicit width to prevent rendering issues on different screen sizes
+                    width: pdfContainer.scrollWidth,
+                    // Capture full height of the content
+                    windowWidth: pdfContainer.scrollWidth,
+                    windowHeight: pdfContainer.scrollHeight,
+                });
+                
+                // Create PDF
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                
+                const imgData = canvas.toDataURL('image/jpeg', 1.0); // Use 1.0 for highest quality
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                // Add the first page
+                pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                // Add new pages if content is longer than one page
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Save the PDF
+                const fileName = `duty-log-${document.getElementById('date').value || 'report'}.pdf`;
+                pdf.save(fileName);
+                
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('เกิดข้อผิดพลาดในการสร้าง PDF กรุณาลองใหม่อีกครั้ง');
+            } finally {
+                // Restore all elements regardless of success or failure
+                const elementsToHide = document.querySelectorAll('.submit-section, .comment-tools');
+                elementsToHide.forEach(el => {
+                    el.style.display = '';
+                });
+                // Restore original content
+                document.querySelector('.submit-section').innerHTML = originalText;
+                
+                // Re-attach event listeners to the restored buttons
+                document.querySelector('button[onclick="savePDF()"]').onclick = savePDF;
+            }
+        }
+
         // Form submission
         document.getElementById('dutyLogForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Show success message immediately
-            document.getElementById('success-message').style.display = 'block';
-
             const form = e.target;
             const formData = new FormData(form);
             
@@ -953,7 +1049,10 @@
                 });
 
                 if (response.ok) {
+                    // Show success message only after successful submission
+                    document.getElementById('success-message').style.display = 'block';
                     console.log('Form submitted successfully!');
+                    
                     // Reset form after successful submission
                     setTimeout(() => {
                         form.reset();
@@ -965,12 +1064,10 @@
                     const errorData = await response.json();
                     console.error('Submission error:', errorData);
                     alert('การส่งรายงานล้มเหลว: ' + (errorData.error || 'โปรดลองอีกครั้ง'));
-                    document.getElementById('success-message').style.display = 'none';
                 }
             } catch (error) {
                 console.error('Network error:', error);
                 alert('เกิดข้อผิดพลาดในการเชื่อมต่อ: ' + error.message);
-                document.getElementById('success-message').style.display = 'none';
             }
         });
 
