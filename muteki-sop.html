@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muteki Japanese Restaurant – SOP Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Brand Palette */
+      --luxury-bronze: #B8860B;
+      --accent-gold:   #DAA520;
+      --deep-charcoal: #2F2F2F;
+      --rich-black:    #1C1C1C;
+      --ivory:         #FFFEF7;
+      --warm-beige:    #F5F2E8;
+      --muted:         #6B6B6B;
+      --border:        rgba(184, 134, 11, 0.25);
+      --success:       #2e7d32;
+      --danger:        #b71c1c;
+    }
+
+    /* ===== Base ===== */
+    html, body {
+      background: var(--ivory);
+      color: var(--deep-charcoal);
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Noto Sans Thai', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .tab-container {
+      max-width: 210mm;
+      margin: 12mm auto;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      padding: 14mm 16mm;
+      box-sizing: border-box;
+    }
+
+    .tab-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab-list button {
+      background-color: var(--warm-beige);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      outline: none;
+      transition: background-color 0.3s;
+      color: var(--deep-charcoal);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .tab-list button:hover {
+      background-color: #e0e0d5;
+    }
+
+    .tab-list button.active {
+      background-color: #fff;
+      border-color: var(--border);
+      border-bottom-color: #fff;
+      color: var(--luxury-bronze);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .doc {
+      width: 100%;
+      min-height: 297mm;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Header */
+    .doc-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 0 0 10mm 0;
+      border-bottom: 2px solid var(--border);
+    }
+    .brand-lockup {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+    .brand-lockup .muteki {
+      color: var(--rich-black);
+      font-weight: 300; /* Adjusted for thin look */
+      letter-spacing: .02em;
+      font-size: 20pt;
+      text-transform: lowercase; /* Force lowercase */
+    }
+    .brand-lockup .restaurant {
+      font-family: 'Inter', sans-serif;
+      color: var(--deep-charcoal);
+      font-size: 9pt;
+      letter-spacing: .04em;
+    }
+
+    .doc-meta {
+      font-size: 9pt;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* Title band */
+    .title-band {
+      margin: 10mm 0 6mm 0;
+      padding: 10mm 12mm;
+      background: linear-gradient(135deg, rgba(27,27,27,.96) 0%, rgba(44,44,44,.98) 65%);
+      color: #fff;
+      border-left: 6px solid var(--accent-gold);
+    }
+    .title-band h1 {
+      margin: 0 0 6px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .title-band .subtitle {
+      font-family: 'Noto Sans Thai', sans-serif;
+      font-size: 12pt;
+      color: rgba(255,255,255,.9);
+    }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6mm;
+      margin: 6mm 0 10mm 0;
+    }
+    .info-card {
+      background: var(--warm-beige);
+      border: 1px solid var(--border);
+      padding: 6mm;
+      border-radius: 4px;
+    }
+    .info-card h4 {
+      margin: 0 0 4mm 0;
+      color: var(--luxury-bronze);
+      font-size: 10pt;
+      letter-spacing: .3px;
+      font-weight: 700;
+      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+      text-transform: uppercase;
+    }
+    .info-card p, .info-card ul {
+      margin: 0;
+      font-size: 10pt;
+    }
+
+    /* Section */
+    .section {
+      margin: 10mm 0 0 0;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--rich-black);
+      font-size: 16pt;
+      margin: 0 0 4mm 0;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 3mm;
+    }
+    .section h3 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: var(--deep-charcoal);
+        font-size: 12pt;
+        margin-top: 6mm;
+        margin-bottom: 2mm;
+    }
+    .lead {
+      margin: 2mm 0 6mm 0;
+      font-size: 10.5pt;
+      color: var(--deep-charcoal);
+    }
+
+    /* Step grid */
+    .step-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+    }
+    .step-card {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 4px;
+      padding: 5mm;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      break-inside: avoid;
+    }
+    .step-card h4 { /* step title */
+      margin: 0 0 3mm 0;
+      font-size: 11pt;
+      color: var(--luxury-bronze);
+      font-weight: 700;
+    }
+    .step-card p, .step-card ul { font-size: 10pt; margin: 0; }
+    .step-card ul { padding-left: 4.5mm; margin-top: 2mm; }
+
+    /* Do / Don't */
+    .twocol {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5mm;
+    }
+    .callout {
+      padding: 5mm; border-radius: 4px; border: 1px solid var(--border);
+    }
+    .callout.do {
+      background: #eef7f0; border-left: 4px solid var(--success);
+    }
+    .callout.dont {
+      background: #fef0f0; border-left: 4px solid var(--danger);
+    }
+    .callout h4{margin:0 0 3mm 0;font-size:11pt}
+    .callout ul{margin:0;padding-left:4.5mm;font-size:10pt}
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+    }
+    th, td {
+      padding: 4mm 3mm;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--warm-beige);
+      text-align: left;
+    }
+
+    /* Signature block */
+    .signatures { display:grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 10mm; }
+    .sig { border-top: 1px dashed var(--border); padding-top: 4mm; font-size: 10pt; }
+
+    /* Footer */
+    .doc-footer {
+      margin-top: 12mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--border);
+      font-size: 9pt;
+      color: var(--muted);
+      display:flex; justify-content: space-between; align-items: center;
+    }
+    .doc-footer .page-counter::after { counter-increment: page; content: counter(page); }
+
+    .section, .info-grid, .signatures, table {
+        page-break-inside: avoid;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* Print */
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: transparent; }
+      .tab-container { box-shadow: none; margin: 0; padding: 0; width: 100%; }
+      .tab-list { display: none; }
+      .tab-content { display: block; page-break-after: always; }
+      .doc { box-shadow: none; width: 100%; min-height: auto; padding: 0; }
+      .title-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .doc-footer { position: fixed; bottom: 0; left: 0; right: 0; }
+    }
+
+    /* Small screens preview */
+    @media (max-width: 900px) {
+      .tab-container { width: 100%; margin: 0; border-radius: 0; }
+      .doc { width: 100%; min-height: auto; }
+      .step-grid, .twocol, .info-grid, .signatures { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tab-list">
+      <button class="tab-button active" onclick="openSOP(event, 'sop1')">1. เตรียมวัตถุดิบก่อนเปิดร้าน</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop2')">2. ล้างอุปกรณ์และสุขอนามัย</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop3')">3. จัดการของเสียในครัว</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop4')">4. จัดเก็บวัตถุดิบ FIFO</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop5')">5. ควบคุมอุณหภูมิ</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop6')">6. สต็อกสินค้า</button>
+    </div>
+
+    <div id="sop1" class="tab-content active">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-001</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การเตรียมวัตถุดิบก่อนเปิดร้าน (Opening Checklist)</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การเตรียมวัตถุดิบก่อนเปิดร้าน</h1>
+          <div class="subtitle">Standard Operating Procedures • Opening Checklist</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้การเตรียมวัตถุดิบและอุปกรณ์เป็นไปอย่างครบถ้วน ถูกต้อง และถูกสุขลักษณะตามมาตรฐานสากล</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัว (Back of House)</li>
+              <li>ผู้ช่วยพ่อครัว</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์ม Opening Checklist</li>
+              <li>อุปกรณ์ทำครัว, ภาชนะสำหรับเก็บวัตถุดิบ</li>
+              <li>มีด, เขียง, อุปกรณ์หั่น</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อเตรียมความพร้อมก่อนเปิดร้าน โดยเน้นความปลอดภัยและคุณภาพของวัตถุดิบเป็นสำคัญ</p>
+          <h3>1. การตรวจสอบและเตรียมความพร้อมทั่วไป</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 ตรวจสอบความสะอาด</h4>
+              <p>ตรวจสอบความสะอาดของพื้นที่ทำงาน เคาน์เตอร์ และพื้นครัวก่อนเริ่มงาน</p>
+              <ul>
+                <li>ทำความสะอาดและฆ่าเชื้อพื้นผิวที่ต้องสัมผัสกับอาหาร</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.2 ตรวจสอบอุปกรณ์ไฟฟ้า</h4>
+              <p>ตรวจสอบว่าเครื่องใช้ไฟฟ้าทั้งหมดอยู่ในสภาพพร้อมใช้งาน</p>
+              <ul>
+                <li>เช็คเครื่องทำข้าว (Rice Cooker), ตู้เย็น, ตู้แช่แข็ง, เครื่องดูดควัน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.3 เตรียมอุปกรณ์พื้นฐาน</h4>
+              <p>นำมีด, เขียง, และภาชนะที่จำเป็นออกมาจัดเตรียมให้พร้อมใช้งาน</p>
+              <ul>
+                <li>ใช้เขียงและมีดแยกสำหรับอาหารดิบ (เช่น ปลา) และอาหารที่ปรุงแล้ว/ผัก</li>
+              </ul>
+            </article>
+          </div>
+          <h3>2. การเตรียมวัตถุดิบ (Mise en place)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 ตรวจสอบคุณภาพวัตถุดิบ</h4>
+              <p>เช็คคุณภาพและความสดใหม่ของวัตถุดิบตามรายการใน Opening Checklist</p>
+              <ul>
+                <li>ตรวจสอบปลา: สังเกตสี, กลิ่น, และความแน่นของเนื้อ</li>
+                <li>ผัก: สังเกตความเหี่ยว, รอยช้ำ หรือความเสียหาย</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การหั่นและเตรียม</h4>
+              <p>ล้างวัตถุดิบให้สะอาดและหั่นตามขนาดที่กำหนด</p>
+              <ul>
+                <li>หั่นปลาสำหรับซาชิมิ, หั่นผักสำหรับสลัด, เตรียมเครื่องเคียง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.3 การจัดเก็บระหว่างเตรียม</h4>
+              <p>วัตถุดิบที่เตรียมแล้วต้องจัดเก็บในภาชนะที่มีฝาปิดมิดชิด</p>
+              <ul>
+                <li>ระบุชื่อวัตถุดิบและเวลาที่เตรียม เพื่อให้สามารถตรวจสอบได้ง่าย</li>
+              </ul>
+            </article>
+          </div>
+          <h3>3. การตั้งค่าสเตชั่น (Station Setup)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>3.1 สเตชั่นซูชิ/ซาชิมิ</h4>
+              <p>จัดเตรียมปลา, ข้าว, สาหร่าย, และเครื่องปรุงต่างๆ ให้พร้อมใช้งาน</p>
+              <ul>
+                <li>เตรียมวาซาบิ, โชยุ, และขิงดองให้พร้อมในภาชนะที่สะอาด</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>3.2 สเตชั่นเทมปุระ/ทอด</h4>
+              <p>เตรียมแป้ง, ไข่, และน้ำมันทอดให้พร้อมใช้งาน</p>
+              <ul>
+                <li>ตรวจสอบอุณหภูมิน้ำมันให้ได้ตามมาตรฐาน</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>สวมถุงมือและผ้ากันเปื้อนที่สะอาดเสมอ</li>
+                <li>ใช้ผ้าสะอาดแยกสำหรับทำความสะอาดมือและทำความสะอาดพื้นผิว</li>
+                <li>เติมน้ำแข็งในตู้แช่ปลาสดให้เพียงพอ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ใช้วัตถุดิบที่หมดอายุหรือมีคุณภาพต่ำ</li>
+                <li>ใช้เขียงหรือมีดสำหรับอาหารดิบร่วมกับอาหารที่ปรุงแล้ว</li>
+                <li>ปล่อยให้วัตถุดิบอยู่นอกตู้เย็นนานเกิน 30 นาที</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop2" class="tab-content">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-002</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การล้างอุปกรณ์และสุขอนามัย</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การล้างอุปกรณ์และสุขอนามัย</h1>
+          <div class="subtitle">Standard Operating Procedures • Washing and Sanitation</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อป้องกันการปนเปื้อนข้ามและรักษามาตรฐานสุขอนามัยสูงสุดในครัว</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>อ่างล้าง 3 ช่อง</li>
+              <li>น้ำยาล้างจาน, น้ำยาฆ่าเชื้อ (Food-grade)</li>
+              <li>ผ้าสะอาดสำหรับเช็ดแห้ง, ตะแกรงผึ่ง</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามหลักการล้างและฆ่าเชื้อ 3 ขั้นตอนอย่างเคร่งครัด</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 การขูดเศษอาหาร</h4>
+              <p>ใช้เกรียงหรืออุปกรณ์ขูดเศษอาหารออกจากจานและอุปกรณ์ทั้งหมดก่อนการล้าง</p>
+            </article>
+            <article class="step-card">
+              <h4>1.2 การล้าง (Washing)</h4>
+              <p>ล้างด้วยน้ำร้อนและน้ำยาล้างจานในอ่างที่ 1 อุณหภูมิประมาณ 45°C (113°F)</p>
+            </article>
+            <article class="step-card">
+              <h4>1.3 การล้างน้ำเปล่า (Rinsing)</h4>
+              <p>ล้างอุปกรณ์ด้วยน้ำสะอาดในอ่างที่ 2 เพื่อชำระล้างคราบสบู่ให้หมดจด</p>
+            </article>
+            <article class="step-card">
+              <h4>1.4 การฆ่าเชื้อ (Sanitizing)</h4>
+              <p>จุ่มอุปกรณ์ในน้ำยาฆ่าเชื้อที่ผสมตามสัดส่วนที่แนะนำในอ่างที่ 3</p>
+              <ul>
+                <li>ความเข้มข้นของน้ำยาฆ่าเชื้อต้องเป็นไปตามมาตรฐาน (เช่น คลอรีน 50-100 ppm)</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.5 การเช็ดแห้งและจัดเก็บ</h4>
+              <p>นำอุปกรณ์ขึ้นจากอ่างฆ่าเชื้อ ปล่อยให้แห้งเองด้วยการผึ่งลมบนตะแกรง หรือใช้ผ้าสะอาดเช็ด</p>
+              <ul>
+                <li>ไม่ควรนำอุปกรณ์ที่ยังเปียกไปจัดเก็บทันที</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.6 การทำความสะอาดประจำวัน</h4>
+              <p>ทำความสะอาดและฆ่าเชื้อเครื่องมือที่ใช้เป็นประจำ เช่น มีด, เขียง ทุกๆ 4 ชั่วโมง</p>
+            </article>
+          </div>
+          <h3>2. สุขอนามัยส่วนบุคคล</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 การล้างมือ</h4>
+              <p>ล้างมือด้วยสบู่และน้ำสะอาดเป็นเวลา 20 วินาที</p>
+              <ul>
+                <li>ล้างมือก่อนเริ่มงาน, หลังจากเข้าห้องน้ำ, หลังจากสัมผัสวัตถุดิบดิบ, และเมื่อเปลี่ยนงาน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การสวมถุงมือ</h4>
+              <p>สวมถุงมือที่สะอาดและเปลี่ยนถุงมือเมื่อมีการเปลี่ยนประเภทของงาน</p>
+              <ul>
+                <li>เปลี่ยนถุงมือเมื่อสัมผัสวัตถุดิบดิบ, หลังจากสัมผัสเงิน, หรือเมื่อถุงมือฉีกขาด</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ตรวจสอบความเข้มข้นของน้ำยาฆ่าเชื้อเป็นประจำ</li>
+                <li>ทำความสะอาดอ่างล้างและท่อระบายน้ำทุกวัน</li>
+                <li>จัดหาถุงมือและผ้าสะอาดให้เพียงพอต่อการใช้งาน</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ใช้ผ้าที่ไม่สะอาดในการเช็ดอุปกรณ์</li>
+                <li>ล้างอุปกรณ์ในน้ำสกปรกหรือมีเศษอาหารปนเปื้อน</li>
+                <li>สวมเครื่องประดับขณะเตรียมอาหาร</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop3" class="tab-content">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-003</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดการของเสียในครัว</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดการของเสียในครัว</h1>
+          <div class="subtitle">Standard Operating Procedures • Kitchen Waste Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการของเสียอย่างถูกสุขอนามัย ลดการปนเปื้อน และรักษาสิ่งแวดล้อม</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ถังขยะแบบมีฝาปิด</li>
+              <li>ถุงขยะแยกประเภท (ขยะเปียก, ขยะแห้ง)</li>
+              <li>บ่อดักไขมัน (Grease Trap)</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนการแยกประเภทขยะและการบำรุงรักษาอุปกรณ์ที่เกี่ยวข้อง</p>
+          <h3>1. การแยกประเภทขยะ</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 ขยะเปียก (เศษอาหาร)</h4>
+              <p>แยกเศษอาหารใส่ในถังขยะที่มีฝาปิดมิดชิดเพื่อป้องกันกลิ่นและสัตว์รบกวน</p>
+              <ul>
+                <li>นำไปทิ้งทุกวันหลังปิดร้าน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.2 ขยะแห้งและรีไซเคิล</h4>
+              <p>แยกขวดแก้ว, กระป๋องอลูมิเนียม, กระดาษ หรือพลาสติกสำหรับนำไปรีไซเคิล</p>
+              <ul>
+                <li>จัดเก็บในถุงหรือภาชนะแยกประเภทอย่างชัดเจน</li>
+              </ul>
+            </article>
+          </div>
+          <h3>2. การจัดการบ่อดักไขมัน (Grease Trap Management)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 การทำความสะอาด</h4>
+              <p>ทำความสะอาดบ่อดักไขมันเป็นประจำอย่างน้อยสัปดาห์ละ 1 ครั้ง</p>
+              <ul>
+                <li>ตักไขมันและเศษอาหารที่ตกค้างออกไปทิ้งในถังขยะที่เหมาะสม</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การตรวจสอบ</h4>
+              <p>ตรวจสอบการอุดตันของท่อระบายน้ำเพื่อป้องกันน้ำล้นหรือกลิ่นไม่พึงประสงค์</p>
+              <ul>
+                <li>หากพบปัญหาระบบระบายน้ำ ให้แจ้งผู้จัดการทันที</li>
+              </ul>
+            </article>
+          </div>
+          <h3>3. การจัดการทั่วไป</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>3.1 การทิ้งขยะ</h4>
+              <p>นำขยะทั้งหมดไปทิ้งในจุดที่กำหนดให้เป็นประจำ</p>
+              <ul>
+                <li>เปลี่ยนถุงขยะเมื่อเต็มหรือมีกลิ่นไม่พึงประสงค์</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>3.2 การทำความสะอาดถังขยะ</h4>
+              <p>ล้างและทำความสะอาดถังขยะทุกวันด้วยน้ำยาทำความสะอาด</p>
+              <ul>
+                <li>เช็ดถังขยะให้แห้งก่อนนำกลับมาใช้</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>จัดหาถังขยะให้เพียงพอและเหมาะสมในแต่ละพื้นที่</li>
+                <li>ปิดฝาถังขยะทุกครั้งหลังใช้งาน</li>
+                <li>รายงานปัญหาการจัดการขยะต่อผู้จัดการทันที</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ปล่อยให้ขยะล้นถัง</li>
+                <li>ทิ้งเศษอาหารหรือน้ำมันลงในท่อระบายน้ำโดยตรง</li>
+                <li>นำขยะเปียกไปรวมกับขยะแห้งโดยไม่แยกประเภท</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop4" class="tab-content">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-004</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดเก็บวัตถุดิบตามระบบ FIFO</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดเก็บวัตถุดิบตามระบบ FIFO</h1>
+          <div class="subtitle">Standard Operating Procedures • FIFO Stock Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการสต็อกวัตถุดิบอย่างมีประสิทธิภาพ ลดการเน่าเสีย และรับประกันความสดใหม่</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ป้ายกำกับวันที่ (Date Labeling)</li>
+              <li>แบบฟอร์มตรวจสอบสต็อก</li>
+              <li>ชั้นวางของแบบหมุนเวียน</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ใช้หลักการ "เข้าก่อนออกก่อน" (First In, First Out) ในการจัดการวัตถุดิบ เพื่อให้วัตถุดิบที่เข้ามาก่อนถูกใช้ก่อน</p>
+          <h3>1. การรับสินค้าและติดป้ายกำกับ</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 ตรวจสอบและติดป้ายกำกับ</h4>
+              <p>เมื่อได้รับวัตถุดิบใหม่ ให้ตรวจสอบความถูกต้องและคุณภาพ ก่อนจะติดป้ายกำกับ</p>
+              <ul>
+                <li>ป้ายต้องระบุ: ชื่อวัตถุดิบ, วันที่รับสินค้า, และวันหมดอายุ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.2 บันทึกในระบบ</h4>
+              <p>บันทึกวัตถุดิบที่ได้รับลงในระบบสต็อก เพื่อให้สามารถตรวจสอบได้ง่าย</p>
+            </article>
+          </div>
+          <h3>2. การจัดเรียงและการจัดเก็บ</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 การจัดเรียงในคลัง</h4>
+              <p>จัดเก็บวัตถุดิบใหม่ไว้ด้านหลังหรือใต้ของเก่าเสมอ</p>
+              <ul>
+                <li>วัตถุดิบที่มีวันหมดอายุก่อน ต้องอยู่ด้านหน้าหรือด้านบนสุด</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การนำไปใช้</h4>
+              <p>พนักงานต้องหยิบวัตถุดิบที่อยู่ด้านหน้ามาใช้ก่อนเสมอ</p>
+              <ul>
+                <li>ตรวจสอบป้ายกำกับและวันหมดอายุก่อนหยิบใช้ทุกครั้ง</li>
+              </ul>
+            </article>
+          </div>
+          <h3>3. การตรวจสอบและบำรุงรักษาระบบ</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>3.1 ตรวจสอบสต็อกอย่างสม่ำเสมอ</h4>
+              <p>ผู้รับผิดชอบต้องตรวจสอบวันหมดอายุของวัตถุดิบทั้งหมดเป็นประจำ</p>
+              <ul>
+                <li>หากพบวัตถุดิบใกล้หมดอายุ ให้แจ้งผู้จัดการเพื่อวางแผนการใช้หรือกำจัดทิ้ง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>3.2 การทำความสะอาด</h4>
+              <p>ทำความสะอาดพื้นที่จัดเก็บเป็นประจำเพื่อป้องกันการสะสมของสิ่งสกปรกและเชื้อโรค</p>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>อบรมพนักงานทุกคนให้เข้าใจและปฏิบัติตามระบบ FIFO อย่างเคร่งครัด</li>
+                <li>ใช้ป้ายกำกับที่มองเห็นชัดเจน</li>
+                <li>ตรวจสอบการจัดเรียงวัตถุดิบทุกวัน</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>นำวัตถุดิบใหม่มาวางทับของเก่า</li>
+                <li>ใช้วัตถุดิบโดยไม่ตรวจสอบวันหมดอายุก่อน</li>
+                <li>เก็บวัตถุดิบไว้ในที่ที่ไม่เหมาะสม เช่น ใกล้ความร้อนหรือแสงแดด</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop5" class="tab-content">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-005</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</h1>
+          <div class="subtitle">Standard Operating Procedures • Storage and Temperature Control</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อยืดอายุการใช้งานและรักษาคุณภาพของวัตถุดิบ โดยป้องกันการเจริญเติบโตของแบคทีเรีย</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ตู้เย็น, ตู้แช่แข็ง</li>
+              <li>เครื่องวัดอุณหภูมิ, แบบฟอร์มบันทึกอุณหภูมิ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ควบคุมอุณหภูมิของวัตถุดิบตามมาตรฐานความปลอดภัยทางอาหาร (Food Safety Standards)</p>
+          <h3>1. การรับและตรวจสอบอุณหภูมิวัตถุดิบ</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 ตรวจสอบวัตถุดิบเมื่อรับเข้า</h4>
+              <p>ใช้เครื่องวัดอุณหภูมิเพื่อตรวจสอบอุณหภูมิของวัตถุดิบที่มาส่ง</p>
+              <ul>
+                <li>วัตถุดิบแช่เย็น: ต่ำกว่า 4°C</li>
+                <li>วัตถุดิบแช่แข็ง: ต่ำกว่า -18°C</li>
+              </ul>
+            </article>
+          </div>
+          <h3>2. การจัดเก็บในตู้เย็นและตู้แช่แข็ง</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 การจัดเรียงตามประเภท</h4>
+              <p>จัดเรียงวัตถุดิบตามหลักการป้องกันการปนเปื้อนข้าม</p>
+              <ul>
+                <li><strong>ชั้นบนสุด:</strong> อาหารปรุงสุกหรือพร้อมรับประทาน</li>
+                <li><strong>ชั้นกลาง:</strong> ผัก, ผลไม้, ผลิตภัณฑ์นม</li>
+                <li><strong>ชั้นล่างสุด:</strong> วัตถุดิบดิบ เช่น ปลา, เนื้อสัตว์, ไก่</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การควบคุมอุณหภูมิ</h4>
+              <p>ตรวจสอบอุณหภูมิของตู้เย็นและตู้แช่แข็งอย่างน้อยวันละ 2 ครั้ง</p>
+              <ul>
+                <li>บันทึกอุณหภูมิที่วัดได้ลงในแบบฟอร์มบันทึก</li>
+              </ul>
+            </article>
+          </div>
+          <h3>3. การจัดการทั่วไป</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>3.1 การบรรจุในภาชนะ</h4>
+              <p>เก็บวัตถุดิบในภาชนะที่สะอาดและมีฝาปิดมิดชิด</p>
+              <ul>
+                <li>ติดป้ายกำกับที่ระบุชื่อวัตถุดิบและวันที่เข้าเก็บ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>3.2 การบำรุงรักษาอุปกรณ์</h4>
+              <p>ทำความสะอาดตู้เย็นและตู้แช่แข็งอย่างสม่ำเสมอ</p>
+              <ul>
+                <li>ตรวจสอบยางขอบประตูและสภาพของตู้เป็นประจำ</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ตรวจสอบอุณหภูมิอย่างเคร่งครัดและบันทึกข้อมูล</li>
+                <li>ใช้เทอร์โมมิเตอร์ที่ได้รับการสอบเทียบอย่างสม่ำเสมอ</li>
+                <li>จัดเรียงวัตถุดิบให้มีช่องว่างเพื่อให้อากาศไหลเวียนได้ดี</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ปล่อยให้ประตูตู้เย็น/ตู้แช่แข็งเปิดทิ้งไว้นานๆ</li>
+                <li>นำวัตถุดิบที่ร้อนไปใส่ตู้เย็นทันที</li>
+                <li>เก็บวัตถุดิบแน่นเกินไปจนอากาศไม่ถ่ายเท</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop6" class="tab-content">
+      <main class="doc" role="document">
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-006</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</h1>
+          <div class="subtitle">Standard Operating Procedures • Inventory and Storage Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการสต็อกสินค้าให้เป็นระเบียบ ลดการสูญเสีย และเพิ่มความสามารถในการตรวจสอบ</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์ม Inventory Checklist</li>
+              <li>ป้ายกำกับ, ชั้นวางของ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อให้การจัดการสต็อกเป็นไปอย่างมีระบบและมีประสิทธิภาพ</p>
+          <h3>1. การรับสินค้า (Receiving)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>1.1 ตรวจสอบคุณภาพและปริมาณ</h4>
+              <p>ตรวจสอบสินค้าที่ได้รับจากซัพพลายเออร์ว่าตรงกับใบสั่งซื้อหรือไม่</p>
+              <ul>
+                <li>เช็คจำนวน, คุณภาพ, และวันหมดอายุของสินค้า</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>1.2 การบันทึกและเซ็นรับ</h4>
+              <p>เซ็นรับสินค้าและบันทึกข้อมูลในระบบหรือแบบฟอร์มบันทึกการรับสินค้า</p>
+              <ul>
+                <li>หากพบความผิดปกติของสินค้า ให้แจ้งซัพพลายเออร์ทันที</li>
+              </ul>
+            </article>
+          </div>
+          <h3>2. การจัดเก็บ (Storage)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>2.1 การติดป้ายและบันทึก</h4>
+              <p>ติดป้ายกำกับบนวัตถุดิบทั้งหมดที่ได้รับ</p>
+              <ul>
+                <li>ป้ายระบุ: ชื่อสินค้า, วันที่ได้รับ, และวันหมดอายุ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>2.2 การจัดเก็บตามประเภท</h4>
+              <p>จัดเก็บสินค้าในพื้นที่ที่เหมาะสมตามประเภท</p>
+              <ul>
+                <li>วัตถุดิบแห้ง: เก็บในห้องเก็บของที่แห้งและเย็น</li>
+                <li>วัตถุดิบแช่เย็น/แช่แข็ง: เก็บในตู้เย็น/ตู้แช่แข็งทันทีตามอุณหภูมิที่เหมาะสม</li>
+              </ul>
+            </article>
+          </div>
+          <h3>3. การควบคุมสต็อก (Inventory Control)</h3>
+          <div class="step-grid">
+            <article class="step-card">
+              <h4>3.1 การตรวจสอบสต็อก</h4>
+              <p>นับสต็อกสินค้าเป็นประจำตามกำหนดเวลา (เช่น รายสัปดาห์, รายเดือน)</p>
+              <ul>
+                <li>บันทึกผลการนับลงในแบบฟอร์ม Inventory Checklist</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h4>3.2 การสั่งซื้อ</h4>
+              <p>วางแผนการสั่งซื้อสินค้าล่วงหน้าโดยอิงจากยอดขายและปริมาณสต็อกปัจจุบัน</p>
+              <ul>
+                <li>ป้องกันปัญหาสินค้าขาดสต็อก (out of stock) หรือสต็อกล้น (overstock)</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ทำความสะอาดพื้นที่จัดเก็บอย่างสม่ำเสมอ</li>
+                <li>ใช้ระบบ FIFO อย่างเคร่งครัด</li>
+                <li>รายงานความผิดปกติของสต็อกทันที</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>วางวัตถุดิบบนพื้นโดยตรง</li>
+                <li>ปล่อยให้สต็อกหมดโดยไม่วางแผนการสั่งซื้อ</li>
+                <li>เก็บวัตถุดิบใกล้สารเคมีหรืออุปกรณ์ทำความสะอาด</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.1</td>
+                <td>2025-08-11</td>
+                <td>ปรับปรุงเนื้อหาให้ครอบคลุมตามมาตรฐานสากล</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 Muteki Japanese Restaurant — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function openSOP(evt, sopId) {
+      var i, tabcontent, tabbuttons;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tabbuttons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+      }
+      document.getElementById(sopId).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Show the default SOP tab on page load
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector(".tab-button").click();
+    });
+  </script>
+</body>
+</html>
