@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muteki - SOPs</title>
+  <title>Muteki - Standard Operating Procedures</title>
+  <!-- Brand Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -34,7 +35,7 @@
 
     .doc {
       width: 210mm;              /* A4 width */
-      min-height: 297mm;         /* at least one page */
+      /* min-height: 297mm;         */ /* at least one page - removed for continuous flow per SOP page */
       margin: 12mm auto;         /* outer margin for screen */
       padding: 14mm 16mm;        /* inner content padding */
       background: #fff;
@@ -42,28 +43,31 @@
       box-sizing: border-box;
       position: relative;
     }
-    
+
+    /* Print specific styles */
+    @page { size: A4; margin: 12mm; }
     @media print {
-        html, body {
-            margin: 0;
-            box-shadow: none;
-        }
+      body { background: transparent; }
+      .doc { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 0; }
+      .title-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-        .doc {
-            width: 100%;
-            margin: 0;
-            box-shadow: none;
-            padding: 10mm 15mm;
-            min-height: 100vh;
-        }
-
-        .doc-page {
-            page-break-after: always;
-        }
-
-        .doc-page:last-child {
-            page-break-after: avoid;
-        }
+      /* Force each SOP to start on a new page */
+      .sop-section {
+        page-break-before: always;
+        padding-top: 0; /* Adjust padding for print */
+      }
+      .sop-section:first-of-type {
+        page-break-before: avoid; /* No page break before the very first SOP */
+      }
+      .doc-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 4mm 16mm; /* Match document inner padding */
+        background: #fff; /* Ensure footer background is white for print */
+        border-top: 1px solid var(--border);
+      }
     }
 
     /* Header */
@@ -84,12 +88,6 @@
       font-weight: 700;
       letter-spacing: .02em;
       font-size: 20pt;
-    }
-    .brand-lockup .transolution {
-      color: var(--rich-black);
-      font-weight: 600;
-      font-size: 13pt;
-      letter-spacing: .08em;
     }
     .brand-lockup .consulting {
       font-family: 'Inter', sans-serif;
@@ -150,12 +148,10 @@
     .info-card p, .info-card ul {
       margin: 0;
       font-size: 10pt;
+      list-style-type: disc; /* Ensure consistent bullet style */
     }
     .info-card ul {
-        padding-left: 15px;
-    }
-    .info-card li {
-        margin-bottom: 2px;
+        padding-left: 20px;
     }
 
     /* Section */
@@ -177,423 +173,777 @@
       color: var(--deep-charcoal);
     }
 
-    /* Step grid */
-    .step-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5mm;
+    /* Step and sub-step content */
+    .step-content h3 { /* Main step headings, e.g., "1) ความพร้อมพื้นที่และอุปกรณ์" */
+        margin: 8mm 0 4mm 0;
+        font-size: 11.5pt;
+        color: var(--rich-black);
+        font-weight: 600;
+        border-bottom: 1px dashed var(--border);
+        padding-bottom: 2mm;
     }
-    .step-card {
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent-gold);
-      border-radius: 4px;
-      padding: 5mm;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    .step-content p { /* Sub-step descriptive text, e.g., "เปิด-ทดสอบระบบไฟฟ้า..." */
+        margin: 4mm 0 2mm 0;
+        font-size: 10pt;
     }
-    .step-card h5 {
-      font-size: 10pt;
-      margin: 0 0 4px 0;
-      font-weight: 600;
-      color: var(--rich-black);
+    .step-content ul { /* Bullet points under sub-steps */
+        margin: 2mm 0 6mm 0;
+        padding-left: 20px;
+        font-size: 10pt;
+        list-style-type: disc;
     }
-    .step-card p, .step-card ul {
-        margin: 0;
-        font-size: 9pt;
-        color: var(--deep-charcoal);
+    .step-content li {
+        margin-bottom: 3px;
     }
-    .step-card ul {
-        padding-left: 15px;
-    }
-    .step-card li {
-        margin-bottom: 2px;
-    }
-    
-    /* Footer */
-    .doc-footer {
-        position: relative;
-        padding-top: 10mm;
-        border-top: 2px solid var(--border);
-        text-align: right;
-        font-size: 9pt;
-        color: var(--muted);
+    .step-content strong {
+        color: var(--luxury-bronze);
     }
 
+
+    /* Do / Don't */
+    .twocol {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5mm;
+      margin-top: 6mm;
+    }
+    .callout {
+      padding: 5mm; border-radius: 4px; border: 1px solid var(--border);
+    }
+    .callout.do {
+      background: #eef7f0; border-left: 4px solid var(--success);
+    }
+    .callout.dont {
+      background: #fef0f0; border-left: 4px solid var(--danger);
+    }
+    .callout h4{margin:0 0 3mm 0;font-size:11pt; font-weight: 700;}
+    .callout ul{margin:0;padding-left:20px;font-size:10pt; list-style-type: disc;}
+    .callout li { margin-bottom: 3px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin-top: 6mm;
+    }
+    th, td {
+      padding: 4mm 3mm;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--warm-beige);
+      text-align: left;
+    }
+
+    /* Signature block */
+    .signatures { display:grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 10mm; }
+    .sig { border-top: 1px dashed var(--border); padding-top: 4mm; font-size: 10pt; }
+
+    /* Footer */
+    .doc-footer {
+      margin-top: 12mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--border);
+      font-size: 9pt;
+      color: var(--muted);
+      display:flex; justify-content: space-between; align-items: center;
+    }
+    .doc-footer .page-counter::after { counter-increment: page; content: counter(page); }
+
+    /* Watermark (toggle by adding .show on .watermark) */
+    .watermark { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: .3s; }
+    .watermark.show { opacity: .06; }
+    .watermark::before {
+      content: 'MUTEKI';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-24deg);
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 78pt; color: var(--rich-black);
+      white-space: nowrap;
+    }
+
+    /* Small screens preview */
+    @media (max-width: 900px) {
+      .doc { width: 100%; margin: 0; border-radius: 0; }
+      .twocol, .info-grid, .signatures { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-    
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-001 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
+  <main class="doc" role="document">
+    <!-- Optional watermark: add class 'show' to display on print/screen -->
+    <div class="watermark"></div>
 
-        <div class="title-band">
-            <h1>SOP: การเตรียมวัตถุดิบก่อนเปิดร้าน</h1>
-            <p class="subtitle">Standard Operating Procedures. Opening Checklist</p>
+    <!-- SOP: SOP-BOH-001 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
         </div>
-
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อให้การเตรียมวัตถุดิบและอุปกรณ์เป็นไปอย่างครบถ้วน ถูกต้อง และถูกสุขลักษณะตามมาตรฐานสากล SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 1]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัว (Back of House) [cite: 1]</li>
-                    [cite_start]<li>ผู้ช่วยพ่อครัว [cite: 1]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>แบบฟอร์ม Opening Checklist [cite: 1]</li>
-                    [cite_start]<li>อุปกรณ์ทำครัว, ภาชนะสําหรับเก็บวัตถุดิบ [cite: 1]</li>
-                    [cite_start]<li>มีด, เขียง, อุปกรณ์หั่น [cite: 1]</li>
-                </ul>
-            </div>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-001</div>
+          <div><strong>หัวข้อ:</strong> การเตรียมวัตถุดิบก่อนเปิดร้าน</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
         </div>
+      </header>
 
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">เตรียมครัวและวัตถุดิบให้พร้อมสำหรับการบริการมื้อเย็นตามมาตรฐานร้านญี่ปุ่นระดับพรีเมียม โดยเน้นคุณภาพ ความปลอดภัย อาหาร และความเร็วในช่วงพีก [cite: 1]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) ความพร้อมพื้นที่และอุปกรณ์</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 ตรวจระบบและความปลอดภัย:</b> เปิด-ทดสอบระบบไฟฟ้า ก๊าซ เครื่องดูดควัน ไฟฉุกเฉิน และจุดล้างมือให้พร้อมใช้งาน [cite: 1]</li>
-                        [cite_start]<li><b>1.2 ความสะอาดและสุขลักษณะ:</b> ทําความสะอาดเคาน์เตอร์ ตู้เย็น เขียง และมีดด้วยน้ำยาฆ่าเชื้อ Food-grade [cite: 1]</li>
-                        [cite_start]<li><b>1.3 นํ้าแข็งและคุณภาพนํ้า:</b> ตรวจน้ำแข็งสำหรับแช่ปลาและน้ำกรอง [cite: 1]</li>
-                    </ul>
-                </div>
-                <div class="step-card">
-                    <h5>2) วัตถุดิบหลัก (ปลา ผัก และของแห้ง)</h5>
-                    <ul>
-                        [cite_start]<li><b>2.1 ตรวจรับ/ละลายน้ำแข็งปลา (ถ้ามี):</b> ตรวจสี กลิ่น ความแน่นเนื้อ ตาใส เหงือกแดง และอุณหภูมิขณะรับเข้า [cite: 1]</li>
-                        [cite_start]<li><b>2.2 เตรียมตัดแต่งและส่วนเกรดซูชิ:</b> ตัดแต่งก้าง หนัง เลือดดำา และแพ็คในภาชนะปิดสนิท วางบนถาดน้ำแข็ง [cite: 1]</li>
-                    </ul>
-                </div>
-            </div>
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: การเตรียมวัตถุดิบก่อนเปิดร้าน</h1>
+        <div class="subtitle">Standard Operating Procedures. Opening Checklist</div>
+      </section>
+
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อให้การเตรียมวัตถุดิบและอุปกรณ์เป็นไปอย่างครบถ้วน ถูกต้อง และถูกสุขลักษณะตามมาตรฐานสากล SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัว (Back of House)</li>
+            <li>ผู้ช่วยพ่อครัว</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>แบบฟอร์ม Opening Checklist</li>
+            <li>อุปกรณ์ทำครัว, ภาชนะสําหรับเก็บวัตถุดิบ</li>
+            <li>มีด, เขียง, อุปกรณ์หั่น</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">เตรียมครัวและวัตถุดิบให้พร้อมสำหรับการบริการมื้อเย็นตามมาตรฐานร้านญี่ปุ่นระดับพรีเมียม โดยเน้นคุณภาพ ความปลอดภัย อาหาร และความเร็วในช่วงพีก</p>
+        <div class="step-content">
+          <h3>1) ความพร้อมพื้นที่และอุปกรณ์</h3>
+          <p><strong>1.1 ตรวจระบบและความปลอดภัย:</strong> เปิด-ทดสอบระบบไฟฟ้า ก๊าซ เครื่องดูดควัน ไฟฉุกเฉิน และจุดล้างมือให้พร้อมใช้งาน</p>
+          <ul>
+            <li>ตรวจเตา ยางท่อก๊าซ ไม่มีรอยแตกรั่ว</li>
+            <li>เติมกระดาษเช็ดมือ สบู่ล้างมือ แอลกอฮอล์เจล</li>
+            <li>สอบเทียบเทอร์โมมิเตอร์ด้วยวิธีน้ำแข็ง $0^{\circ}C$</li>
+          </ul>
+          <p><strong>1.2 ความสะอาดและสุขลักษณะ:</strong> ทําความสะอาดเคาน์เตอร์ ตู้เย็น เขียง และมีดด้วยน้ำยาฆ่าเชื้อ Food-grade</p>
+          <ul>
+            <li>แยกเขียง/ปิด ดิบ-สุก อย่างชัดเจน</li>
+            <li>จัดเตรียมผ้าเช็ดและถังน้ำยาฆ่าเชื้อให้พร้อม (เปลี่ยนทุก 2 ชม.)</li>
+          </ul>
+          <p><strong>1.3 นํ้าแข็งและคุณภาพนํ้า:</strong> ตรวจน้ำแข็งสำหรับแช่ปลาและน้ำกรองสำหรับปรุงอาหาร</p>
+          <ul>
+            <li>นํ้าแข็งใส ไม่มีกลิ่นรสแปลกปลอม</li>
+            <li>เปลี่ยนถาดน้ำแข็งใหม่ก่อนเริ่มผลัด</li>
+          </ul>
+
+          <h3>2) วัตถุดิบหลัก (ปลา ผัก และของแห้ง)</h3>
+          <p><strong>2.1 ตรวจรับ/ละลายน้ำแข็งปลา (ถ้ามี):</strong> ตรวจสี กลิ่น ความแน่นเนื้อ ตาใส เหงือกแดง และอุณหภูมิขณะรับเข้า</p>
+          <ul>
+            <li>ปลาแช่เย็น $\le4^{\circ}C$ | แช่แข็ง $\le-18^{\circ}C$</li>
+            <li>การละลายน้ำแข็งทําในตู้เย็น $0-4^{\circ}C$ พร้อมรับนํ้าหยด (ไม่แช่น้ำ)</li>
+          </ul>
+          <p><strong>2.2 เตรียมตัดแต่งและส่วนเกรดซูชิ:</strong> ตัดแต่งก้าง หนัง เลือดดำา และแพ็คในภาชนะปิดสนิท วางบนถาดน้ำแข็ง</p>
+          <ul>
+            <li>แบ่งส่วน (loin/block) และติดฉลาก วัน/เวลา ผู้เตรียม</li>
+            <li>เก็บแยกชนิดปลา ป้องกันกลิ่นข้าม</li>
+          </ul>
+          <p><strong>2.3 ผักและของแห้ง:</strong> ล้างผักด้วยน้ำสะอาด/โซลูชันที่ปลอดภัยตามฉลาก แล้วปั่นแห้ง; ตรวจสาหร่าย นอริ ให้อยู่ในสภาพแห้งกรอบ</p>
+          <ul>
+            <li>เก็บผักในกล่องปิดสนิท ชั้นกลางของตู้เย็น</li>
+            <li>นอริเก็บในกล่องกันชื้นพร้อมซิลิกาเจล</li>
+          </ul>
+
+          <h3>3) ซูชิไรซ์และเครื่องพื้นฐาน</h3>
+          <p><strong>3.1 หุงข้าวซูชิ (Shari):</strong> ซาวข้าวจนใสน้ำ พักให้น้ำซึมสม่ำเสมอ หุงตามสัดส่วนมาตรฐานของร้าน</p>
+          <ul>
+            <li>เตรียมน้ำส้มซู (Su) ตามสูตร: Rice Vinegar : Sugar: Salt</li>
+            <li>คลุก Su กับข้าวทันทีหลังหุงสุก พัดให้คลายไอร้อน เม็ดเงาไม่แฉะ</li>
+          </ul>
+          <p><strong>3.2 ซุปและซอสพื้นฐาน:</strong> เตรียม Dashi, Tentsuyu, Tsuyu, Teriyaki ตามสูตรมาตรฐานและติดฉลาก</p>
+          <ul>
+            <li>ระบุวันที่ทำ/วันหมดอายุ และเงื่อนไขการเก็บรักษา</li>
+            <li>ใช้ภาชนะ Food-grade ปิดสนิท</li>
+          </ul>
+          <p><strong>3.3 เครื่องเคียงและคอน เมนต์:</strong> เตรียมวาซาบิ โชยุ ขิงดอง งาด้า-ขาว และข้าวเกลือ</p>
+          <ul>
+            <li>วาซาบิควรขูดเป็นรอบเพื่อความหอมสด</li>
+            <li>โชยุใส่ขวดสะอาด ป้องกันปนเปื้อน</li>
+          </ul>
+
+          <h3>4) ตั้งสถานี (Station Setup) และสื่อสารทีม</h3>
+          <p><strong>4.1 Station ซูชิ/ซาชิมิ:</strong> จัดมีดซูชิ ผ้าเช็ดมือ น้ำส้มสำหรับเช็ดมีด ถังขยะเล็ก และปลาแบ่งส่วนพร้อมเสิร์ฟ</p>
+          <ul>
+            <li>เขียงซูชิสะอาด ไม่มีรอยลึก</li>
+            <li>เช็ดมีดด้วยผ้าชุบน้ำส้ม/ผสมน้ำทุกครั้งที่เปลี่ยนชนิดปลา</li>
+          </ul>
+          <p><strong>4.2 Station ทอด/เทมปุระ:</strong> กรองนํ้ามันก่อนเปิด ใช้เทอร์โมมิเตอร์ตรวจ $170-180^{\circ}C$ สําหรับเทมปุระ</p>
+          <ul>
+            <li>ตั้งตะแกรงพักของทอด ลดนํ้ามันค้าง</li>
+            <li>เปลี่ยนน้ำมันเมื่อสีเข้ม/กลิ่นแรง/ควันต่ำ</li>
+          </ul>
+          <p><strong>4.3 พรีเซอร์วิสบรีฟ:</strong> สรุปเมนูพิเศษ สินค้าจํากัด ปริมาณเสิร์ฟ และการจัดลำดับงานในช่วงพีก</p>
+          <ul>
+            <li>ยืนยันระดับ Par วัตถุดิบสำคัญ</li>
+            <li>เซ็นเช็กลิสต์เปิดครัวก่อนเวลาให้บริการ</li>
+          </ul>
+          <p>จัดทำ Par และผลผลิตต่อก้อน (yield) สำหรับปลาหลักทุกชนิด แล้วติดรายการ "ใช้ก่อน" บนถาดหน้าเพื่อเร่ง การหมุนเวียนและควบคุมต้นทุน</p>
         </div>
+      </section>
 
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 1]
-        </footer>
-    </div>
-
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-002 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
-
-        <div class="title-band">
-            <h1>SOP: การล้างอุปกรณ์และสุขอนามัย</h1>
-            <p class="subtitle">Standard Operating Procedures. Washing and Sanitation</p>
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>สวมถุงมือและผ้ากันเปื้อนที่สะอาดเสมอ</li>
+              <li>ใช้ผ้าสะอาดแยกสำหรับทำความสะอาดมือและทำความสะอาดพื้นผิว</li>
+              <li>เติมน้ำแข็งในตู้แช่ปลาสดให้เพียงพอ</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>ใช้วัตถุดิบที่หมดอายุหรือมีคุณภาพต่ำ</li>
+              <li>ใช้เขียงหรือมีดสำหรับอาหารดิบร่วมกับอาหารที่ปรุงแล้ว</li>
+              <li>ปล่อยให้วัตถุดิบอยู่นอกตู้เย็นนานเกิน 30 นาที</li>
+            </ul>
+          </div>
         </div>
+      </section>
+    </section>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อป้องกันการปนเปื้อนข้ามและรักษามาตรฐานสุขอนามัยสูงสุดในครัว SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 2]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัวและผู้ช่วย (BOH) [cite: 2]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>อ่างล้าง 3 ช่อง [cite: 2]</li>
-                    [cite_start]<li>นํ้ายาล้างจาน, น้ำยาฆ่าเชื้อ (Food-grade) [cite: 2]</li>
-                    [cite_start]<li>ผ้าสะอาดสำหรับเช็ดแห้ง, ตะแกรงฝั่ง [cite: 2]</li>
-                </ul>
-            </div>
+    <!-- SOP: SOP-BOH-002 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
         </div>
-
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">ทำความสะอาดและฆ่าเชื้ออุปกรณ์อย่างเป็นระบบ ลดการปนเปื้อนข้าม โดยเน้นอุณหภูมิ เวลา และความเข้มข้นสารฆ่าเชื้อตามมาตรฐาน [cite: 2]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) อ่างล้าง 3 ช่อง (Three-compartment sink)</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 ล้าง (Wash):</b> ใช้น้ำอุ่น 45-49°C ผสมน้ำยาล้างจานตามสัดส่วนผู้ผลิต แช่/ขัดคราบให้หลุด เปลี่ยนน้ำเมื่อสกปรก [cite: 2]</li>
-                        [cite_start]<li><b>1.2 ล้างสะอาด (Rinse):</b> ใช้น้ำสะอาดเพื่อล้างคราบน้ำยาทั้งหมด [cite: 2]</li>
-                        [cite_start]<li><b>1.3 ฆ่าเชื้อ (Sanitize):</b> คลอรีน 50-100 ppm หรือ Quat 200-400 ppm เวลาสัมผัสอย่างน้อย 1 นาที [cite: 2]</li>
-                        [cite_start]<li><b>1.4 ผึ่งให้แห้ง:</b> ผึ่งลมให้แห้ง [cite: 2]</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-002</div>
+          <div><strong>หัวข้อ:</strong> การล้างอุปกรณ์และสุขอนามัย</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
         </div>
+      </header>
 
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 2]
-        </footer>
-    </div>
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: การล้างอุปกรณ์และสุขอนามัย</h1>
+        <div class="subtitle">Standard Operating Procedures. Washing and Sanitation</div>
+      </section>
 
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-003 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อป้องกันการปนเปื้อนข้ามและรักษามาตรฐานสุขอนามัยสูงสุดในครัว SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>อ่างล้าง 3 ช่อง</li>
+            <li>นํ้ายาล้างจาน, น้ำยาฆ่าเชื้อ (Food-grade)</li>
+            <li>ผ้าสะอาดสำหรับเช็ดแห้ง, ตะแกรงฝั่ง</li>
+          </ul>
+        </article>
+      </section>
 
-        <div class="title-band">
-            <h1>SOP: การจัดการของเสียในครัว</h1>
-            <p class="subtitle">Standard Operating Procedures. Kitchen Waste Management</p>
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">ทำความสะอาดและฆ่าเชื้ออุปกรณ์อย่างเป็นระบบ ลดการปนเปื้อนข้าม โดยเน้นอุณหภูมิ เวลา และความเข้มข้นสารฆ่าเชื้อตามมาตรฐาน</p>
+        <div class="step-content">
+          <h3>1) อ่างล้าง 3 ช่อง (Three-compartment sink)</h3>
+          <p><strong>1.1 ล้าง (Wash):</strong> ใช้น้ำอุ่น $45-49^{\circ}C$ ผสมน้ำยาล้างจานตามสัดส่วนผู้ผลิต แช่/ขัดคราบให้หลุด</p>
+          <ul>
+            <li>เปลี่ยนน้ำเมื่อสกปรก</li>
+            <li>แยกภาชนะดิบ-สุก</li>
+          </ul>
+          <p><strong>1.2 ล้าง สะอาด (Rinse):</strong> ใช้น้ำสะอาดเพื่อล้างคราบน้ำยาทั้งหมด</p>
+          <p><strong>1.3 ฆ่าเชื้อ (Sanitize):</strong> คลอรีน 50-100 ppm หรือ Quat 200-400 ppm เวลาสัมผัสอย่างน้อย 1 นาที</p>
+          <ul>
+            <li>ใช้แถบทดสอบ (test strip) ตรวจความเข้มข้นและบันทึกลงแบบฟอร์ม</li>
+          </ul>
+          <p><strong>1.4 ผึ่งให้แห้ง:</strong> ผึ่งลมให้แห้งบนตะแกรง ห้ามใช้ผ้าเช็ดเพื่อลดการปนเปื้อน</p>
+
+          <h3>2) เครื่องล้างจาน/การฆ่าเชื้อด้วยความร้อน</h3>
+          <p><strong>2.1 อุณหภูมิรอบล้าง:</strong> ตรวจสอบให้รอบล้างสุดท้าย $\ge82^{\circ}C$ (หรือเทียบเท่าตามคู่มือเครื่อง)</p>
+          <ul>
+            <li>บันทึกอุณหภูมิปลายรอบทุกครั้งในแบบฟอร์ม</li>
+          </ul>
+          <p><strong>2.2 ทางเลือกแบบนํ้าร้อน:</strong> จุ่มในน้ำร้อน $\ge77^{\circ}C$ นานอย่างน้อย 30 วินาที สำหรับอุปกรณ์ทนความร้อน</p>
+
+          <h3>3) สุขอนามัยส่วนบุคคลและอุปกรณ์เสียง่าย</h3>
+          <p><strong>3.1 ล้างมือแบบมาตรฐาน 20 วินาที:</strong> ถูฝ่ามือ หลังมือ ซอกนิ้ว ปลายนิ้ว โคนนิ้วโป้ง เล็บและข้อมือ แล้วเช็ดให้แห้ง</p>
+          <ul>
+            <li>ล้างก่อนเริ่มงาน หลังเข้าห้องนํ้า หลังจับเงิน/ขยะ หลังสัมผัสอาหารดิบ</li>
+          </ul>
+          <p><strong>3.2 นโยบายเครื่องแต่งกาย:</strong> ตัดเล็บสั้น ห้ามสวมแหวน/กำไล ถ้ามีแผลต้องปิดแผลและสวมถุงมือทับ</p>
+          <p><strong>3.3 ความถี่ทําความสะอาดมืด/เขียง:</strong> ทำความสะอาดและฆ่าเชื้อทุก 4 ชม. หรือเมื่อเปลี่ยนชนิดวัตถุดิบ</p>
+
+          <h3>4) ความปลอดภัยสารเคมี</h3>
+          <p><strong>4.1 การผสมและเก็บรักษา:</strong> ผสมตามฉลากในขวดสเปรย์ติดฉลากชัดเจน เก็บแยกจากอาหาร</p>
+          <ul>
+            <li>ห้ามผสมคลอรีนกับกรดใด ๆ</li>
+            <li>มี MSDS/ใบข้อมูลความปลอดภัยในจุดใช้งาน</li>
+          </ul>
+          <p>กำหนดจุดติดตั้ง test strip และตารางบันทึกค่าให้ชัดเจนที่อ่างล้างและเครื่องล้างจาน เพื่อให้ตรวจสอบย้อนกลับได้ทุกกะ</p>
         </div>
+      </section>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อจัดการของเสียอย่างถูกสุขอนามัย ลดการปนเปื้อน และรักษาสิ่งแวดล้อม SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 3]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัวและผู้ช่วย (BOH) [cite: 3]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>ถังขยะแบบมีฝาปิด [cite: 3]</li>
-                    [cite_start]<li>ถุงขยะแยกประเภท (ขยะเปียก, ขยะแห้ง) [cite: 3]</li>
-                    [cite_start]<li>บ่อดักไขมัน (Grease Trap) [cite: 3]</li>
-                </ul>
-            </div>
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>ตรวจสอบความเข้มข้นของน้ำยาฆ่าเชื้อเป็นประจํา</li>
+              <li>ทําความสะอาดอ่างล้างและท่อระบายน้ำทุกวัน</li>
+              <li>จัดหาถุงมือและผ้าสะอาดให้เพียงพอต่อการใช้งาน</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>ใช้ผ้าที่ไม่สะอาดในการเช็ดอุปกรณ์</li>
+              <li>ล้างอุปกรณ์ในน้ำสกปรกหรือมีเศษอาหารปนเปื้อน</li>
+              <li>สวมเครื่องประดับขณะเตรียมอาหาร</li>
+            </ul>
+          </div>
         </div>
+      </section>
+    </section>
 
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">จัดการของเสียแบบแยกประเภท ลดกลิ่น ลดศัตรูพืช และสนับสนุนความยั่งยืน โดยมีบันทึกติดตามได้ [cite: 3]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) การแยกประเภทและจุดทิ้ง</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 ประเภทขยะ:</b> แยกเป็น ขยะอินทรีย์ (เศษอาหาร/ปลา) รีไซเคิล (แก้ว กระดาษ โลหะ พลาสติก) ทั่วไป และอันตราย (น้ำมันใช้แล้ว/สารเคมี) [cite: 3]</li>
-                        [cite_start]<li><b>1.2 จุดทิ้งและเส้นทางขนย้าย:</b> กำหนดเส้นทางขนย้ายออกหลังบ้าน ไม่ผ่านโซนอาหารพร้อมเสิร์ฟ [cite: 3]</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- SOP: SOP-BOH-003 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
         </div>
-
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 3]
-        </footer>
-    </div>
-
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-004 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
-
-        <div class="title-band">
-            <h1>SOP: การจัดเก็บวัตถุดิบตามระบบ FIFO</h1>
-            <p class="subtitle">Standard Operating Procedures. FIFO Stock Management</p>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-003</div>
+          <div><strong>หัวข้อ:</strong> การจัดการของเสียในครัว</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
         </div>
+      </header>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อจัดการสต็อกวัตถุดิบอย่างมีประสิทธิภาพ ลดการเน่าเสีย และรับประกันความสดใหม่ SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 4]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัวและผู้รับผิดชอบสต็อก [cite: 4]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>ป้ายกำกับวันที่ (Date Labeling) [cite: 4]</li>
-                    [cite_start]<li>แบบฟอร์มตรวจสอบสต็อก [cite: 4]</li>
-                    [cite_start]<li>ชั้นวางของแบบหมุนเวียน [cite: 4]</li>
-                </ul>
-            </div>
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: การจัดการของเสียในครัว</h1>
+        <div class="subtitle">Standard Operating Procedures. Kitchen Waste Management</div>
+      </section>
+
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อจัดการของเสียอย่างถูกสุขอนามัย ลดการปนเปื้อน และรักษาสิ่งแวดล้อม SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>ถังขยะแบบมีฝาปิด</li>
+            <li>ถุงขยะแยกประเภท (ขยะเปียก, ขยะแห้ง)</li>
+            <li>บ่อดักไขมัน (Grease Trap)</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">จัดการของเสียแบบแยกประเภท ลดกลิ่น ลดศัตรูพืช และสนับสนุนความยั่งยืน โดยมีบันทึกติดตามได้</p>
+        <div class="step-content">
+          <h3>1) การแยกประเภทและจุดทิ้ง</h3>
+          <p><strong>1.1 ประเภทขยะ:</strong> แยกเป็น ขยะอินทรีย์ (เศษอาหาร/ปลา) รีไซเคิล (แก้ว กระดาษ โลหะ พลาสติก) ทั่วไป และอันตราย (น้ำมันใช้แล้ว/สารเคมี)</p>
+          <ul>
+            <li>ใช้ถังมีฝาปิดแบบเหยียบ เปิดปิดสะดวก</li>
+            <li>ติดสติ๊กเกอร์สีบอกประเภทชัดเจน</li>
+          </ul>
+          <p><strong>1.2 จุดทิ้งและเส้นทางขนย้าย:</strong> กำหนดเส้นทางขนย้ายออกหลังบ้าน ไม่ผ่านโซนอาหารพร้อมเสิร์ฟ</p>
+          <ul>
+            <li>ทิ้งขยะอินทรีย์ทุกสิ้นกะเพื่อลดกลิ่น</li>
+            <li>ล็อกพื้นที่พักขยะ ป้องกันสัตว์/แมลง</li>
+          </ul>
+
+          <h3>2) บ่อดักไขมันและน้ำมันทอด</h3>
+          <p><strong>2.1 บ่อดักไขมัน (Grease Trap):</strong> ช้อนตักไขมันทุกวัน และล้างใหญ่ประจำสัปดาห์/ตามตารางบริษัทกำจัด</p>
+          <ul>
+            <li>บันทึกวันที่ เวลา ผู้ปฏิบัติ และปริมาณ</li>
+          </ul>
+          <p><strong>2.2 นํ้ามันทอด:</strong> กรองทุกวัน วัดคุณภาพ (เช่น TPM) และเปลี่ยนเมื่อเกินเกณฑ์หรือมีกลิ่น/ควัน</p>
+          <ul>
+            <li>เก็บในภาชนะปิด ส่งกำจัดกับผู้รับจ้างที่ได้รับอนุญาต พร้อมใบรับมอบ</li>
+          </ul>
+
+          <h3>3) การบันทึกและลดของเสียอาหาร</h3>
+          <p><strong>3.1 บันทึกของเสีย:</strong> บันทึกรายการของเสียตามประเภท: เตรียม (prep trim) ผลิต (overcook) และจานคืน (plate return)</p>
+          <ul>
+            <li>วิเคราะห์แนวโน้มรายสัปดาห์และแจ้งปรับสูตร/ปริมาณเตรียม</li>
+          </ul>
+          <p><strong>3.2 สุขอนามัยถังขยะ:</strong> ล้างและฆ่าเชื้อถังขยะทุกวัน ปิดฝาตลอดเวลา และใช้ถุงรองรับ</p>
+          <p>สื่อสาร 'สาเหตุของเสียสูงสุดประจำสัปดาห์' ในที่บรีฟทีม พร้อมแผนลดของเสีย เช่น ปรับ yield ชิ้นปลา หรือ ปรับ par ข้าวซูชิ</p>
         </div>
+      </section>
 
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">ใช้หลัก FIFO/FEFO เพื่อให้วัตถุดิบหมุนเวียนอย่างถูกต้อง ลดการหมดอายุและคงความสดใหม่ [cite: 4]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) การรับเข้าและติดฉลาก</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 ฉลากมาตรฐาน:</b> ติดฉลากทุกชิ้น/กล่อง ระบุชื่อวัตถุดิบ วันที่รับเข้า วันหมดอายุ ล็อต/ซัพพลายเออร์ และผู้รับ [cite: 4]</li>
-                        [cite_start]<li><b>1.2 บันทึกเข้าระบบ:</b> บันทึกจํานวน นํ้าหนัก และอุณหภูมิรับเข้า เพื่อการตรวจสอบย้อนกลับ [cite: 4]</li>
-                    </ul>
-                </div>
-                <div class="step-card">
-                    <h5>2) การจัดเรียงและหมุนเวียน</h5>
-                    <ul>
-                        [cite_start]<li><b>2.1 หลัก FIFO:</b> ใช้หลัก First-In, First-Out โดยของที่เข้าก่อนต้องถูกใช้ก่อน [cite: 4]</li>
-                    </ul>
-                </div>
-            </div>
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>จัดหาถังขยะให้เพียงพอและเหมาะสมในแต่ละพื้นที่</li>
+              <li>ปิดฝาถังขยะทุกครั้งหลังใช้งาน</li>
+              <li>รายงานปัญหาการจัดการขยะต่อผู้จัดการทันที</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>ปล่อยให้ขยะล้นถัง</li>
+              <li>ทิ้งเศษอาหารหรือนํ้ามันลงในท่อระบายนํ้าโดยตรง</li>
+              <li>น่าขยะเปียกไปรวมกับขยะแห้งโดยไม่แยกประเภท</li>
+            </ul>
+          </div>
         </div>
+      </section>
+    </section>
 
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 4]
-        </footer>
-    </div>
-
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-005 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
-
-        <div class="title-band">
-            <h1>SOP: การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</h1>
-            <p class="subtitle">Standard Operating Procedures. Storage and Temperature Control</p>
+    <!-- SOP: SOP-BOH-004 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
         </div>
-
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อยืดอายุการใช้งานและรักษาคุณภาพของวัตถุดิบ โดยป้องกันการเจริญเติบโตของแบคทีเรีย SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 5]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัวและผู้รับผิดชอบสต็อก [cite: 5]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>ตู้เย็น, ตู้แช่แข็ง [cite: 5]</li>
-                    [cite_start]<li>เครื่องวัดอุณหภูมิ, แบบฟอร์มบันทึกอุณหภูมิ [cite: 5]</li>
-                </ul>
-            </div>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-004</div>
+          <div><strong>หัวข้อ:</strong> การจัดเก็บวัตถุดิบตามระบบ FIFO</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
         </div>
+      </header>
 
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">ควบคุมอุณหภูมิในทุกจุด-รับเข้า เก็บรักษา เตรียม แช่เย็นด่วน และเสิร์ฟ-เพื่อคุณภาพและความปลอดภัย [cite: 5]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) รับเข้าวัตถุดิบ (Receiving)</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 เกณฑ์อุณหภูมิ:</b> ตรวจด้วยโพรบทันที: แช่เย็น ≤4°C, แช่แข็ง ≤-18°C และสินค้าอุ่นต้องต่ำกว่า 5°C ภายในเวลามาตรฐานหลังขนส่ง [cite: 5]</li>
-                        [cite_start]<li><b>1.2 ปลาเกรตซูชิ:</b> ยืนยันเอกสาร/สติกเกอร์การแช่แข็งควบคุมพยาธิจากผู้ขาย (ถ้ามี) และเก็บแยก [cite: 5]</li>
-                    </ul>
-                </div>
-                <div class="step-card">
-                    <h5>2) การเก็บรักษา (Cold/Freezer/Hot Holding)</h5>
-                    <ul>
-                        [cite_start]<li><b>2.1 ตู้เย็น:</b> อุณหภูมิระหว่าง 0-4°C [cite: 5]</li>
-                        [cite_start]<li><b>2.2 ตู้แช่แข็ง:</b> อุณหภูมิ ≤-18°C [cite: 5]</li>
-                        [cite_start]<li><b>2.3 การจัดเรียง:</b> แยกประเภทวัตถุดิบ ดิบ-สุก, ห้ามวางภาชนะบนพื้น [cite: 5]</li>
-                    </ul>
-                </div>
-            </div>
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: การจัดเก็บวัตถุดิบตามระบบ FIFO</h1>
+        <div class="subtitle">Standard Operating Procedures. FIFO Stock Management</div>
+      </section>
+
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อจัดการสต็อกวัตถุดิบอย่างมีประสิทธิภาพ ลดการเน่าเสีย และรับประกันความสดใหม่ SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>ป้ายกำกับวันที่ (Date Labeling)</li>
+            <li>แบบฟอร์มตรวจสอบสต็อก</li>
+            <li>ชั้นวางของแบบหมุนเวียน</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">ใช้หลัก FIFO/FEFO เพื่อให้วัตถุดิบหมุนเวียนอย่างถูกต้อง ลดการหมดอายุและคงความสดใหม่</p>
+        <div class="step-content">
+          <h3>1) การรับเข้าและติดฉลาก</h3>
+          <p><strong>1.1 ฉลากมาตรฐาน:</strong> ติดฉลากทุกชิ้น/กล่อง ระบุชื่อวัตถุดิบ วันที่รับเข้า วันหมดอายุ ล็อต/ซัพพลายเออร์ และผู้รับ</p>
+          <p><strong>1.2 บันทึกเข้าระบบ:</strong> บันทึกจํานวน นํ้าหนัก และอุณหภูมิรับเข้า เพื่อการตรวจสอบย้อนกลับ</p>
+
+          <h3>2) การจัดเรียงและหมุนเวียน</h3>
+          <p><strong>2.1 หลัก FIFO/FEFO:</strong> วัตถุดิบที่เข้าก่อนต้องถูกใช้ก่อน (FIFO) สำหรับของเน่าเสียง่ายใช้ FEFO (หมดอายุก่อนใช้ก่อน)</p>
+          <ul>
+            <li>แสดงป้าย 'ใช้ก่อน' ด้านหน้า/ชั้นบนสุด</li>
+            <li>ของใหม่วางหลัง/ล่างของเดิมเสมอ</li>
+          </ul>
+          <p><strong>2.2 การแยกเก็บ:</strong> วัตถุดิบดิบเก็บชั้นล่างสุด แยกจากของพร้อมรับประทาน และเก็บปลาใส่ถาดน้ำแข็ง</p>
+          <ul>
+            <li>หลีกเลี่ยงแสงแดด/ความร้อน</li>
+            <li>รักษาความชื้นและอุณหภูมิที่เหมาะสม</li>
+          </ul>
+
+          <h3>3) การตรวจสอบประจำวันและการแก้ไข</h3>
+          <p><strong>3.1 Line Check:</strong> ตรวจวันหมดอายุ ปริมาณคงเหลือ และความสะอาดทุกวันก่อนเปิดครัว</p>
+          <ul>
+            <li>ย้ายวัตถุดิบใกล้หมดอายุไปโซน 'ใช้ด่วน'</li>
+            <li>แจ้งผู้จัดการเพื่อปรับเมนู/สเปเชียล</li>
+          </ul>
+          <p><strong>3.2 Audit รายสัปดาห์:</strong> สุ่มตรวจคลังเย็น แห้ง และตู้แช่แข็ง พร้อมบันทึกข้อบกพร่องและแผนแก้ไข</p>
+          <p>สำหรับวัตถุดิบที่แปรรูปแล้ว เช่น ซอส/น้ำสลัด ให้ใช้ FEFO เสมอ และบันทึก 'วัน ' กับ 'วันใช้ภายใน' ชัดเจน</p>
         </div>
+      </section>
 
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 5]
-        </footer>
-    </div>
-
-    <div class="doc doc-page">
-        <header class="doc-header">
-            <div class="brand-lockup">
-                <span class="rb">MUTEKI</span>
-                <div class="consulting">Standard Operating Procedures</div>
-            </div>
-            <div class="doc-meta">
-                เอกสาร: SOP-BOH-006 <br />
-                เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025-08-11
-            </div>
-        </header>
-
-        <div class="title-band">
-            <h1>SOP: วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</h1>
-            <p class="subtitle">Standard Operating Procedures Inventory and Storage Management</p>
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>อบรมพนักงานทุกคนให้เข้าใจและปฏิบัติตามระบบ FIFO อย่างเคร่งครัด</li>
+              <li>ใช้ป้ายกำกับที่มองเห็นชัดเจน</li>
+              <li>ตรวจสอบการจัดเรียงวัตถุดิบทุกวัน</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>นําวัตถุดิบใหม่มาวางทับของเก่า</li>
+              <li>ใช้วัตถุดิบโดยไม่ตรวจสอบวันหมดอายุก่อน</li>
+              <li>เก็บวัตถุดิบไว้ในที่ที่ไม่เหมาะสม เช่น ใกล้ความร้อนหรือแสงแดด</li>
+            </ul>
+          </div>
         </div>
+      </section>
+    </section>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>วัตถุประสงค์ (PURPOSE)</h4>
-                [cite_start]<p>เพื่อจัดการสต็อกสินค้าให้เป็นระเบียบ ลดการสูญเสีย และเพิ่มความสามารถในการตรวจสอบ SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม [cite: 6]</p>
-            </div>
-            <div class="info-card">
-                <h4>ขอบเขต (SCOPE)</h4>
-                <ul>
-                    [cite_start]<li>พนักงานครัวและผู้รับผิดชอบสต็อก [cite: 6]</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>เครื่องมือที่ใช้ (TOOLS)</h4>
-                <ul>
-                    [cite_start]<li>แบบฟอร์ม Inventory Checklist [cite: 6]</li>
-                    [cite_start]<li>ป้ายกำกับ, ชั้นวางของ [cite: 6]</li>
-                </ul>
-            </div>
+    <!-- SOP: SOP-BOH-005 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
         </div>
-
-        <div class="section">
-            <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-            [cite_start]<p class="lead">บริหารสต็อกเชิงรุกด้วย Par/Min-Max การนับสต็อกตามรอบ และการติดตามล็อต เพื่อพร้อมขายและควบคุมต้นทุน [cite: 6]</p>
-            <div class="step-grid">
-                <div class="step-card">
-                    <h5>1) การตั้งค่า Par และการสั่งซื้อ</h5>
-                    <ul>
-                        [cite_start]<li><b>1.1 Par/Min-Max ต่อรายการ:</b> กำหนด Par ตามยอดขายจริงและ lead time ซัพพลายเออร์ เพื่อไม่ขาด-ไม่ล้น ทบทวน Par รายสัปดาห์ในช่วงฤดูท่องเที่ยว/โปรโมชั่น [cite: 6]</li>
-                        [cite_start]<li><b>1.2 รายชื่อซัพพลายเออร์ที่อนุมัติ:</b> ใช้เฉพาะผู้ขายที่ผ่านการประเมินคุณภาพ/เอกสารอาหารปลอดภัย [cite: 6]</li>
-                    </ul>
-                </div>
-                <div class="step-card">
-                    <h5>2) การรับ-บันทึก-จัดเก็บ</h5>
-                    <ul>
-                        [cite_start]<li><b>2.1 ขั้นตอนการรับเข้า:</b> ตรวจสอบคุณภาพ ปริมาณ และอุณหภูมิ (ถ้ามี) [cite: 6]</li>
-                        [cite_start]<li><b>2.2 บันทึก:</b> ลงใน Inventory Checklist หรือระบบ POS [cite: 6]</li>
-                        [cite_start]<li><b>2.3 การจัดเก็บ:</b> ใช้หลัก FIFO/FEFO [cite: 6]</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-005</div>
+          <div><strong>หัวข้อ:</strong> การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
         </div>
+      </header>
 
-        <footer class="doc-footer">
-            [cite_start]2025 Muteki - Standard Operating Procedures [cite: 6]
-        </footer>
-    </div>
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</h1>
+        <div class="subtitle">Standard Operating Procedures. Storage and Temperature Control</div>
+      </section>
+
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อยืดอายุการใช้งานและรักษาคุณภาพของวัตถุดิบ โดยป้องกันการเจริญเติบโตของแบคทีเรีย SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>ตู้เย็น, ตู้แช่แข็ง</li>
+            <li>เครื่องวัดอุณหภูมิ, แบบฟอร์มบันทึกอุณหภูมิ</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">ควบคุมอุณหภูมิในทุกจุด-รับเข้า เก็บรักษา เตรียม แช่เย็นด่วน และเสิร์ฟ-เพื่อคุณภาพและความปลอดภัย</p>
+        <div class="step-content">
+          <h3>1) รับเข้าวัตถุดิบ (Receiving)</h3>
+          <p><strong>1.1 เกณฑ์อุณหภูมิ:</strong> ตรวจด้วยโพรบทันที: แช่เย็น $\le4^{\circ}C$, แช่แข็ง $\le-18^{\circ}C$ และสินค้าอุ่นต้องต่ำกว่า $5^{\circ}C$ ภายในเวลามาตรฐานหลังขนส่ง</p>
+          <ul>
+            <li>ปฏิเสธสินค้าที่อุณหภูมิเกิน/บรรจุภัณฑ์เสียหาย/กลิ่นผิดปกติ</li>
+          </ul>
+          <p><strong>1.2 ปลาเกรตซูชิ:</strong> ยืนยันเอกสาร/สติกเกอร์การแช่แข็งควบคุมพยาธิจากผู้ขาย (ถ้ามี) และเก็บแยก</p>
+
+          <h3>2) การเก็บรักษา (Cold/Freezer/Hot Holding)</h3>
+          <p><strong>2.1 ตู้เย็นและตู้แช่แข็ง:</strong> ควบคุมตู้เย็น $0-4^{\circ}C$ ตู้แช่แข็ง $\le-18^{\circ}C$ ติดเทอร์โมมิเตอร์ภายในและตรวจวันละ 2 ครั้ง</p>
+          <ul>
+            <li>จัดของเว้นช่องอากาศไหลเวียน</li>
+            <li>ทําความสะอาดยางขอบประตูสม่ำเสมอ</li>
+          </ul>
+          <p><strong>2.2 เก็บร้อน/แช่เย็นด่วน:</strong> Hot holding $\ge60^{\circ}C$; Blast chill จาก $60^{\circ}C\rightarrow21^{\circ}C$ ภายใน 2 ชม. และถึง $\le5^{\circ}C$ ภายใน 4 ชม.</p>
+          <p><strong>2.3 การละลายน้ำแข็ง:</strong> ทําในตู้เย็น $\le4^{\circ}C$ หรือใต้น้ำไหลอุณหภูมิ $<21^{\circ}C$ (ไม่เกิน 4 ชม.) และต้องปรุงทันที</p>
+
+          <h3>3) การวัด/สอบเทียบและการแก้ไข</h3>
+          <p><strong>3.1 โพรบเทอร์โมมิเตอร์:</strong> ทําความสะอาดหัวโพรบด้วยแอลกอฮอล์ก่อน-หลังตรวจ และสอบเทียบวิธีน้ำแข็งทุกสัปดาห์</p>
+          <p><strong>3.2 มาตรการแก้ไข:</strong> ถ้าอุณหภูมิสูงเกินเกณฑ์ ให้แยกสินค้า ตรวจสอบเวลาเสี่ยง และตัดสินใจทิ้ง/ใช้ด่วน/ทำลายตามคู่มือ</p>
+          <ul>
+            <li>แจ้งช่าง/ผู้จัดการเมื่อเครื่องทำความเย็นผิดปกติ และบันทึกเหตุการณ์</li>
+          </ul>
+          <p>ตั้งบอร์ดบันทึกอุณหภูมิหน้าตู้ทุกเครื่อง พร้อมลายเซ็นผู้ตรวจในแต่ละกะ เพื่อสร้างวินัยและตรวจสอบย้อนหลัง</p>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>ตรวจสอบอุณหภูมิอย่างเคร่งครัดและบันทึกข้อมูล</li>
+              <li>ใช้เทอร์โมมิเตอร์ที่ได้รับการสอบเทียบอย่างสม่ำเสมอ</li>
+              <li>จัดเรียงวัตถุดิบให้มีช่องว่างเพื่อให้อากาศไหลเวียนได้ดี</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>ปล่<Thai>อยให้ประตูตู้เย็น/ตู้แช่แข็งเปิดทิ้งไว้นานๆ</Thai></li>
+              <li>นําวัตถุดิบที่ร้อนไปใส่ตู้เย็นทันที</li>
+              <li>เก็บวัตถุดิบแน่นเกินไปจนอากาศไม่ถ่ายเท</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- SOP: SOP-BOH-006 -->
+    <section class="sop-section">
+      <header class="doc-header">
+        <div class="brand-lockup">
+          <div class="rb">MUTEKI</div>
+          <div class="consulting">Standard Operating Procedures</div>
+        </div>
+        <div class="doc-meta">
+          <div><strong>เอกสาร:</strong> SOP-BOH-006</div>
+          <div><strong>หัวข้อ:</strong> วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</div>
+          <div><strong>เวอร์ชัน:</strong> v1.1 | <strong>ปรับปรุงล่าสุด:</strong> 2025-08-11</div>
+        </div>
+      </header>
+
+      <section class="title-band" aria-label="Title">
+        <h1>SOP: วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</h1>
+        <div class="subtitle">Standard Operating Procedures Inventory and Storage Management</div>
+      </section>
+
+      <section class="info-grid" aria-label="At a glance">
+        <article class="info-card">
+          <h4>☑ วัตถุประสงค์ (Purpose)</h4>
+          <p>เพื่อจัดการสต็อกสินค้าให้เป็นระเบียบ ลดการสูญเสีย และเพิ่มความสามารถในการตรวจสอบ SOP นี้ยังให้ความรู้เกี่ยวกับหลักการปฏิบัติที่เป็นเลิศ (Best Practices) และเหตุผลเบื้องหลังขั้นตอนต่าง ๆ เพื่อให้พนักงานเข้าใจถึงความสำคัญ และสามารถปรับใช้ในสถานการณ์จริงได้อย่างเหมาะสม</p>
+        </article>
+        <article class="info-card">
+          <h4>ขอบเขต (Scope)</h4>
+          <ul>
+            <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h4>* เครื่องมือที่ใช้ (Tools)</h4>
+          <ul>
+            <li>แบบฟอร์ม Inventory Checklist</li>
+            <li>ป้ายกำกับ, ชั้นวางของ</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Steps">
+        <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+        <p class="lead">บริหารสต็อกเชิงรุกด้วย Par/Min-Max การนับสต็อกตามรอบ และการติดตามล็อต เพื่อพร้อมขายและควบคุมต้นทุน</p>
+        <div class="step-content">
+          <h3>1) การตั้งค่า Par และการสั่งซื้อ</h3>
+          <p><strong>1.1 Par/Min-Max ต่อรายการ:</strong> กำาหนด Par ตามยอดขายจริงและ lead time ซัพพลายเออร์ เพื่อไม่ขาด-ไม่ล้น</p>
+          <ul>
+            <li>ทบทวน Par รายสัปดาห์ในช่วงฤดูท่องเที่ยว/โปรโมชั่น</li>
+          </ul>
+          <p><strong>1.2 รายชื่อซัพพลายเออร์ที่อนุมัติ:</strong> ใช้เฉพาะผู้ขายที่ผ่านการประเมินคุณภาพ/เอกสารอาหารปลอดภัย</p>
+
+          <h3>2) การรับ-บันทึก-จัดเก็บ</h3>
+          <p><strong>2.1 รับและตรวจ:</strong> เช็คปริมาณ คุณภาพ วันหมดอายุ อุณหภูมิ และสภาพบรรจุภัณฑ์ เทียบใบสั่งซื้อ</p>
+          <ul>
+            <li>บันทึกเข้าระบบ/ฟอร์ม พร้อมล็อตและผู้ตรวจรับ</li>
+          </ul>
+          <p><strong>2.2 การจัดเก็บเฉพาะทาง:</strong> สาเก $5-10^{\circ}C$ ในที่มืด; นอริกันขึ้นปิดสนิท ข้าวสารในถังปิด มีฝาปิดและตะแกรงรองพื้น</p>
+
+          <h3>3) การนับสต็อกและควบคุมความสูญเสีย</h3>
+          <p><strong>3.1 นับสต็อก:</strong> นับรายสัปดาห์/สิ้นเดือนแบบสองคน (double-check) และบันทึกลงงบสต็อก</p>
+          <ul>
+            <li>ใช้แบบ 'Blind Count' ในรายการสำคัญ เช่น โทโระ อูนิ</li>
+          </ul>
+          <p><strong>3.2 ความแตกต่างและการปรับปรุง:</strong> วิเคราะห์ส่วนต่าง (variance) เชื่อมโยงยอดขาย-การเบิก-ของเสีย แล้วกำหนดแผนลดสูญเสีย</p>
+          <ul>
+            <li>บันทึกการทําลาย/ของเสียพร้อมอนุมัติจากผู้จัดการ</li>
+          </ul>
+          <p>สร้าง 'รายการสินค้าควบคุมพิเศษ' (Key Items) ที่ต้องนับทุกวัน เช่น อูนิ โทโระ ไข่ปลา และเทียบยอดกับการ ขายเพื่อจับสัญญาณสูญเสียเร็ว</p>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Do & Don't">
+        <h2>/ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+        <div class="twocol">
+          <div class="callout do">
+            <h4>ควรทำ (Do)</h4>
+            <ul>
+              <li>ทําความสะอาดพื้นที่จัดเก็บอย่างสม่ำเสมอ</li>
+              <li>ใช้ระบบ FIFO อย่างเคร่งครัด</li>
+              <li>รายงานความผิดปกติของสต็อกทันที</li>
+            </ul>
+          </div>
+          <div class="callout dont">
+            <h4>ห้ามทำ (Don't)</h4>
+            <ul>
+              <li>วางวัตถุดิบบนพื้นโดยตรง</li>
+              <li>ปล่อยให้สต็อกหมดโดยไม่วางแผนการสั่งซื้อ</li>
+              <li>เก็บวัตถุดิบใกล้สารเคมีหรืออุปกรณ์ทำความสะอาด</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- REVISION & SIGN (Only once at the end of the entire document) -->
+    <section class="section" aria-label="Revision">
+      <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>เวอร์ชัน</th>
+            <th>วันที่</th>
+            <th>รายละเอียดการเปลี่ยนแปลง</th>
+            <th>ผู้ทบทวน</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.0</td>
+            <td>2025-07-01</td>
+            <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+            <td>Manager ชื่อ________</td>
+          </tr>
+          <tr>
+            <td>1.1</td>
+            <td>2025-08-11</td>
+            <td>ปรับปรุงเนื้อหา SOP ทั้งหมดเป็นเวอร์ชัน Muteki</td>
+            <td>AI Assistant</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="signatures" aria-label="Signatures">
+        <div class="sig">
+          <div><strong>ผู้จัดทำ</strong></div>
+          <div>ชื่อ: _____________________________</div>
+          <div>ตำแหน่ง: _________________________</div>
+          <div>วันที่: ____/____/______</div>
+        </div>
+        <div class="sig">
+          <div><strong>ผู้อนุมัติ</strong></div>
+          <div>ชื่อ: _____________________________</div>
+          <div>ตำแหน่ง: _________________________</div>
+          <div>วันที่: ____/____/______</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (Will appear on every printed page due to fixed positioning in print media query) -->
+    <footer class="doc-footer" aria-label="Footer">
+      <div>© 2025 Muteki — Standard Operating Procedures</div>
+      <div class="page-counter">หน้า </div>
+    </footer>
+  </main>
 </body>
 </html>
