@@ -4,21 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muteki Japanese Restaurant – SOP Template</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
+      /* Brand Palette */
       --luxury-bronze: #B8860B;
-      --accent-gold: #DAA520;
+      --accent-gold:   #DAA520;
       --deep-charcoal: #2F2F2F;
-      --rich-black: #1C1C1C;
-      --ivory: #FFFEF7;
-      --warm-beige: #F5F2E8;
-      --muted: #6B6B6B;
-      --border: rgba(184, 134, 11, 0.25);
-      --success: #2e7d32;
-      --danger: #b71c1c;
+      --rich-black:    #1C1C1C;
+      --ivory:         #FFFEF7;
+      --warm-beige:    #F5F2E8;
+      --muted:         #6B6B6B;
+      --border:        rgba(184, 134, 11, 0.25);
+      --success:       #2e7d32;
+      --danger:        #b71c1c;
     }
 
+    /* ===== Base ===== */
     html, body {
       background: var(--ivory);
       color: var(--deep-charcoal);
@@ -90,6 +92,7 @@
       position: relative;
     }
 
+    /* Header */
     .doc-header {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -98,20 +101,18 @@
       padding: 0 0 10mm 0;
       border-bottom: 2px solid var(--border);
     }
-
     .brand-lockup {
       font-family: 'Playfair Display', serif;
       line-height: 1.2;
     }
-
-    .brand-lockup .brand-name {
+    .brand-lockup .muteki {
       color: var(--rich-black);
-      font-weight: 700;
+      font-weight: 300; /* Adjusted for thin look */
       letter-spacing: .02em;
       font-size: 20pt;
+      text-transform: lowercase; /* Force lowercase */
     }
-
-    .brand-lockup .subtitle-brand {
+    .brand-lockup .restaurant {
       font-family: 'Inter', sans-serif;
       color: var(--deep-charcoal);
       font-size: 9pt;
@@ -124,6 +125,7 @@
       text-align: right;
     }
 
+    /* Title band */
     .title-band {
       margin: 10mm 0 6mm 0;
       padding: 10mm 12mm;
@@ -131,7 +133,6 @@
       color: #fff;
       border-left: 6px solid var(--accent-gold);
     }
-
     .title-band h1 {
       margin: 0 0 6px 0;
       font-family: 'Playfair Display', serif;
@@ -139,27 +140,25 @@
       font-weight: 600;
       letter-spacing: .5px;
     }
-
     .title-band .subtitle {
       font-family: 'Noto Sans Thai', sans-serif;
       font-size: 12pt;
       color: rgba(255,255,255,.9);
     }
 
+    /* Info grid */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 6mm;
       margin: 6mm 0 10mm 0;
     }
-
     .info-card {
       background: var(--warm-beige);
       border: 1px solid var(--border);
       padding: 6mm;
       border-radius: 4px;
     }
-
     .info-card h4 {
       margin: 0 0 4mm 0;
       color: var(--luxury-bronze);
@@ -169,26 +168,24 @@
       font-family: 'Inter', 'Noto Sans Thai', sans-serif;
       text-transform: uppercase;
     }
-
     .info-card p, .info-card ul {
       margin: 0;
       font-size: 10pt;
     }
 
+    /* Section */
     .section {
       margin: 10mm 0 0 0;
     }
-    
     .section h2 {
-        font-family: 'Playfair Display', serif;
-        font-weight: 600;
-        color: var(--rich-black);
-        font-size: 16pt;
-        margin: 0 0 4mm 0;
-        border-bottom: 2px solid var(--border);
-        padding-bottom: 3mm;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--rich-black);
+      font-size: 16pt;
+      margin: 0 0 4mm 0;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 3mm;
     }
-
     .section h3 {
         font-family: 'Playfair Display', serif;
         font-weight: 600;
@@ -197,19 +194,18 @@
         margin-top: 6mm;
         margin-bottom: 2mm;
     }
-
     .lead {
       margin: 2mm 0 6mm 0;
       font-size: 10.5pt;
       color: var(--deep-charcoal);
     }
 
+    /* Step grid */
     .step-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5mm;
     }
-    
     .step-card {
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent-gold);
@@ -219,197 +215,86 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       break-inside: avoid;
     }
-
-    .step-card h4 {
+    .step-card h4 { /* step title */
       margin: 0 0 3mm 0;
       font-size: 11pt;
       color: var(--luxury-bronze);
       font-weight: 700;
     }
+    .step-card p, .step-card ul { font-size: 10pt; margin: 0; }
+    .step-card ul { padding-left: 4.5mm; margin-top: 2mm; }
 
-    .step-card p, .step-card ul {
-      font-size: 10pt;
-      margin: 0;
-    }
-
-    .step-card ul {
-      padding-left: 4.5mm;
-      margin-top: 2mm;
-    }
-
+    /* Do / Don't */
     .twocol {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5mm;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5mm;
     }
-
     .callout {
-      padding: 5mm;
-      border-radius: 4px;
-      border: 1px solid var(--border);
+      padding: 5mm; border-radius: 4px; border: 1px solid var(--border);
     }
-
     .callout.do {
-      background: #eef7f0;
-      border-left: 4px solid var(--success);
+      background: #eef7f0; border-left: 4px solid var(--success);
     }
-
     .callout.dont {
-      background: #fef0f0;
-      border-left: 4px solid var(--danger);
+      background: #fef0f0; border-left: 4px solid var(--danger);
     }
+    .callout h4{margin:0 0 3mm 0;font-size:11pt}
+    .callout ul{margin:0;padding-left:4.5mm;font-size:10pt}
 
-    .callout h4 {
-      margin: 0 0 3mm 0;
-      font-size: 11pt;
-    }
-
-    .callout ul {
-      margin: 0;
-      padding-left: 4.5mm;
-      font-size: 10pt;
-    }
-
+    /* Tables */
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 10pt;
     }
-
     th, td {
       padding: 4mm 3mm;
       border: 1px solid var(--border);
       vertical-align: top;
     }
-
     th {
       background: var(--warm-beige);
       text-align: left;
     }
 
-    .signatures {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10mm;
-      margin-top: 10mm;
-    }
+    /* Signature block */
+    .signatures { display:grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 10mm; }
+    .sig { border-top: 1px dashed var(--border); padding-top: 4mm; font-size: 10pt; }
 
-    .sig {
-      border-top: 1px dashed var(--border);
-      padding-top: 4mm;
-      font-size: 10pt;
-    }
-
+    /* Footer */
     .doc-footer {
       margin-top: 12mm;
       padding-top: 4mm;
       border-top: 1px solid var(--border);
       font-size: 9pt;
       color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display:flex; justify-content: space-between; align-items: center;
     }
+    .doc-footer .page-counter::after { counter-increment: page; content: counter(page); }
 
-    .doc-footer .page-counter::after {
-      counter-increment: page;
-      content: counter(page);
-    }
-
-    .watermark {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: .3s;
-    }
-
-    .watermark.show {
-      opacity: .06;
-    }
-
-    .watermark::before {
-      content: 'MUTEKI JAPANESE RESTAURANT';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-24deg);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 78pt;
-      color: var(--rich-black);
-      white-space: nowrap;
-    }
-    
     .section, .info-grid, .signatures, table {
         page-break-inside: avoid;
     }
-    
     .page-break {
       page-break-before: always;
     }
 
-    @page {
-      size: A4;
-      margin: 12mm;
-      counter-reset: page 1;
-    }
-
+    /* Print */
+    @page { size: A4; margin: 12mm; }
     @media print {
-      body {
-        background: transparent;
-      }
-      .tab-container {
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      .tab-list {
-        display: none;
-      }
-      .tab-content {
-        display: block;
-        page-break-after: always;
-      }
-      .doc {
-        box-shadow: none;
-        width: 100%;
-        min-height: auto;
-        padding: 0;
-      }
-      .title-band, .doc-header {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .doc-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-      .doc-footer .page-counter {
-        content: counter(page);
-      }
-      
-      .watermark.show {
-          opacity: 0.06;
-      }
+      body { background: transparent; }
+      .tab-container { box-shadow: none; margin: 0; padding: 0; width: 100%; }
+      .tab-list { display: none; }
+      .tab-content { display: block; page-break-after: always; }
+      .doc { box-shadow: none; width: 100%; min-height: auto; padding: 0; }
+      .title-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .doc-footer { position: fixed; bottom: 0; left: 0; right: 0; }
     }
 
+    /* Small screens preview */
     @media (max-width: 900px) {
-      .tab-container {
-        width: 100%;
-        margin: 0;
-        border-radius: 0;
-      }
-      .doc {
-        width: 100%;
-        min-height: auto;
-      }
-      .step-grid, .twocol, .info-grid, .signatures {
-        grid-template-columns: 1fr;
-      }
+      .tab-container { width: 100%; margin: 0; border-radius: 0; }
+      .doc { width: 100%; min-height: auto; }
+      .step-grid, .twocol, .info-grid, .signatures { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -426,11 +311,10 @@
 
     <div id="sop1" class="tab-content active">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-001</div>
@@ -598,11 +482,10 @@
 
     <div id="sop2" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-002</div>
@@ -752,11 +635,10 @@
 
     <div id="sop3" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-003</div>
@@ -908,11 +790,10 @@
 
     <div id="sop4" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-004</div>
@@ -1058,11 +939,10 @@
 
     <div id="sop5" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-005</div>
@@ -1209,11 +1089,10 @@
 
     <div id="sop6" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
-            <div class="brand-name">MUTEKI</div>
-            <div class="subtitle-brand">JAPANESE RESTAURANT</div>
+            <div class="muteki">muteki</div>
+            <div class="restaurant">japanese restaurant</div>
           </div>
           <div class="doc-meta">
             <div><strong>เอกสาร:</strong> SOP-BOH-006</div>
