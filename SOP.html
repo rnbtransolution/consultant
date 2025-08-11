@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>R&B Transolution – SOP Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --luxury-bronze: #B8860B;
+      --accent-gold: #DAA520;
+      --deep-charcoal: #2F2F2F;
+      --rich-black: #1C1C1C;
+      --ivory: #FFFEF7;
+      --warm-beige: #F5F2E8;
+      --muted: #6B6B6B;
+      --border: rgba(184, 134, 11, 0.25);
+      --success: #2e7d32;
+      --danger: #b71c1c;
+    }
+
+    html, body {
+      background: var(--ivory);
+      color: var(--deep-charcoal);
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Noto Sans Thai', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .tab-container {
+      max-width: 210mm;
+      margin: 12mm auto;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      padding: 14mm 16mm;
+      box-sizing: border-box;
+    }
+
+    .tab-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab-list button {
+      background-color: var(--warm-beige);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      outline: none;
+      transition: background-color 0.3s;
+      color: var(--deep-charcoal);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .tab-list button:hover {
+      background-color: #e0e0d5;
+    }
+
+    .tab-list button.active {
+      background-color: #fff;
+      border-color: var(--border);
+      border-bottom-color: #fff;
+      color: var(--luxury-bronze);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .doc {
+      width: 100%;
+      min-height: 297mm;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .doc-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 0 0 10mm 0;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .brand-lockup {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    .brand-lockup .rb {
+      color: var(--luxury-bronze);
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-size: 20pt;
+    }
+
+    .brand-lockup .transolution {
+      color: var(--rich-black);
+      font-weight: 600;
+      font-size: 13pt;
+      letter-spacing: .08em;
+    }
+
+    .brand-lockup .consulting {
+      font-family: 'Inter', sans-serif;
+      color: var(--deep-charcoal);
+      font-size: 9pt;
+      letter-spacing: .04em;
+    }
+
+    .doc-meta {
+      font-size: 9pt;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .title-band {
+      margin: 10mm 0 6mm 0;
+      padding: 10mm 12mm;
+      background: linear-gradient(135deg, rgba(27,27,27,.96) 0%, rgba(44,44,44,.98) 65%);
+      color: #fff;
+      border-left: 6px solid var(--accent-gold);
+    }
+
+    .title-band h1 {
+      margin: 0 0 6px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    .title-band .subtitle {
+      font-family: 'Noto Sans Thai', sans-serif;
+      font-size: 12pt;
+      color: rgba(255,255,255,.9);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6mm;
+      margin: 6mm 0 10mm 0;
+    }
+
+    .info-card {
+      background: var(--warm-beige);
+      border: 1px solid var(--border);
+      padding: 6mm;
+      border-radius: 4px;
+    }
+
+    .info-card h4 {
+      margin: 0 0 4mm 0;
+      color: var(--luxury-bronze);
+      font-size: 10pt;
+      letter-spacing: .3px;
+      font-weight: 700;
+      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .info-card p, .info-card ul {
+      margin: 0;
+      font-size: 10pt;
+    }
+
+    .section {
+      margin: 10mm 0 0 0;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--rich-black);
+      font-size: 16pt;
+      margin: 0 0 4mm 0;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 3mm;
+    }
+
+    .lead {
+      margin: 2mm 0 6mm 0;
+      font-size: 10.5pt;
+      color: var(--deep-charcoal);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+    }
+
+    .step-card {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 4px;
+      padding: 5mm;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .step-card h3 {
+      margin: 0 0 3mm 0;
+      font-size: 11pt;
+      color: var(--luxury-bronze);
+      font-weight: 700;
+    }
+
+    .step-card p, .step-card ul {
+      font-size: 10pt;
+      margin: 0;
+    }
+
+    .step-card ul {
+      padding-left: 4.5mm;
+      margin-top: 2mm;
+    }
+
+    .twocol {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+    }
+
+    .callout {
+      padding: 5mm;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .callout.do {
+      background: #eef7f0;
+      border-left: 4px solid var(--success);
+    }
+
+    .callout.dont {
+      background: #fef0f0;
+      border-left: 4px solid var(--danger);
+    }
+
+    .callout h4 {
+      margin: 0 0 3mm 0;
+      font-size: 11pt;
+    }
+
+    .callout ul {
+      margin: 0;
+      padding-left: 4.5mm;
+      font-size: 10pt;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+    }
+
+    th, td {
+      padding: 4mm 3mm;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--warm-beige);
+      text-align: left;
+    }
+
+    .signatures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10mm;
+      margin-top: 10mm;
+    }
+
+    .sig {
+      border-top: 1px dashed var(--border);
+      padding-top: 4mm;
+      font-size: 10pt;
+    }
+
+    .doc-footer {
+      margin-top: 12mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--border);
+      font-size: 9pt;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .doc-footer .page-counter::after {
+      counter-increment: page;
+      content: counter(page);
+    }
+
+    .watermark {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .watermark.show {
+      opacity: .06;
+    }
+
+    .watermark::before {
+      content: 'R&B TRANSOLUTION';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-24deg);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 78pt;
+      color: var(--rich-black);
+      white-space: nowrap;
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .tab-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      .tab-list {
+        display: none;
+      }
+      .tab-content {
+        display: block;
+        page-break-after: always;
+      }
+      .doc {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 0;
+      }
+      .title-band {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .doc-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .tab-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+      }
+      .doc {
+        width: 100%;
+        min-height: auto;
+      }
+      .step-grid, .twocol, .info-grid, .signatures {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tab-list">
+      <button class="tab-button active" onclick="openSOP(event, 'sop1')">1. ต้อนรับลูกค้า</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop2')">2. รับออเดอร์</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop3')">3. เสิร์ฟอาหาร</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop4')">4. จัดการคำร้องเรียน</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop5')">5. คิดเงิน</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop6')">6. เตรียมวัตถุดิบ</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop7')">7. ปรุงอาหาร</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop8')">8. ล้างอุปกรณ์</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop9')">9. จัดการของเสีย</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop10')">10. จัดเก็บวัตถุดิบ FIFO</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop11')">11. ควบคุมอุณหภูมิ</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop12')">12. สต็อกสินค้า</button>
+      <button class="tab-button" onclick="openSOP(event, 'sop13')">13. ควบคุมคุณภาพ</button>
+    </div>
+
+    <div id="sop1" class="tab-content active">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-FOH-001</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การต้อนรับลูกค้า</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การต้อนรับลูกค้า</h1>
+          <div class="subtitle">Standard Operating Procedures • Customer Greeting</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อสร้างความประทับใจแรกที่ดีและมอบประสบการณ์ที่อบอุ่นแก่ลูกค้าตั้งแต่ก้าวแรกที่เข้าร้าน</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานหน้าร้าน (FOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์มการจองโต๊ะ</li>
+              <li>แผนผังร้านอาหาร</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ปฏิบัติงานตามลำดับเพื่อการต้อนรับลูกค้าอย่างมืออาชีพ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) ต้อนรับลูกค้า</h3>
+              <p>ยืนประจำจุดต้อนรับ กล่าวคำทักทายอย่างสุภาพ "อิรัชชัยมาเสะ" (いらっしゃいませ)</p>
+              <ul>
+                <li>ยิ้มแย้มและสบตา</li>
+                <li>สอบถามจำนวนลูกค้า</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) จัดหาที่นั่ง</h3>
+              <p>นำลูกค้าไปยังโต๊ะที่เหมาะสม โดยคำนึงถึงจำนวนลูกค้าและสถานะการจอง</p>
+              <ul>
+                <li>สอบถามความต้องการพิเศษ (เช่น ใกล้หน้าต่าง, โต๊ะสำหรับเด็ก)</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) นำทางและแนะนำ</h3>
+              <p>เดินนำลูกค้าไปที่โต๊ะที่จัดเตรียมไว้ พร้อมกับกล่าว "ทางนี้ครับ/ค่ะ"</p>
+              <ul>
+                <li>แนะนำเมนูและแจ้งโปรโมชั่นพิเศษ (ถ้ามี)</li>
+                <li>มอบเมนูและผ้าเย็น (ถ้ามี)</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ให้บริการน้ำ</h3>
+              <p>ให้บริการน้ำเปล่าหรือชาตามความต้องการของลูกค้า</p>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ยิ้มแย้มและใช้ภาษากายที่เป็นมิตร</li>
+                <li>จดจำลูกค้าประจำ</li>
+                <li>กล่าวขอบคุณเมื่อลูกค้าออกจากร้าน "อาริกาโตะ โกะไซมัส" (ありがとうございます)</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ยืนคุยโทรศัพท์หรือเล่นโทรศัพท์ในระหว่างปฏิบัติงาน</li>
+                <li>ปล่อยให้ลูกค้ายืนรอโดยไม่มีการทักทาย</li>
+                <li>ใช้คำพูดที่ไม่สุภาพหรือไม่เป็นทางการ</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>จำนวนลูกค้า</th>
+                <th>โต๊ะที่นั่ง</th>
+                <th>พนักงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop2" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-FOH-002</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การรับออเดอร์และแนะนำเมนู</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การรับออเดอร์และแนะนำเมนู</h1>
+          <div class="subtitle">Standard Operating Procedures • Order Taking and Menu Recommendation</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้การรับออเดอร์เป็นไปอย่างถูกต้อง รวดเร็ว และสร้างความประทับใจด้วยการแนะนำเมนูอย่างเหมาะสม</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานหน้าร้าน (FOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>เครื่อง POS หรือสมุดจดออเดอร์</li>
+              <li>ปากกา</li>
+              <li>เมนู</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อให้การรับออเดอร์เป็นไปอย่างมีประสิทธิภาพ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) เข้าหาลูกค้าอย่างสุภาพ</h3>
+              <p>เมื่อลูกค้าพร้อมสั่งอาหาร ให้เข้าไปที่โต๊ะอย่างสุภาพและสอบถาม</p>
+              <ul>
+                <li>ยืนในระยะที่เหมาะสมและสบตา</li>
+                <li>ใช้คำถามปลายเปิด "พร้อมสั่งอาหารหรือยังครับ/ค่ะ"</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) แนะนำเมนู</h3>
+              <p>ใช้ความรู้เกี่ยวกับเมนูเพื่อแนะนำเมนูยอดนิยม, เมนูพิเศษ หรือเมนูตามความชอบของลูกค้า</p>
+              <ul>
+                <li>อธิบายส่วนผสมและวิธีการปรุง</li>
+                <li>แนะนำเครื่องดื่มที่เข้ากัน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) รับออเดอร์และทวนซ้ำ</h3>
+              <p>จดออเดอร์อย่างละเอียดและทวนคำสั่งซื้อกับลูกค้าเพื่อป้องกันความผิดพลาด</p>
+              <ul>
+                <li>จดออเดอร์ใน POS หรือสมุดจดให้ชัดเจน</li>
+                <li>ทวนรายการ, จำนวน, และคำขอพิเศษ (ถ้ามี)</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ส่งออเดอร์</h3>
+              <p>ส่งออเดอร์เข้าครัว/บาร์ทันทีและแจ้งเวลาที่คาดว่าจะได้รับอาหาร</p>
+              <ul>
+                <li>ใช้ระบบ POS ในการส่งออเดอร์</li>
+                <li>แจ้งเวลาที่ต้องรออย่างสุภาพ "อาหารอาจใช้เวลาประมาณ 15-20 นาทีครับ/ค่ะ"</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>มีความรู้เกี่ยวกับเมนูอย่างละเอียด</li>
+                <li>เสนอขายเมนูเพิ่มเติม (Up-sell) อย่างเหมาะสม</li>
+                <li>ตรวจสอบความถูกต้องของออเดอร์ก่อนส่งเข้าครัว</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ยืนห่างจากลูกค้ามากเกินไปขณะรับออเดอร์</li>
+                <li>เดาเมนูที่ลูกค้าสั่งหรือไม่ทวนซ้ำ</li>
+                <li>ละเลยคำขอพิเศษของลูกค้า</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>โต๊ะที่นั่ง</th>
+                <th>รายการที่สั่ง</th>
+                <th>พนักงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop3" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-FOH-003</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การเสิร์ฟอาหารและเครื่องดื่ม</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การเสิร์ฟอาหารและเครื่องดื่ม</h1>
+          <div class="subtitle">Standard Operating Procedures • Food and Beverage Serving</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อนำเสนออาหารและเครื่องดื่มให้ลูกค้าอย่างถูกต้อง สุภาพ และถูกสุขลักษณะ</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานหน้าร้าน (FOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ถาดเสิร์ฟ</li>
+              <li>กระดาษหรือผ้าสำหรับรองถาด</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ปฏิบัติงานตามลำดับเพื่อให้การเสิร์ฟอาหารและเครื่องดื่มเป็นไปอย่างราบรื่น</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) ตรวจสอบความถูกต้อง</h3>
+              <p>ก่อนนำอาหารออกจากครัวหรือเครื่องดื่มออกจากบาร์ ให้ตรวจสอบว่าตรงกับออเดอร์ที่สั่งหรือไม่</p>
+              <ul>
+                <li>เช็คชื่อเมนู, โต๊ะ, และคำขอพิเศษ (ถ้ามี)</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) นำอาหารไปเสิร์ฟ</h3>
+              <p>ถือถาดอย่างมั่นคงและเดินไปที่โต๊ะอย่างระมัดระวัง</p>
+              <ul>
+                <li>เสิร์ฟอาหารจากด้านขวาของลูกค้า และเครื่องดื่มจากด้านขวา</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) วางอาหารและพูดแนะนำ</h3>
+              <p>วางอาหารอย่างสุภาพและกล่าวชื่อเมนู พร้อมอวยพรให้ลูกค้ามีความสุขกับการรับประทาน</p>
+              <ul>
+                <li>"ซาชิมิครับ/ค่ะ ขอให้มีความสุขกับมื้ออาหารนะครับ/คะ"</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ตรวจสอบความต้องการเพิ่มเติม</h3>
+              <p>ก่อนเดินออกจากโต๊ะ ให้สอบถามว่าต้องการอะไรเพิ่มเติมหรือไม่</p>
+              <ul>
+                <li>"มีอะไรเพิ่มเติมอีกไหมครับ/ค่ะ"</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>เสิร์ฟอาหารให้ตรงกับผู้ที่สั่ง (ถ้าทราบ)</li>
+                <li>ระมัดระวังไม่ให้อาหารหกหรือเลอะเทอะ</li>
+                <li>สังเกตความต้องการของลูกค้าในระหว่างการรับประทานอาหาร</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>เสิร์ฟอาหารที่ผิดโต๊ะ</li>
+                <li>วางอาหารหรือเครื่องดื่มด้วยความรุนแรง</li>
+                <li>นำมือไปสัมผัสขอบจานอาหารหรือแก้วน้ำโดยตรง</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>โต๊ะที่นั่ง</th>
+                <th>รายการที่เสิร์ฟ</th>
+                <th>พนักงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop4" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-FOH-004</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดการคำร้องเรียนลูกค้า</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดการคำร้องเรียนของลูกค้า</h1>
+          <div class="subtitle">Standard Operating Procedures • Customer Complaints Handling</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้ทีมสามารถจัดการข้อร้องเรียนได้อย่างมืออาชีพ ลดผลกระทบต่อประสบการณ์ และฟื้นความเชื่อมั่นของลูกค้า</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>FOH: เซอร์วิส/แคชเชียร์</li>
+              <li>BOH: ครัว/บาร์</li>
+              <li>ผู้บังคับบัญชา: Supervisor/Manager</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์มรับคำร้องเรียน หรือ POS Note</li>
+              <li>ช่องทางติดต่อผู้จัดการ (โทร/LINE/อีเมล)</li>
+              <li>คูปองหรือของชดเชยเมื่อจำเป็น</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามลำดับต่อไปนี้ และบันทึกในระบบภายใน 24 ชั่วโมงหลังจบเหตุการณ์</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) รับฟังอย่างตั้งใจ</h3>
+              <p>หยุดกิจกรรมที่ทำอยู่ ใช้ภาษากายเชิงบวก และอย่าขัดจังหวะ</p>
+              <ul>
+                <li>สบตา พยักหน้า และทวนความเข้าใจ</li>
+                <li>บันทึกคีย์เวิร์ดของปัญหา</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) แสดงความเสียใจอย่างมืออาชีพ</h3>
+              <p>กล่าวคำขอโทษทันที เช่น “ขออภัยในความไม่สะดวกครับ/ค่ะ”</p>
+              <ul>
+                <li>หลีกเลี่ยงการโต้แย้งหรือโทษบุคคลอื่น</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) ซักถามเพื่อหาสาเหตุ</h3>
+              <p>สอบถามรายละเอียดอย่างสุภาพเพื่อระบุจุดผิดพลาด</p>
+              <ul>
+                <li>เวลา/เมนู/โต๊ะ/พนักงานที่เกี่ยวข้อง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) แก้ไขเบื้องต้น</h3>
+              <p>เสนอทางเลือกแก้ไข เช่น เปลี่ยนจานใหม่/คืนเงินส่วนต่าง/ชดเชย</p>
+              <ul>
+                <li>แจ้งเวลาที่ใช้และผู้รับผิดชอบ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>5) แจ้งหัวหน้าหากเกินอำนาจ</h3>
+              <p>เรื่องที่ต้องชดเชยสูง/เกี่ยวกับความปลอดภัย ให้ escalate ทันที</p>
+            </article>
+            <article class="step-card">
+              <h3>6) บันทึกเหตุการณ์</h3>
+              <p>กรอกแบบฟอร์มและแนบหลักฐาน (ถ้ามี) เพื่อการปรับปรุง</p>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ขอบคุณลูกค้าที่แจ้งปัญหา</li>
+                <li>สรุปแผนการแก้ไขให้ชัดเจน</li>
+                <li>ติดตามผลหลังแก้ไข</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>โต้เถียงหรือปฏิเสธความรู้สึกลูกค้า</li>
+                <li>ให้สัญญาที่ทำไม่ได้</li>
+                <li>เปิดประเด็นโทษกันต่อหน้าลูกค้า</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>ลูกค้า</th>
+                <th>รายละเอียดเหตุการณ์</th>
+                <th>การแก้ไขที่ดำเนินการ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td>ชื่อ / ช่องทางติดต่อ</td>
+                <td>สรุปปัญหา</td>
+                <td>แนวทางแก้ไข/ชดเชย</td>
+                <td>ชื่อพนักงาน</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+
+    <div id="sop5" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-FOH-005</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การคิดเงินและปิดบิล</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การคิดเงินและปิดบิล</h1>
+          <div class="subtitle">Standard Operating Procedures • Billing and Payment</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้บริการการชำระเงินที่ถูกต้องและรวดเร็ว สร้างความประทับใจสุดท้ายแก่ลูกค้า</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>แคชเชียร์/พนักงานหน้าร้าน (FOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>เครื่อง POS</li>
+              <li>เครื่องรับชำระเงินอิเล็กทรอนิกส์ (EDC)</li>
+              <li>ใบเสร็จรับเงิน</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามลำดับเพื่อการคิดเงินและปิดบิลอย่างแม่นยำ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) จัดเตรียมใบเสร็จ</h3>
+              <p>เมื่อลูกค้าต้องการชำระเงิน ให้จัดเตรียมใบเสร็จที่ถูกต้อง</p>
+              <ul>
+                <li>นำรายการอาหารจากระบบ POS</li>
+                <li>ตรวจสอบความถูกต้องของรายการและราคา</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) นำเสนอใบเสร็จและแจ้งยอด</h3>
+              <p>นำใบเสร็จไปให้ลูกค้าอย่างสุภาพและแจ้งยอดรวมที่ต้องชำระ</p>
+              <ul>
+                <li>"ใบเสร็จทั้งหมด...บาทครับ/ค่ะ"</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) รับชำระเงิน</h3>
+              <p>รับชำระเงินตามวิธีการที่ลูกค้าเลือก (เงินสด, บัตรเครดิต, QR Code)</p>
+              <ul>
+                <li>หากเป็นเงินสด ทอนเงินให้ถูกต้อง</li>
+                <li>หากเป็นบัตรเครดิต/QR Code ให้ทำตามขั้นตอนของเครื่อง EDC/ระบบ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) กล่าวขอบคุณและส่งลูกค้า</h3>
+              <p>มอบใบเสร็จและเงินทอนให้ลูกค้าพร้อมกล่าวคำขอบคุณ</p>
+              <ul>
+                <li>"ขอบคุณที่ใช้บริการครับ/ค่ะ แล้วพบกันใหม่นะครับ/คะ"</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ตรวจสอบความถูกต้องของใบเสร็จทุกครั้ง</li>
+                <li>มีสมาธิกับการคิดเงินและทอนเงิน</li>
+                <li>กล่าวขอบคุณอย่างจริงใจ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ทอนเงินผิดพลาด</li>
+                <li>ลืมให้ใบเสร็จหรือเงินทอนแก่ลูกค้า</li>
+                <li>แสดงอากัปกิริยาที่ไม่สุภาพขณะลูกค้ากำลังชำระเงิน</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>โต๊ะ</th>
+                <th>ยอดรวม</th>
+                <th>วิธีการชำระ</th>
+                <th>พนักงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop6" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-001</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การเตรียมวัตถุดิบก่อนเปิดร้าน (Opening Checklist)</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การเตรียมวัตถุดิบก่อนเปิดร้าน (Opening Checklist)</h1>
+          <div class="subtitle">Standard Operating Procedures • Opening Checklist</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้การเตรียมวัตถุดิบเป็นไปอย่างครบถ้วน ถูกต้อง และถูกสุขลักษณะก่อนเวลาเปิดร้าน</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัว (BOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์ม Opening Checklist</li>
+              <li>อุปกรณ์ทำครัวและภาชนะสำหรับเก็บวัตถุดิบ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อเตรียมความพร้อมก่อนเปิดร้าน</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) ตรวจสอบวัตถุดิบ</h3>
+              <p>ตรวจสอบปริมาณวัตถุดิบที่ต้องใช้ในแต่ละวันตามรายการใน Opening Checklist</p>
+              <ul>
+                <li>เช็ควัตถุดิบหลัก: ข้าว, ปลาสด, ผัก, เครื่องปรุง</li>
+                <li>เช็ควัตถุดิบรอง: วาซาบิ, โชยุ, ขิงดอง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) ทำความสะอาดและเตรียมวัตถุดิบ</h3>
+              <p>ล้างและหั่นวัตถุดิบให้พร้อมใช้งาน โดยแยกประเภทให้ชัดเจน</p>
+              <ul>
+                <li>หั่นปลาสำหรับซาชิมิและนิกิริ</li>
+                <li>ซอยผักและเตรียมเครื่องเคียง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) จัดเก็บวัตถุดิบ</h3>
+              <p>จัดเก็บวัตถุดิบที่เตรียมไว้ในภาชนะที่สะอาดและปิดมิดชิด</p>
+              <ul>
+                <li>ระบุชื่อวัตถุดิบและวันที่เตรียม</li>
+                <li>จัดเก็บในตู้เย็นตามอุณหภูมิที่เหมาะสม</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ตรวจสอบความสะอาดพื้นที่</h3>
+              <p>ทำความสะอาดพื้นที่ทำงาน, อุปกรณ์, และเครื่องมือให้พร้อมใช้งาน</p>
+              <ul>
+                <li>เช็ดทำความสะอาดเคาน์เตอร์, เขียง, และมีด</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ตรวจสอบความสดใหม่ของวัตถุดิบก่อนเตรียมทุกครั้ง</li>
+                <li>ทำความสะอาดมือและอุปกรณ์อย่างสม่ำเสมอ</li>
+                <li>ปฏิบัติตามหลัก FIFO ในการใช้วัตถุดิบ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ใช้วัตถุดิบที่หมดอายุหรือมีคุณภาพต่ำ</li>
+                <li>ใช้เขียงหรื่อมีดร่วมกันระหว่างวัตถุดิบดิบและวัตถุดิบสุก</li>
+                <li>ปล่อยให้วัตถุดิบอยู่ในอุณหภูมิห้องเป็นเวลานาน</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>รายการวัตถุดิบที่เตรียม</th>
+                <th>ปริมาณ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop7" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-002</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การปรุงอาหารและควบคุมคุณภาพ</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การปรุงอาหารและควบคุมคุณภาพ</h1>
+          <div class="subtitle">Standard Operating Procedures • Cooking and Quality Control</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้การปรุงอาหารเป็นไปตามสูตรมาตรฐาน และอาหารที่เสิร์ฟมีคุณภาพสูงสุด</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>เชฟ/ผู้ช่วยเชฟ</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>สูตรอาหารมาตรฐาน</li>
+              <li>เครื่องชั่ง, อุปกรณ์วัดอุณหภูมิ</li>
+              <li>อุปกรณ์และเครื่องมือทำครัวมาตรฐาน</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อให้ได้อาหารคุณภาพสูงและรสชาติสม่ำเสมอ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) อ่านและทำความเข้าใจออเดอร์</h3>
+              <p>อ่านและตรวจสอบรายละเอียดของออเดอร์ที่ได้รับจากพนักงานหน้าร้าน</p>
+              <ul>
+                <li>เช็ครายการ, คำขอพิเศษ, และลำดับการปรุง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) เตรียมวัตถุดิบ</h3>
+              <p>นำวัตถุดิบที่เตรียมไว้มาใช้ตามลำดับ FIFO และจัดเตรียมวัตถุดิบตามสูตร</p>
+              <ul>
+                <li>ชั่งตวงวัดส่วนผสมอย่างแม่นยำ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) ปรุงอาหารตามสูตร</h3>
+              <p>ปรุงอาหารตามขั้นตอนและวิธีการที่ระบุในสูตรมาตรฐาน</p>
+              <ul>
+                <li>ควบคุมอุณหภูมิและเวลาในการปรุง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ตรวจสอบคุณภาพก่อนเสิร์ฟ</h3>
+              <p>ก่อนนำอาหารออกจากครัว ให้ตรวจสอบคุณภาพอาหารตามเกณฑ์ที่กำหนด</p>
+              <ul>
+                <li>รสชาติ, กลิ่น, อุณหภูมิ, และการจัดจาน</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ปฏิบัติตามสูตรมาตรฐานอย่างเคร่งครัด</li>
+                <li>ใช้เครื่องมือที่สะอาดและมีคุณภาพ</li>
+                <li>ทำความสะอาดพื้นที่ทำงานทุกครั้งหลังการปรุง</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>เปลี่ยนวัตถุดิบหรือส่วนผสมโดยไม่ได้รับอนุญาต</li>
+                <li>เสิร์ฟอาหารที่มีคุณภาพต่ำหรือไม่ตรงตามมาตรฐาน</li>
+                <li>ละเลยสุขอนามัยในพื้นที่ทำอาหาร</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>เมนู</th>
+                <th>หมายเหตุ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop8" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-003</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การล้างอุปกรณ์และสุขอนามัย</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การล้างอุปกรณ์และสุขอนามัย</h1>
+          <div class="subtitle">Standard Operating Procedures • Washing and Sanitation</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อให้มั่นใจว่าอุปกรณ์และภาชนะทั้งหมดสะอาดและถูกสุขอนามัย เพื่อป้องกันการปนเปื้อน</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>อ่างล้าง 3 ช่อง</li>
+              <li>น้ำยาล้างจาน, น้ำยาฆ่าเชื้อ</li>
+              <li>ผ้าสะอาดสำหรับเช็ดแห้ง</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนการล้าง 3 ขั้นตอนเพื่อสุขอนามัยที่สมบูรณ์</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) การล้าง (Washing)</h3>
+              <p>ขูดเศษอาหารออกจากอุปกรณ์และภาชนะทั้งหมด</p>
+              <ul>
+                <li>ล้างด้วยน้ำร้อนและน้ำยาล้างจานในอ่างที่ 1</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) การล้างน้ำเปล่า (Rinsing)</h3>
+              <p>ล้างอุปกรณ์ด้วยน้ำสะอาดในอ่างที่ 2 เพื่อชำระล้างคราบสบู่</p>
+            </article>
+            <article class="step-card">
+              <h3>3) การฆ่าเชื้อ (Sanitizing)</h3>
+              <p>นำอุปกรณ์จุ่มในน้ำยาฆ่าเชื้อตามสัดส่วนที่เหมาะสมในอ่างที่ 3</p>
+              <ul>
+                <li>ปฏิบัติตามคำแนะนำในการใช้งานของน้ำยาฆ่าเชื้อ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) การเช็ดแห้งและจัดเก็บ</h3>
+              <p>นำอุปกรณ์ที่ผ่านการฆ่าเชื้อแล้วไปผึ่งลมให้แห้ง หรือใช้ผ้าสะอาดเช็ด</p>
+              <ul>
+                <li>จัดเก็บอุปกรณ์ในพื้นที่ที่สะอาดและเป็นระเบียบ</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ล้างมือบ่อยๆ และสวมถุงมือที่เหมาะสม</li>
+                <li>เปลี่ยนน้ำในอ่างล้างจานอย่างสม่ำเสมอ</li>
+                <li>ตรวจสอบความสะอาดของผ้าเช็ดอุปกรณ์</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ล้างอุปกรณ์ในน้ำที่สกปรกหรือมีเศษอาหารปนเปื้อน</li>
+                <li>ใช้ผ้าที่ไม่สะอาดในการเช็ดอุปกรณ์</li>
+                <li>วางอุปกรณ์ที่ล้างแล้วบนพื้นที่สกปรก</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>เวลา</th>
+                <th>กิจกรรม</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td>__/__</td>
+                <td>ทำความสะอาดอ่างล้าง, เปลี่ยนน้ำ</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop9" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-004</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดการของเสียในครัว</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดการของเสียในครัว</h1>
+          <div class="subtitle">Standard Operating Procedures • Kitchen Waste Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการขยะและของเสียในครัวอย่างถูกวิธี ลดกลิ่นเหม็นและป้องกันการปนเปื้อน</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้ช่วย (BOH)</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ถังขยะแบบมีฝาปิด</li>
+              <li>ถังแยกประเภทขยะ (เศษอาหาร, ขยะทั่วไป, รีไซเคิล)</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนการแยกประเภทและการจัดการขยะอย่างมีประสิทธิภาพ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) แยกประเภทขยะ</h3>
+              <p>แยกขยะออกจากกันตามประเภทตั้งแต่ต้นทาง</p>
+              <ul>
+                <li>เศษอาหาร: ใส่ในถังที่มีฝาปิดมิดชิด</li>
+                <li>ขยะทั่วไป: กระดาษ, พลาสติกที่ไม่สามารถรีไซเคิลได้</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) ทิ้งขยะอย่างสม่ำเสมอ</h3>
+              <p>นำขยะไปทิ้งในบริเวณที่กำหนดเป็นประจำ</p>
+              <ul>
+                <li>นำเศษอาหารไปทิ้งหลังปิดร้านทุกวัน</li>
+                <li>เปลี่ยนถุงขยะเมื่อเต็มหรือมีกลิ่น</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) ทำความสะอาดถังขยะ</h3>
+              <p>ล้างและทำความสะอาดถังขยะทุกวันเพื่อป้องกันกลิ่นและเชื้อโรค</p>
+              <ul>
+                <li>ใช้น้ำยาฆ่าเชื้อในการทำความสะอาดถัง</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>จัดหาถังขยะให้เพียงพอและเหมาะสม</li>
+                <li>รักษาความสะอาดบริเวณถังขยะ</li>
+                <li>รายงานปัญหาการจัดการขยะต่อผู้จัดการ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ปล่อยให้ขยะล้นถัง</li>
+                <li>ทิ้งเศษอาหารลงในท่อระบายน้ำ</li>
+                <li>นำขยะเปียกไปรวมกับขยะแห้ง</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>กิจกรรม</th>
+                <th>หมายเหตุ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td>การจัดการขยะหลังปิดร้าน</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop10" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-005</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดเก็บวัตถุดิบตามระบบ FIFO</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดเก็บวัตถุดิบตามระบบ FIFO</h1>
+          <div class="subtitle">Standard Operating Procedures • FIFO Stock Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการสต็อกวัตถุดิบอย่างมีประสิทธิภาพ ลดของเสีย และรับประกันความสดใหม่</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ป้ายกำกับวันที่</li>
+              <li>แบบฟอร์มตรวจสอบสต็อก</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ใช้หลักการ "เข้าก่อนออกก่อน" (First In, First Out) ในการจัดการวัตถุดิบ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) ตรวจสอบและติดป้ายกำกับ</h3>
+              <p>เมื่อได้รับวัตถุดิบใหม่ ให้ตรวจสอบความถูกต้องและคุณภาพ</p>
+              <ul>
+                <li>ติดป้ายกำกับที่ระบุชื่อวัตถุดิบและวันที่รับสินค้า</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) จัดเรียงวัตถุดิบ</h3>
+              <p>จัดเก็บวัตถุดิบใหม่ไว้ด้านหลังหรือใต้ของเก่า</p>
+              <ul>
+                <li>วัตถุดิบที่มีวันหมดอายุก่อน ต้องอยู่ด้านหน้าเสมอ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) นำวัตถุดิบไปใช้</h3>
+              <p>พนักงานต้องหยิบวัตถุดิบที่อยู่ด้านหน้ามาใช้ก่อนเสมอ</p>
+              <ul>
+                <li>ตรวจสอบป้ายกำกับก่อนหยิบใช้ทุกครั้ง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) ตรวจสอบสต็อกอย่างสม่ำเสมอ</h3>
+              <p>ตรวจสอบวันหมดอายุของวัตถุดิบทั้งหมดเป็นประจำ</p>
+              <ul>
+                <li>หากพบวัตถุดิบใกล้หมดอายุ ให้แจ้งผู้จัดการเพื่อวางแผนการใช้</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>อบรมพนักงานให้เข้าใจและปฏิบัติตามระบบ FIFO</li>
+                <li>ตรวจสอบการจัดเรียงวัตถุดิบเป็นประจำ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>นำวัตถุดิบใหม่มาวางทับของเก่า</li>
+                <li>ใช้วัตถุดิบโดยไม่ตรวจสอบวันหมดอายุก่อน</li>
+                <li>เก็บวัตถุดิบไว้ในที่ที่ไม่เหมาะสม</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>กิจกรรม</th>
+                <th>หมายเหตุ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td>ตรวจสอบการจัดเก็บวัตถุดิบ</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop11" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-006</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การจัดเก็บและควบคุมอุณหภูมิของวัตถุดิบ</h1>
+          <div class="subtitle">Standard Operating Procedures • Storage and Temperature Control</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อยืดอายุการใช้งานและรักษาคุณภาพของวัตถุดิบ โดยป้องกันการเจริญเติบโตของแบคทีเรีย</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>ตู้เย็น, ตู้แช่แข็ง</li>
+              <li>เครื่องวัดอุณหภูมิ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ควบคุมอุณหภูมิของวัตถุดิบตามมาตรฐานความปลอดภัยทางอาหาร</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) ตรวจสอบอุณหภูมิ</h3>
+              <p>ตรวจสอบอุณหภูมิของตู้เย็นและตู้แช่แข็งอย่างสม่ำเสมอ</p>
+              <ul>
+                <li>ตู้เย็น: ต่ำกว่า 4°C</li>
+                <li>ตู้แช่แข็ง: ต่ำกว่า -18°C</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) แยกประเภทการจัดเก็บ</h3>
+              <p>แยกวัตถุดิบตามประเภทเพื่อป้องกันการปนเปื้อนข้าม</p>
+              <ul>
+                <li>วัตถุดิบดิบ (เช่น ปลา, เนื้อสัตว์) ควรเก็บไว้ชั้นล่างสุด</li>
+                <li>วัตถุดิบปรุงสุกหรือพร้อมรับประทาน ควรเก็บไว้ด้านบน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) บรรจุในภาชนะที่เหมาะสม</h3>
+              <p>เก็บวัตถุดิบในภาชนะที่สะอาดและปิดมิดชิด</p>
+              <ul>
+                <li>ใช้ภาชนะ food-grade และติดป้ายกำกับ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) บันทึกและเฝ้าระวัง</h3>
+              <p>บันทึกอุณหภูมิของตู้เย็นและตู้แช่แข็งในแบบฟอร์มบันทึก</p>
+              <ul>
+                <li>หากพบอุณหภูมิผิดปกติ ให้แจ้งผู้จัดการทันที</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ตรวจสอบอุณหภูมิอย่างน้อยวันละ 2 ครั้ง</li>
+                <li>ทำความสะอาดตู้เย็นและตู้แช่แข็งเป็นประจำ</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>ปล่อยให้ประตูตู้เย็น/ตู้แช่แข็งเปิดทิ้งไว้นานๆ</li>
+                <li>นำวัตถุดิบที่ร้อนไปใส่ตู้เย็นทันที</li>
+                <li>เก็บวัตถุดิบแน่นเกินไปจนอากาศไม่ถ่ายเท</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่/เวลา</th>
+                <th>อุณหภูมิตู้เย็น</th>
+                <th>อุณหภูมิตู้แช่แข็ง</th>
+                <th>ผู้บันทึก</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____ __:__</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop12" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-BOH-007</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: วิธีการสต็อกสินค้าและการจัดเก็บวัตถุดิบ</h1>
+          <div class="subtitle">Standard Operating Procedures • Inventory and Storage Management</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อจัดการสต็อกสินค้าให้เป็นระเบียบ ลดการสูญเสีย และเพิ่มความสามารถในการตรวจสอบ</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานครัวและผู้รับผิดชอบสต็อก</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์ม Inventory Checklist</li>
+              <li>ป้ายกำกับ, ชั้นวางของ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ดำเนินการตามขั้นตอนเพื่อให้การจัดการสต็อกเป็นไปอย่างมีระบบ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) การรับสินค้า</h3>
+              <p>ตรวจสอบสินค้าที่ได้รับจากซัพพลายเออร์ว่าตรงกับใบสั่งซื้อหรือไม่</p>
+              <ul>
+                <li>เช็คจำนวน, คุณภาพ, และวันหมดอายุ</li>
+                <li>เซ็นรับสินค้าและบันทึกในระบบ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) การติดป้ายและบันทึก</h3>
+              <p>ติดป้ายกำกับบนวัตถุดิบทั้งหมดที่ได้รับ</p>
+              <ul>
+                <li>ชื่อสินค้า, วันที่ได้รับ, และวันหมดอายุ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) การจัดเก็บ</h3>
+              <p>จัดเก็บสินค้าใหม่ตามระบบ FIFO ในพื้นที่ที่เหมาะสม</p>
+              <ul>
+                <li>จัดเก็บวัตถุดิบแห้ง, วัตถุดิบแช่เย็น, และวัตถุดิบแช่แข็งในพื้นที่แยกจากกัน</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) การตรวจสอบสต็อก</h3>
+              <p>นับสต็อกเป็นประจำตามกำหนดเวลา (เช่น รายสัปดาห์, รายเดือน)</p>
+              <ul>
+                <li>บันทึกผลการนับลงในแบบฟอร์ม Inventory Checklist</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>ทำความสะอาดพื้นที่จัดเก็บอย่างสม่ำเสมอ</li>
+                <li>ใช้ระบบ FIFO อย่างเคร่งครัด</li>
+                <li>รายงานความผิดปกติของสต็อกทันที</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>วางวัตถุดิบบนพื้นโดยตรง</li>
+                <li>ปล่อยให้สต็อกหมดโดยไม่วางแผนการสั่งซื้อ</li>
+                <li>เก็บวัตถุดิบใกล้สารเคมีหรืออุปกรณ์ทำความสะอาด</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>รายการที่ตรวจสอบ</th>
+                <th>ปริมาณคงเหลือ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+    
+    <div id="sop13" class="tab-content">
+      <main class="doc" role="document">
+        <div class="watermark"></div>
+        <header class="doc-header" aria-label="Document header">
+          <div class="brand-lockup" aria-label="R&B Transolution">
+            <div class="rb">R & B</div>
+            <div class="transolution">TRANSOLUTION</div>
+            <div class="consulting">CONSULTING</div>
+          </div>
+          <div class="doc-meta">
+            <div><strong>เอกสาร:</strong> SOP-ALL-001</div>
+            <div><strong>หัวข้อ:</strong> <span id="sopTitle">การควบคุมคุณภาพอาหารและความสะอาด</span></div>
+            <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025-07-01</div>
+          </div>
+        </header>
+        <section class="title-band" aria-label="Title">
+          <h1>SOP: การควบคุมคุณภาพอาหารและความสะอาด</h1>
+          <div class="subtitle">Standard Operating Procedures • Food Quality and Hygiene Control</div>
+        </section>
+        <section class="info-grid" aria-label="At a glance">
+          <article class="info-card">
+            <h4>🎯 วัตถุประสงค์ (Purpose)</h4>
+            <p>เพื่อรับประกันว่าอาหารทุกจานมีคุณภาพสูงสุดและถูกสุขอนามัยตั้งแต่ต้นจนจบกระบวนการ</p>
+          </article>
+          <article class="info-card">
+            <h4>📍 ขอบเขต (Scope)</h4>
+            <ul>
+              <li>พนักงานทุกคนในร้านอาหาร</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h4>🧰 เครื่องมือที่ใช้ (Tools)</h4>
+            <ul>
+              <li>แบบฟอร์ม Food Safety Checklist</li>
+              <li>เครื่องวัดอุณหภูมิ, ถุงมือ</li>
+            </ul>
+          </article>
+        </section>
+        <section class="section" aria-label="Steps">
+          <h2>📝 ขั้นตอนปฏิบัติ (Steps)</h2>
+          <p class="lead">ปฏิบัติงานตามขั้นตอนเพื่อรักษามาตรฐานคุณภาพอาหารและความสะอาดอย่างสม่ำเสมอ</p>
+          <div class="step-grid">
+            <article class="step-card">
+              <h3>1) การตรวจสอบวัตถุดิบ</h3>
+              <p>ตรวจสอบความสดใหม่และคุณภาพของวัตถุดิบทุกครั้งก่อนนำไปใช้</p>
+              <ul>
+                <li>เช็ควันหมดอายุ, สี, กลิ่น, และเนื้อสัมผัส</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>2) การทำความสะอาด</h3>
+              <p>รักษาความสะอาดของพื้นที่ทำงานและอุปกรณ์อย่างต่อเนื่อง</p>
+              <ul>
+                <li>ล้างมืออย่างถูกวิธีและสม่ำเสมอ</li>
+                <li>ทำความสะอาดพื้นผิวที่สัมผัสอาหารทุกชั่วโมง</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>3) การควบคุมอุณหภูมิ</h3>
+              <p>ควบคุมอุณหภูมิของอาหารและวัตถุดิบให้อยู่ในโซนปลอดภัย (ต่ำกว่า 4°C หรือสูงกว่า 60°C)</p>
+              <ul>
+                <li>ใช้เครื่องวัดอุณหภูมิเพื่อตรวจสอบอย่างสม่ำเสมอ</li>
+              </ul>
+            </article>
+            <article class="step-card">
+              <h3>4) การตรวจสอบก่อนเสิร์ฟ</h3>
+              <p>ก่อนเสิร์ฟอาหาร ให้ตรวจสอบคุณภาพสุดท้าย</p>
+              <ul>
+                <li>ตรวจสอบความสวยงาม, ความสมบูรณ์, และความถูกต้องของเมนู</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <section class="section" aria-label="Do & Don't">
+          <h2>✅ / ❌ สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+          <div class="twocol">
+            <div class="callout do">
+              <h4>ควรทำ (Do)</h4>
+              <ul>
+                <li>สวมเครื่องแบบและผ้ากันเปื้อนที่สะอาดเสมอ</li>
+                <li>ใช้ถุงมือเมื่อจัดการกับอาหารพร้อมรับประทาน</li>
+                <li>เข้าร่วมการอบรมด้านสุขอนามัยอาหาร</li>
+              </ul>
+            </div>
+            <div class="callout dont">
+              <h4>ห้ามทำ (Don't)</h4>
+              <ul>
+                <li>นำโทรศัพท์มือถือเข้าพื้นที่ครัว</li>
+                <li>ไอหรือจามลงบนอาหาร</li>
+                <li>เสิร์ฟอาหารที่มีคุณภาพต่ำหรือไม่ตรงตามมาตรฐาน</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-label="Records">
+          <h2>📄 บันทึกเหตุการณ์ (Record Form)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>กิจกรรม</th>
+                <th>หมายเหตุ</th>
+                <th>ผู้รับผิดชอบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>__/__/____</td>
+                <td>ตรวจสอบคุณภาพอาหาร</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="section" aria-label="Revision">
+          <h2>🗂️ ประวัติการทบทวน (Revision History)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>เวอร์ชัน</th>
+                <th>วันที่</th>
+                <th>รายละเอียดการเปลี่ยนแปลง</th>
+                <th>ผู้ทบทวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0</td>
+                <td>2025-07-01</td>
+                <td>ฉบับแรกตามมาตรฐาน R&B Transolution</td>
+                <td>Manager ชื่อ________</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="signatures" aria-label="Signatures">
+            <div class="sig">
+              <div><strong>ผู้จัดทำ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+            <div class="sig">
+              <div><strong>ผู้อนุมัติ</strong></div>
+              <div>ชื่อ: _____________________________</div>
+              <div>ตำแหน่ง: _________________________</div>
+              <div>วันที่: ____/____/______</div>
+            </div>
+          </div>
+        </section>
+        <footer class="doc-footer" aria-label="Footer">
+          <div>© 2025 R&B Transolution — Standard Operating Procedures</div>
+          <div class="page-counter">หน้า </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function openSOP(evt, sopId) {
+      var i, tabcontent, tabbuttons;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tabbuttons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+      }
+      document.getElementById(sopId).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Show the default SOP tab on page load
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector(".tab-button").click();
+    });
+  </script>
+</body>
+</html>
