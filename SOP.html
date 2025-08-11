@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muteki Japanese Restaurant – SOP Template</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --luxury-bronze: #B8860B;
@@ -100,13 +100,13 @@
     }
 
     .brand-lockup {
+      font-family: 'Playfair Display', serif;
       line-height: 1.2;
     }
 
     .brand-lockup .brand-name {
-      font-family: 'Montserrat Alternates', sans-serif;
       color: var(--rich-black);
-      font-weight: 100;
+      font-weight: 700;
       letter-spacing: .02em;
       font-size: 20pt;
     }
@@ -178,7 +178,7 @@
     .section {
       margin: 10mm 0 0 0;
     }
-    
+
     .section h2 {
         font-family: 'Playfair Display', serif;
         font-weight: 600;
@@ -209,7 +209,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 5mm;
     }
-    
+
     .step-card {
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent-gold);
@@ -316,35 +316,10 @@
       content: counter(page);
     }
 
-    .watermark {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: .3s;
-    }
-
-    .watermark.show {
-      opacity: .06;
-    }
-
-    .watermark::before {
-      content: 'MUTEKI JAPANESE RESTAURANT';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-24deg);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 78pt;
-      color: var(--rich-black);
-      white-space: nowrap;
-    }
-    
     .section, .info-grid, .signatures, table {
         page-break-inside: avoid;
     }
-    
+
     .page-break {
       page-break-before: always;
     }
@@ -391,10 +366,6 @@
       .doc-footer .page-counter {
         content: counter(page);
       }
-      
-      .watermark.show {
-          opacity: 0.06;
-      }
     }
 
     @media (max-width: 900px) {
@@ -426,7 +397,6 @@
 
     <div id="sop1" class="tab-content active">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
@@ -598,7 +568,6 @@
 
     <div id="sop2" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
@@ -752,7 +721,6 @@
 
     <div id="sop3" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
@@ -908,7 +876,6 @@
 
     <div id="sop4" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
@@ -1058,7 +1025,6 @@
 
     <div id="sop5" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
@@ -1209,7 +1175,6 @@
 
     <div id="sop6" class="tab-content">
       <main class="doc" role="document">
-        <div class="watermark show"></div>
         <header class="doc-header" aria-label="Document header">
           <div class="brand-lockup" aria-label="Muteki Japanese Restaurant">
             <div class="brand-name">MUTEKI</div>
