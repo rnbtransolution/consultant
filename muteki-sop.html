@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muteki Kitchen (BOH) SOP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       /* Brand Palette */
@@ -57,8 +57,8 @@
       line-height: 1.2;
     }
     .brand-lockup .rb {
-      color: var(--luxury-bronze);
-      font-weight: 700;
+      color: var(--rich-black);
+      font-weight: 300;
       letter-spacing: .02em;
       font-size: 20pt;
     }
@@ -235,6 +235,9 @@
       .doc { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 0; }
       .title-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .doc-footer { position: fixed; bottom: 0; left: 0; right: 0; }
+      .title-band:not(:first-of-type) {
+        break-before: page;
+      }
     }
 
     /* Small screens preview */
@@ -248,9 +251,7 @@
   <main class="doc" role="document">
     <header class="doc-header" aria-label="Document header">
       <div class="brand-lockup" aria-label="Muteki Kitchen">
-        <div class="rb">Muteki</div>
-        <div class="transolution">Kitchen</div>
-        <div class="consulting">BOH SOPs</div>
+        <div class="rb">MUTEMI</div>
       </div>
       <div class="doc-meta">
         <div><strong>เอกสาร:</strong> SOP-BOH-ALL</div>
@@ -709,11 +710,6 @@
         </div>
       </div>
     </section>
-
-    <footer class="doc-footer" aria-label="Footer">
-      <div>© 2025 Muteki Kitchen (BOH) — Standard Operating Procedures</div>
-      <div class="page-counter">หน้า </div>
-    </footer>
   </main>
 </body>
 </html>
