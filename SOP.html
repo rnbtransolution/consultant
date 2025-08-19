@@ -312,6 +312,60 @@
       vertical-align: -0.12em;
       font-family: 'Raleway','Inter','Noto Sans Thai',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
+
+/* === Print background fix (refined) === */
+@media print {
+  /* Keep the page canvas white without stripping component backgrounds */
+  html, body, .doc { background: #ffffff !important; }
+@media print {
+  @page { margin: 12mm; }
+  body:before, body:after { background: transparent !important; }
+}
+
+
+/* === Print layout: 1 x 1 cards === */
+@media print {
+  /* Force single column for any grid of cards */
+  .info-grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+  /* Each card occupies full width and avoids splitting across pages */
+  .info-card {
+    width: 100% !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 0 8mm 0 !important; /* vertical rhythm between cards */
+  }
+  .info-card h4 {
+    page-break-after: avoid;
+  }
+  /* If any two-column text containers exist, collapse to single column on print */
+  .twocol {
+    columns: 1 !important;
+    -webkit-columns: 1 !important;
+    -moz-columns: 1 !important;
+  }
+}
+
+
+/* --- Wrap-fix patch (template-safe) --- */
+.info-card, .info-card *,
+.callout, .callout *,
+.step-content li,
+.doc-meta, .doc-meta * {
+  overflow-wrap: anywhere;       /* modern */
+  word-wrap: break-word;         /* legacy fallback */
+  word-break: break-word;        /* webkit fallback */
+  hyphens: auto;
+}
+/* Prevent list tokens from wrapping away from text */
+.step-content ul, .info-card ul, .callout ul { list-style-position: outside; }
+/* Keep cards from horizontal overflow in print */
+@media print {
+  .info-card, .callout { max-width: 100%; box-sizing: border-box; }
+}
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 <style id="brand-font-chonburi">
@@ -325,149 +379,160 @@
 <body>
 <main class="doc" role="document">
 <section class="sop-section">
-
 <header class="doc-header">
-  <div class="brand-lockup">
-    <div class="rb">ลงหม้อสุกี้</div>
-    <div class="consulting">Standard Operating Procedures</div>
-  </div>
-  <div class="doc-meta">
-    <div><strong>เอกสาร:</strong> SOP-FOH-012</div>
-    <div><strong>หัวข้อ:</strong> การเก็บความเห็นลูกค้าและบันทึกประจำวัน</div>
-    <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025–08–19</div>
-  </div>
+<div class="brand-lockup">
+<div class="rb">ลงหม้อสุกี้</div>
+<div class="consulting">Standard Operating Procedures</div>
+</div>
+<div class="doc-meta">
+<div><strong>เอกสาร:</strong> SOP-FOH-006</div>
+<div><strong>หัวข้อ:</strong> การบริการอาหารและเครื่องดื่ม</div>
+<div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025–08–17</div>
+</div>
 </header>
 <section aria-label="Title" class="title-band">
-  <h1>SOP: การเก็บความเห็นลูกค้าและบันทึกประจำวัน</h1>
-  <div class="subtitle" style="font-family: 'Outfit', sans-serif;">Standard Operating Procedures • Guest Feedback Collection & Daily Log</div>
+<h1>SOP: การบริการอาหารและเครื่องดื่ม</h1>
+<div class="subtitle" style="font-family: 'Outfit', sans-serif;">Standard Operating Procedures • Food & Beverage Service Standards</div>
 </section>
 <section aria-label="At a glance" class="info-grid">
-  <article class="info-card">
-    <h4><i class="fi fi-ts-archery glance-icon"></i>วัตถุประสงค์ (PURPOSE)</h4>
-    <p>เพื่อกำหนดวิธีการจัดเก็บความเห็นจากลูกค้าอย่างเป็นระบบ ทั้งในรูปแบบกระดาษและดิจิทัล เพื่อให้สามารถวัดผล ติดตาม และนำไปสู่การวางแผนปรับปรุงที่ชัดเจน พร้อมทั้งระบุผู้รับผิดชอบได้อย่างแม่นยำ</p>
-  </article>
-  <article class="info-card">
-    <h4><i class="fi fi-ts-marker glance-icon"></i>ขอบเขต (SCOPE)</h4>
-    <ul>
-      <li>พนักงานเสิร์ฟ/แคชเชียร์ (ผู้ทำหน้าที่เชิญชวนให้ลูกค้าประเมิน/ชี้ช่องทาง)</li>
-      <li>หัวหน้าเวร/ผู้จัดการส่วนหน้า (ผู้ทวนสอบคุณภาพข้อมูลและสรุปผลรายวัน)</li>
-      <li>ผู้จัดการร้าน (ผู้ติดตามกรณีร้องเรียนและกำหนดแนวทางปฏิบัติ)</li>
-    </ul>
-  </article>
-  <article class="info-card">
-    <h4><i class="fi fi-ts-hammer-brush glance-icon"></i>เครื่องมือที่ใช้ (TOOLS)</h4>
-    <ul>
-      <li>QR Code สำหรับแบบประเมิน 1 นาที (ครอบคลุม CSAT/NPS/ความคิดเห็น)</li>
-      <li>แบบฟอร์มกระดาษ สำหรับลูกค้าบางกลุ่มที่ต้องการ</li>
-      <li>สมุดบันทึกหรือระบบบันทึก Daily Service Log</li>
-      <li>แดชบอร์ดสรุปผลรวมรายวันและรายสัปดาห์</li>
-    </ul>
-  </article>
+<article class="info-card">
+<h4><i class="fi fi-ts-archery glance-icon"></i>วัตถุประสงค์ (PURPOSE)</h4>
+<p>เพื่อสร้างมาตรฐานการบริการอาหารและเครื่องดื่มที่เป็นระเบียบ สุภาพ สะอาด ปลอดภัย และตรงต่อเวลา รวมถึงการควบคุมคุณภาพอาหารก่อนเสิร์ฟ การดูแลความปลอดภัยจากอุปกรณ์ร้อน และการรักษาความสะอาดของโต๊ะตลอดระยะเวลาที่ลูกค้าใช้บริการ</p>
+</article>
+<article class="info-card">
+<h4><i class="fi fi-ts-marker glance-icon"></i>ขอบเขต (SCOPE)</h4>
+<ul>
+    <li>พนักงานเสิร์ฟ (ผู้รับผิดชอบการบริการหน้าร้าน)</li>
+    <li>พนักงานบัสเซอร์ (ผู้ดูแลการเก็บจานและทำความสะอาดโต๊ะ)</li>
+    <li>หัวหน้าชุดบริการ (ผู้ควบคุมคุณภาพการบริการ)</li>
+    <li>ผู้จัดการส่วนหน้า (ผู้ให้การสนับสนุนและแก้ไขปัญหา)</li>
+</ul>
+</article>
+<article class="info-card">
+<h4><i class="fi fi-ts-hammer-brush glance-icon"></i>เครื่องมือที่ใช้ (TOOLS)</h4>
+<ul>
+    <li>จอมอนิเตอร์ Expediter/Pass</li>
+    <li>ถาดเสิร์ฟ/ที่คีบ/ผ้าสำหรับเช็ดทำความสะอาดเฉพาะจุด</li>
+    <li>ถุงมือกันความร้อน/เทอร์โมมิเตอร์</li>
+    <li>รถเข็นสำหรับเก็บจานและถังขยะแบบมีฝาปิด</li>
+    <li>การ์ดเตือนความร้อนสำหรับวางบนโต๊ะ</li>
+</ul>
+</article>
 </section>
 <section aria-label="Steps" class="section">
-  <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-  <p class="lead">ขั้นตอนเหล่านี้ได้รับการออกแบบมาให้กระชับ ชัดเจน สามารถปฏิบัติได้จริง และตรวจสอบย้อนกลับได้</p>
-  <div class="step-content">
-    
-<h3>1) เตรียมช่องทางและทดสอบความพร้อม</h3>
+<h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+<p class="lead">ครอบคลุมตั้งแต่การตรวจสอบอาหารที่จุดส่ง การจัดลำดับการเสิร์ฟ การดูแลความปลอดภัยบนโต๊ะ ไปจนถึงการปิดโต๊ะและอัปเดตสถานะ</p>
+<div class="step-content">
+<h3>1) ตรวจสอบอาหารที่จุดส่ง (Pass Check)</h3>
 <ul>
-  <li>ทดสอบการใช้งาน QR Code และลิงก์สำหรับแบบประเมินในทุกโต๊ะ/ใบเสร็จ</li>
-  <li>เตรียมแบบฟอร์มกระดาษสำรองให้พร้อมใช้งาน</li>
-  <li>ติดตั้งป้ายแจ้งนโยบายความเป็นส่วนตัว เพื่อแจ้งให้ลูกค้าทราบถึงวัตถุประสงค์ในการใช้ข้อมูลเพื่อปรับปรุงบริการ</li>
+    <li>ตรวจสอบชื่อเมนู ปริมาณ และแท็กภูมิแพ้ให้ถูกต้องครบถ้วน</li>
+    <li>ปิดฝา/ห่ออาหารอย่างแน่นหนา เพื่อป้องกันการหกเลอะเทอะ</li>
+    <li>หากเกิดเหตุการณ์อาหารหก/ภาชนะแตกหัก ให้ดำเนินการกั้นพื้นที่ ทำความสะอาด และรายงานผู้จัดการทันทีตามขั้นตอนที่กำหนด</li>
 </ul>
-<h3>2) เชิญชวนลูกค้าประเมินด้วยความสุภาพ</h3>
+<h3>2) จัดลำดับการเสิร์ฟ</h3>
 <ul>
-  <li>เชิญชวนลูกค้าให้ทำการประเมินก่อนออกจากร้าน (โดยมีเป้าหมายให้ใช้เวลาไม่เกิน 60 วินาที)</li>
-  <li>ใช้สคริปต์สั้นๆ เช่น “รบกวนช่วยประเมินการบริการของเราสักครู่ได้ไหมคะ/ครับ ใช้เวลาไม่ถึง 1 นาทีค่ะ/ครับ”</li>
+    <li>เสิร์ฟเครื่องดื่มก่อนเป็นลำดับแรก</li>
+    <li>ยึดตามมาตรฐานทิศทางในการเสิร์ฟของร้านอย่างสม่ำเสมอ</li>
+    <li>ประสานงานกับครัวเพื่อจัดลำดับการส่งอาหาร โดยให้ความสำคัญกับจานสำหรับเด็กหรือผู้สูงอายุ</li>
 </ul>
-<h3>3) คัดแยกประเภทข้อเสนอแนะ (Feedback)</h3>
+<h3>3) การดูแลความปลอดภัยจากอุปกรณ์ร้อน</h3>
 <ul>
-  <li>สำหรับคำชมหรือข้อเสนอแนะทั่วไป ให้บันทึกลงใน Daily Log</li>
-  <li>สำหรับข้อร้องเรียนหรือเหตุการณ์ที่ไม่พึงพอใจ ให้เปิด Ticket แจ้งผู้จัดการทราบทันที</li>
+    <li>วางแผ่นรองกันความร้อนก่อนจัดวางภาชนะร้อนบนโต๊ะ</li>
+    <li>ชี้แจงวิธีการปรับความร้อนและแยกอุปกรณ์สำหรับวัตถุดิบดิบ‑สุกให้ลูกค้าทราบ</li>
+    <li>ใช้หลัก "2 นาที/2 คำ" เพื่อกลับมาตรวจสอบความพึงพอใจของลูกค้าหลังเสิร์ฟ</li>
 </ul>
-<h3>4) บันทึกข้อมูลรายวันอย่างเป็นระบบ</h3>
+<h3>4) ตรวจสอบความพึงพอใจเชิงรุก</h3>
 <ul>
-  <li>บันทึกเหตุการณ์สำคัญตามรูปแบบที่กำหนด: เวลา โต๊ะ เรื่อง และผู้รับผิดชอบ</li>
-  <li>แนบหลักฐานประกอบสั้นๆ เช่น รูปภาพ หรือหมายเลขบิล (เมื่อมี)</li>
+    <li>กลับมาตรวจสอบความเรียบร้อยและความพึงพอใจของลูกค้าภายใน 2 นาทีแรก หรือหลังจากลูกค้าเริ่มรับประทาน 2 คำแรก</li>
+    <li>ดำเนินการแก้ไขปัญหาทันทีหากพบข้อบกพร่อง เช่น รสชาติไม่ตรงตามต้องการ หรืออุณหภูมิอาหารไม่เหมาะสม</li>
 </ul>
-<h3>5) ทวนสอบคุณภาพข้อมูล</h3>
+<h3>5) การดูแลเติมน้ำซุป/เปลี่ยนตะแกรงย่าง</h3>
 <ul>
-  <li>หัวหน้าเวรมีหน้าที่ตรวจสอบรายการบันทึกก่อนส่งมอบกะ</li>
-  <li>ป้องกันการบันทึกข้อมูลซ้ำซ้อนหรือไม่ชัดเจน และรักษาข้อมูลส่วนบุคคลของลูกค้าเป็นความลับ</li>
+    <li>เติมน้ำซุปอย่างระมัดระวัง เพื่อป้องกันน้ำกระเด็นหรือลวก</li>
+    <li>เปลี่ยนตะแกรงย่างเมื่อมีคราบไหม้หรือควันเกิดขึ้นเป็นจำนวนมาก</li>
 </ul>
-<h3>6) สรุปผลรายวัน (Daily Brief)</h3>
+<h3>6) การเก็บจานและรักษาความสะอาดโต๊ะ (Pre-bussing)</h3>
 <ul>
-  <li>สรุป 3 อันดับแรกของคำชม/ปัญหา พร้อม Action ที่จะดำเนินการ เจ้าของเรื่อง และกำหนดเวลาแล้วเสร็จ</li>
-  <li>แบ่งปันข้อมูลสรุปนี้ให้ทีมงานทราบผ่านช่องทางสื่อสารภายใน ก่อนเริ่มต้นกะถัดไป</li>
+    <li>เก็บจานที่ใช้แล้วโดยขออนุญาตจากลูกค้าก่อนทุกครั้ง</li>
+    <li>รักษาความสะอาดและความเรียบร้อยของหน้าโต๊ะให้ดูสะอาดปลอดภัยอยู่เสมอตลอดมื้ออาหาร</li>
 </ul>
-<h3>7) ติดตามเคสจนกว่าจะปิดผล</h3>
+<h3>7) การจัดการเหตุการณ์หก/แตกหัก</h3>
 <ul>
-  <li>ผู้จัดการร้านมีหน้าที่ติดตาม Ticket จนกว่าจะได้รับผลลัพธ์ที่เป็นรูปธรรม</li>
-  <li>อัปเดตสถานะใน Dashboard (Open/In‑Progress/Closed)</li>
+    <li>กั้นพื้นที่ที่เกิดเหตุชั่วคราว และทำความสะอาดทันทีอย่างระมัดระวัง</li>
+    <li>แจ้งผู้จัดการหากเหตุการณ์ที่เกิดขึ้นเกี่ยวข้องกับความปลอดภัยของลูกค้าหรือพนักงาน</li>
 </ul>
-<h3>8) ทบทวนผลการดำเนินงานรายสัปดาห์</h3>
+<h3>8) การเตรียมปิดมื้ออาหาร</h3>
 <ul>
-  <li>วิเคราะห์แนวโน้มคะแนน หรือหัวข้อปัญหาที่เกิดขึ้นซ้ำๆ เพื่อนำไปปรับแผนการฝึกอบรมหรือการจัดสรรทรัพยากรต่อไป</li>
+    <li>เสนอรายการของหวานก่อนปิดรับออเดอร์ประมาณ 15 นาที</li>
+    <li>ประสานงานกับแคชเชียร์เพื่อออกบิลให้รวดเร็วและถูกต้อง</li>
+    <li>ปรับปริมาณอุปกรณ์บนโต๊ะให้เพียงพอในชั่วโมงเร่งด่วน เพื่อลดการเดินไป‑กลับโดยไม่จำเป็น</li>
 </ul>
-
-  </div>
+<h3>9) การปิดโต๊ะและอัปเดตสถานะ</h3>
+<ul>
+    <li>ทำความสะอาด ฆ่าเชื้อ และเติมอุปกรณ์ที่จำเป็นบนโต๊ะให้พร้อมสำหรับลูกค้ารายต่อไป</li>
+    <li>อัปเดตสถานะโต๊ะเป็น 'ว่าง' ในระบบ POS ทันที</li>
+</ul>
+<h3>10) รายงานข้อผิดพลาดที่เกิดขึ้นซ้ำ</h3>
+<ul>
+    <li>บันทึกปัญหาที่เกิดขึ้นบ่อยครั้งเพื่อส่งต่อข้อมูลสำหรับการฝึกอบรมพนักงาน</li>
+    <li>เสนอแนวทางในการปรับปรุงการบริการในที่ประชุมทีม</li>
+</ul>
+</div>
 </section>
 <section aria-label="Guides" class="section">
-  <h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
-  <div class="twocol">
-    <div class="callout do">
-      <h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--success)"></circle><path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ควรทำ (Do)</h4>
-      <ul><li>เชิญชวนลูกค้าประเมินด้วยน้ำเสียงที่สุภาพและไม่ก่อให้เกิดความกดดัน</li><li>บันทึกรายละเอียดให้เพียงพอต่อการแก้ไขปัญหา (ระบุว่า ใคร ทำอะไร เมื่อไร)</li><li>ปกป้องข้อมูลส่วนบุคคลของลูกค้าอย่างเคร่งครัดตามนโยบายของร้าน</li></ul>
-    </div>
-    <div class="callout dont">
-      <h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--danger)"></circle><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ห้ามทำ (Don't)</h4>
-      <ul><li>โพสต์ข้อมูลส่วนตัวของลูกค้าลงในช่องทางสาธารณะโดยเด็ดขาด</li><li>ตอบโต้กับลูกค้าด้วยท่าทีหรือคำพูดเชิงลบ</li><li>ปล่อย Ticket กรณีร้องเรียนค้างไว้โดยไม่มีผู้รับผิดชอบที่ชัดเจน</li></ul>
-    </div>
-  </div>
+<h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+<div class="twocol">
+<div class="callout do">
+<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--success)"></circle><path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ควรทำ (Do)</h4>
+<ul>
+    <li>รักษาลำดับการบริการให้สม่ำเสมอและเป็นไปตามขั้นตอน</li>
+    <li>ให้ความสำคัญกับความปลอดภัยที่เกิดจากอุปกรณ์หรืออาหารที่มีความร้อนสูง</li>
+    <li>ตรวจสอบความพึงพอใจของลูกค้าอย่างกระตือรือร้นและรวดเร็ว</li>
+</ul>
+</div>
+<div class="callout dont">
+<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--danger)"></circle><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ห้ามทำ (Don't)</h4>
+<ul>
+    <li>เสิร์ฟอาหารผิดโต๊ะหรือผิดตำแหน่งที่นั่ง</li>
+    <li>ปล่อยให้น้ำซุปแห้งหรือตะแกรงย่างมีคราบไหม้สะสม</li>
+    <li>ปล่อยให้โต๊ะสกปรกเป็นเวลานานโดยไม่มีการดูแล</li>
+</ul>
+</div>
+</div>
 
-  <div class="info-grid">
-    <article class="info-card">
-      <h4><i class="fi fi-ts-analytics glance-icon"></i>ตัวชี้วัดบริการ (SLA & KPI)</h4>
-      <ul>
-<li><strong>อัตราการตอบแบบสำรวจ (Survey Response Rate):</strong> มากกว่าหรือเท่ากับ 25% ของจำนวนโต๊ะต่อวัน</li>
-<li><strong>การตอบสนองครั้งแรกต่อเคสร้องเรียน (First Action เคสร้องเรียน):</strong> ไม่เกิน 10 นาที</li>
-<li><strong>การปิดบันทึก Daily Service Log:</strong> ภายใน 24:00 น. ของวันเดียวกัน</li>
-</ul>
-    </article>
-    <article class="info-card">
-      <h4><i class="fi fi-ts-lightbulb-on glance-icon"></i>เคล็ดลับหน้างาน (Tips)</h4>
-      <ul>
-<li>วาง QR Code ในตำแหน่งที่ลูกค้ามองเห็นและเข้าถึงได้ง่าย เช่น บนใบเสร็จ ใกล้เตา หรือบนเมนู</li>
-<li>ลองใช้คำถามปลายเปิด 1 ข้อท้ายมื้ออาหาร เช่น “วันนี้มีอะไรที่เราสามารถปรับปรุงให้ดียิ่งขึ้นได้อีกบ้างไหมครับ/คะ”</li>
-<li>ยกตัวอย่างข้อเสนอแนะเชิงบวกที่น่าสนใจในการประชุมทีม เพื่อสร้างแรงบันดาลใจและเสริมกำลังใจ</li>
-</ul>
-    </article>
-    <article class="info-card">
-      <h4><i class="fi fi-ts-presentation-analytics glance-icon"></i>ตัวชี้วัดผลการดำเนินงาน (Business KPIs)</h4>
-      <ul>
-<li><strong>คะแนนความพึงพอใจลูกค้าเฉลี่ย (CSAT/NPS เฉลี่ย):</strong> เป็นไปตามเป้าหมายที่กำหนดไว้</li>
-<li><strong>ลูกค้ากลับมาใช้บริการซ้ำ (Repeat Customers):</strong> มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง</li>
-<li><strong>จำนวนคำชมจากลูกค้าต่อสัปดาห์ (Shout‑outs รายสัปดาห์):</strong> มากกว่าหรือเท่ากับ 5 กรณี</li>
-</ul>
-    </article>
-  </div>
 
-  <div class="signatures">
-    <div class="sig">
-      <strong>เสนอโดย</strong><br/>
-      ชื่อ: _____________________________<br/>
-      ตำแหน่ง: _________________________<br/>
-      วันที่: ____/____/______<br/>
-    </div>
-    <div class="sig">
-      <strong>อนุมัติโดย</strong><br/>
-      ชื่อ: _____________________________<br/>
-      ตำแหน่ง: _________________________<br/>
-      วันที่: ____/____/______<br/>
-    </div>
-  </div>
+<div class="info-grid"><article class="info-card"><h4><i class="fi fi-ts-analytics glance-icon"></i>ตัวชี้วัดบริการ (SLA & KPI)</h4><ul>
+    <li><strong>การตรวจสอบคุณภาพที่จุดส่งอาหาร (Pass Check):</strong> 100% ของเมนูที่กำหนด — <em>ประเมินจาก Checklist Pass</em> (รายกะ)</li>
+    <li><strong>การตรวจสอบความพึงพอใจลูกค้าด้วยกฎ "2 นาที/2 คำ":</strong> มากกว่าหรือเท่ากับ 95% ของจำนวนโต๊ะ — <em>ประเมินจากการสุ่มตรวจเวลาจริง</em> (รายกะ)</li>
+    <li><strong>เวลาในการเติมน้ำซุป/เปลี่ยนตะแกรง:</strong> ไม่เกิน 90 วินาที/ไม่เกิน 3 นาที — <em>ประเมินจาก Time‑to‑Serve</em> (รายกะ)</li>
+    <li><strong>การจัดการเหตุการณ์หก/แตกหัก:</strong> ถึงที่เกิดเหตุไม่เกิน 60 วินาที — <em>ประเมินจาก Incident Log</em> (รายกะ)</li>
+    <li><strong>การเก็บจานล่วงหน้า (Pre‑bussing):</strong> ทุก 5 นาที ในช่วงเวลาเร่งด่วน — <em>ประเมินจากรอบตรวจโต๊ะ</em> (รายกะ)</li>
+</ul></article><article class="info-card"><h4><i class="fi fi-ts-lightbulb-on glance-icon"></i>เคล็ดลับหน้างาน (Tips)</h4><ul>
+    <li>ตรวจสอบคุณภาพอาหารที่จุดส่ง (Pass) อย่างละเอียด: ทั้งชื่อเมนู อุณหภูมิ และความเรียบร้อยก่อนนำออกเสิร์ฟ</li>
+    <li>ใช้กฎ "2 นาที/2 คำ" เพื่อกลับไปตรวจสอบและแก้ไขปัญหาให้ลูกค้าได้อย่างรวดเร็ว</li>
+    <li>แยกใช้อุปกรณ์สำหรับวัตถุดิบดิบและวัตถุดิบสุกอย่างชัดเจน เพื่อลดโอกาสการปนเปื้อน</li>
+    <li>เติมน้ำซุปโดยเล็งชิดขอบหม้อและเติมอย่างช้าๆ เพื่อลดการกระเด็นหรือการลวก</li>
+    <li>กำหนดรอบการเปลี่ยนตะแกรงย่างเมื่อพบว่ามีคราบไหม้หรือควันออกมามาก</li>
+    <li>ทำ Pre‑bussing (การเก็บจานล่วงหน้า) อย่างต่อเนื่อง เพื่อให้โต๊ะของลูกค้าดูสะอาดอยู่เสมอ</li>
+</ul></article><article class="info-card"><h4><i class="fi fi-ts-presentation-analytics glance-icon"></i>ตัวชี้วัดผลการดำเนินงาน (Business KPIs)</h4><ul>
+    <li><strong>การปฏิบัติกฎ "2 นาที/2 คำ" ครบถ้วน:</strong> มากกว่าหรือเท่ากับ 95% ของจำนวนโต๊ะ</li>
+    <li><strong>การตอบสนองต่อเหตุการณ์ (Incident Response) ภายใน 60 วินาที:</strong> มากกว่าหรือเท่ากับ 95%</li>
+    <li><strong>รอบการทำ Pre‑bussing:</strong> ทุก 5 นาทีในช่วงเวลาเร่งด่วน</li>
+</ul></article></div><div class="signatures">
+<div class="sig">
+<strong>เสนอโดย</strong><br/>
+ชื่อ: _____________________________<br/>
+ตำแหน่ง: _________________________<br/>
+วันที่: ____/____/______<br/>
+</div>
+<div class="sig">
+<strong>อนุมัติโดย</strong><br/>
+ชื่อ: _____________________________<br/>
+ตำแหน่ง: _________________________<br/>
+วันที่: ____/____/______<br/>
+</div>
+</div>
 </section>
-
 </section>
 </main>
 </body>
