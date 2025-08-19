@@ -313,54 +313,57 @@
       font-family: 'Raleway','Inter','Noto Sans Thai',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
 
-    /* === Text wrapping fixes === */
-    .info-card, .info-card *,
-    .callout, .callout *,
-    .step-content li,
-    .doc-meta, .doc-meta * {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      word-break: normal;
-      hyphens: auto;
-    }
-    .step-content ul, .info-card ul, .callout ul { 
-      list-style-position: outside;
-    }
-    @media print {
-      .info-card, .callout { 
-        max-width: 100%; 
-        box-sizing: border-box; 
-      }
-    }
+/* === Print background fix (refined) === */
+@media print {
+  /* Keep the page canvas white without stripping component backgrounds */
+  html, body, .doc { background: #ffffff !important; }
+@media print {
+  @page { margin: 12mm; }
+  body:before, body:after { background: transparent !important; }
+}
 
-    /* === Print background fix (refined) === */
-    @media print {
-      html, body, .doc { background: #ffffff !important; }
-      @page { margin: 12mm; }
-      body:before, body:after { background: transparent !important; }
-    }
+/* === Print layout: 1 x 1 cards === */
+@media print {
+  /* Force single column for any grid of cards */
+  .info-grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+  /* Each card occupies full width and avoids splitting across pages */
+  .info-card {
+    width: 100% !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 0 8mm 0 !important; /* vertical rhythm between cards */
+  }
+  .info-card h4 {
+    page-break-after: avoid;
+  }
+  /* If any two-column text containers exist, collapse to single column on print */
+  .twocol {
+    columns: 1 !important;
+    -webkit-columns: 1 !important;
+    -moz-columns: 1 !important;
+  }
+}
 
-    /* === Print layout: 1 x 1 cards === */
-    @media print {
-      .info-grid {
-        display: block !important;
-        grid-template-columns: 1fr !important;
-      }
-      .info-card {
-        width: 100% !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-        margin: 0 0 8mm 0 !important;
-      }
-      .info-card h4 {
-        page-break-after: avoid;
-      }
-      .twocol {
-        columns: 1 !important;
-        -webkit-columns: 1 !important;
-        -moz-columns: 1 !important;
-      }
-    }
+/* --- Wrap-fix patch (template-safe) --- */
+.info-card, .info-card *,
+.callout, .callout *,
+.step-content li,
+.doc-meta, .doc-meta * {
+  overflow-wrap: anywhere;       /* modern */
+  word-wrap: break-word;         /* legacy fallback */
+  word-break: break-word;        /* webkit fallback */
+  hyphens: auto;
+}
+/* Prevent list tokens from wrapping away from text */
+.step-content ul, .info-card ul, .callout ul { list-style-position: outside; }
+/* Keep cards from horizontal overflow in print */
+@media print {
+  .info-card, .callout { max-width: 100%; box-sizing: border-box; }
+}
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 <style id="brand-font-chonburi">
@@ -369,6 +372,7 @@
   font-family: 'Chonburi', cursive, serif !important;
   font-weight: 400 !important;
 }
+</style>
 </head>
 <body>
 <main class="doc" role="document">
