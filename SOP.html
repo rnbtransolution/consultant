@@ -312,60 +312,6 @@
       vertical-align: -0.12em;
       font-family: 'Raleway','Inter','Noto Sans Thai',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
-
-/* === Print background fix (refined) === */
-@media print {
-  /* Keep the page canvas white without stripping component backgrounds */
-  html, body, .doc { background: #ffffff !important; }
-@media print {
-  @page { margin: 12mm; }
-  body:before, body:after { background: transparent !important; }
-}
-
-
-/* === Print layout: 1 x 1 cards === */
-@media print {
-  /* Force single column for any grid of cards */
-  .info-grid {
-    display: block !important;
-    grid-template-columns: 1fr !important;
-  }
-  /* Each card occupies full width and avoids splitting across pages */
-  .info-card {
-    width: 100% !important;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin: 0 0 8mm 0 !important; /* vertical rhythm between cards */
-  }
-  .info-card h4 {
-    page-break-after: avoid;
-  }
-  /* If any two-column text containers exist, collapse to single column on print */
-  .twocol {
-    columns: 1 !important;
-    -webkit-columns: 1 !important;
-    -moz-columns: 1 !important;
-  }
-}
-
-
-/* --- Wrap-fix patch (template-safe) --- */
-.info-card, .info-card *,
-.callout, .callout *,
-.step-content li,
-.doc-meta, .doc-meta * {
-  overflow-wrap: anywhere;       /* modern */
-  word-wrap: break-word;         /* legacy fallback */
-  word-break: break-word;        /* webkit fallback */
-  hyphens: auto;
-}
-/* Prevent list tokens from wrapping away from text */
-.step-content ul, .info-card ul, .callout ul { list-style-position: outside; }
-/* Keep cards from horizontal overflow in print */
-@media print {
-  .info-card, .callout { max-width: 100%; box-sizing: border-box; }
-}
-
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 <style id="brand-font-chonburi">
@@ -379,159 +325,149 @@
 <body>
 <main class="doc" role="document">
 <section class="sop-section">
+
 <header class="doc-header">
-<div class="brand-lockup">
-<div class="rb">ลงหม้อสุกี้</div>
-<div class="consulting">Standard Operating Procedures</div>
-</div>
-<div class="doc-meta">
-<div><strong>เอกสาร:</strong> SOP-FOH-005</div>
-<div><strong>หัวข้อ:</strong> ขั้นตอนการรับออเดอร์</div>
-<div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025–08–17</div>
-</div>
+  <div class="brand-lockup">
+    <div class="rb">ลงหม้อสุกี้</div>
+    <div class="consulting">Standard Operating Procedures</div>
+  </div>
+  <div class="doc-meta">
+    <div><strong>เอกสาร:</strong> SOP-FOH-012</div>
+    <div><strong>หัวข้อ:</strong> การเก็บความเห็นลูกค้าและบันทึกประจำวัน</div>
+    <div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025–08–19</div>
+  </div>
 </header>
 <section aria-label="Title" class="title-band">
-<h1>SOP: ขั้นตอนการรับออเดอร์</h1>
-<div class="subtitle" style="font-family: 'Outfit', sans-serif;">Standard Operating Procedures • Order Taking Procedures</div>
+  <h1>SOP: การเก็บความเห็นลูกค้าและบันทึกประจำวัน</h1>
+  <div class="subtitle" style="font-family: 'Outfit', sans-serif;">Standard Operating Procedures • Guest Feedback Collection & Daily Log</div>
 </section>
 <section aria-label="At a glance" class="info-grid">
-<article class="info-card">
-<h4><i class="fi fi-ts-archery glance-icon"></i>วัตถุประสงค์ (PURPOSE)</h4>
-<p>เพื่อกำหนดขั้นตอนการรับออเดอร์ให้ถูกต้องแม่นยำ สามารถตรวจสอบย้อนกลับได้ และลดข้อผิดพลาด โดยเน้นการใช้ Seat Mapping อย่างเคร่งครัด การติดแท็กภูมิแพ้ และการทวนคำสั่งก่อนส่งครัว/บาร์ทุกครั้ง</p>
-</article>
-<article class="info-card">
-<h4><i class="fi fi-ts-marker glance-icon"></i>ขอบเขต (SCOPE)</h4>
-<ul>
-    <li>พนักงานเสิร์ฟ (ผู้รับและบันทึกออเดอร์)</li>
-    <li>หัวหน้าชุดบริการ (ผู้ตรวจทานและแก้ไขรายการ)</li>
-    <li>ผู้จัดการส่วนหน้า (ผู้อนุมัติการ Void/ปรับแก้ไขที่สำคัญ)</li>
-</ul>
-</article>
-<article class="info-card">
-<h4><i class="fi fi-ts-hammer-brush glance-icon"></i>เครื่องมือที่ใช้ (TOOLS)</h4>
-<ul>
-    <li>เครื่อง POS/แท็บเล็ต ที่รองรับระบบ Seat Mapping</li>
-    <li>สมุดจดสำรอง สำหรับใช้ในกรณีระบบขัดข้อง</li>
-    <li>สติกเกอร์/แท็ก สำหรับระบุข้อมูลภูมิแพ้อาหาร</li>
-    <li>เช็กลิสต์สำหรับตรวจทานคำสั่ง ก่อนส่งไปยังครัว</li>
-    <li>หน้าจอ Expediter/จอครัว/จอที่บาร์</li>
-</ul>
-</article>
+  <article class="info-card">
+    <h4><i class="fi fi-ts-archery glance-icon"></i>วัตถุประสงค์ (PURPOSE)</h4>
+    <p>เพื่อกำหนดวิธีการจัดเก็บความเห็นจากลูกค้าอย่างเป็นระบบ ทั้งในรูปแบบกระดาษและดิจิทัล เพื่อให้สามารถวัดผล ติดตาม และนำไปสู่การวางแผนปรับปรุงที่ชัดเจน พร้อมทั้งระบุผู้รับผิดชอบได้อย่างแม่นยำ</p>
+  </article>
+  <article class="info-card">
+    <h4><i class="fi fi-ts-marker glance-icon"></i>ขอบเขต (SCOPE)</h4>
+    <ul>
+      <li>พนักงานเสิร์ฟ/แคชเชียร์ (ผู้ทำหน้าที่เชิญชวนให้ลูกค้าประเมิน/ชี้ช่องทาง)</li>
+      <li>หัวหน้าเวร/ผู้จัดการส่วนหน้า (ผู้ทวนสอบคุณภาพข้อมูลและสรุปผลรายวัน)</li>
+      <li>ผู้จัดการร้าน (ผู้ติดตามกรณีร้องเรียนและกำหนดแนวทางปฏิบัติ)</li>
+    </ul>
+  </article>
+  <article class="info-card">
+    <h4><i class="fi fi-ts-hammer-brush glance-icon"></i>เครื่องมือที่ใช้ (TOOLS)</h4>
+    <ul>
+      <li>QR Code สำหรับแบบประเมิน 1 นาที (ครอบคลุม CSAT/NPS/ความคิดเห็น)</li>
+      <li>แบบฟอร์มกระดาษ สำหรับลูกค้าบางกลุ่มที่ต้องการ</li>
+      <li>สมุดบันทึกหรือระบบบันทึก Daily Service Log</li>
+      <li>แดชบอร์ดสรุปผลรวมรายวันและรายสัปดาห์</li>
+    </ul>
+  </article>
 </section>
 <section aria-label="Steps" class="section">
-<h2>ขั้นตอนปฏิบัติ (Steps)</h2>
-<p class="lead">ขั้นตอนเหล่านี้ครอบคลุมตั้งแต่การทวนคำสั่ง การติดแท็กภูมิแพ้ การส่งออเดอร์ไปยังครัว/บาร์ ไปจนถึงการจัดการเมื่อสินค้าหมด</p>
-<div class="step-content">
-<h3>1) เข้าที่โต๊ะภายในเวลามาตรฐาน</h3>
+  <h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+  <p class="lead">ขั้นตอนเหล่านี้ได้รับการออกแบบมาให้กระชับ ชัดเจน สามารถปฏิบัติได้จริง และตรวจสอบย้อนกลับได้</p>
+  <div class="step-content">
+    
+<h3>1) เตรียมช่องทางและทดสอบความพร้อม</h3>
 <ul>
-    <li>เข้าหาลูกค้าที่โต๊ะภายใน 2 นาทีหลังจากลูกค้านั่ง</li>
-    <li>นำเสนอรายการน้ำดื่ม/เครื่องดื่ม และแจ้งเวลาใช้บริการโดยประมาณอย่างกระชับ</li>
-    <li>บันทึกเวลาและชื่อผู้รับคำสั่งในระบบ POS เพื่อความรับผิดชอบและการติดตาม</li>
+  <li>ทดสอบการใช้งาน QR Code และลิงก์สำหรับแบบประเมินในทุกโต๊ะ/ใบเสร็จ</li>
+  <li>เตรียมแบบฟอร์มกระดาษสำรองให้พร้อมใช้งาน</li>
+  <li>ติดตั้งป้ายแจ้งนโยบายความเป็นส่วนตัว เพื่อแจ้งให้ลูกค้าทราบถึงวัตถุประสงค์ในการใช้ข้อมูลเพื่อปรับปรุงบริการ</li>
 </ul>
-<h3>2) ยืนยันทางเลือกหลัก</h3>
+<h3>2) เชิญชวนลูกค้าประเมินด้วยความสุภาพ</h3>
 <ul>
-    <li>ยืนยันประเภทน้ำซุป การใช้เตา และระดับความเผ็ดที่ลูกค้าต้องการ</li>
-    <li>สอบถามจำนวนชุด/ขนาด รวมถึงการแบ่งปัน หรือการเติมเพิ่ม</li>
-    <li>ใช้ขั้นตอนการ Void/Correct ที่ได้รับอนุมัติ เพื่อแก้ไขความผิดพลาดอย่างโปร่งใส</li>
+  <li>เชิญชวนลูกค้าให้ทำการประเมินก่อนออกจากร้าน (โดยมีเป้าหมายให้ใช้เวลาไม่เกิน 60 วินาที)</li>
+  <li>ใช้สคริปต์สั้นๆ เช่น “รบกวนช่วยประเมินการบริการของเราสักครู่ได้ไหมคะ/ครับ ใช้เวลาไม่ถึง 1 นาทีค่ะ/ครับ”</li>
 </ul>
-<h3>3) สอบถามภูมิแพ้และข้อจำกัดอาหาร</h3>
+<h3>3) คัดแยกประเภทข้อเสนอแนะ (Feedback)</h3>
 <ul>
-    <li>สอบถาม ยืนยัน และบันทึกข้อมูลภูมิแพ้/ข้อจำกัดด้านอาหารในระบบ POS</li>
-    <li>ติดแท็กสีหรือสัญลักษณ์ที่บิล เพื่อป้องกันความผิดพลาดในการจัดเตรียม</li>
+  <li>สำหรับคำชมหรือข้อเสนอแนะทั่วไป ให้บันทึกลงใน Daily Log</li>
+  <li>สำหรับข้อร้องเรียนหรือเหตุการณ์ที่ไม่พึงพอใจ ให้เปิด Ticket แจ้งผู้จัดการทราบทันที</li>
 </ul>
-<h3>4) บันทึกคำสั่งด้วย Seat Mapping</h3>
+<h3>4) บันทึกข้อมูลรายวันอย่างเป็นระบบ</h3>
 <ul>
-    <li>ระบุหมายเลขที่นั่งให้ตรงกับผู้รับประทานแต่ละท่าน</li>
-    <li>ใช้คีย์ลัดหรือรหัสย่อ เพื่อเพิ่มความรวดเร็วและความถูกต้องในการบันทึก</li>
-    <li>บันทึกเวลาและชื่อผู้รับคำสั่งในระบบ POS เพื่อความรับผิดชอบและการติดตาม</li>
+  <li>บันทึกเหตุการณ์สำคัญตามรูปแบบที่กำหนด: เวลา โต๊ะ เรื่อง และผู้รับผิดชอบ</li>
+  <li>แนบหลักฐานประกอบสั้นๆ เช่น รูปภาพ หรือหมายเลขบิล (เมื่อมี)</li>
 </ul>
-<h3>5) ทวนคำสั่งครบทุกจุด</h3>
+<h3>5) ทวนสอบคุณภาพข้อมูล</h3>
 <ul>
-    <li>ทวนรายการอาหาร ปริมาณ และระดับรสชาติที่ลูกค้าสั่งอย่างครบถ้วน</li>
-    <li>ยืนยันระยะเวลารอโดยประมาณให้กับลูกค้า</li>
+  <li>หัวหน้าเวรมีหน้าที่ตรวจสอบรายการบันทึกก่อนส่งมอบกะ</li>
+  <li>ป้องกันการบันทึกข้อมูลซ้ำซ้อนหรือไม่ชัดเจน และรักษาข้อมูลส่วนบุคคลของลูกค้าเป็นความลับ</li>
 </ul>
-<h3>6) ส่งเข้าครัว/บาร์อย่างมีลำดับ</h3>
+<h3>6) สรุปผลรายวัน (Daily Brief)</h3>
 <ul>
-    <li>แยกหมวดหมู่ของอาหารและเครื่องดื่มให้ชัดเจน</li>
-    <li>ทำเครื่องหมายสำหรับรายการเร่งด่วน หรือรายการสำหรับเด็ก/ผู้สูงอายุ</li>
+  <li>สรุป 3 อันดับแรกของคำชม/ปัญหา พร้อม Action ที่จะดำเนินการ เจ้าของเรื่อง และกำหนดเวลาแล้วเสร็จ</li>
+  <li>แบ่งปันข้อมูลสรุปนี้ให้ทีมงานทราบผ่านช่องทางสื่อสารภายใน ก่อนเริ่มต้นกะถัดไป</li>
 </ul>
-<h3>7) ติดตามสถานะและปรับแก้</h3>
+<h3>7) ติดตามเคสจนกว่าจะปิดผล</h3>
 <ul>
-    <li>ตรวจสอบสถานะออเดอร์จากหน้าจอ Expediter หรือในระบบ POS</li>
-    <li>แก้ไขความผิดพลาด (Void/แก้ไขรายการ) ทันที พร้อมบันทึกเหตุผลประกอบ</li>
+  <li>ผู้จัดการร้านมีหน้าที่ติดตาม Ticket จนกว่าจะได้รับผลลัพธ์ที่เป็นรูปธรรม</li>
+  <li>อัปเดตสถานะใน Dashboard (Open/In‑Progress/Closed)</li>
 </ul>
-<h3>8) จัดการสินค้าหมด (86)</h3>
+<h3>8) ทบทวนผลการดำเนินงานรายสัปดาห์</h3>
 <ul>
-    <li>แจ้งลูกค้าทันทีเมื่อสินค้าหมด และเสนอทางเลือกอื่นทดแทน</li>
-    <li>ประกาศให้ทีมงานทราบผ่านช่องทางสื่อสารภายใน</li>
+  <li>วิเคราะห์แนวโน้มคะแนน หรือหัวข้อปัญหาที่เกิดขึ้นซ้ำๆ เพื่อนำไปปรับแผนการฝึกอบรมหรือการจัดสรรทรัพยากรต่อไป</li>
 </ul>
-<h3>9) ตรวจความครบถ้วนก่อนเสิร์ฟ</h3>
-<ul>
-    <li>ตรวจสอบความถูกต้องของจำนวน ชื่อเมนู และแท็กภูมิแพ้</li>
-    <li>แจ้งลูกค้าเรื่องเวลาจัดส่งของรายการที่ยังค้างอยู่ (หากมี)</li>
-</ul>
-<h3>10) บันทึกหลังปิดคำสั่ง</h3>
-<ul>
-    <li>สรุปรายการอาหารที่ยังค้างอยู่ รายการที่แก้ไข และสินค้าที่หมด</li>
-    <li>อัปเดตข้อมูลหรือโน้ตเกี่ยวกับโต๊ะ เพื่อให้ทีมงานที่รับช่วงต่อได้ทราบ</li>
-    <li>ตรวจสอบให้แน่ใจว่าได้ผูกคำสั่งกับที่นั่ง (Seat Mapping) ครบทุกจาน เพื่อลดความผิดพลาดในการเสิร์ฟ</li>
-</ul>
-</div>
+
+  </div>
 </section>
 <section aria-label="Guides" class="section">
-<h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
-<div class="twocol">
-<div class="callout do">
-<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--success)"></circle><path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ควรทำ (Do)</h4>
-<ul>
-    <li>ทวนรายการคำสั่งซื้อกับลูกค้าทุกครั้งอย่างละเอียด</li>
-    <li>ใช้ Seat Mapping อย่างเคร่งครัดและครบถ้วน</li>
-    <li>ติดแท็กข้อมูลภูมิแพ้ให้ชัดเจนและถูกต้อง</li>
-</ul>
-</div>
-<div class="callout dont">
-<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--danger)"></circle><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ห้ามทำ (Don't)</h4>
-<ul>
-    <li>บันทึกคำสั่งล่าช้าจนอาจทำให้เกิดการตกหล่น</li>
-    <li>สั่งสินค้าที่หมดแล้ว โดยไม่ได้เสนอทางเลือกอื่นทดแทน</li>
-    <li>ทวนรายการคำสั่งซื้อกับลูกค้าไม่ครบถ้วน</li>
-</ul>
-</div>
-</div>
+  <h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
+  <div class="twocol">
+    <div class="callout do">
+      <h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--success)"></circle><path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ควรทำ (Do)</h4>
+      <ul><li>เชิญชวนลูกค้าประเมินด้วยน้ำเสียงที่สุภาพและไม่ก่อให้เกิดความกดดัน</li><li>บันทึกรายละเอียดให้เพียงพอต่อการแก้ไขปัญหา (ระบุว่า ใคร ทำอะไร เมื่อไร)</li><li>ปกป้องข้อมูลส่วนบุคคลของลูกค้าอย่างเคร่งครัดตามนโยบายของร้าน</li></ul>
+    </div>
+    <div class="callout dont">
+      <h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--danger)"></circle><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ห้ามทำ (Don't)</h4>
+      <ul><li>โพสต์ข้อมูลส่วนตัวของลูกค้าลงในช่องทางสาธารณะโดยเด็ดขาด</li><li>ตอบโต้กับลูกค้าด้วยท่าทีหรือคำพูดเชิงลบ</li><li>ปล่อย Ticket กรณีร้องเรียนค้างไว้โดยไม่มีผู้รับผิดชอบที่ชัดเจน</li></ul>
+    </div>
+  </div>
 
+  <div class="info-grid">
+    <article class="info-card">
+      <h4><i class="fi fi-ts-analytics glance-icon"></i>ตัวชี้วัดบริการ (SLA & KPI)</h4>
+      <ul>
+<li><strong>อัตราการตอบแบบสำรวจ (Survey Response Rate):</strong> มากกว่าหรือเท่ากับ 25% ของจำนวนโต๊ะต่อวัน</li>
+<li><strong>การตอบสนองครั้งแรกต่อเคสร้องเรียน (First Action เคสร้องเรียน):</strong> ไม่เกิน 10 นาที</li>
+<li><strong>การปิดบันทึก Daily Service Log:</strong> ภายใน 24:00 น. ของวันเดียวกัน</li>
+</ul>
+    </article>
+    <article class="info-card">
+      <h4><i class="fi fi-ts-lightbulb-on glance-icon"></i>เคล็ดลับหน้างาน (Tips)</h4>
+      <ul>
+<li>วาง QR Code ในตำแหน่งที่ลูกค้ามองเห็นและเข้าถึงได้ง่าย เช่น บนใบเสร็จ ใกล้เตา หรือบนเมนู</li>
+<li>ลองใช้คำถามปลายเปิด 1 ข้อท้ายมื้ออาหาร เช่น “วันนี้มีอะไรที่เราสามารถปรับปรุงให้ดียิ่งขึ้นได้อีกบ้างไหมครับ/คะ”</li>
+<li>ยกตัวอย่างข้อเสนอแนะเชิงบวกที่น่าสนใจในการประชุมทีม เพื่อสร้างแรงบันดาลใจและเสริมกำลังใจ</li>
+</ul>
+    </article>
+    <article class="info-card">
+      <h4><i class="fi fi-ts-presentation-analytics glance-icon"></i>ตัวชี้วัดผลการดำเนินงาน (Business KPIs)</h4>
+      <ul>
+<li><strong>คะแนนความพึงพอใจลูกค้าเฉลี่ย (CSAT/NPS เฉลี่ย):</strong> เป็นไปตามเป้าหมายที่กำหนดไว้</li>
+<li><strong>ลูกค้ากลับมาใช้บริการซ้ำ (Repeat Customers):</strong> มีแนวโน้มเพิ่มขึ้นอย่างต่อเนื่อง</li>
+<li><strong>จำนวนคำชมจากลูกค้าต่อสัปดาห์ (Shout‑outs รายสัปดาห์):</strong> มากกว่าหรือเท่ากับ 5 กรณี</li>
+</ul>
+    </article>
+  </div>
 
-<div class="info-grid"><article class="info-card"><h4><i class="fi fi-ts-analytics glance-icon"></i>ตัวชี้วัดบริการ (SLA & KPI)</h4><ul>
-    <li><strong>การทวนคำสั่งครบถ้วน:</strong> 100% ของทุกโต๊ะ — <em>ประเมินจากการสุ่มฟัง/บันทึกใน POS</em> (รายกะ)</li>
-    <li><strong>เวลาส่งออเดอร์แรกเข้าครัว:</strong> ไม่เกิน 5 นาที หลังจากลูกค้านั่ง — <em>วัดจากเวลา Seated → First Fire</em> (รายกะ)</li>
-    <li><strong>ความถูกต้องของออเดอร์:</strong> มากกว่าหรือเท่ากับ 99% — <em>วัดจากอัตรา Void/Correct</em> (รายสัปดาห์)</li>
-    <li><strong>การทำ Seat Mapping ครบถ้วน:</strong> 100% ของทุกรายการ — <em>วัดจากรายงาน POS Seat Mapping</em> (รายวัน)</li>
-    <li><strong>การติดแท็กภูมิแพ้:</strong> 100% ของเมนูที่เกี่ยวข้อง — <em>วัดจากรายงาน POS Allergy Tag</em> (รายวัน)</li>
-</ul></article><article class="info-card"><h4><i class="fi fi-ts-lightbulb-on glance-icon"></i>เคล็ดลับหน้างาน (Tips)</h4><ul>
-    <li>ใช้ Seat Mapping กับทุกจานเสมอ เพื่อลดการเสิร์ฟผิดโต๊ะและเพิ่มความรวดเร็วในการบริการ</li>
-    <li>ทวนคำสั่งอย่างเป็นลำดับ: เริ่มจากชื่อเมนู ปริมาณ ระดับรสชาติ และหมายเหตุ (ถ้ามี)</li>
-    <li>ใช้รหัสหรือสีเดียวกันในการติดแท็กภูมิแพ้ทั่วทั้งร้าน เพื่อหลีกเลี่ยงความสับสน</li>
-    <li>ในกรณีที่ระบบขัดข้อง ให้ใช้ฟอร์มสำรอง และทำการซิงค์ข้อมูลกลับทันทีที่ระบบพร้อมใช้งาน</li>
-    <li>ประกาศ '86' (สินค้าหมด) ในช่องทางการสื่อสารของทีมทันทีที่ทราบ เพื่อป้องกันการสั่งซ้ำ</li>
-    <li>แจ้งเวลารอโดยประมาณอย่างซื่อสัตย์ และจัดลำดับการเสิร์ฟเมนูสำหรับเด็กหรือผู้สูงอายุให้รวดเร็วยิ่งขึ้น</li>
-</ul></article><article class="info-card"><h4><i class="fi fi-ts-presentation-analytics glance-icon"></i>ตัวชี้วัดผลการดำเนินงาน (Business KPIs)</h4><ul>
-    <li><strong>ความถูกต้องของออเดอร์ (Order Accuracy):</strong> มากกว่าหรือเท่ากับ 99%</li>
-    <li><strong>การส่งออเดอร์แรกเข้าครัวไม่เกิน 5 นาที (First Fire ≤ 5 นาที):</strong> มากกว่าหรือเท่ากับ 85% ของจำนวนโต๊ะทั้งหมด</li>
-    <li><strong>การปฏิบัติตามการติดแท็กภูมิแพ้ (Allergy Tag Compliance):</strong> 100%</li>
-</ul></article></div><div class="signatures">
-<div class="sig">
-<strong>เสนอโดย</strong><br/>
-ชื่อ: _____________________________<br/>
-ตำแหน่ง: _________________________<br/>
-วันที่: ____/____/______<br/>
-</div>
-<div class="sig">
-<strong>อนุมัติโดย</strong><br/>
-ชื่อ: _____________________________<br/>
-ตำแหน่ง: _________________________<br/>
-วันที่: ____/____/______<br/>
-</div>
-</div>
+  <div class="signatures">
+    <div class="sig">
+      <strong>เสนอโดย</strong><br/>
+      ชื่อ: _____________________________<br/>
+      ตำแหน่ง: _________________________<br/>
+      วันที่: ____/____/______<br/>
+    </div>
+    <div class="sig">
+      <strong>อนุมัติโดย</strong><br/>
+      ชื่อ: _____________________________<br/>
+      ตำแหน่ง: _________________________<br/>
+      วันที่: ____/____/______<br/>
+    </div>
+  </div>
 </section>
+
 </section>
 </main>
 </body>
