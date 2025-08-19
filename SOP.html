@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="th">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>R&amp;B Dining - Standard Operating Procedures</title>
-<!-- Brand Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans+Thai:wght@300;400;600&amp;family=Raleway:wght@100&amp;display=swap" rel="stylesheet"/>
+<title>ลงหม้อสุกี้ - Standard Operating Procedures</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&family=Raleway:wght@100&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet"/>
+<link href="https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-straight/css/uicons-thin-straight.css" rel="stylesheet"/>
+<link href="https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-rounded/css/uicons-thin-rounded.css" rel="stylesheet"/>
 <style>
     :root {
-      /* Brand Palette */
       --luxury-bronze: #B8860B;
       --accent-gold:   #DAA520;
       --deep-charcoal: #2F2F2F;
@@ -22,7 +23,6 @@
       --danger:        #b71c1c;
     }
 
-    /* ===== Base ===== */
     html, body {
       background: var(--ivory);
       color: var(--deep-charcoal);
@@ -44,15 +44,12 @@
       position: relative;
     }
 
-    /* Print specific styles */
     @page { size: A4; margin: 12mm; }
     @media print {
       body { background: transparent; }
       .doc { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 0; }
       .title-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .brand-lockup .rb { color: #000 !important; }
 
-      /* Force each SOP to start on a new page */
       .sop-section {
         page-break-before: always;
         padding-top: 0;
@@ -61,7 +58,6 @@
         page-break-before: avoid;
       }
 
-      /* Stack the "At a glance" cards vertically for print */
       section.info-grid[aria-label="At a glance"] {
         grid-template-columns: 1fr !important;
         gap: 5mm !important;
@@ -71,7 +67,6 @@
         page-break-inside: avoid;
         margin: 0;
       }
-      /* Prevent awkward splits anywhere */
       .callout, .info-card, .section, .signatures { 
         break-inside: avoid; 
         page-break-inside: avoid; 
@@ -79,7 +74,6 @@
       .glance-cdn { filter: grayscale(0); }
     }
 
-    /* Header */
     .doc-header {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -94,10 +88,10 @@
     }
     .brand-lockup .rb {
       color: #000 !important;
-      font-weight: 100; /* Set to thin font */
+      font-weight: 100;
       letter-spacing: .02em;
       font-size: 20pt;
-      font-family: 'Raleway', 'Playfair Display', serif;
+      font-family: 'Prompt', sans-serif;
     }
     .brand-lockup .consulting {
       font-family: 'Inter', sans-serif;
@@ -112,7 +106,6 @@
       text-align: right;
     }
 
-    /* Title band */
     .title-band {
       margin: 10mm 0 6mm 0;
       padding: 10mm 12mm;
@@ -128,12 +121,11 @@
       letter-spacing: .5px;
     }
     .title-band .subtitle {
-      font-family: 'Noto Sans Thai', sans-serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 12pt;
       color: rgba(255,255,255,.9);
     }
 
-    /* Info grid */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -168,7 +160,6 @@
         padding-left: 20px;
     }
 
-    /* Section */
     .section {
       margin: 10mm 0 0 0;
       break-inside: avoid;
@@ -189,11 +180,10 @@
       color: var(--deep-charcoal);
     }
 
-    /* Step and sub-step content */
     .step-content h3 {
         margin: 8mm 0 4mm 0;
         font-size: 11.5pt;
-        color: var(--accent-gold); /* Changed to gold color */
+        color: var(--rich-black);
         font-weight: 600;
         border-bottom: 1px dashed var(--border);
         padding-bottom: 2mm;
@@ -211,13 +201,10 @@
     .step-content li {
         margin-bottom: 3px;
     }
-    /* Removed strong tag styling here */
-    .step-content li > strong {
-        font-weight: normal; /* Make strong in list items not bold */
-        color: inherit; /* Inherit color from parent, making it black */
+    .step-content strong {
+        color: var(--luxury-bronze);
     }
 
-    /* Step head */
     .step-head { 
       display:flex; 
       align-items:center; 
@@ -243,7 +230,6 @@
     .step-body li{margin:.4em 0;}
     .step-body p{margin:0 0 .6em 0;}
 
-    /* Do / Don't */
     .twocol {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -284,24 +270,6 @@
       margin-bottom: 3px;
     }
 
-    /* Tables */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 10pt;
-      margin-top: 6mm;
-    }
-    th, td {
-      padding: 4mm 3mm;
-      border: 1px solid var(--border);
-      vertical-align: top;
-    }
-    th {
-      background: var(--warm-beige);
-      text-align: left;
-    }
-
-    /* Signature block */
     .signatures { 
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -311,11 +279,9 @@
     .sig { 
       border-top: 1px dashed var(--border);
       padding-top: 4mm;
-      font-size: 10pt; /* Adjusted font size to match body text */
-      color: var(--deep-charcoal); /* Adjusted text color to match body text */
+      font-size: 10pt;
     }
 
-    /* Icons */
     .icon {
       width: 1em;
       height: 1em;
@@ -324,244 +290,233 @@
       fill: currentColor;
       display: inline-block;
     }
-    .icon.thin {
-      width: 1.05em;
-      height: 1.05em;
-      vertical-align: -.15em;
-      margin-right: .4rem;
-      display: inline-block;
-    }
-    .icon.thin * { 
-      vector-effect: non-scaling-stroke;
-    }
     .icon.fill {
       width: 1.25em;
       height: 1.25em;
       vertical-align: -.2em;
       margin-right: .35rem;
     }
-    .icon.glance {
-      width: 1.25em;
-      height: 1.25em;
-      vertical-align: -.18em;
-      margin-right: .45rem;
-      display: inline-block;
-      color: var(--accent-gold, #B68D40);
-    }
-    .callout h4 .icon.fill {
-      width: 1.15em;
-      height: 1.15em;
-      margin-right: .4rem;
+
+    .glance-icon {
+      font-size: 1.8em !important;
+      color: #000 !important;
+      margin-right: .5rem !important;
+      vertical-align: -0.15em !important;
     }
 
-    /* Flaticon CDN icons for At-a-glance */
-    .glance-cdn {
-      width:28px;
-      height:28px;
-      vertical-align:middle;
-      display:inline-block;
-      margin-right:.35rem;
-      border-radius:4px;
-      image-rendering:-webkit-optimize-contrast;
-    }
-
-    /* Step icon styling */
-    .step-icon {
-      font-size: 1.6em;
+    .warn-icon{
+      font-size: 1.8em;
+      font-weight: 100;
       color: var(--accent-gold, #DAA520);
-      margin-right: .45rem;
-      display: inline-block;
-      line-height: 0.9;
-      transform: translateY(-0.03em);
+      margin-right: .35rem;
+      vertical-align: -0.12em;
+      font-family: 'Raleway','Inter','Noto Sans Thai',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
 
-/* Thin style for the Steps icon */
-.step-icon {
-  font-weight: 100 !important;
-  font-family: 'Raleway', 'Inter', 'Noto Sans Thai', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-}
+    /* === Text wrapping fixes === */
+    .info-card, .info-card *,
+    .callout, .callout *,
+    .step-content li,
+    .doc-meta, .doc-meta * {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: normal;
+      hyphens: auto;
+    }
+    .step-content ul, .info-card ul, .callout ul { 
+      list-style-position: outside;
+    }
+    @media print {
+      .info-card, .callout { 
+        max-width: 100%; 
+        box-sizing: border-box; 
+      }
+    }
 
-/* Flaticon Thin Straight icon styling */
-.step-icon {
-  font-size: 1.6em;
-  color: var(--accent-gold, #DAA520);
-  margin-right: .45rem;
-  line-height: 0.9;
-  vertical-align: -0.15em;
-}
+    /* === Print background fix (refined) === */
+    @media print {
+      html, body, .doc { background: #ffffff !important; }
+      @page { margin: 12mm; }
+      body:before, body:after { background: transparent !important; }
+    }
 
-/* UIcons Thin Straight glance icons */
-.glance-icon {
-  font-size: 1.2em;
-  color: var(--accent-gold, #DAA520);
-  margin-right: .45rem;
-  vertical-align: -0.15em;
-}
-
-/* Override glance icons to black, larger */
-.glance-icon {
-  font-size: 1.8em !important;
-  color: #000 !important;
-  margin-right: .5rem !important;
-  vertical-align: -0.15em !important;
-}
-
-/* Thin Straight icons for Do / Don't headings */
-.guide-icon { 
-  font-size: 1.4em;
-  margin-right: .35rem;
-  vertical-align: -0.15em;
-}
-.guide-icon.do { color: var(--success, #2e7d32); }
-.guide-icon.dont { color: var(--danger, #b71c1c); }
-
-/* Ensure visibility of Do/Don't icons (inline SVG) */
-.guide-icon { display: inline-block; width: 1.6em; height: 1.6em; vertical-align: -0.15em; margin-right: .35rem; }
-.guide-icon.do { color: var(--success, #2e7d32); }
-.guide-icon.dont { color: var(--danger, #b71c1c); }
-.guide-icon svg { width: 100%; height: 100%; display: inline-block; }
-
-/* Thin Rounded icons for Do/Don't heading */
-.guide-icon {
-  font-size: 1.6em !important;
-  margin-right: .35rem !important;
-  vertical-align: -0.15em !important;
-  width: auto !important;
-  height: auto !important;
-  display: inline-block !important;
-}
-.guide-icon.do { color: var(--success, #2e7d32) !important; }
-.guide-icon.dont { color: var(--danger, #b71c1c) !important; }
-
-/* Warning icon styling (thin + gold, larger) */
-.warn-icon{
-  font-size: 1.8em;
-  font-weight: 100;
-  color: var(--accent-gold, #DAA520);
-  margin-right: .35rem;
-  vertical-align: -0.12em;
-  font-family: 'Raleway','Inter','Noto Sans Thai',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
-
-/* === Print background fix (refined) === */
-@media print {
-  /* Keep the page canvas white without stripping component backgrounds */
-  html, body, .doc { background: #ffffff !important; }
-  /* Do NOT override brand variables or remove background images of components */
-}
-
-/* Tip lightbulb icon styling */
-.tip-icon { width: 1.1em; height: 1.1em; color: var(--accent-gold, #DAA520); vertical-align: -0.18em; }
-.tip-icon-wrap { display: inline-block; margin-right: .35rem; }
-@media print {
-  .tip-icon { color: #000; } /* ensure contrast in print if gold doesn't render nicely */
-}
-
-/* Tip lightbulb icon styling */
-.tip-icon { width: 1.15em; height: 1.15em; color: var(--accent-gold, #DAA520); vertical-align: -0.18em; }
-.tip-icon-wrap { display: inline-block; margin-right: .4rem; }
-@media print { .tip-icon { color: #000; } }
-
-/* Keep tip icons gold when printing */
-@media print { .tip-icon { color: var(--accent-gold, #DAA520) !important; } }
+    /* === Print layout: 1 x 1 cards === */
+    @media print {
+      .info-grid {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+      }
+      .info-card {
+        width: 100% !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin: 0 0 8mm 0 !important;
+      }
+      .info-card h4 {
+        page-break-after: avoid;
+      }
+      .twocol {
+        columns: 1 !important;
+        -webkit-columns: 1 !important;
+        -moz-columns: 1 !important;
+      }
+    }
 </style>
-<link href="https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-straight/css/uicons-thin-straight.css" rel="stylesheet"/><link href="https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-rounded/css/uicons-thin-rounded.css" rel="stylesheet"/></head>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+<style id="brand-font-chonburi">
+/* Apply Chonburi font to brand name only */
+.doc-header .brand-lockup .rb{
+  font-family: 'Chonburi', cursive, serif !important;
+  font-weight: 400 !important;
+}
+</style>
+</head>
 <body>
 <main class="doc" role="document">
-<!-- SOP: RB-ADM-005 -->
 <section class="sop-section">
 <header class="doc-header">
 <div class="brand-lockup">
-<div class="rb">R&amp;B Dining</div>
+<div class="rb">ลงหม้อสุกี้</div>
 <div class="consulting">Standard Operating Procedures</div>
 </div>
 <div class="doc-meta">
-<div>เอกสาร: <strong>RB-ADM-005</strong></div>
-<div>หัวข้อ: <strong>การควบคุมของแตกหักเสียหาย (Breakage Control)</strong></div>
-<div>เวอร์ชัน: v1.1 | ปรับปรุงล่าสุด: 2025–08–11</div>
+<div><strong>เอกสาร:</strong> SOP-FOH-001</div>
+<div><strong>หัวข้อ:</strong> การต้อนรับลูกค้า</div>
+<div><strong>เวอร์ชัน:</strong> v1.0 | <strong>ปรับปรุงล่าสุด:</strong> 2025–08–17</div>
 </div>
 </header>
 <section aria-label="Title" class="title-band">
-<h1>SOP: การควบคุมของแตกหักเสียหาย</h1>
-<div class="subtitle">ระเบียบปฏิบัติมาตรฐาน • การจัดการความเสียหาย</div>
+<h1>SOP: การต้อนรับลูกค้า</h1>
+<div class="subtitle" style="font-family: 'Outfit', sans-serif;">Standard Operating Procedures • Welcome the Guest</div>
 </section>
 <section aria-label="At a glance" class="info-grid">
 <article class="info-card">
 <h4><i class="fi fi-ts-archery glance-icon"></i>วัตถุประสงค์ (PURPOSE)</h4>
-<p>เพื่อกำหนดขั้นตอนและวิธีการในการป้องกัน การรายงาน และการจัดการของแตกหักเสียหาย เพื่อลดความสูญเสีย ลดต้นทุน และรักษามาตรฐานการบริการให้มีประสิทธิภาพ</p>
+<p>กำหนดมาตรฐานการต้อนรับและส่งมอบโต๊ะตั้งแต่วินาทีแรกที่ลูกค้าเข้าร้าน เพื่อสร้างความประทับใจแรกที่อบอุ่น ให้ข้อมูลสำคัญอย่างกระชับ (เวลาใช้บริการ/ความปลอดภัย/วิธีสั่ง) และถ่ายทอดรายละเอียดที่ต้องระวัง เช่น ภูมิแพ้หรือกลุ่มเปราะบาง ให้ทีมเสิร์ฟอย่างครบถ้วนและตรวจสอบได้</p>
 </article>
 <article class="info-card">
 <h4><i class="fi fi-ts-marker glance-icon"></i>ขอบเขต (SCOPE)</h4>
-<ul>
-<li>พนักงานทุกคนที่เกี่ยวข้องกับการหยิบจับและเคลื่อนย้ายอุปกรณ์เครื่องใช้</li>
-<li>หัวหน้างานที่รับผิดชอบการตรวจสอบและรายงาน</li>
-</ul>
+<ul><li>พนักงานต้อนรับ (Host/Hostess)</li><li>แคชเชียร์ส่วนหน้า</li><li>ผู้จัดการส่วนหน้า (FOH Manager)</li><li>พนักงานเสิร์ฟ (เพื่อรับช่วงต่อจากการต้อนรับ)</li></ul>
 </article>
 <article class="info-card">
 <h4><i class="fi fi-ts-hammer-brush glance-icon"></i>เครื่องมือที่ใช้ (TOOLS)</h4>
-<ul>
-<li>แบบฟอร์มบันทึกของแตกหัก (Breakage Report Form)</li>
-<li>อุปกรณ์ทำความสะอาดและถุงมือป้องกัน</li>
-<li>เอกสารคู่มือการจัดเก็บอุปกรณ์</li>
-</ul>
+<ul><li>เคาน์เตอร์ต้อนรับ/สมุดลงชื่อ</li><li>ระบบจองและระบบรอคิว (พร้อม SMS/โทรแจ้ง)</li><li>แผนผังโต๊ะเรียลไทม์</li><li>ป้ายเวลาใช้บริการ/เวลาปิดรับออเดอร์</li><li>การ์ดเตือนความร้อนและการ์ดแจ้งภูมิแพ้</li><li>เก้าอี้เด็ก/เบาะเสริม</li><li>โทรศัพท์/อินเตอร์คอมภายใน</li></ul>
 </article>
 </section>
-<section aria-label="Steps" class="section"><h2><i class="fi fi-ts-priority-arrow step-icon"></i> ขั้นตอนปฏิบัติ (Steps)</h2><p class="lead">ขั้นตอนการควบคุมและรายงานของแตกหักเสียหาย เพื่อป้องกันความสูญเสีย ลดต้นทุน และรักษามาตรฐานการบริการ</p><div class="step-content">
-<h3>1) การป้องกันของแตกหัก</h3>
-<ul>
-<li><strong>จัดเก็บอย่างระมัดระวัง:</strong> จัดเก็บแก้ว จาน และอุปกรณ์ที่เปราะบางในที่ที่มั่นคง มีการรองรับ และไม่วางซ้อนกันมากเกินไป</li>
-<li><strong>ใช้อุปกรณ์ที่เหมาะสม:</strong> ใช้ถาดหรือภาชนะที่เหมาะสมและมั่นคงในการเคลื่อนย้ายอุปกรณ์จำนวนมาก</li>
-<li><strong>การฝึกอบรม:</strong> ฝึกอบรมพนักงานทุกคนเกี่ยวกับการหยิบจับ การจัดเรียง และการเคลื่อนย้ายอุปกรณ์อย่างถูกวิธีและปลอดภัย</li>
-</ul>
-<h3>2) การตรวจสอบและรายงาน</h3>
-<ul>
-<li><strong>ตรวจสอบก่อนและหลังใช้งาน:</strong> พนักงานทุกคนต้องตรวจสอบสภาพอุปกรณ์ทุกครั้งก่อนและหลังใช้งาน เพื่อหาความเสียหายหรือรอยร้าว</li>
-<li><strong>บันทึกรายงาน:</strong> หากพบของแตกหักเสียหาย ให้บันทึกรายละเอียดทันทีใน "แบบฟอร์มบันทึกของแตกหัก (Breakage Report Form)" โดยระบุประเภทของอุปกรณ์ วันที่ เวลา สาเหตุ (ถ้าทราบ) และชื่อผู้ที่พบเห็น</li>
-<li><strong>แจ้งหัวหน้างาน:</strong> รายงานการแตกหักให้หัวหน้างานทราบทันทีเพื่อดำเนินการต่อไป</li>
-</ul>
-<h3>3) การดำเนินการแก้ไข</h3>
-<ul>
-<li>เก็บกู้ทันที: พนักงานที่พบเห็นต้องเก็บกู้ของแตกหักทันทีด้วยความระมัดระวัง โดยสวมถุงมือป้องกันเพื่อหลีกเลี่ยงการบาดเจ็บ</li>
-<li>ทำความสะอาดพื้นที่: ทำความสะอาดพื้นที่ที่เกิดเหตุอย่างละเอียด เพื่อกำจัดเศษแก้วหรือเศษวัสดุอื่นๆ ที่อาจเป็นอันตราย</li>
-<li>การกำจัด: ทิ้งของแตกหักในภาชนะที่ปลอดภัยและมีป้ายกำกับชัดเจนสำหรับของมีคมหรือของแตกหักโดยเฉพาะ</li>
-<li>พิจารณาการเปลี่ยน: หัวหน้างานจะพิจารณาการเปลี่ยนหรือสั่งซื้ออุปกรณ์ทดแทนตามความจำเป็น</li>
-</ul>
-<h3>4) การติดตามผล</h3>
-<ul>
-<li>รวบรวมข้อมูล: หัวหน้างานรวบรวมข้อมูลการแตกหักเสียหายจากแบบฟอร์ม Breakage Report ทุกสิ้นเดือน</li>
-<li>วิเคราะห์แนวโน้ม: วิเคราะห์ข้อมูลเพื่อหาสาเหตุหลัก แนวโน้มของการแตกหัก และพื้นที่ที่เกิดปัญหาบ่อยครั้ง</li>
-<li>ปรับปรุงการทำงาน: นำผลการวิเคราะห์ไปใช้ในการปรับปรุงวิธีการทำงาน การจัดเก็บอุปกรณ์ หรือการจัดฝึกอบรมเพิ่มเติมเพื่อลดการแตกหักในอนาคต</li>
-</ul>
-</div></section>
 <section aria-label="Steps" class="section">
-<h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ &amp; หลีกเลี่ยง</h2>
+<h2>ขั้นตอนปฏิบัติ (Steps)</h2>
+<p class="lead">แนวทางนี้ครอบคลุมการทักทาย ตรวจสอบการจอง/คิว อธิบายนโยบายหลัก และพาลูกค้าไปยังโต๊ะอย่างปลอดภัย</p>
+<div class="step-content">
+<h3>1) ตรวจพื้นที่หน้าร้านและความพร้อมอุปกรณ์</h3>
+<ul>
+<li>ทำความสะอาดประตู กระจก เคาน์เตอร์ และป้ายให้เรียบร้อย</li>
+<li>ตรวจสอบทางเดินให้โล่ง ระยะไม่น้อยกว่า 90 ซม.</li>
+<li>เตรียมการ์ดเตือนร้อน การ์ดแจ้งภูมิแพ้ และเก้าอี้เด็กให้พร้อมใช้</li>
+<li>บันทึกข้อจำกัดด้านอาหารหรือศาสนาในระบบบันทึกโต๊ะ (Table Note)</li>
+<li>กำหนดมาตรฐานการต้อนรับ: ทักทายภายใน 5 วินาที และพาไปยังโต๊ะภายใน 2 นาที</li>
+<li>บันทึกภาษาที่ลูกค้าสะดวกสื่อสาร เพื่อส่งต่อให้พนักงานเสิร์ฟ</li>
+</ul>
+
+<h3>2) เปิดระบบจองและซิงค์ข้อมูลคิว</h3>
+<ul>
+<li>ล็อกอินระบบจอง/Waitlist และตรวจสอบรายการจองของวัน</li>
+<li>บันทึกหมายเหตุลูกค้าพิเศษ เช่น เด็กเล็ก ผู้สูงอายุ หรือผู้ใช้วีลแชร์</li>
+<li>ตั้งค่าการแจ้งเตือนคิวผ่าน SMS/โทรศัพท์ให้พร้อมใช้งาน</li>
+<li>อัปเดตเวลานับรอบบริการ 120 นาทีในระบบทันทีที่ลูกค้านั่งโต๊ะ</li>
+<li>ยืนยันการวางการ์ดเตือนร้อนและจุดวางเก้าอี้เด็กก่อนลูกค้านั่งทุกครั้ง</li>
+</ul>
+
+<h3>3) ทักทายและรับข้อมูลเบื้องต้น</h3>
+<ul>
+<li>กล่าวต้อนรับด้วยรอยยิ้มภายใน 5 วินาทีหลังลูกค้าเข้าร้าน</li>
+<li>สอบถามการจองหรือ Walk-in พร้อมยืนยันจำนวนผู้มาใช้บริการ</li>
+<li>ตรวจสอบข้อจำกัดด้านอาหารหรือศาสนา (ถ้ามี)</li>
+<li>อธิบายสั้น ๆ เกี่ยวกับมาตรการความปลอดภัยจากอุปกรณ์ร้อน</li>
+</ul>
+
+<h3>4) ตรวจสอบการจอง</h3>
+<ul>
+<li>ยืนยันรายละเอียดการจอง (ชื่อ เบอร์โทร จำนวนที่นั่ง เวลา และข้อกำหนดเฉพาะ)</li>
+<li>แจ้งนโยบายเวลาใช้บริการ 120 นาทีและเวลาปิดรับออเดอร์</li>
+<li>จัดเตรียมประเภทโต๊ะให้ตรงกับความต้องการของลูกค้า</li>
+<li>ชี้แจงตำแหน่งสเตชันซอสและอุปกรณ์ช้อนกลางเพื่อความปลอดภัยด้านสุขอนามัย</li>
+</ul>
+
+<h3>5) ลงคิวและประเมินเวลารอ (กรณี Walk-in)</h3>
+<ul>
+<li>บันทึกข้อมูลลูกค้า Walk-in ใน Waitlist อย่างครบถ้วน</li>
+<li>คำนวณเวลารอตามสถานะโต๊ะจริง พร้อมบวก Buffer 5–10 นาทีในช่วงพีค</li>
+<li>อัปเดตเวลารอทุก 10 นาทีและเสนอทางเลือกหากต้องรอนาน</li>
+</ul>
+
+<h3>6) พาลูกค้าไปที่โต๊ะอย่างปลอดภัย</h3>
+<ul>
+<li>เลือกเส้นทางที่ปลอดภัย หลีกเลี่ยงพื้นที่ที่มีอุปกรณ์ร้อน</li>
+<li>จัดเตรียมเก้าอี้เด็กหรือเบาะเสริมตามความเหมาะสม</li>
+<li>ย้ำข้อควรระวังเกี่ยวกับพื้นผิวร้อนบริเวณโต๊ะ</li>
+</ul>
+
+<h3>7) แนะนำการใช้อุปกรณ์บนโต๊ะ</h3>
+<ul>
+<li>อธิบายวิธีการปรับความร้อนของเตาหรือหม้อ</li>
+<li>แนะนำการแยกอุปกรณ์ดิบ-สุกเพื่อป้องกันการปนเปื้อน</li>
+<li>ชี้แจงตำแหน่งสวิตช์ฉุกเฉินและทางหนีไฟ (ถ้ามี)</li>
+</ul>
+
+<h3>8) ส่งมอบข้อมูลให้พนักงานเสิร์ฟ</h3>
+<ul>
+<li>แจ้งข้อมูลสำคัญ เช่น ภูมิแพ้ ประเภทโต๊ะ ลูกค้ากลุ่มเปราะบาง</li>
+<li>บันทึกเวลาเริ่มนับรอบบริการ 120 นาทีในระบบ</li>
+<li>ส่งต่อภาษาที่ลูกค้าสะดวกสื่อสารให้พนักงานเสิร์ฟทราบ</li>
+</ul>
+
+<h3>9) ตรวจความพึงพอใจเบื้องต้น</h3>
+<ul>
+<li>สอบถามความต้องการเพิ่มเติม เช่น เครื่องดื่มแรกหรือที่นั่ง</li>
+<li>แจ้งวิธีเรียกพนักงานเมื่อต้องการความช่วยเหลือ</li>
+<li>ยืนยันความเข้าใจเกี่ยวกับนโยบายต่าง ๆ ของร้าน</li>
+</ul>
+
+<h3>10) บันทึกหลังการนั่งโต๊ะ</h3>
+<ul>
+<li>อัปเดตสถานะโต๊ะเป็น 'มีลูกค้า' ในระบบ</li>
+<li>บันทึกหมายเหตุสำคัญเพิ่มเติมในระบบ</li>
+<li>ยืนยันการบันทึกเวลานับรอบบริการ 120 นาที</li>
+</ul>
+</div>
+</section>
+<section aria-label="Guides" class="section">
+<h2><span class="warn-icon">⚠︎</span> สิ่งที่ควรทำ & หลีกเลี่ยง</h2>
 <div class="twocol">
 <div class="callout do">
-<h4><svg aria-hidden="true" class="icon fill do" focusable="false" viewbox="0 0 24 24">
-<circle cx="12" cy="12" fill="var(--success, #16A34A)" r="10"></circle>
-<path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
-</svg>ควรทำ (Do)</h4>
-<ul>
-<li><strong>สวมถุงมือป้องกัน:</strong> สวมถุงมือทุกครั้งเมื่อต้องเก็บกู้ของแตกหักเสียหาย</li>
-<li><strong>รายงานทันที:</strong> รายงานการแตกหักทุกครั้ง ไม่ว่าจะเล็กน้อยเพียงใด เพื่อให้สามารถบันทึกและวิเคราะห์ข้อมูลได้</li>
-<li><strong>จัดเก็บเป็นระเบียบ:</strong> จัดเรียงอุปกรณ์อย่างเป็นระเบียบและมั่นคงตามคู่มือการจัดเก็บ</li>
-</ul>
+<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--success)"></circle><path d="M7 12l3 3 7-7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ควรทำ (Do)</h4>
+<ul><li>ทักทายด้วยรอยยิ้มและภายในเวลาอันสั้น</li><li>ย้ำมาตรการความปลอดภัยเรื่องอุปกรณ์ร้อน</li><li>บันทึกข้อมูลสำคัญในระบบทันที</li></ul>
 </div>
 <div class="callout dont">
-<h4><svg aria-hidden="true" class="icon fill dont" focusable="false" viewbox="0 0 24 24">
-<circle cx="12" cy="12" fill="var(--danger, #DC2626)" r="10"></circle>
-<path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
-</svg>ห้ามทำ (Don't)</h4>
-<ul>
-<li><strong>ละเลยการรายงาน:</strong> ห้ามละเลยการรายงานของแตกหักเสียหายเด็ดขาด ไม่ว่าจะเป็นเพราะความเร่งรีบหรือคิดว่าไม่สำคัญ</li>
-<li><strong>เก็บกู้มือเปล่า:</strong> ห้ามเก็บกู้เศษแก้วหรือของมีคมด้วยมือเปล่า อาจทำให้เกิดการบาดเจ็บร้ายแรงได้</li>
-<li><strong>ซ้อนของมากเกินไป:</strong> หลีกเลี่ยงการซ้อนจานหรือแก้วในปริมาณที่มากเกินไป ซึ่งอาจทำให้ล้มและแตกได้ง่าย</li>
-</ul>
+<h4><svg aria-hidden="true" class="icon fill" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--danger)"></circle><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg>ห้ามทำ (Don't)</h4>
+<ul><li>ให้ข้อมูลเวลารอที่ไม่สอดคล้องความจริง</li><li>ละเลยการแจ้งข้อจำกัด/ภูมิแพ้</li><li>ปล่อยให้ทางเดินมีสิ่งกีดขวาง</li></ul>
 </div>
+</div>
+
+
+<div class="info-grid">
+<article class="info-card"><h4><i class="fi fi-ts-analytics glance-icon"></i>ตัวชี้วัดบริการ (SLA & KPI)</h4><ul><li><strong>ทักทายหน้าร้าน:</strong> ≤ 5 วินาที หลังลูกค้าเข้าร้าน — <em>เวลา Check‑in ถึงเวลา Greeting (Waitlist/POS)</em> (รายกะ)</li><li><strong>พาไปนั่งโต๊ะ:</strong> ≤ 2 นาที (พีค ≤ 5 นาที) — <em>เวลา Check‑in → Seated</em> (รายกะ)</li><li><strong>QR/เมนูพร้อมใช้งาน:</strong> ≤ 30 วินาที หลังนั่งโต๊ะ — <em>เวลา Seated → QR Ready/เมนูวาง</em> (รายกะ)</li><li><strong>ชี้แจงความปลอดภัย/ภูมิแพ้:</strong> ครอบคลุม 100% ของโต๊ะใหม่ — <em>ตัวอย่างสุ่ม/บันทึก Table Note</em> (รายวัน)</li><li><strong>เริ่มนับเวลา 120 นาที:</strong> ภายใน 1 นาทีหลังนั่ง — <em>Timestamp Start‑of‑Service ในระบบ</em> (รายกะ)</li></ul></article>
+<article class="info-card"><h4><i class="fi fi-ts-lightbulb-on glance-icon"></i>เคล็ดลับหน้างาน (Tips)</h4><ul><li>เตรียมคำทักทายสั้น กระชับ และเป็นมิตรล่วงหน้า ลดเวลาและเพิ่มความมั่นใจ</li><li>มองหากลุ่มเปราะบาง (เด็กเล็ก/ผู้สูงอายุ) ตั้งแต่หน้าร้าน เพื่อเลือกเส้นทางและโต๊ะที่ปลอดภัย</li><li>ถาม‑ยืนยันภูมิแพ้ให้เป็นธรรมชาติ เช่น "มีอะไรที่ควรหลีกเลี่ยงไหมครับ/คะ"</li><li>ย้ำเวลาใช้บริการ/Last Order แบบบวก เช่น "เพื่อให้ทันครบเมนูที่อยากทาน..."</li><li>ส่งมอบข้อมูลสำคัญให้พนักงานเสิร์ฟเป็นข้อ ๆ (น้ำซุป/ภูมิแพ้/เด็กเล็ก/ภาษา) พร้อมเวลานับ 120 นาที</li><li>หากคิวหนาแน่น ให้เสนอทางเลือก เช่น นั่งบาร์หรือแยกโต๊ะ พร้อมอัปเดตเวลาเป็นระยะ</li></ul></article>
+<article class="info-card"><h4><i class="fi fi-ts-presentation-analytics glance-icon"></i>ตัวชี้วัดผลการดำเนินงาน (Business KPIs)</h4><ul><li><strong>CSAT ต้อนรับ:</strong> ≥ 90%</li><li><strong>อัตราพาไปโต๊ะ ≤ 2 นาที:</strong> ≥ 85% รอบบริการ</li><li><strong>ข้อร้องเรียนช่วงต้อนรับ:</strong> ≤ 1 เคส/สัปดาห์</li></ul></article>
 </div>
 <div class="signatures">
-<div class="sig">เสนอโดย<br/>ชื่อ: เอกสิทธิ์ เลิศอุดมชัย<br/>ตำแหน่ง: ผู้จัดการร้านอาหาร<br/>วันที่: 01/02/2025<br/></div>
-<div class="sig">อนุมัติโดย<br/>ชื่อ: รัชตนา อิ่มสกุล<br/>ตำแหน่ง: กรรมการผู้จัดการ<br/>วันที่: 15/02/2025<br/></div>
+<div class="sig">
+<strong>เสนอโดย</strong><br/>
+ชื่อ: _____________________________<br/>
+ตำแหน่ง: _________________________<br/>
+วันที่: ____/____/______<br/>
+</div>
+<div class="sig">
+<strong>อนุมัติโดย</strong><br/>
+ชื่อ: _____________________________<br/>
+ตำแหน่ง: _________________________<br/>
+วันที่: ____/____/______<br/>
+</div>
 </div>
 </section>
 </section>
