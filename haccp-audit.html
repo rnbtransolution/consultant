@@ -1,356 +1,388 @@
-import React, { useState, useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ลงหม้อสุกี้ - Food Safety Audit Checklist</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&family=Raleway:wght@100&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet"/>
 
-// Main App Component
-const App = () => {
-  // State for Audit Information
-  const [auditInfo, setAuditInfo] = useState({
-    date: '',
-    startTime: '',
-    endTime: '',
-    auditor: '',
-    area: '',
-    riskLevel: '', // 'high', 'medium', 'low'
-    overallSuggestions: '',
-  });
+<style>
+  /* Custom utility classes for fonts */
+  .font-inter { font-family: 'Inter', 'Noto Sans Thai', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .font-playfair-display { font-family: 'Playfair Display', serif; }
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  .font-chonburi { font-family: 'Chonburi', cursive; }
 
-  // State for Checklist Items
-  const [checklistItems, setChecklistItems] = useState([
-    // Section 1: Raw Material Receiving & Storage
-    { id: '1.1', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'วัตถุดิบทุกชนิดถูกตรวจสอบคุณภาพและปริมาณเมื่อรับเข้าตาม SOP-BOH-001 และ SOP-BOH-009', status: '', observations: '' },
-    { id: '1.2', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'วัตถุดิบแช่เย็น/แช่แข็ง มีอุณหภูมิอยู่ในเกณฑ์ที่กำหนดเมื่อรับเข้า (≤4°C สำหรับแช่เย็น, ≤-18°C สำหรับแช่แข็ง)', status: '', observations: '' },
-    { id: '1.3', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'วัตถุดิบทุกชิ้นมีการติดฉลากระบุชื่อ, วันที่รับเข้า, และวันหมดอายุอย่างชัดเจน', status: '', observations: '' },
-    { id: '1.4', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'วัตถุดิบถูกจัดเก็บในพื้นที่ที่เหมาะสม (เช่น ตู้เย็น, ตู้แช่แข็ง, ห้องเก็บแห้ง) ทันทีหลังรับเข้า', status: '', observations: '' },
-    { id: '1.5', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'มีการจัดเก็บวัตถุดิบสูงจากพื้นอย่างน้อย 15 ซม. และห่างจากผนังตาม SOP-BOH-007', status: '', observations: '' },
-    { id: '1.6', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'มีการแยกเก็บอาหารดิบและปรุงสุกออกจากกันเพื่อป้องกันการปนเปื้อนข้าม', status: '', observations: '' },
-    { id: '1.7', section: 'การรับและจัดเก็บวัตถุดิบ', description: 'มีการหมุนเวียนสต็อกตามหลัก FIFO/FEFO อย่างเคร่งครัด (ตรวจสอบวันหมดอายุ)', status: '', observations: '' },
-
-    // Section 2: Food Preparation & Cooking
-    { id: '2.1', section: 'การเตรียมและการปรุงอาหาร', description: 'พื้นที่เตรียมอาหารสะอาด เป็นระเบียบ และปราศจากสิ่งปนเปื้อนก่อนเริ่มงาน', status: '', observations: '' },
-    { id: '2.2', section: 'การเตรียมและการปรุงอาหาร', description: 'มีดและเขียงที่มีรหัสสีถูกใช้งานอย่างถูกต้องตามประเภทวัตถุดิบ (เนื้อ, ผัก, อื่นๆ)', status: '', observations: '' },
-    { id: '2.3', section: 'การเตรียมและการปรุงอาหาร', description: 'การเตรียมวัตถุดิบ (Mise en Place) ถูกทำอย่างถูกสุขอนามัยและรวดเร็ว', status: '', observations: '' },
-    { id: '2.4', section: 'การเตรียมและการปรุงอาหาร', description: 'การปรุงอาหารแต่ละประเภทเป็นไปตามสูตรมาตรฐาน (อ้างอิง SOP-BOH-002)', status: '', observations: '' },
-    { id: '2.5', section: 'การเตรียมและการปรุงอาหาร', description: 'อาหารที่ปรุงสุกมีอุณหภูมิภายในที่ปลอดภัยตามมาตรฐาน (เช่น เนื้อสัตว์ปีก ≥74°C)', status: '', observations: '' },
-    { id: '2.6', section: 'การเตรียมและการปรุงอาหาร', description: 'มีการระบายอากาศที่เหมาะสมในบริเวณครัว เพื่อลดความร้อนและควัน', status: '', observations: '' },
-
-    // Section 3: Personal Hygiene
-    { id: '3.1', section: 'สุขอนามัยส่วนบุคคล', description: 'พนักงานทุกคนแต่งกายสะอาด สวมชุดยูนิฟอร์มที่สะอาด และสวมหมวก/ตาข่ายคลุมผม', status: '', observations: '' },
-    { id: '3.2', section: 'สุขอนามัยส่วนบุคคล', description: 'พนักงานล้างมืออย่างถูกต้องและสม่ำเสมอ (ก่อนเริ่มงาน, หลังเข้าห้องน้ำ, หลังสัมผัสของสกปรก)', status: '', observations: '' },
-    { id: '3.3', section: 'สุขอนามัยส่วนบุคคล', description: 'พนักงานสวมถุงมือที่สะอาดและเหมาะสมเมื่อสัมผัสอาหารพร้อมทานหรือวัตถุดิบที่ต้องดูแลเป็นพิเศษ', status: '', observations: '' },
-    { id: '3.4', section: 'สุขอนามัยส่วนบุคคล', description: 'พนักงานไม่มีอาการป่วยที่อาจส่งผลต่อความปลอดภัยอาหาร (เช่น ไอ, จาม, ท้องเสีย) ขณะปฏิบัติงาน', status: '', observations: '' },
-    { id: '3.5', section: 'สุขอนามัยส่วนบุคคล', description: 'มีการจัดการสุขอนามัยเล็บและเครื่องประดับอย่างถูกต้องตามนโยบาย', status: '', observations: '' },
-
-    // Section 4: Cleaning & Sanitation
-    { id: '4.1', section: 'การทำความสะอาดและสุขาภิบาล', description: 'มีตารางการทำความสะอาดประจำวัน/รายสัปดาห์/รายเดือน และพนักงานปฏิบัติตามอย่างเคร่งครัด', status: '', observations: '' },
-    { id: '4.2', section: 'การทำความสะอาดและสุขาภิบาล', description: 'อุปกรณ์ครัวและพื้นผิวสัมผัสอาหารทั้งหมดถูกทำความสะอาดและฆ่าเชื้ออย่างถูกต้องตาม SOP-BOH-005', status: '', observations: '' },
-    { id: '4.3', section: 'การทำความสะอาดและสุขาภิบาล', description: 'พื้นครัวสะอาด แห้ง และปราศจากสิ่งกีดขวาง (น้ำ, น้ำมัน, เศษอาหาร)', status: '', observations: '' },
-    { id: '4.4', section: 'การทำความสะอาดและสุขาภิบาล', description: 'มีการจัดเก็บอุปกรณ์ทำความสะอาดอย่างเป็นระเบียบและถูกสุขอนามัย', status: '', observations: '' },
-    { id: '4.5', section: 'การทำความสะอาดและสุขาภิบาล', description: 'ห้องน้ำพนักงานสะอาด ถูกสุขอนามัย และมีอุปกรณ์ล้างมือครบถ้วน', status: '', observations: '' },
-
-    // Section 5: Waste Management
-    { id: '5.1', section: 'การจัดการขยะและของเสีย', description: 'มีถังขยะเพียงพอและแยกประเภทขยะอย่างชัดเจน (เศษอาหาร, รีไซเคิล, ทั่วไป)', status: '', observations: '' },
-    { id: '5.2', section: 'การจัดการขยะและของเสีย', description: 'ถังขยะมีฝาปิดมิดชิด และถูกนำไปทิ้ง/ทำความสะอาดเป็นประจำทุกวันตาม SOP-BOH-004', status: '', observations: '' },
-    { id: '5.3', section: 'การจัดการขยะและของเสีย', description: 'มีการจัดการน้ำมันใช้แล้วอย่างถูกวิธี ไม่มีการทิ้งลงท่อระบายน้ำ', status: '', observations: '' },
-    { id: '5.4', section: 'การจัดการขยะและของเสีย', description: 'พื้นที่จัดเก็บขยะสะอาดและปราศจากสัตว์พาหะ', status: '', observations: '' },
-
-    // Section 6: Temperature Control
-    { id: '6.1', section: 'การควบคุมอุณหภูมิ', description: 'มีการบันทึกอุณหภูมิตู้เย็น/ตู้แช่แข็ง/ไลน์บุฟเฟต์อย่างสม่ำเสมอและอยู่ในเกณฑ์ที่ปลอดภัย', status: '', observations: '' },
-    { id: '6.2', section: 'การควบคุมอุณหภูมิ', description: 'อาหารที่ต้องควบคุมอุณหภูมิถูกจัดเก็บในอุณหภูมิที่ถูกต้องตลอดเวลา (Cold/Hot Holding)', status: '', observations: '' },
-    { id: '6.3', section: 'การควบคุมอุณหภูมิ', description: 'มีการใช้เทอร์โมมิเตอร์ที่สอบเทียบแล้วในการวัดอุณหภูมิอาหารและอุปกรณ์', status: '', observations: '' },
-
-    // Section 7: Cross-Contamination Prevention
-    { id: '7.1', section: 'การป้องกันการปนเปื้อนข้าม', description: 'มีการแยกพื้นที่/อุปกรณ์สำหรับวัตถุดิบดิบและอาหารปรุงสุกอย่างชัดเจน', status: '', observations: '' },
-    { id: '7.2', section: 'การป้องกันการปนเปื้อนข้าม', description: 'พนักงานเปลี่ยนถุงมือหรือล้างมือเมื่อเปลี่ยนจากการจัดการวัตถุดิบดิบไปอาหารพร้อมทาน', status: '', observations: '' },
-    { id: '7.3', section: 'การป้องกันการปนเปื้อนข้าม', description: 'มีการติดป้ายหรือแนวทางสำหรับจัดการสารก่อภูมิแพ้อย่างชัดเจนและปลอดภัย', status: '', observations: '' },
-  ]);
-
-  // State for the calculated score
-  const [score, setScore] = useState(0);
-
-  // Helper function to get current date for initial display
-  const getCurrentDate = () => {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0!
-    const dd = String(today.getDate()).padStart(2, '0');
-    return `${yyyy}-${mm}-${dd}`;
-  };
-
-  // Set initial date on component mount
-  useEffect(() => {
-    setAuditInfo(prev => ({ ...prev, date: getCurrentDate() }));
-  }, []);
-
-  // Handle changes in audit info fields
-  const handleAuditInfoChange = (e) => {
-    const { name, value } = e.target;
-    setAuditInfo(prev => ({ ...prev, [name]: value }));
-  };
-
-  // Handle status change for a checklist item (Yes/No/NA)
-  const handleStatusChange = (id, newStatus) => {
-    setChecklistItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, status: newStatus } : item
-      )
-    );
-  };
-
-  // Handle observations change for a checklist item
-  const handleObservationChange = (id, newObservation) => {
-    setChecklistItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, observations: newObservation } : item
-      )
-    );
-  };
-
-  // Calculate the score whenever checklistItems change
-  useEffect(() => {
-    let yesCount = 0;
-    let applicableCount = 0;
-
-    checklistItems.forEach(item => {
-      if (item.status === 'yes') {
-        yesCount++;
-        applicableCount++;
-      } else if (item.status === 'no') {
-        applicableCount++;
-      }
-      // If status is 'na', it's not counted in applicableCount
-    });
-
-    if (applicableCount > 0) {
-      setScore(((yesCount / applicableCount) * 100).toFixed(2));
-    } else {
-      setScore(0);
-    }
-  }, [checklistItems]);
-
-  // Utility to group items by section for rendering
-  const groupedItems = checklistItems.reduce((acc, item) => {
-    if (!acc[item.section]) {
-      acc[item.section] = [];
-    }
-    acc[item.section].push(item);
-    return acc;
-  }, {});
-
-
-  // Tailwind CSS classes for consistent styling
-  const inputClass = "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm";
-  const textareaClass = "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm resize-y";
-  const labelClass = "block text-sm font-medium text-gray-700";
-  const checkboxGroupClass = "flex flex-wrap gap-x-4"; // Adjusted for better wrapping on smaller screens
-  const checkboxLabelClass = "flex items-center text-sm text-gray-700"; // Adjusted text size
-  const checkboxInputClass = "h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded";
-
-  return (
-    <div className="min-h-screen bg-gray-50 font-inter text-gray-800 flex justify-center py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl w-full bg-white shadow-xl rounded-lg p-8 space-y-8">
-        {/* Header */}
-        <div className="flex justify-between items-center pb-6 border-b border-gray-200">
-          <div className="font-chonburi text-3xl font-bold text-gray-900">
-            ลงหม้อสุกี้ <span className="block text-sm font-inter font-normal text-gray-600">Food Safety Management</span>
-          </div>
-          <div className="text-right text-xs text-gray-500">
-            <div><span className="font-semibold text-gray-700">เอกสาร:</span> FSHAC-001</div>
-            <div><span className="font-semibold text-gray-700">หัวข้อ:</span> Food Safety Audit Checklist</div>
-            <div><span className="font-semibold text-gray-700">เวอร์ชัน:</span> v1.0 | <span className="font-semibold text-gray-700">จัดทำเมื่อ:</span> 2025–08–21</div>
-          </div>
-        </div>
-
-        {/* Title Band */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-700 text-white p-6 rounded-md border-l-4 border-amber-500">
-          <h1 className="text-3xl font-playfair-display font-semibold mb-2">Food Safety Audit Checklist</h1>
-          <p className="text-lg font-outfit text-gray-200">รายการตรวจสอบสุขอนามัยและความปลอดภัยอาหาร</p>
-        </div>
-
-        {/* Audit Information & Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-amber-50 p-6 rounded-lg border border-amber-200 shadow-sm">
-            <h4 className="flex items-center font-bold text-sm text-amber-700 uppercase mb-4">
-              <span className="text-xl mr-2">🔎</span>ข้อมูลการตรวจสอบ (Audit Information)
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="date" className={labelClass}>วันที่ตรวจสอบ:</label>
-                <input type="date" id="date" name="date" value={auditInfo.date} onChange={handleAuditInfoChange} className={inputClass} />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="startTime" className={labelClass}>เวลาเริ่มต้น:</label>
-                  <input type="time" id="startTime" name="startTime" value={auditInfo.startTime} onChange={handleAuditInfoChange} className={inputClass} />
-                </div>
-                <div>
-                  <label htmlFor="endTime" className={labelClass}>เวลาสิ้นสุด:</label>
-                  <input type="time" id="endTime" name="endTime" value={auditInfo.endTime} onChange={handleAuditInfoChange} className={inputClass} />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="auditor" className={labelClass}>ผู้ตรวจสอบ:</label>
-                <input type="text" id="auditor" name="auditor" value={auditInfo.auditor} onChange={handleAuditInfoChange} className={inputClass} />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-amber-50 p-6 rounded-lg border border-amber-200 shadow-sm">
-            <h4 className="flex items-center font-bold text-sm text-amber-700 uppercase mb-4">
-              <span className="text-xl mr-2">📝</span>สรุปผลการตรวจสอบ (Audit Summary)
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="area" className={labelClass}>พื้นที่ที่ตรวจสอบ:</label>
-                <input type="text" id="area" name="area" value={auditInfo.area} onChange={handleAuditInfoChange} className={inputClass} />
-              </div>
-              <div>
-                <label className={labelClass}>ระดับความเสี่ยงที่พบ:</label>
-                <div className={checkboxGroupClass}>
-                  <label className={checkboxLabelClass}>
-                    <input type="checkbox" name="riskLevel" value="high" checked={auditInfo.riskLevel === 'high'} onChange={handleAuditInfoChange} className={checkboxInputClass} />
-                    สูง
-                  </label>
-                  <label className={checkboxLabelClass}>
-                    <input type="checkbox" name="riskLevel" value="medium" checked={auditInfo.riskLevel === 'medium'} onChange={handleAuditInfoChange} className={checkboxInputClass} />
-                    ปานกลาง
-                  </label>
-                  <label className={checkboxLabelClass}>
-                    <input type="checkbox" name="riskLevel" value="low" checked={auditInfo.riskLevel === 'low'} onChange={handleAuditInfoChange} className={checkboxInputClass} />
-                    ต่ำ
-                  </label>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="overallSuggestions" className={labelClass}>ข้อเสนอแนะโดยรวม:</label>
-                <textarea id="overallSuggestions" name="overallSuggestions" rows="3" value={auditInfo.overallSuggestions} onChange={handleAuditInfoChange} className={textareaClass}></textarea>
-              </div>
-              {/* Score Display */}
-              <div className="mt-6 p-4 bg-green-100 border border-green-300 rounded-md text-center text-lg font-semibold text-green-800">
-                คะแนนความสอดคล้อง: <span className="text-2xl font-bold">{score}%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Checklist Details */}
-        <section className="mt-8">
-          <h2 className="text-2xl font-playfair-display font-semibold text-gray-900 pb-3 mb-6 border-b border-gray-200">
-            รายละเอียดรายการตรวจสอบ (Checklist Details)
-          </h2>
-          <p className="text-base text-gray-700 mb-6">
-            ตรวจสอบรายการด้านล่างนี้ และระบุสถานะการปฏิบัติตาม พร้อมบันทึกข้อสังเกตและแผนการแก้ไข
-          </p>
-
-          <div className="overflow-x-auto"> {/* Added for horizontal scrolling on small screens */}
-            <table className="min-w-full divide-y divide-gray-200 border border-gray-200">
-              <thead className="bg-amber-100">
-                <tr>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/2">
-                    รายการตรวจสอบ (Checklist Item)
-                  </th>
-                  <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/5">
-                    สถานะ
-                  </th>
-                  <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/4">
-                    ข้อสังเกต / การดำเนินการแก้ไข (Observations / Corrective Actions)
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {Object.keys(groupedItems).map(section => (
-                  <React.Fragment key={section}>
-                    <tr>
-                      <td colSpan="3" className="p-0 border-none">
-                        <h3 className="bg-amber-50 py-3 px-4 text-base font-bold text-amber-800 flex items-center border-b border-amber-300">
-                          {section.startsWith('1.') ? <span className="text-lg mr-2">🚚</span> :
-                           section.startsWith('2.') ? <span className="text-lg mr-2">👨‍🍳</span> :
-                           section.startsWith('3.') ? <span className="text-lg mr-2">🚶</span> :
-                           section.startsWith('4.') ? <span className="text-lg mr-2">🧼</span> :
-                           section.startsWith('5.') ? <span className="text-lg mr-2">🗑️</span> :
-                           section.startsWith('6.') ? <span className="text-lg mr-2">🌡️</span> :
-                           section.startsWith('7.') ? <span className="text-lg mr-2">🧬</span> : <span className="text-lg mr-2">📋</span>}
-                          {section}
-                        </h3>
-                      </td>
-                    </tr>
-                    {groupedItems[section].map(item => (
-                      <tr key={item.id}>
-                        <td className="px-4 py-3 align-top text-sm text-gray-900 border-r border-gray-200">
-                          {item.id} {item.description}
-                        </td>
-                        <td className="px-4 py-3 align-top text-center border-r border-gray-200">
-                          <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                            <label className={checkboxLabelClass}>
-                              <input
-                                type="checkbox"
-                                name={`status-${item.id}`}
-                                value="yes"
-                                checked={item.status === 'yes'}
-                                onChange={() => handleStatusChange(item.id, 'yes')}
-                                className={checkboxInputClass}
-                              />
-                              ใช่
-                            </label>
-                            <label className={checkboxLabelClass}>
-                              <input
-                                type="checkbox"
-                                name={`status-${item.id}`}
-                                value="no"
-                                checked={item.status === 'no'}
-                                onChange={() => handleStatusChange(item.id, 'no')}
-                                className={checkboxInputClass}
-                              />
-                              ไม่ใช่
-                            </label>
-                            <label className={checkboxLabelClass}>
-                              <input
-                                type="checkbox"
-                                name={`status-${item.id}`}
-                                value="na"
-                                checked={item.status === 'na'}
-                                onChange={() => handleStatusChange(item.id, 'na')}
-                                className={checkboxInputClass}
-                              />
-                              NA
-                            </label>
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 align-top">
-                          <textarea
-                            rows="2"
-                            value={item.observations}
-                            onChange={(e) => handleObservationChange(item.id, e.target.value)}
-                            className={textareaClass}
-                          ></textarea>
-                        </td>
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Signatures */}
-        <section className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-800">
-          <div>
-            <div className="border-t border-dashed border-gray-400 pt-4">
-              ผู้ตรวจสอบ: <span className="inline-block w-3/4 border-b border-gray-300"></span><br/>
-              ตำแหน่ง: <span className="inline-block w-3/4 border-b border-gray-300"></span><br/>
-              วันที่: <span className="inline-block w-3/4 border-b border-gray-300"></span>
-            </div>
-          </div>
-          <div>
-            <div className="border-t border-dashed border-gray-400 pt-4">
-              ผู้รับรองการแก้ไข: <span className="inline-block w-3/4 border-b border-gray-300"></span><br/>
-              ตำแหน่ง: <span className="inline-block w-3/4 border-b border-gray-300"></span><br/>
-              วันที่: <span className="inline-block w-3/4 border-b border-gray-300"></span>
-            </div>
-          </div>
-        </section>
+  /* Ensure the input and textarea styles are consistent */
+  .input-field {
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm;
+  }
+  .textarea-field {
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm resize-y;
+  }
+  .label-class {
+    @apply block text-sm font-medium text-gray-700;
+  }
+  .checkbox-label-class {
+    @apply flex items-center text-sm text-gray-700;
+  }
+  .checkbox-input-class {
+    @apply h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded;
+  }
+</style>
+</head>
+<body class="min-h-screen bg-gray-50 font-inter text-gray-800 flex justify-center py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl w-full bg-white shadow-xl rounded-lg p-8 space-y-8">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row justify-between items-center pb-6 border-b border-gray-200">
+      <div class="font-chonburi text-3xl font-bold text-gray-900 mb-4 sm:mb-0">
+        ลงหม้อสุกี้ <span class="block text-sm font-inter font-normal text-gray-600">Food Safety Management</span>
+      </div>
+      <div class="text-right text-xs text-gray-500">
+        <div><span class="font-semibold text-gray-700">เอกสาร:</span> FSHAC-001</div>
+        <div><span class="font-semibold text-gray-700">หัวข้อ:</span> Food Safety Audit Checklist</div>
+        <div><span class="font-semibold text-gray-700">เวอร์ชัน:</span> v1.0 | <span class="font-semibold text-gray-700">จัดทำเมื่อ:</span> 2025–08–21</div>
       </div>
     </div>
-  );
-};
 
-export default App;
+    <!-- Title Band -->
+    <div class="bg-gradient-to-br from-gray-900 to-gray-700 text-white p-6 rounded-md border-l-4 border-amber-500">
+      <h1 class="text-3xl font-playfair-display font-semibold mb-2">Food Safety Audit Checklist</h1>
+      <p class="text-lg font-outfit text-gray-200">รายการตรวจสอบสุขอนามัยและความปลอดภัยอาหาร</p>
+    </div>
+
+    <!-- Audit Information & Summary -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-amber-50 p-6 rounded-lg border border-amber-200 shadow-sm">
+        <h4 class="flex items-center font-bold text-sm text-amber-700 uppercase mb-4">
+          <span class="text-xl mr-2">🔎</span>ข้อมูลการตรวจสอบ (Audit Information)
+        </h4>
+        <div class="space-y-4">
+          <div>
+            <label for="auditDate" class="label-class">วันที่ตรวจสอบ:</label>
+            <input type="date" id="auditDate" name="date" class="input-field"/>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="startTime" class="label-class">เวลาเริ่มต้น:</label>
+              <input type="time" id="startTime" name="startTime" class="input-field"/>
+            </div>
+            <div>
+              <label for="endTime" class="label-class">เวลาสิ้นสุด:</label>
+              <input type="time" id="endTime" name="endTime" class="input-field"/>
+            </div>
+          </div>
+          <div>
+            <label for="auditor" class="label-class">ผู้ตรวจสอบ:</label>
+            <input type="text" id="auditor" name="auditor" class="input-field"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-amber-50 p-6 rounded-lg border border-amber-200 shadow-sm">
+        <h4 class="flex items-center font-bold text-sm text-amber-700 uppercase mb-4">
+          <span class="text-xl mr-2">📝</span>สรุปผลการตรวจสอบ (Audit Summary)
+        </h4>
+        <div class="space-y-4">
+          <div>
+            <label for="area" class="label-class">พื้นที่ที่ตรวจสอบ:</label>
+            <input type="text" id="area" name="area" class="input-field"/>
+          </div>
+          <div>
+            <label class="label-class">ระดับความเสี่ยงที่พบ:</label>
+            <div class="flex flex-wrap gap-x-4">
+              <label class="checkbox-label-class">
+                <input type="checkbox" name="riskLevel" value="high" class="checkbox-input-class risk-checkbox"/>
+                สูง
+              </label>
+              <label class="checkbox-label-class">
+                <input type="checkbox" name="riskLevel" value="medium" class="checkbox-input-class risk-checkbox"/>
+                ปานกลาง
+              </label>
+              <label class="checkbox-label-class">
+                <input type="checkbox" name="riskLevel" value="low" class="checkbox-input-class risk-checkbox"/>
+                ต่ำ
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="overallSuggestions" class="label-class">ข้อเสนอแนะโดยรวม:</label>
+            <textarea id="overallSuggestions" name="overallSuggestions" rows="3" class="textarea-field"></textarea>
+          </div>
+          <!-- Score Display -->
+          <div class="mt-6 p-4 bg-green-100 border border-green-300 rounded-md text-center text-lg font-semibold text-green-800">
+            คะแนนความสอดคล้อง: <span id="auditScore" class="text-2xl font-bold">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist Details -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-playfair-display font-semibold text-gray-900 pb-3 mb-6 border-b border-gray-200">
+        รายละเอียดรายการตรวจสอบ (Checklist Details)
+      </h2>
+      <p class="text-base text-gray-700 mb-6">
+        ตรวจสอบรายการด้านล่างนี้ และระบุสถานะการปฏิบัติตาม พร้อมบันทึกข้อสังเกตและแผนการแก้ไข
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200 border border-gray-200">
+          <thead class="bg-amber-100">
+            <tr>
+              <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/2">
+                รายการตรวจสอบ (Checklist Item)
+              </th>
+              <th scope="col" class="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/5">
+                สถานะ
+              </th>
+              <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/4">
+                ข้อสังเกต / การดำเนินการแก้ไข (Observations / Corrective Actions)
+              </th>
+            </tr>
+          </thead>
+          <tbody id="checklistTableBody" class="bg-white divide-y divide-gray-200">
+            <!-- Checklist items will be rendered here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Signatures -->
+    <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-800">
+      <div>
+        <div class="border-t border-dashed border-gray-400 pt-4">
+          ผู้ตรวจสอบ: <span class="inline-block w-3/4 border-b border-gray-300"></span><br/>
+          ตำแหน่ง: <span class="inline-block w-3/4 border-b border-gray-300"></span><br/>
+          วันที่: <span class="inline-block w-3/4 border-b border-gray-300"></span>
+        </div>
+      </div>
+      <div>
+        <div class="border-t border-dashed border-gray-400 pt-4">
+          ผู้รับรองการแก้ไข: <span class="inline-block w-3/4 border-b border-gray-300"></span><br/>
+          ตำแหน่ง: <span class="inline-block w-3/4 border-b border-gray-300"></span><br/>
+          วันที่: <span class="inline-block w-3/4 border-b border-gray-300"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Data structure for checklist items
+    const checklistItems = [
+      // Section 1: Raw Material Receiving & Storage
+      { id: '1.1', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'วัตถุดิบทุกชนิดถูกตรวจสอบคุณภาพและปริมาณเมื่อรับเข้าตาม SOP-BOH-001 และ SOP-BOH-009', status: '', observations: '' },
+      { id: '1.2', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'วัตถุดิบแช่เย็น/แช่แข็ง มีอุณหภูมิอยู่ในเกณฑ์ที่กำหนดเมื่อรับเข้า (≤4°C สำหรับแช่เย็น, ≤-18°C สำหรับแช่แข็ง)', status: '', observations: '' },
+      { id: '1.3', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'วัตถุดิบทุกชิ้นมีการติดฉลากระบุชื่อ, วันที่รับเข้า, และวันหมดอายุอย่างชัดเจน', status: '', observations: '' },
+      { id: '1.4', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'วัตถุดิบถูกจัดเก็บในพื้นที่ที่เหมาะสม (เช่น ตู้เย็น, ตู้แช่แข็ง, ห้องเก็บแห้ง) ทันทีหลังรับเข้า', status: '', observations: '' },
+      { id: '1.5', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'มีการจัดเก็บวัตถุดิบสูงจากพื้นอย่างน้อย 15 ซม. และห่างจากผนังตาม SOP-BOH-007', status: '', observations: '' },
+      { id: '1.6', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'มีการแยกเก็บอาหารดิบและปรุงสุกออกจากกันเพื่อป้องกันการปนเปื้อนข้าม', status: '', observations: '' },
+      { id: '1.7', section: '1. การรับและจัดเก็บวัตถุดิบ', icon: '🚚', description: 'มีการหมุนเวียนสต็อกตามหลัก FIFO/FEFO อย่างเคร่งครัด (ตรวจสอบวันหมดอายุ)', status: '', observations: '' },
+
+      // Section 2: Food Preparation & Cooking
+      { id: '2.1', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'พื้นที่เตรียมอาหารสะอาด เป็นระเบียบ และปราศจากสิ่งปนเปื้อนก่อนเริ่มงาน', status: '', observations: '' },
+      { id: '2.2', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'มีดและเขียงที่มีรหัสสีถูกใช้งานอย่างถูกต้องตามประเภทวัตถุดิบ (เนื้อ, ผัก, อื่นๆ)', status: '', observations: '' },
+      { id: '2.3', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'การเตรียมวัตถุดิบ (Mise en Place) ถูกทำอย่างถูกสุขอนามัยและรวดเร็ว', status: '', observations: '' },
+      { id: '2.4', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'การปรุงอาหารแต่ละประเภทเป็นไปตามสูตรมาตรฐาน (อ้างอิง SOP-BOH-002)', status: '', observations: '' },
+      { id: '2.5', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'อาหารที่ปรุงสุกมีอุณหภูมิภายในที่ปลอดภัยตามมาตรฐาน (เช่น เนื้อสัตว์ปีก ≥74°C)', status: '', observations: '' },
+      { id: '2.6', section: '2. การเตรียมและการปรุงอาหาร', icon: '👨‍🍳', description: 'มีการระบายอากาศที่เหมาะสมในบริเวณครัว เพื่อลดความร้อนและควัน', status: '', observations: '' },
+
+      // Section 3: Personal Hygiene
+      { id: '3.1', section: '3. สุขอนามัยส่วนบุคคล', icon: '🚶', description: 'พนักงานทุกคนแต่งกายสะอาด สวมชุดยูนิฟอร์มที่สะอาด และสวมหมวก/ตาข่ายคลุมผม', status: '', observations: '' },
+      { id: '3.2', section: '3. สุขอนามัยส่วนบุคคล', icon: '🚶', description: 'พนักงานล้างมืออย่างถูกต้องและสม่ำเสมอ (ก่อนเริ่มงาน, หลังเข้าห้องน้ำ, หลังสัมผัสของสกปรก)', status: '', observations: '' },
+      { id: '3.3', section: '3. สุขอนามัยส่วนบุคคล', icon: '🚶', description: 'พนักงานสวมถุงมือที่สะอาดและเหมาะสมเมื่อสัมผัสอาหารพร้อมทานหรือวัตถุดิบที่ต้องดูแลเป็นพิเศษ', status: '', observations: '' },
+      { id: '3.4', section: '3. สุขอนามัยส่วนบุคคล', icon: '🚶', description: 'พนักงานไม่มีอาการป่วยที่อาจส่งผลต่อความปลอดภัยอาหาร (เช่น ไอ, จาม, ท้องเสีย) ขณะปฏิบัติงาน', status: '', observations: '' },
+      { id: '3.5', section: '3. สุขอนามัยส่วนบุคคล', icon: '🚶', description: 'มีการจัดการสุขอนามัยเล็บและเครื่องประดับอย่างถูกต้องตามนโยบาย', status: '', observations: '' },
+
+      // Section 4: Cleaning & Sanitation
+      { id: '4.1', section: '4. การทำความสะอาดและสุขาภิบาล', icon: '🧼', description: 'มีตารางการทำความสะอาดประจำวัน/รายสัปดาห์/รายเดือน และพนักงานปฏิบัติตามอย่างเคร่งครัด', status: '', observations: '' },
+      { id: '4.2', section: '4. การทำความสะอาดและสุขาภิบาล', icon: '🧼', description: 'อุปกรณ์ครัวและพื้นผิวสัมผัสอาหารทั้งหมดถูกทำความสะอาดและฆ่าเชื้ออย่างถูกต้องตาม SOP-BOH-005', status: '', observations: '' },
+      { id: '4.3', section: '4. การทำความสะอาดและสุขาภิบาล', icon: '🧼', description: 'พื้นครัวสะอาด แห้ง และปราศจากสิ่งกีดขวาง (น้ำ, น้ำมัน, เศษอาหาร)', status: '', observations: '' },
+      { id: '4.4', section: '4. การทำความสะอาดและสุขาภิบาล', icon: '🧼', description: 'มีการจัดเก็บอุปกรณ์ทำความสะอาดอย่างเป็นระเบียบและถูกสุขอนามัย', status: '', observations: '' },
+      { id: '4.5', section: '4. การทำความสะอาดและสุขาภิบาล', icon: '🧼', description: 'ห้องน้ำพนักงานสะอาด ถูกสุขอนามัย และมีอุปกรณ์ล้างมือครบถ้วน', status: '', observations: '' },
+
+      // Section 5: Waste Management
+      { id: '5.1', section: '5. การจัดการขยะและของเสีย', icon: '🗑️', description: 'มีถังขยะเพียงพอและแยกประเภทขยะอย่างชัดเจน (เศษอาหาร, รีไซเคิล, ทั่วไป)', status: '', observations: '' },
+      { id: '5.2', section: '5. การจัดการขยะและของเสีย', icon: '🗑️', description: 'ถังขยะมีฝาปิดมิดชิด และถูกนำไปทิ้ง/ทำความสะอาดเป็นประจำทุกวันตาม SOP-BOH-004', status: '', observations: '' },
+      { id: '5.3', section: '5. การจัดการขยะและของเสีย', icon: '🗑️', description: 'มีการจัดการน้ำมันใช้แล้วอย่างถูกวิธี ไม่มีการทิ้งลงท่อระบายน้ำ', status: '', observations: '' },
+      { id: '5.4', section: '5. การจัดการขยะและของเสีย', icon: '🗑️', description: 'พื้นที่จัดเก็บขยะสะอาดและปราศจากสัตว์พาหะ', status: '', observations: '' },
+
+      // Section 6: Temperature Control
+      { id: '6.1', section: '6. การควบคุมอุณหภูมิ', icon: '🌡️', description: 'มีการบันทึกอุณหภูมิตู้เย็น/ตู้แช่แข็ง/ไลน์บุฟเฟต์อย่างสม่ำเสมอและอยู่ในเกณฑ์ที่ปลอดภัย', status: '', observations: '' },
+      { id: '6.2', section: '6. การควบคุมอุณหภูมิ', icon: '🌡️', description: 'อาหารที่ต้องควบคุมอุณหภูมิถูกจัดเก็บในอุณหภูมิที่ถูกต้องตลอดเวลา (Cold/Hot Holding)', status: '', observations: '' },
+      { id: '6.3', section: '6. การควบคุมอุณหภูมิ', icon: '🌡️', description: 'มีการใช้เทอร์โมมิเตอร์ที่สอบเทียบแล้วในการวัดอุณหภูมิอาหารและอุปกรณ์', status: '', observations: '' },
+
+      // Section 7: Cross-Contamination Prevention
+      { id: '7.1', section: '7. การป้องกันการปนเปื้อนข้าม', icon: '🧬', description: 'มีการแยกพื้นที่/อุปกรณ์สำหรับวัตถุดิบดิบและอาหารปรุงสุกอย่างชัดเจน', status: '', observations: '' },
+      { id: '7.2', section: '7. การป้องกันการปนเปื้อนข้าม', icon: '🧬', description: 'พนักงานเปลี่ยนถุงมือหรือล้างมือเมื่อเปลี่ยนจากการจัดการวัตถุดิบดิบไปอาหารพร้อมทาน', status: '', observations: '' },
+      { id: '7.3', section: '7. การป้องกันการปนเปื้อนข้าม', icon: '🧬', description: 'มีการติดป้ายหรือแนวทางสำหรับจัดการสารก่อภูมิแพ้อย่างชัดเจนและปลอดภัย', status: '', observations: '' },
+    ];
+
+    // Function to group checklist items by section
+    function groupChecklistItems(items) {
+      const grouped = {};
+      items.forEach(item => {
+        if (!grouped[item.section]) {
+          grouped[item.section] = [];
+        }
+        grouped[item.section].push(item);
+      });
+      return grouped;
+    }
+
+    // Function to render checklist table
+    function renderChecklist() {
+      const tbody = document.getElementById('checklistTableBody');
+      tbody.innerHTML = ''; // Clear existing content
+
+      const grouped = groupChecklistItems(checklistItems);
+      for (const section in grouped) {
+        // Add section header row
+        const sectionItems = grouped[section];
+        const icon = sectionItems[0].icon; // Get icon from the first item in the section
+        const sectionRow = document.createElement('tr');
+        sectionRow.className = 'bg-white'; // Ensure row background is white
+        sectionRow.innerHTML = `
+          <td colspan="3" class="p-0 border-none">
+            <h3 class="bg-amber-50 py-3 px-4 text-base font-bold text-amber-800 flex items-center border-b border-amber-300">
+              <span class="text-lg mr-2">${icon}</span> ${section}
+            </h3>
+          </td>
+        `;
+        tbody.appendChild(sectionRow);
+
+        // Add items for this section
+        sectionItems.forEach(item => {
+          const row = document.createElement('tr');
+          row.className = 'bg-white'; // Ensure row background is white
+          row.innerHTML = `
+            <td class="px-4 py-3 align-top text-sm text-gray-900 border-r border-gray-200">
+              ${item.id} ${item.description}
+            </td>
+            <td class="px-4 py-3 align-top text-center border-r border-gray-200">
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-2">
+                <label class="checkbox-label-class">
+                  <input type="checkbox" name="status-${item.id}" value="yes" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="yes"/>
+                  ใช่
+                </label>
+                <label class="checkbox-label-class">
+                  <input type="checkbox" name="status-${item.id}" value="no" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="no"/>
+                  ไม่ใช่
+                </label>
+                <label class="checkbox-label-class">
+                  <input type="checkbox" name="status-${item.id}" value="na" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="na"/>
+                  NA
+                </label>
+              </div>
+            </td>
+            <td class="px-4 py-3 align-top">
+              <textarea rows="2" class="textarea-field observation-field" data-item-id="${item.id}"></textarea>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+      addEventListenersToChecklist();
+    }
+
+    // Function to calculate and update score
+    function updateScore() {
+      let yesCount = 0;
+      let applicableCount = 0;
+
+      checklistItems.forEach(item => {
+        if (item.status === 'yes') {
+          yesCount++;
+          applicableCount++;
+        } else if (item.status === 'no') {
+          applicableCount++;
+        }
+        // If status is 'na', it's not counted in applicableCount
+      });
+
+      const score = applicableCount > 0 ? ((yesCount / applicableCount) * 100).toFixed(2) : 0;
+      document.getElementById('auditScore').textContent = `${score}%`;
+    }
+
+    // Event listener for status checkboxes
+    function handleStatusChange(event) {
+      const target = event.target;
+      if (target.classList.contains('status-checkbox')) {
+        const itemId = target.dataset.itemId;
+        const newStatus = target.dataset.statusValue;
+
+        // Uncheck all other checkboxes for the same item
+        document.querySelectorAll(`input[name="status-${itemId}"]`).forEach(checkbox => {
+          if (checkbox !== target) {
+            checkbox.checked = false;
+          }
+        });
+
+        // Update the item's status in the data model
+        const itemIndex = checklistItems.findIndex(item => item.id === itemId);
+        if (itemIndex !== -1) {
+          checklistItems[itemIndex].status = target.checked ? newStatus : ''; // If unchecked, clear status
+        }
+        updateScore();
+      }
+    }
+
+    // Event listener for observation textareas
+    function handleObservationChange(event) {
+      const target = event.target;
+      if (target.classList.contains('observation-field')) {
+        const itemId = target.dataset.itemId;
+        const itemIndex = checklistItems.findIndex(item => item.id === itemId);
+        if (itemIndex !== -1) {
+          checklistItems[itemIndex].observations = target.value;
+        }
+      }
+    }
+
+    // Add event listeners to dynamically rendered elements
+    function addEventListenersToChecklist() {
+      document.querySelectorAll('.status-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', handleStatusChange);
+      });
+      document.querySelectorAll('.observation-field').forEach(textarea => {
+        textarea.addEventListener('input', handleObservationChange);
+      });
+    }
+
+    // Handle risk level checkboxes (radio-like behavior)
+    function handleRiskLevelChange(event) {
+      const target = event.target;
+      if (target.classList.contains('risk-checkbox')) {
+        document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
+          if (checkbox !== target) {
+            checkbox.checked = false;
+          }
+        });
+      }
+    }
+
+    // Set initial date on load
+    function setInitialDate() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      document.getElementById('auditDate').value = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // Initialize the form on window load
+    window.onload = function() {
+      setInitialDate();
+      renderChecklist();
+      document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', handleRiskLevelChange);
+      });
+    };
+  </script>
+</body>
+</html>
