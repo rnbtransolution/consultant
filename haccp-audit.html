@@ -42,7 +42,6 @@
       color: black !important;
       margin: 0;
       padding: 0;
-      /* Define A4 size and margins */
       width: 210mm; /* A4 width */
       min-height: 297mm; /* A4 height */
       -webkit-print-color-adjust: exact; /* Ensure colors print exactly as defined */
@@ -61,22 +60,22 @@
 
     /* Remove extra spacing between sections for tighter print layout */
     .space-y-8 > :not([hidden]) ~ :not([hidden]) {
-      margin-top: 1.5rem !important; /* Default was 2rem, reducing slightly */
+      margin-top: 1.5rem !important;
     }
 
     /* Header */
     .flex.justify-between.items-center.pb-6.border-b {
       border-bottom: 1px solid #ccc !important;
       padding-bottom: 10px !important;
-      flex-direction: row !important; /* Ensure header elements stay in row */
+      flex-direction: row !important;
       align-items: flex-end !important;
-      padding-top: 0 !important; /* Remove top padding if any */
+      padding-top: 0 !important;
     }
     .font-chonburi, .font-inter {
       color: black !important;
     }
     .font-chonburi {
-      font-size: 24pt !important; /* Adjust font size for print */
+      font-size: 24pt !important;
       line-height: 1.2;
     }
     .font-chonburi span {
@@ -97,7 +96,7 @@
     }
     .bg-gradient-to-br h1, .bg-gradient-to-br p {
       color: black !important;
-      font-size: 16pt !important; /* Adjust font size for print */
+      font-size: 16pt !important;
     }
     .bg-gradient-to-br p {
       font-size: 12pt !important;
@@ -124,31 +123,24 @@
       height: auto !important;
       resize: none !important;
       overflow: hidden !important;
-      font-size: 10pt !important; /* Adjust font size for print */
+      font-size: 10pt !important;
       line-height: 1.5;
-      color: black !important; /* Ensure text is black */
-      border-bottom: 1px dashed #999 !important; /* Subtle line for filled fields */
-      white-space: pre-wrap; /* Ensure text wraps */
-      word-wrap: break-word; /* Ensure long words break */
+      color: black !important;
+      border-bottom: 1px dashed #999 !important;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
-    /* For input/textarea, hide if empty when printing */
     input:empty:not(:focus), textarea:empty:not(:focus) {
-        border-bottom: 1px dashed #ccc !important; /* Lighter dashed line for empty fields */
+        border-bottom: 1px dashed #ccc !important;
     }
-    /* Hide input elements like type=date, type=time and display their text content */
-    input[type="date"],
-    input[type="time"] {
-        /* This is tricky with pure CSS; a common approach is JS to create span with value */
-        /* For this example, we'll just remove border/bg and hope value is visible */
-    }
-
 
     /* Score display */
-    .bg-green-100, .border-green-300 {
+    .score-display-box { /* Apply to the specific score box */
       background-color: white !important;
       border: 1px solid #ccc !important;
       color: black !important;
       border-radius: 0 !important;
+      font-weight: bold !important;
     }
     #auditScore {
       font-size: 18pt !important;
@@ -165,22 +157,21 @@
       margin-bottom: 1rem !important;
     }
 
-
     /* Table styles for print */
     table {
       width: 100% !important;
       border-collapse: collapse !important;
-      page-break-inside: auto; /* Allow table to break across pages */
+      page-break-inside: auto;
     }
     tr {
-      page-break-inside: avoid; /* Avoid breaking rows */
+      page-break-inside: avoid;
       page-break-after: auto;
     }
     th, td {
       border: 1px solid #ccc !important;
       padding: 8px !important;
       vertical-align: top !important;
-      font-size: 9pt !important; /* Smaller font for table content */
+      font-size: 9pt !important;
       color: black !important;
     }
     thead {
@@ -192,7 +183,7 @@
       background-color: #f2f2f2 !important;
     }
     .bg-amber-50 {
-      background-color: #f9f9f9 !important; /* lighter section header */
+      background-color: #f9f9f9 !important;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
       font-size: 12pt !important;
@@ -203,13 +194,12 @@
 
     /* Checkbox styling for print */
     .checkbox-input-class {
-      /* Hide the native checkbox, we'll draw our own */
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      width: 14px; /* Adjust size for print */
+      width: 14px;
       height: 14px;
-      border: 1px solid #666; /* Visible box for all */
+      border: 1px solid #666;
       border-radius: 2px;
       vertical-align: middle;
       margin-right: 4px;
@@ -219,13 +209,13 @@
       print-color-adjust: exact;
     }
     .checkbox-input-class:checked {
-      background-color: #333; /* Dark background when checked */
+      background-color: #333;
       border-color: #333;
     }
     .checkbox-input-class:checked::after {
-      content: '✔'; /* Checkmark symbol */
-      font-size: 10px; /* Adjust size of checkmark */
-      color: white; /* White checkmark */
+      content: '✔';
+      font-size: 10px;
+      color: white;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -234,14 +224,13 @@
       print-color-adjust: exact;
     }
     .checkbox-label-class {
-        font-size: 9pt !important; /* Smaller font for "ใช่", "ไม่ใช่", "NA" */
+        font-size: 9pt !important;
         color: black !important;
     }
     .flex.flex-col.sm\\:flex-row {
-        flex-direction: row !important; /* Force row layout for checkboxes on print */
-        gap: 0.5rem !important; /* Smaller gap */
+        flex-direction: row !important;
+        gap: 0.5rem !important;
     }
-
 
     /* Signature lines: make dashed line consistent */
     .border-dashed {
@@ -254,8 +243,26 @@
         font-size: 9pt !important;
     }
     .inline-block.w-3\/4 {
-        width: 60% !important; /* Adjust width for print */
+        width: 60% !important;
     }
+    /* Hide the print-only-text (for browser view) */
+    .print-only-text {
+        display: none !important;
+    }
+  }
+
+  /* Specific styles for risk level selection */
+  .risk-label {
+    @apply px-3 py-1 rounded-md transition-colors duration-200 ease-in-out;
+  }
+  .risk-label.selected-high {
+    @apply bg-red-100 text-red-800;
+  }
+  .risk-label.selected-medium {
+    @apply bg-orange-100 text-orange-800;
+  }
+  .risk-label.selected-low {
+    @apply bg-green-100 text-green-800;
   }
 </style>
 </head>
@@ -319,15 +326,15 @@
           <div>
             <label class="label-class">ระดับความเสี่ยงที่พบ:</label>
             <div class="flex flex-wrap gap-x-4">
-              <label class="checkbox-label-class">
+              <label class="checkbox-label-class risk-label" data-risk-value="high">
                 <input type="checkbox" name="riskLevel" value="high" class="checkbox-input-class risk-checkbox"/>
                 สูง
               </label>
-              <label class="checkbox-label-class">
+              <label class="checkbox-label-class risk-label" data-risk-value="medium">
                 <input type="checkbox" name="riskLevel" value="medium" class="checkbox-input-class risk-checkbox"/>
                 ปานกลาง
               </label>
-              <label class="checkbox-label-class">
+              <label class="checkbox-label-class risk-label" data-risk-value="low">
                 <input type="checkbox" name="riskLevel" value="low" class="checkbox-input-class risk-checkbox"/>
                 ต่ำ
               </label>
@@ -337,9 +344,9 @@
             <label for="overallSuggestions" class="label-class">ข้อเสนอแนะโดยรวม:</label>
             <textarea id="overallSuggestions" name="overallSuggestions" rows="3" class="textarea-field"></textarea>
           </div>
-          <!-- Score Display -->
-          <div class="mt-6 p-4 bg-green-100 border border-green-300 rounded-md text-center text-lg font-semibold text-green-800">
-            คะแนนความสอดคล้อง: <span id="auditScore" class="text-2xl font-bold">0%</span>
+          <!-- Score Display - Added ID for dynamic class changes -->
+          <div id="scoreDisplayBox" class="mt-6 p-4 rounded-md text-center text-lg font-semibold">
+            คะแนน: <span id="auditScore" class="text-2xl font-bold">0%</span>
           </div>
         </div>
       </div>
@@ -531,6 +538,18 @@
 
       const score = applicableCount > 0 ? ((yesCount / applicableCount) * 100).toFixed(2) : 0;
       document.getElementById('auditScore').textContent = `${score}%`;
+
+      // Update color of the score display box
+      const scoreDisplayBox = document.getElementById('scoreDisplayBox');
+      scoreDisplayBox.classList.remove('bg-green-100', 'text-green-800', 'border-green-300', 'bg-orange-100', 'text-orange-800', 'border-orange-300', 'bg-red-100', 'text-red-800', 'border-red-300');
+      
+      if (score >= 90) {
+        scoreDisplayBox.classList.add('bg-green-100', 'text-green-800', 'border', 'border-green-300');
+      } else if (score >= 70) {
+        scoreDisplayBox.classList.add('bg-orange-100', 'text-orange-800', 'border', 'border-orange-300');
+      } else {
+        scoreDisplayBox.classList.add('bg-red-100', 'text-red-800', 'border', 'border-red-300');
+      }
     }
 
     // Event listener for status checkboxes
@@ -568,17 +587,38 @@
       }
     }
 
-    // Event listener for risk level checkboxes (radio-like behavior)
+    // Event listener for risk level checkboxes (radio-like behavior and color change)
     function handleRiskLevelChange(event) {
       const target = event.target;
       if (target.classList.contains('risk-checkbox')) {
-        document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
+        const selectedRiskValue = target.value;
+
+        // Clear existing styles from all risk labels
+        document.querySelectorAll('.risk-label').forEach(label => {
+          label.classList.remove('selected-high', 'selected-medium', 'selected-low');
+          // Uncheck other checkboxes
+          const checkbox = label.querySelector('.risk-checkbox');
           if (checkbox !== target) {
             checkbox.checked = false;
           }
         });
+
+        // Apply style to the selected label
+        if (target.checked) {
+          const parentLabel = target.closest('.risk-label');
+          if (parentLabel) {
+            if (selectedRiskValue === 'high') {
+              parentLabel.classList.add('selected-high');
+            } else if (selectedRiskValue === 'medium') {
+              parentLabel.classList.add('selected-medium');
+            } else if (selectedRiskValue === 'low') {
+              parentLabel.classList.add('selected-low');
+            }
+          }
+        }
       }
     }
+
 
     // Add event listeners to dynamically rendered elements
     function addEventListenersToChecklist() {
@@ -603,13 +643,32 @@
     window.onload = function() {
       setInitialDate();
       renderChecklist();
+      
+      // Attach event listeners for risk level checkboxes
       document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', handleRiskLevelChange);
       });
-      // Add event listeners for other input fields to update data model
-      document.getElementById('auditor').addEventListener('input', (e) => {}); // Placeholder for data binding
-      document.getElementById('area').addEventListener('input', (e) => {}); // Placeholder for data binding
-      document.getElementById('overallSuggestions').addEventListener('input', (e) => {}); // Placeholder for data binding
+
+      // Also ensure that if a risk level is pre-selected (e.g., from loaded data), its style is applied
+      document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
+          if (checkbox.checked) {
+              const parentLabel = checkbox.closest('.risk-label');
+              if (parentLabel) {
+                  if (checkbox.value === 'high') {
+                      parentLabel.classList.add('selected-high');
+                  } else if (checkbox.value === 'medium') {
+                      parentLabel.classList.add('selected-medium');
+                  } else if (checkbox.value === 'low') {
+                      parentLabel.classList.add('selected-low');
+                  }
+              }
+          }
+      });
+
+      // Add event listeners for other input fields to update data model (if you implement persistence)
+      document.getElementById('auditor').addEventListener('input', (e) => {});
+      document.getElementById('area').addEventListener('input', (e) => {});
+      document.getElementById('overallSuggestions').addEventListener('input', (e) => {});
     };
   </script>
 </body>
