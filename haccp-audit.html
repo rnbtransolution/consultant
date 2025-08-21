@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ลงหม้อสุกี้ - Food Safety Audit Checklist</title>
+<title>ลงหม้อสุกี้ - Food Safety Audit Checklist (สำหรับพิมพ์)</title>
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Google Fonts -->
@@ -33,6 +33,229 @@
   }
   .checkbox-input-class {
     @apply h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded;
+  }
+
+  /* ------------------- Print Specific Styles (A4) ------------------- */
+  @media print {
+    body {
+      background-color: white !important;
+      color: black !important;
+      margin: 0;
+      padding: 0;
+      /* Define A4 size and margins */
+      width: 210mm; /* A4 width */
+      min-height: 297mm; /* A4 height */
+      -webkit-print-color-adjust: exact; /* Ensure colors print exactly as defined */
+      print-color-adjust: exact;
+    }
+
+    /* Main container: remove shadows, rounded corners, extra padding */
+    .max-w-4xl, .bg-white {
+      background-color: white !important;
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important; /* Take full width for print */
+    }
+
+    /* Remove extra spacing between sections for tighter print layout */
+    .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 1.5rem !important; /* Default was 2rem, reducing slightly */
+    }
+
+    /* Header */
+    .flex.justify-between.items-center.pb-6.border-b {
+      border-bottom: 1px solid #ccc !important;
+      padding-bottom: 10px !important;
+      flex-direction: row !important; /* Ensure header elements stay in row */
+      align-items: flex-end !important;
+      padding-top: 0 !important; /* Remove top padding if any */
+    }
+    .font-chonburi, .font-inter {
+      color: black !important;
+    }
+    .font-chonburi {
+      font-size: 24pt !important; /* Adjust font size for print */
+      line-height: 1.2;
+    }
+    .font-chonburi span {
+      font-size: 10pt !important;
+    }
+    .text-xs {
+      font-size: 8pt !important;
+    }
+
+    /* Title band */
+    .bg-gradient-to-br {
+      background: #e5e7eb !important; /* Light gray for print */
+      color: black !important;
+      border-left: 4mm solid #f59e0b !important; /* Amber border */
+      padding: 15px !important;
+      border-radius: 0 !important;
+      margin-top: 1.5rem !important;
+    }
+    .bg-gradient-to-br h1, .bg-gradient-to-br p {
+      color: black !important;
+      font-size: 16pt !important; /* Adjust font size for print */
+    }
+    .bg-gradient-to-br p {
+      font-size: 12pt !important;
+    }
+
+    /* Audit Information & Summary boxes */
+    .bg-amber-50, .border-amber-200 {
+      background-color: white !important;
+      border: 1px solid #ccc !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 15px !important;
+    }
+    .text-amber-700 {
+      color: black !important;
+    }
+
+    /* Input fields: make them look like plain text */
+    .input-field, .textarea-field {
+      border: none !important;
+      background: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      height: auto !important;
+      resize: none !important;
+      overflow: hidden !important;
+      font-size: 10pt !important; /* Adjust font size for print */
+      line-height: 1.5;
+      color: black !important; /* Ensure text is black */
+      border-bottom: 1px dashed #999 !important; /* Subtle line for filled fields */
+      white-space: pre-wrap; /* Ensure text wraps */
+      word-wrap: break-word; /* Ensure long words break */
+    }
+    /* For input/textarea, hide if empty when printing */
+    input:empty:not(:focus), textarea:empty:not(:focus) {
+        border-bottom: 1px dashed #ccc !important; /* Lighter dashed line for empty fields */
+    }
+    /* Hide input elements like type=date, type=time and display their text content */
+    input[type="date"],
+    input[type="time"] {
+        /* This is tricky with pure CSS; a common approach is JS to create span with value */
+        /* For this example, we'll just remove border/bg and hope value is visible */
+    }
+
+
+    /* Score display */
+    .bg-green-100, .border-green-300 {
+      background-color: white !important;
+      border: 1px solid #ccc !important;
+      color: black !important;
+      border-radius: 0 !important;
+    }
+    #auditScore {
+      font-size: 18pt !important;
+    }
+
+    /* Checklist Details section title */
+    .text-2xl.font-playfair-display {
+      font-size: 18pt !important;
+      border-bottom: 1px solid #ccc !important;
+      margin-bottom: 1rem !important;
+    }
+    .text-base.text-gray-700.mb-6 {
+      font-size: 10pt !important;
+      margin-bottom: 1rem !important;
+    }
+
+
+    /* Table styles for print */
+    table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      page-break-inside: auto; /* Allow table to break across pages */
+    }
+    tr {
+      page-break-inside: avoid; /* Avoid breaking rows */
+      page-break-after: auto;
+    }
+    th, td {
+      border: 1px solid #ccc !important;
+      padding: 8px !important;
+      vertical-align: top !important;
+      font-size: 9pt !important; /* Smaller font for table content */
+      color: black !important;
+    }
+    thead {
+      background-color: #f2f2f2 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .bg-amber-100 {
+      background-color: #f2f2f2 !important;
+    }
+    .bg-amber-50 {
+      background-color: #f9f9f9 !important; /* lighter section header */
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 12pt !important;
+    }
+    .bg-amber-50 .text-lg.mr-2 {
+      font-size: 14pt !important;
+    }
+
+    /* Checkbox styling for print */
+    .checkbox-input-class {
+      /* Hide the native checkbox, we'll draw our own */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 14px; /* Adjust size for print */
+      height: 14px;
+      border: 1px solid #666; /* Visible box for all */
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-right: 4px;
+      position: relative;
+      top: -1px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .checkbox-input-class:checked {
+      background-color: #333; /* Dark background when checked */
+      border-color: #333;
+    }
+    .checkbox-input-class:checked::after {
+      content: '✔'; /* Checkmark symbol */
+      font-size: 10px; /* Adjust size of checkmark */
+      color: white; /* White checkmark */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .checkbox-label-class {
+        font-size: 9pt !important; /* Smaller font for "ใช่", "ไม่ใช่", "NA" */
+        color: black !important;
+    }
+    .flex.flex-col.sm\\:flex-row {
+        flex-direction: row !important; /* Force row layout for checkboxes on print */
+        gap: 0.5rem !important; /* Smaller gap */
+    }
+
+
+    /* Signature lines: make dashed line consistent */
+    .border-dashed {
+      border-color: #ccc !important;
+    }
+    .pt-4 {
+        padding-top: 10px !important;
+    }
+    .text-sm {
+        font-size: 9pt !important;
+    }
+    .inline-block.w-3\/4 {
+        width: 60% !important; /* Adjust width for print */
+    }
   }
 </style>
 </head>
@@ -246,7 +469,7 @@
         const sectionItems = grouped[section];
         const icon = sectionItems[0].icon; // Get icon from the first item in the section
         const sectionRow = document.createElement('tr');
-        sectionRow.className = 'bg-white'; // Ensure row background is white
+        sectionRow.className = 'bg-white';
         sectionRow.innerHTML = `
           <td colspan="3" class="p-0 border-none">
             <h3 class="bg-amber-50 py-3 px-4 text-base font-bold text-amber-800 flex items-center border-b border-amber-300">
@@ -259,7 +482,7 @@
         // Add items for this section
         sectionItems.forEach(item => {
           const row = document.createElement('tr');
-          row.className = 'bg-white'; // Ensure row background is white
+          row.className = 'bg-white';
           row.innerHTML = `
             <td class="px-4 py-3 align-top text-sm text-gray-900 border-r border-gray-200">
               ${item.id} ${item.description}
@@ -267,27 +490,28 @@
             <td class="px-4 py-3 align-top text-center border-r border-gray-200">
               <div class="flex flex-col sm:flex-row justify-center items-center gap-2">
                 <label class="checkbox-label-class">
-                  <input type="checkbox" name="status-${item.id}" value="yes" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="yes"/>
+                  <input type="checkbox" name="status-${item.id}" value="yes" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="yes" ${item.status === 'yes' ? 'checked' : ''}/>
                   ใช่
                 </label>
                 <label class="checkbox-label-class">
-                  <input type="checkbox" name="status-${item.id}" value="no" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="no"/>
+                  <input type="checkbox" name="status-${item.id}" value="no" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="no" ${item.status === 'no' ? 'checked' : ''}/>
                   ไม่ใช่
                 </label>
                 <label class="checkbox-label-class">
-                  <input type="checkbox" name="status-${item.id}" value="na" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="na"/>
+                  <input type="checkbox" name="status-${item.id}" value="na" class="checkbox-input-class status-checkbox" data-item-id="${item.id}" data-status-value="na" ${item.status === 'na' ? 'checked' : ''}/>
                   NA
                 </label>
               </div>
             </td>
             <td class="px-4 py-3 align-top">
-              <textarea rows="2" class="textarea-field observation-field" data-item-id="${item.id}"></textarea>
+              <textarea rows="2" class="textarea-field observation-field" data-item-id="${item.id}">${item.observations}</textarea>
             </td>
           `;
           tbody.appendChild(row);
         });
       }
       addEventListenersToChecklist();
+      updateScore(); // Initial score calculation after rendering
     }
 
     // Function to calculate and update score
@@ -316,7 +540,7 @@
         const itemId = target.dataset.itemId;
         const newStatus = target.dataset.statusValue;
 
-        // Uncheck all other checkboxes for the same item
+        // Ensure only one checkbox is checked for this item
         document.querySelectorAll(`input[name="status-${itemId}"]`).forEach(checkbox => {
           if (checkbox !== target) {
             checkbox.checked = false;
@@ -344,17 +568,7 @@
       }
     }
 
-    // Add event listeners to dynamically rendered elements
-    function addEventListenersToChecklist() {
-      document.querySelectorAll('.status-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', handleStatusChange);
-      });
-      document.querySelectorAll('.observation-field').forEach(textarea => {
-        textarea.addEventListener('input', handleObservationChange);
-      });
-    }
-
-    // Handle risk level checkboxes (radio-like behavior)
+    // Event listener for risk level checkboxes (radio-like behavior)
     function handleRiskLevelChange(event) {
       const target = event.target;
       if (target.classList.contains('risk-checkbox')) {
@@ -364,6 +578,16 @@
           }
         });
       }
+    }
+
+    // Add event listeners to dynamically rendered elements
+    function addEventListenersToChecklist() {
+      document.querySelectorAll('.status-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', handleStatusChange);
+      });
+      document.querySelectorAll('.observation-field').forEach(textarea => {
+        textarea.addEventListener('input', handleObservationChange);
+      });
     }
 
     // Set initial date on load
@@ -382,6 +606,10 @@
       document.querySelectorAll('.risk-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', handleRiskLevelChange);
       });
+      // Add event listeners for other input fields to update data model
+      document.getElementById('auditor').addEventListener('input', (e) => {}); // Placeholder for data binding
+      document.getElementById('area').addEventListener('input', (e) => {}); // Placeholder for data binding
+      document.getElementById('overallSuggestions').addEventListener('input', (e) => {}); // Placeholder for data binding
     };
   </script>
 </body>
