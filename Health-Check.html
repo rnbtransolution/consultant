@@ -355,6 +355,35 @@
             color: #B8860B;
             font-weight: 500;
         }
+                /* ===== A4 Print Settings ===== */
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+            -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 10mm;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+            #resultSection {
+                page-break-before: always;
+            }
+        }
+
     </style>
 </head>
 <body>
