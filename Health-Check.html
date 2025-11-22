@@ -3,934 +3,172 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แบบประเมินความพร้อมธุรกิจร้านอาหาร - R&B Transolution</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>แบบประเมินความพร้อมธุรกิจร้านอาหาร</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
-            background: linear-gradient(135deg, #1C1C1C 0%, #2F2F2F 100%);
-            min-height: 100vh;
-            color: #FFFEF7;
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 3rem 2rem;
-            background: rgba(245, 242, 232, 0.95);
-            border-radius: 15px;
-            border: 2px solid #B8860B;
-            color: #1C1C1C;
-        }
-
-        .logo-section {
-            margin-bottom: 2rem;
-        }
-
-        .logo-mockup {
-            font-family: 'Playfair Display', serif;
-            line-height: 1.3;
-            margin-bottom: 1.5rem;
-        }
-
-        .logo-main {
-            font-size: 2.2rem;
-            color: #B8860B;
-            font-weight: 600;
-        }
-
-        .logo-sub {
-            font-size: 1.4rem;
-            letter-spacing: 0.1em;
-            color: #1C1C1C;
-            font-weight: 400;
-        }
-
-        .logo-tag {
-            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
-            font-size: 0.9rem;
-            color: #2F2F2F;
-            margin-top: 0.5rem;
-        }
-
-        .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #1C1C1C;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #2F2F2F;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: #B8860B;
-            font-weight: 500;
-            margin-top: 1rem;
-        }
-
-        .section {
-            background: rgba(245, 242, 232, 0.1);
-            margin-bottom: 2rem;
-            padding: 2.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #B8860B;
-            backdrop-filter: blur(10px);
-        }
-
-        .section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #B8860B;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 600;
-        }
-
-        .section-icon {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFFEF7;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .question {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.8rem;
-            padding: 1.5rem;
-            background: rgba(245, 242, 232, 0.08);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-        }
-
-        .question:hover {
-            background: rgba(184, 134, 11, 0.15);
-            transform: translateX(8px);
-            border-color: rgba(184, 134, 11, 0.4);
-        }
-
-        .question label {
-            flex: 1;
-            font-size: 1.1rem;
-            color: #F5F2E8;
-            cursor: pointer;
-            padding-right: 1.5rem;
-            font-weight: 400;
-        }
-
-        .checkbox-container {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .custom-checkbox {
-            width: 26px;
-            height: 26px;
-            border: 3px solid #B8860B;
-            border-radius: 6px;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(28, 28, 28, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .custom-checkbox:hover {
-            background: rgba(184, 134, 11, 0.2);
-            border-color: #DAA520;
-            box-shadow: 0 0 15px rgba(184, 134, 11, 0.3);
-        }
-
-        .custom-checkbox.checked {
-            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
-            border-color: #DAA520;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
-        }
-
-        .custom-checkbox.checked::after {
-            content: '✓';
-            color: #FFFEF7;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 1;
-        }
-
-        .checkbox-label {
-            color: #F5F2E8;
-            font-weight: 500;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        input[type="radio"] {
-            display: none;
-        }
-
-        .submit-section {
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
-            color: #FFFEF7;
-            border: none;
-            padding: 1.2rem 4rem;
-            font-size: 1.3rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
-            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.6);
-            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-        }
-
-        .result-section {
-            display: none;
-            text-align: center;
-            margin-top: 4rem;
-            padding: 3rem;
-            border-radius: 15px;
-            animation: fadeIn 0.6s ease-in;
-            border: 2px solid #B8860B;
-        }
-
-        .result-excellent {
-            background: linear-gradient(135deg, rgba(34, 139, 34, 0.9), rgba(40, 167, 69, 0.9));
-            color: #FFFEF7;
-        }
-
-        .result-good {
-            background: linear-gradient(135deg, rgba(184, 134, 11, 0.9), rgba(218, 165, 32, 0.9));
-            color: #FFFEF7;
-        }
-
-        .result-needs-improvement {
-            background: linear-gradient(135deg, rgba(139, 34, 34, 0.9), rgba(220, 53, 69, 0.9));
-            color: #FFFEF7;
-        }
-
-        .result-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .result-score {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #DAA520;
-        }
-
-        .result-description {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .recommendations {
-            text-align: left;
-            background: rgba(28, 28, 28, 0.4);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2.5rem;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-        }
-
-        .recommendations h3 {
-            font-family: 'Playfair Display', serif;
-            color: #DAA520;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .recommendations ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .recommendations li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-            font-size: 1.1rem;
-        }
-
-        .recommendations li:before {
-            content: '→ ';
-            color: #B8860B;
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(47, 47, 47, 0.3);
-            border-radius: 5px;
-            margin: 2rem 0;
-            overflow: hidden;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #B8860B, #DAA520);
-            width: 0%;
-            transition: width 0.4s ease;
-            border-radius: 5px;
-        }
-
-        .brand-footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(245, 242, 232, 0.05);
-            border-radius: 10px;
-            border-top: 2px solid #B8860B;
-        }
-
-        .brand-footer p {
-            color: #F5F2E8;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            color: #B8860B;
-            font-weight: 500;
-        }
-                /* ===== A4 Print Settings ===== */
-        @page {
-            size: A4;
-            margin: 15mm;
-        }
-
-        @media print {
-            html, body {
-                width: 210mm;
-                height: 297mm;
-                margin: 0;
-                padding: 0;
-            -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .container {
-                max-width: 100%;
-                margin: 0 auto;
-                padding: 10mm;
-            }
-            .section {
-                page-break-inside: avoid;
-            }
-            #resultSection {
-                page-break-before: always;
-            }
-        }
-
+        @page{size:A4;margin:10mm}
+        @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.no-print{display:none!important}.page-break{page-break-before:always}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans Thai',sans-serif;background:#f0f0f0;color:#1C1C1C;font-size:9pt;line-height:1.4}
+        .container{max-width:210mm;margin:0 auto;padding:8px;background:#fff}
+        .header{text-align:center;padding:12px;border:2px solid #8B7355;background:#FAF8F5;margin-bottom:10px}
+        .logo-main{font-family:'Playfair Display',serif;font-size:20pt;color:#8B7355;font-weight:600}
+        .logo-sub{font-family:'Playfair Display',serif;font-size:11pt;letter-spacing:.12em}
+        .header h1{font-size:14pt;margin:8px 0 4px}
+        .tagline{font-size:9pt;color:#8B7355;font-weight:600}
+        .info-box{display:flex;gap:8px;margin-bottom:8px;padding:8px;border:1px solid #ddd;background:#fafafa}
+        .info-box div{flex:1}
+        .info-box label{font-size:7pt;color:#666;display:block}
+        .info-box input{width:100%;border:none;border-bottom:1px solid #999;background:transparent;padding:2px 0;font-size:8pt;outline:none}
+        .section{margin-bottom:8px;border:1px solid #ccc}
+        .section-header{background:linear-gradient(135deg,#8B7355,#A0896C);color:#fff;padding:6px 10px;display:flex;align-items:center;gap:6px}
+        .section-icon{width:20px;height:20px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9pt}
+        .section-header h2{font-size:10pt;flex:1}
+        .section-score{font-size:8pt;background:rgba(255,255,255,.25);padding:2px 8px;border-radius:8px}
+        .questions{padding:6px 10px}
+        .question{display:flex;align-items:center;padding:4px 0;border-bottom:1px dotted #ddd}
+        .question:last-child{border-bottom:none}
+        .q-num{min-width:18px;height:18px;background:#8B7355;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7pt;font-weight:600;margin-right:6px}
+        .q-text{flex:1;font-size:8pt;padding-right:8px}
+        .cb-group{display:flex;gap:10px}
+        .cb-opt{display:flex;align-items:center;gap:3px;cursor:pointer}
+        .cb{width:14px;height:14px;border:2px solid #8B7355;border-radius:2px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+        .cb:hover{background:#f0e6d6}
+        .cb.checked{background:#8B7355}
+        .cb.checked::after{content:'✓';color:#fff;font-size:10px}
+        .cb-label{font-size:8pt}
+        .guide{margin:8px 0;padding:10px;border:2px solid #8B7355;background:#FAF8F5}
+        .guide h3{font-size:10pt;color:#8B7355;margin-bottom:6px}
+        .levels{display:flex;gap:6px}
+        .lvl{flex:1;padding:6px;text-align:center;border-radius:4px;font-size:8pt}
+        .lvl-e{background:#E8F5E9;border:1px solid #4CAF50}
+        .lvl-g{background:#FFF8E1;border:1px solid #FFC107}
+        .lvl-i{background:#FFEBEE;border:1px solid #F44336}
+        .lvl strong{display:block;font-size:9pt}
+        .result{margin-top:10px;padding:12px;border:2px solid #8B7355}
+        .result h3{font-size:10pt;color:#8B7355;margin-bottom:8px}
+        .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+        .result-item{padding:8px;border:1px solid #ddd;text-align:center;border-radius:4px}
+        .result-item label{font-size:7pt;color:#666}
+        .result-item .val{font-size:14pt;font-weight:600;color:#8B7355}
+        .result-item.excellent{background:#E8F5E9;border-color:#4CAF50}.result-item.excellent .val{color:#2E7D32}
+        .result-item.good{background:#FFF8E1;border-color:#FFC107}.result-item.good .val{color:#F57C00}
+        .result-item.improve{background:#FFEBEE;border-color:#F44336}.result-item.improve .val{color:#C62828}
+        .badge{display:inline-block;padding:3px 12px;border-radius:12px;font-size:9pt;font-weight:600;margin-top:4px}
+        .badge.excellent{background:#4CAF50;color:#fff}
+        .badge.good{background:#FFC107;color:#333}
+        .badge.improve{background:#F44336;color:#fff}
+        .notes label{font-size:7pt;color:#666;display:block;margin-bottom:3px}
+        .notes textarea{width:100%;border:1px solid #ddd;min-height:40px;padding:6px;font-size:8pt;font-family:inherit;resize:none}
+        .footer{margin-top:10px;padding:8px;border-top:2px solid #8B7355;text-align:center;background:#FAF8F5;font-size:7pt}
+        .footer .contact{color:#8B7355;font-weight:600}
+        .btn-row{display:flex;gap:8px;justify-content:center;margin:12px 0}
+        .btn{background:#8B7355;color:#fff;border:none;padding:8px 16px;font-size:10pt;cursor:pointer;border-radius:4px;font-family:inherit}
+        .btn:hover{background:#6D5A45}
+        .btn-out{background:#fff;color:#8B7355;border:2px solid #8B7355}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo-section">
-                <div class="logo-mockup">
-                    <div class="logo-main">R & B</div>
-                    <div class="logo-sub">TRANSOLUTION</div>
-                    <div class="logo-tag">CONSULTING</div>
-                </div>
-            </div>
-            <h1>แบบประเมินความพร้อมธุรกิจร้านอาหาร</h1>
-            <p>วิเคราะห์จุดแข็ง จุดอ่อน และโอกาสในการพัฒนาธุรกิจของคุณ<br>ด้วยระบบประเมินมาตรฐานสากล</p>
-            <div class="tagline">ยกระดับร้านอาหาร เปลี่ยนผลลัพธ์ให้ดีขึ้น</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-        </div>
-
-        <form id="assessmentForm">
-            <!-- SWOT Analysis Section -->
-            <div class="section">
-                <h2><span class="section-icon">S</span>การวิเคราะห์ SWOT</h2>
-                <div class="question">
-                    <label>คุณมีจุดแข็งที่ชัดเจนซึ่งทำให้ร้านอาหารของคุณแตกต่างจากคู่แข่งหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="swot1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="swot1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณได้ระบุและจัดการกับจุดอ่อนหลักของร้านอย่างเป็นระบบแล้วหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="swot2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="swot2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณติดตามและวิเคราะห์โอกาสทางธุรกิจในตลาดอย่างสม่ำเสมอหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="swot3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="swot3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีแผนรับมือกับอุปสรรคและความเสี่ยงที่อาจเกิดขึ้นหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="swot4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="swot4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="swot4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Finance Section -->
-            <div class="section">
-                <h2><span class="section-icon">₿</span>การจัดการทางการเงิน</h2>
-                <div class="question">
-                    <label>คุณมีเงินทุนหมุนเวียนและเงินสำรองที่เพียงพอสำหรับการดำเนินงานหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="finance1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="finance1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณควบคุมต้นทุนอาหารให้อยู่ในระดับที่เหมาะสม (ไม่เกิน 30% ของรายได้) หรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="finance2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="finance2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีระบบงบประมาณและการคาดการณ์กระแสเงินสดที่ชัดเจนหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="finance3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="finance3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>อัตรากำไรสุทธิของคุณอยู่ในเกณฑ์มาตรฐาน (10-15%) หรือดีกว่าหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="finance4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="finance4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="finance4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Guest Satisfaction Section -->
-            <div class="section">
-                <h2><span class="section-icon">★</span>ความพึงพอใจของลูกค้า</h2>
-                <div class="question">
-                    <label>คุณมีระบบการรวบรวมและวิเคราะห์ข้อมูลความพึงพอใจของลูกค้าอย่างสม่ำเสมอหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="guest1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="guest1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คะแนนรีวิวเฉลี่ยของร้านอยู่ที่ 4.0 ดาวขึ้นไปในแพลตฟอร์มออนไลน์หรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="guest2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="guest2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีกระบวนการจัดการข้อร้องเรียนและแก้ไขปัญหาที่เป็นระบบหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="guest3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="guest3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีโปรแกรมสร้างความผูกพันและรักษาลูกค้าประจำหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="guest4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="guest4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="guest4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Employee Management Section -->
-            <div class="section">
-                <h2><span class="section-icon">👥</span>การจัดการทรัพยากรบุคคล</h2>
-                <div class="question">
-                    <label>อัตราการลาออกของพนักงานอยู่ในระดับที่ยอมรับได้ (ต่ำกว่า 100% ต่อปี) หรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="employee1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="employee1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีโปรแกรมการอบรมและพัฒนาพนักงานที่เป็นระบบสำหรับทุกตำแหน่งหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="employee2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="employee2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณเสนอค่าตอบแทนและสวัสดิการที่แข่งขันได้ในตลาดแรงงานหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="employee3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="employee3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีคำอธิบายลักษณะงานและเกณฑ์การประเมินผลงานที่ชัดเจนหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="employee4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="employee4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="employee4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Marketing Section -->
-            <div class="section">
-                <h2><span class="section-icon">📢</span>การตลาดและการสร้างแบรนด์</h2>
-                <div class="question">
-                    <label>คุณมีการสื่อสารกับลูกค้าผ่านช่องทางดิจิทัลอย่างสม่ำเสมอและมีประสิทธิภาพหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="marketing1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="marketing1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีเว็บไซต์ที่ทันสมัยพร้อมระบบสั่งอาหารออนไลน์หรือบริการจองโต๊ะหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="marketing2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="marketing2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีเอกลักษณ์ของแบรนด์และข้อความหลักที่สื่อสารอย่างสม่ำเสมอหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="marketing3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="marketing3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณติดตามและวิเคราะห์ผลตอบแทนจากการลงทุนด้านการตลาดอย่างเป็นระบบหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="marketing4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="marketing4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="marketing4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Operations Section -->
-            <div class="section">
-                <h2><span class="section-icon">⚙️</span>การดำเนินงานและควบคุมคุณภาพ</h2>
-                <div class="question">
-                    <label>คุณมีสูตรอาหารมาตรฐานและระบบควบคุมปริมาณที่สม่ำเสมอหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations1" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="operations1" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations1" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="operations1" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณมีระบบการจัดการสินค้าคงคลังและความสัมพันธ์ที่ดีกับผู้จำหน่ายหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations2" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="operations2" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations2" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="operations2" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณปฏิบัติตามมาตรฐานด้านสุขอนามัย ความปลอดภัย และกฎหมายที่เกี่ยวข้องอย่างครบถ้วนหรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations3" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="operations3" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations3" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="operations3" value="no">
-                        </div>
-                    </div>
-                </div>
-                <div class="question">
-                    <label>คุณใช้เทคโนโลยีสำหรับเพิ่มประสิทธิภาพการดำเนินงาน (ระบบ POS, การจัดตาราง, ฯลฯ) หรือไม่?</label>
-                    <div class="checkbox-container">
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations4" data-value="yes"></div>
-                            <span class="checkbox-label">ใช่</span>
-                            <input type="radio" name="operations4" value="yes">
-                        </div>
-                        <div class="checkbox-option">
-                            <div class="custom-checkbox" data-name="operations4" data-value="no"></div>
-                            <span class="checkbox-label">ไม่ใช่</span>
-                            <input type="radio" name="operations4" value="no">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="submit-section">
-                <button type="submit" class="submit-btn">วิเคราะห์ความพร้อมธุรกิจของคุณ</button>
-            </div>
-        </form>
-
-        <div id="resultSection" class="result-section">
-            <div id="resultContent"></div>
-        </div>
-
-        <div class="brand-footer">
-            <p>© 2025 R&B Transolution. All rights reserved.</p>
-            <p class="contact-info">ปรึกษาฟรี | ติดต่อ LINE: @rnbtransolution</p>
+<div class="container">
+    <div class="header">
+        <div class="logo-main">R & B</div>
+        <div class="logo-sub">TRANSOLUTION</div>
+        <h1>แบบประเมินความพร้อมธุรกิจร้านอาหาร</h1>
+        <div class="tagline">ยกระดับร้านอาหาร เปลี่ยนผลลัพธ์ให้ดีขึ้น</div>
+    </div>
+    <div class="info-box">
+        <div><label>ชื่อร้านอาหาร</label><input type="text"></div>
+        <div><label>วันที่ประเมิน</label><input type="text"></div>
+        <div><label>ผู้ประเมิน</label><input type="text"></div>
+    </div>
+    <div id="sections"></div>
+    <div class="guide">
+        <h3>เกณฑ์การประเมินผล</h3>
+        <div class="levels">
+            <div class="lvl lvl-e"><strong>80-100%</strong>ความพร้อมระดับเป็นเลิศ (19-24)</div>
+            <div class="lvl lvl-g"><strong>60-79%</strong>ความพร้อมระดับดี (15-18)</div>
+            <div class="lvl lvl-i"><strong>0-59%</strong>ต้องการการพัฒนา (0-14)</div>
         </div>
     </div>
-
-    <script>
-        // Custom checkbox functionality
-        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('click', function() {
-                const name = this.dataset.name;
-                const value = this.dataset.value;
-                
-                // Clear other checkboxes in the same group
-                document.querySelectorAll(`[data-name="${name}"]`).forEach(cb => {
-                    cb.classList.remove('checked');
-                });
-                
-                // Check the clicked checkbox
-                this.classList.add('checked');
-                
-                // Set the corresponding radio button
-                document.querySelector(`input[name="${name}"][value="${value}"]`).checked = true;
-                
-                updateProgress();
-            });
-        });
-
-        // Progress bar update
-        function updateProgress() {
-            const totalQuestions = 24;
-            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+    <div class="result">
+        <h3>สรุปผลการประเมิน</h3>
+        <div class="result-grid">
+            <div class="result-item" id="ri-score"><label>คะแนนรวม</label><div class="val" id="total-score">0/24</div></div>
+            <div class="result-item" id="ri-pct"><label>เปอร์เซ็นต์</label><div class="val" id="total-pct">0%</div></div>
+            <div class="result-item" id="ri-lvl"><label>ระดับความพร้อม</label><div class="val" id="total-lvl">-</div></div>
+        </div>
+        <div class="notes"><label>หมายเหตุและข้อเสนอแนะ</label><textarea></textarea></div>
+    </div>
+    <div class="footer">
+        <p>© 2025 R&B Transolution. All rights reserved.</p>
+        <p class="contact">ปรึกษาฟรี | LINE: @rnbtransolution | โทร: 089 104 1992</p>
+    </div>
+    <div class="btn-row no-print">
+        <button class="btn" onclick="window.print()">🖨️ พิมพ์ / Export PDF</button>
+        <button class="btn btn-out" onclick="resetForm()">🔄 ล้างข้อมูล</button>
+    </div>
+</div>
+<script>
+const data = [
+    {id:'swot',icon:'S',title:'การวิเคราะห์ SWOT',qs:['คุณมีจุดแข็งที่ชัดเจนซึ่งทำให้ร้านอาหารของคุณแตกต่างจากคู่แข่งหรือไม่?','คุณได้ระบุและจัดการกับจุดอ่อนหลักของร้านอย่างเป็นระบบแล้วหรือไม่?','คุณติดตามและวิเคราะห์โอกาสทางธุรกิจในตลาดอย่างสม่ำเสมอหรือไม่?','คุณมีแผนรับมือกับอุปสรรคและความเสี่ยงที่อาจเกิดขึ้นหรือไม่?']},
+    {id:'finance',icon:'฿',title:'การจัดการทางการเงิน',qs:['คุณมีเงินทุนหมุนเวียนและเงินสำรองที่เพียงพอสำหรับการดำเนินงานหรือไม่?','คุณควบคุมต้นทุนอาหารให้อยู่ในระดับที่เหมาะสม (ไม่เกิน 30%) หรือไม่?','คุณมีระบบงบประมาณและการคาดการณ์กระแสเงินสดที่ชัดเจนหรือไม่?','อัตรากำไรสุทธิของคุณอยู่ในเกณฑ์มาตรฐาน (10-15%) หรือดีกว่าหรือไม่?']},
+    {id:'guest',icon:'★',title:'ความพึงพอใจของลูกค้า',qs:['คุณมีระบบรวบรวมและวิเคราะห์ข้อมูลความพึงพอใจลูกค้าอย่างสม่ำเสมอหรือไม่?','คะแนนรีวิวเฉลี่ยของร้านอยู่ที่ 4.0 ดาวขึ้นไปในแพลตฟอร์มออนไลน์หรือไม่?','คุณมีกระบวนการจัดการข้อร้องเรียนและแก้ไขปัญหาที่เป็นระบบหรือไม่?','คุณมีโปรแกรมสร้างความผูกพันและรักษาลูกค้าประจำหรือไม่?'],pageBreak:true},
+    {id:'hr',icon:'👥',title:'การจัดการทรัพยากรบุคคล',qs:['อัตราการลาออกของพนักงานอยู่ในระดับที่ยอมรับได้ (ต่ำกว่า 100% ต่อปี) หรือไม่?','คุณมีโปรแกรมการอบรมและพัฒนาพนักงานที่เป็นระบบสำหรับทุกตำแหน่งหรือไม่?','คุณเสนอค่าตอบแทนและสวัสดิการที่แข่งขันได้ในตลาดแรงงานหรือไม่?','คุณมีคำอธิบายลักษณะงานและเกณฑ์การประเมินผลงานที่ชัดเจนหรือไม่?']},
+    {id:'marketing',icon:'📢',title:'การตลาดและการสร้างแบรนด์',qs:['คุณมีการสื่อสารกับลูกค้าผ่านช่องทางดิจิทัลอย่างสม่ำเสมอและมีประสิทธิภาพหรือไม่?','คุณมีเว็บไซต์ที่ทันสมัยพร้อมระบบสั่งอาหารออนไลน์หรือบริการจองโต๊ะหรือไม่?','คุณมีเอกลักษณ์ของแบรนด์และข้อความหลักที่สื่อสารอย่างสม่ำเสมอหรือไม่?','คุณติดตามและวิเคราะห์ผลตอบแทนจากการลงทุนด้านการตลาดอย่างเป็นระบบหรือไม่?']},
+    {id:'ops',icon:'⚙',title:'การดำเนินงานและควบคุมคุณภาพ',qs:['คุณมีสูตรอาหารมาตรฐานและระบบควบคุมปริมาณที่สม่ำเสมอหรือไม่?','คุณมีระบบการจัดการสินค้าคงคลังและความสัมพันธ์ที่ดีกับผู้จำหน่ายหรือไม่?','คุณปฏิบัติตามมาตรฐานด้านสุขอนามัย ความปลอดภัย และกฎหมายอย่างครบถ้วนหรือไม่?','คุณใช้เทคโนโลยีสำหรับเพิ่มประสิทธิภาพการดำเนินงาน (POS, การจัดตาราง) หรือไม่?']}
+];
+let answers={},qNum=0;
+const container=document.getElementById('sections');
+data.forEach((sec,si)=>{
+    let html=sec.pageBreak?'<div class="page-break"></div>':'';
+    html+=`<div class="section"><div class="section-header"><span class="section-icon">${sec.icon}</span><h2>${sec.title}</h2><span class="section-score" id="score-${sec.id}">0/4</span></div><div class="questions">`;
+    sec.qs.forEach((q,qi)=>{
+        qNum++;
+        const qid=`q${qNum}`;
+        html+=`<div class="question"><span class="q-num">${qNum}</span><span class="q-text">${q}</span><div class="cb-group"><div class="cb-opt"><div class="cb" data-q="${qid}" data-v="yes"></div><span class="cb-label">ใช่</span></div><div class="cb-opt"><div class="cb" data-q="${qid}" data-v="no"></div><span class="cb-label">ไม่ใช่</span></div></div></div>`;
+    });
+    html+='</div></div>';
+    container.innerHTML+=html;
+});
+document.querySelectorAll('.cb').forEach(cb=>{
+    cb.addEventListener('click',function(){
+        const q=this.dataset.q,v=this.dataset.v;
+        document.querySelectorAll(`.cb[data-q="${q}"]`).forEach(c=>c.classList.remove('checked'));
+        this.classList.add('checked');
+        answers[q]=v;
+        updateScores();
+    });
+});
+function updateScores(){
+    let total=0;
+    data.forEach((sec,si)=>{
+        let secScore=0;
+        for(let i=1;i<=4;i++){
+            const qid=`q${si*4+i}`;
+            if(answers[qid]==='yes')secScore++;
         }
-
-        // Form submission
-        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            let yesCount = 0;
-            let totalQuestions = 0;
-            
-            for (let [name, value] of formData.entries()) {
-                totalQuestions++;
-                if (value === 'yes') {
-                    yesCount++;
-                }
-            }
-            
-            if (totalQuestions < 24) {
-                alert('กรุณาตอบคำถามให้ครบทุกข้อก่อนส่งแบบประเมิน');
-                return;
-            }
-            
-            const percentage = (yesCount / totalQuestions) * 100;
-            displayResults(percentage, yesCount, totalQuestions);
-        });
-
-        function displayResults(percentage, yesCount, totalQuestions) {
-            const resultSection = document.getElementById('resultSection');
-            const resultContent = document.getElementById('resultContent');
-            
-            let resultClass, title, description, recommendations;
-            
-            if (percentage >= 80) {
-                resultClass = 'result-excellent';
-                title = '🌟 ความพร้อมระดับเป็นเลิศ';
-                description = 'ยินดีด้วย! ร้านอาหารของคุณมีความพร้อมในระดับที่ยอดเยี่ยม คุณได้สร้างรากฐานที่แข็งแกร่งสำหรับการเติบโตอย่างยั่งยืนและสามารถแข่งขันได้อย่างมีประสิทธิภาพในตลาด';
-                recommendations = [
-                    'เน้นการปรับปรุงอย่างต่อเนื่องเพื่อรักษาความเป็นเลิศ',
-                    'พิจารณาการขยายธุรกิจหรือเพิ่มสาขาใหม่',
-                    'พัฒนานวัตกรรมใหม่ๆ เพื่อคงความเป็นผู้นำ',
-                    'แบ่งปันความรู้และประสบการณ์กับเครือข่ายธุรกิจ',
-                    'เป็นต้นแบบสำหรับร้านอาหารอื่นๆ ในอุตสาหกรรม'
-                ];
-            } else if (percentage >= 60) {
-                resultClass = 'result-good';
-                title = '👍 ความพร้อมระดับดี';
-                description = 'ร้านอาหารของคุณมีรากฐานที่มั่นคงและพร้อมสำหรับการดำเนินธุรกิจ แต่ยังมีโอกาสในการปรับปรุงเพื่อก้าวสู่ความเป็นเลิศ การลงทุนในการพัฒนาด้านที่ยังขาดจะช่วยเพิ่มศักยภาพในการแข่งขัน';
-                recommendations = [
-                    'วิเคราะห์และปรับปรุงด้านที่ได้คะแนนต่ำเป็นลำดับแรก',
-                    'เพิ่มการลงทุนในเทคโนโลยีและระบบดิจิทัล',
-                    'พัฒนากลยุทธ์การตลาดให้มีประสิทธิภาพมากขึ้น',
-                    'ปรับปรุงระบบการจัดการข้อมูลลูกค้า',
-                    'เสริมสร้างทักษะให้กับทีมงานอย่างเป็นระบบ',
-                    'ติดตั้งระบบการวัดผลและติดตามประสิทธิภาพ'
-                ];
-            } else {
-                resultClass = 'result-needs-improvement';
-                title = '⚠️ ต้องการการพัฒนาเร่งด่วน';
-                description = 'ผลการประเมินแสดงให้เห็นว่าร้านอาหารของคุณต้องการการปรับปรุงในหลายด้านเพื่อให้สามารถแข่งขันได้อย่างมีประสิทธิภาพ การลงทุนในการพัฒนาอย่างเป็นระบบจะช่วยให้ธุรกิจของคุณก้าวไปสู่ความสำเร็จ';
-                recommendations = [
-                    'จัดทำแผนการปรับปรุงทีละด้านตามลำดับความสำคัญ',
-                    'เริ่มต้นจากการจัดการทางการเงินและควบคุมต้นทุน',
-                    'พัฒนาระบบการบริการและคุณภาพอาหาร',
-                    'ลงทุนในการฝึกอบรมพนักงานและการจัดการทีม',
-                    'สร้างระบบการตลาดและการสื่อสารที่มีประสิทธิภาพ',
-                    'ปรึกษาผู้เชี่ยวชาญด้านการจัดการร้านอาหาร',
-                    'พิจารณาใช้บริการที่ปรึกษาเพื่อการเปลี่ยนแปลงที่ยั่งยืน'
-                ];
-            }
-            
-            resultContent.innerHTML = `
-                <div class="result-title">${title}</div>
-                <div class="result-score">${yesCount}/${totalQuestions} คะแนน (${Math.round(percentage)}%)</div>
-                <div class="result-description">${description}</div>
-                <div class="recommendations">
-                    <h3>แนวทางการพัฒนาที่แนะนำ:</h3>
-                    <ul>
-                        ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
-                    </ul>
-                </div>
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(184, 134, 11, 0.3); text-align: center;">
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #DAA520;">สนใจปรึกษาเพิ่มเติมหรือรับการวิเคราะห์เชิงลึก?</p>
-                    <p style="font-size: 1rem; color: #F5F2E8;">ติดต่อทีมงาน R&B Transolution เพื่อรับคำปรึกษาฟรี</p>
-                    <p style="font-size: 1rem; color: #B8860B; font-weight: 600; margin-top: 0.5rem;">LINE: @rnbtransolution | โทร: 089 104 1992</p>
-                </div>
-            `;
-            
-            resultSection.className = `result-section ${resultClass}`;
-            resultSection.style.display = 'block';
-            
-            // Scroll to results
-            resultSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+        document.getElementById(`score-${sec.id}`).textContent=`${secScore}/4`;
+        total+=secScore;
+    });
+    const pct=Math.round((total/24)*100);
+    document.getElementById('total-score').textContent=`${total}/24`;
+    document.getElementById('total-pct').textContent=`${pct}%`;
+    let lvl,cls;
+    if(pct>=80){lvl='เป็นเลิศ';cls='excellent';}
+    else if(pct>=60){lvl='ดี';cls='good';}
+    else{lvl='ต้องพัฒนา';cls='improve';}
+    document.getElementById('total-lvl').innerHTML=`<span class="badge ${cls}">${lvl}</span>`;
+    ['ri-score','ri-pct','ri-lvl'].forEach(id=>{
+        const el=document.getElementById(id);
+        el.className='result-item '+cls;
+    });
+}
+function resetForm(){
+    answers={};
+    document.querySelectorAll('.cb').forEach(c=>c.classList.remove('checked'));
+    document.querySelectorAll('input,textarea').forEach(i=>i.value='');
+    updateScores();
+}
+</script>
 </body>
 </html>
