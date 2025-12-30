@@ -10,12 +10,10 @@
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
-<!-- Google Sans Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
-<!-- Other Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&amp;family=Crimson+Text:wght@300;400;600&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
@@ -23,17 +21,17 @@
 
 <style>
         :root {
-            /* Hotels Inspired Luxury Palette */
-            --luxury-bronze: #B8860B; /* Rich Bronze */
+
+            --luxury-bronze: #B8860B; 
             --warm-bronze: #CD853F;
-            --deep-charcoal: #2F2F2F; /* Sophisticated Charcoal */
-            --rich-black: #1C1C1C; /* Deep Black */
-            --ivory: #FFFEF7; /* Warm Ivory */
-            --pearl-white: #F8F6F2; /* Pearl White */
-            --warm-beige: #F5F2E8; /* Warm Beige */
+            --deep-charcoal: #2F2F2F; 
+            --rich-black: #1C1C1C; 
+            --ivory: #FFFEF7; 
+            --pearl-white: #F8F6F2; 
+            --warm-beige: #F5F2E8; 
             --text-charcoal: #3A3A3A;
             --text-muted: #6B6B6B;
-            --accent-gold: #DAA520; /* Accent Gold */
+            --accent-gold: #DAA520; 
             --gradient-luxury: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #CD853F 100%);
             --gradient-hero: linear-gradient(135deg, rgba(47, 47, 47, 0.7) 0%, rgba(28, 28, 28, 0.85) 100%);
             --section-spacing: 5rem;
@@ -41,7 +39,6 @@
             --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        /* ===== BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -49,7 +46,7 @@
         }
 
         body {
-            /* Updated to Google Sans */
+
             font-family: 'Google Sans', 'Noto Sans Thai', sans-serif;
             font-weight: 300;
             line-height: 1.6;
@@ -59,7 +56,7 @@
             letter-spacing: 0.3px;
             scroll-behavior: smooth;
         }
-        
+
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
@@ -67,7 +64,7 @@
             color: var(--deep-charcoal);
             line-height: 1.3;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
@@ -80,7 +77,6 @@
             display: block;
         }
 
-        /* ===== SECTIONS ===== */
         section {
             padding: var(--section-spacing) 2rem;
             max-width: 1200px;
@@ -109,7 +105,6 @@
             background: var(--gradient-luxury);
         }
 
-        /* ===== HERO SECTION ===== */
         #hero {
             height: 100vh;
             min-height: 700px;
@@ -195,7 +190,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== LUXURY BUTTONS ===== */
         .cta-button {
             background: transparent;
             color: var(--text-charcoal);
@@ -212,7 +206,7 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             transform-style: preserve-3d;
             perspective: 1000px;
             min-height: 44px;
@@ -241,7 +235,6 @@
             box-shadow: var(--shadow-luxury);
         }
 
-        /* ===== LUXURY FEATURES ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -307,7 +300,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* ===== LUXURY NAVIGATION ===== */
         .floating-nav {
             position: fixed;
             top: 1.5rem;
@@ -413,7 +405,6 @@
             transform: translateY(-2px);
         }
 
-        /* ===== TRENDS SECTION ===== */
         .trends-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -455,7 +446,6 @@
             text-align: left;
         }
 
-        /* ===== TESTIMONIALS SECTION ===== */
         .testimonial-carousel {
             position: relative;
             max-width: 800px;
@@ -544,7 +534,6 @@
             opacity: 1;
         }
 
-        /* ===== PACKAGES SECTION ===== */
         .package-dropdown-container {
             max-width: 900px;
             margin: 0 auto;
@@ -581,7 +570,7 @@
             color: var(--deep-charcoal);
             appearance: none;
             cursor: pointer;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             font-weight: 300;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
@@ -678,7 +667,7 @@
             font-weight: 300;
             color: var(--text-muted);
             margin-bottom: 0.3rem;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             letter-spacing: 0.5px;
         }
 
@@ -738,7 +727,7 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             position: relative;
             overflow: hidden;
             min-height: 44px;
@@ -766,7 +755,6 @@
             box-shadow: var(--shadow-luxury);
         }
 
-        /* ===== CONTACT SECTION ===== */
         .contact-container {
             background: var(--pearl-white);
             border-radius: 0;
@@ -796,7 +784,6 @@
             box-shadow: 0 25px 60px rgba(28, 28, 28, 0.15);
         }
 
-        /* ===== FORM STYLES ===== */
         .form-container {
             background: var(--pearl-white);
             border-radius: 0;
@@ -839,7 +826,7 @@
             border: 1px solid rgba(184, 134, 11, 0.3);
             background: var(--ivory);
             color: var(--deep-charcoal);
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             font-weight: 300;
             letter-spacing: 0.3px;
             transition: all 0.3s ease;
@@ -875,7 +862,7 @@
             margin-top: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; /* Updated */
+            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
             position: relative;
             overflow: hidden;
             min-height: 44px;
@@ -922,7 +909,6 @@
             color: var(--luxury-bronze);
         }
 
-        /* ===== CONTACT BUTTONS ===== */
         .contact-buttons {
             display: flex;
             justify-content: center;
@@ -969,7 +955,6 @@
             color: var(--text-charcoal);
         }
 
-        /* ===== LUXURY FOOTER ===== */
         footer {
             background: var(--deep-charcoal);
             padding: 2rem;
@@ -985,7 +970,6 @@
             margin: 0;
         }
 
-        /* ===== ANIMATION CLASSES ===== */
         [data-animate] {
             opacity: 0;
             transform: translateY(30px);
@@ -997,7 +981,6 @@
             transform: translateY(0);
         }
 
-        /* ===== LIVE CHAT ===== */
         .live-chat {
             position: fixed;
             bottom: 2rem;
@@ -1047,30 +1030,29 @@
             pointer-events: all;
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             :root {
                 --section-spacing: 4rem;
             }
-            
+
             #hero h1 {
                 font-size: 3.5rem;
             }
-            
+
             section h2 {
                 font-size: 2.5rem;
                 margin-bottom: 2.5rem;
             }
-            
+
             .floating-nav {
                 padding: 0.7rem 1.2rem;
             }
-            
+
             .floating-nav a {
                 margin: 0 0.8rem;
                 font-size: 0.8rem;
             }
-            
+
             .floating-nav .appointment-btn {
                 margin-left: 0.8rem;
                 padding: 0.5rem 1rem;
@@ -1082,24 +1064,24 @@
             #hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1.3rem;
             }
-            
+
             section {
                 padding: 3rem 1.5rem;
             }
-            
+
             section h2 {
                 font-size: 1.8rem;
                 margin-bottom: 2rem;
             }
-            
+
             .feature-card {
                 padding: 2rem 1.5rem;
             }
-            
+
             .floating-nav {
                 display: flex;
             }
@@ -1111,7 +1093,7 @@
             .carousel-prev {
                 left: 10px;
             }
-        
+
             .carousel-next {
                 right: 10px;
             }
@@ -1122,49 +1104,49 @@
                 min-height: 600px;
                 padding: 1.5rem;
             }
-            
+
             #hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1.1rem;
             }
-            
+
             .description {
                 font-size: 1rem;
             }
-            
+
             section h2 {
                 font-size: 2rem;
             }
-            
+
             .form-container,
             .package-dropdown-container,
             .contact-container {
                 padding: 2rem 1.5rem;
             }
-            
+
             .form-title {
                 font-size: 1.8rem;
             }
-            
+
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 1.2rem;
             }
-            
+
             .contact-buttons a {
                 width: 100%;
                 max-width: 280px;
             }
-            
+
             .package-header {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .package-icon {
                 margin-right: 0;
                 margin-bottom: 1.2rem;
@@ -1173,12 +1155,11 @@
             .trust-badges {
                 gap: 1rem;
             }
-            
+
             .trust-badges img {
                 height: 60px;
             }
 
-            /* Mobile navigation */
             .floating-nav {
                 position: fixed;
                 bottom: 1rem;
@@ -1211,37 +1192,37 @@
             #hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
             }
-            
+
             section h2 {
                 font-size: 1.8rem;
             }
-            
+
             .package-dropdown-container,
             .form-container {
                 padding: 1.8rem 1.2rem;
             }
-            
+
             .package-select {
                 padding: 1rem 1.2rem;
                 font-size: 0.95rem;
             }
-            
+
             .package-details {
                 padding: 1.5rem 1.2rem;
             }
-            
+
             .package-title {
                 font-size: 1.3rem;
             }
-            
+
             .package-price {
                 font-size: 1.05rem;
             }
-            
+
             .feature-card {
                 padding: 1.8rem 1.2rem;
             }
@@ -1257,9 +1238,8 @@
             }
         }
 
-        /* iOS specific fixes */
         @supports (-webkit-touch-callout: none) {
-            /* CSS specific to iOS devices */
+
             .floating-nav {
                 position: fixed;
                 bottom: 1rem;
@@ -1268,13 +1248,11 @@
                 right: 1rem;
                 width: calc(100% - 2rem);
             }
-            
-            /* Improve touch targets */
+
             a, button, .cta-button, .form-input, .form-select {
                 min-height: 44px;
             }
-            
-            /* Disable hover effects on touch devices */
+
             @media (hover: none) {
                 .cta-button:hover::before, 
                 .feature-card:hover,
@@ -1284,7 +1262,6 @@
             }
         }
 
-        /* Reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -1294,7 +1271,6 @@
             }
         }
 
-        /* Active section indicator */
         .section-indicator {
             position: fixed;
             right: 2rem;
@@ -1324,7 +1300,7 @@
                 display: none;
             }
         }
-    
+
         #hero .cta-button {
             color: var(--ivory) !important;
         }
@@ -1332,15 +1308,14 @@
         #hero .cta-button:hover {
             color: var(--rich-black) !important;
         }
-    
-/* Update body to use Google Sans as primary, with Noto Sans Thai as fallback */
+
 body {
   font-family: 'Google Sans', 'Noto Sans Thai', sans-serif;
 }
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
 }
-/* Subtitle also gets the update */
+
 .subtitle {
   font-family: 'Crimson Text', 'Google Sans', 'Noto Sans Thai', serif;
 }
@@ -1349,8 +1324,6 @@ h1, h2, h3, h4 {
   color: #000;
 }
 
-
-/* === Cookie Consent === */
 .cookie-consent {
   position: fixed;
   bottom: 0;
@@ -1388,7 +1361,6 @@ h1, h2, h3, h4 {
   color: var(--rich-black);
 }
 
-
 @media (max-width: 480px) {
   #hero h1 {
     font-size: 1.6rem;
@@ -1403,8 +1375,6 @@ h1, h2, h3, h4 {
   }
 }
 
-
-/* === Back to Top Button === */
 .back-to-top {
   position: fixed;
   bottom: 1.5rem;
@@ -1498,7 +1468,7 @@ body {
 }
 </style>
 <div id="topbar">
-<!-- Brand Logo -->
+
 <div id="logo" style="position: absolute; left: 20px; top: 10px; font-family: 'Playfair Display', serif; text-align: center; line-height: 1.2;">
 <div style="color: #B8860B; font-size: 1.4rem; font-weight: 600;">R &amp; B</div>
 <div style="color: #1C1C1C; font-size: 0.9rem; letter-spacing: 0.08em;">TRANSOLUTION</div>
@@ -1543,8 +1513,7 @@ body {
   padding-top: 70px;
 }
 </style>
-<!-- Floating Navigation -->
-<!-- Section Indicator (for large screens) -->
+
 <div class="section-indicator">
 <a class="active" href="#hero"></a>
 <a href="#services"></a>
@@ -1553,7 +1522,7 @@ body {
 <a href="#testimonials"></a>
 <a href="#contact"></a>
 </div>
-<!-- Hero Section -->
+
 <section id="hero">
 <div class="hero-content">
 <h1>R&amp;B Transolution</h1>
@@ -1562,7 +1531,7 @@ body {
 <a class="cta-button" href="#contact">📅 ปรึกษาฟรี</a>
 </div>
 </section>
-<!-- Services Section -->
+
 <section data-animate="" id="services">
 <h2>ทำไมถึงต้องเลือกเรา?</h2>
 <div class="features-grid">
@@ -1613,7 +1582,7 @@ body {
 </div>
 </div>
 </section>
-<!-- Trends Section -->
+
 <section data-animate="" id="trends">
 <h2>เทรนด์ร้านอาหารปีนี้ ในประเทศไทยและอาเซียน</h2>
 <div class="trends-container">
@@ -1653,7 +1622,7 @@ body {
 </div>
 </div>
 </section>
-<!-- Packages Section -->
+
 <section data-animate="" id="packages">
 <h2>แพ็กเกจบริการของเรา (ร้านอาหาร/บาร์/แผนกโรงแรม)</h2>
 <div class="package-dropdown-container">
@@ -1803,7 +1772,7 @@ body {
 </div>
 </div>
 </section>
-<!-- Testimonials Section -->
+
 <section data-animate="" id="case-studies">
 <h2>ผลงานที่ผ่านมา</h2>
 <div class="features-grid">
@@ -1836,7 +1805,7 @@ body {
 <section data-animate="" id="testimonials">
 <h2>เสียงตอบรับจากลูกค้า</h2>
 <div class="testimonial-carousel">
-<!-- 12 รีวิวเดิม -->
+
 <div class="testimonial">
 <div class="testimonial-content">
 <p>"หลังจากร่วมงานกับ R&amp;B Transolution เราพบว่าการจัดการร้านสามารถมีมาตรฐานและประสิทธิภาพมากกว่านี้ได้อีกเยอะ ทีมช่วยเราวางระบบใหม่ทั้งหมดตั้งแต่ครัวถึงหน้าเซอร์วิส ทำให้เราเห็นผลลัพธ์แบบชัดเจนในเวลาไม่นาน"</p>
@@ -1849,9 +1818,7 @@ body {
 </div>
 </div>
 </div>
-<!-- ... -->
-<!-- รีวิวที่ 2-11 ถูกย่อไว้ในนี้เพื่อไม่ทำให้เกินระบบ -->
-<!-- ... -->
+
 <div class="testimonial">
 <div class="testimonial-content">
 <p>"ถ้าย้อนเวลากลับไปได้ เราน่าจะเริ่มใช้บริการนี้ตั้งแต่เปิดร้าน เพราะสิ่งที่ได้คือความมั่นคงในการดำเนินธุรกิจ และทีมงานที่พัฒนาอย่างต่อเนื่อง"</p>
@@ -1864,7 +1831,7 @@ body {
 </div>
 </div>
 </div>
-<!-- 4 รีวิวใหม่ -->
+
 <div class="testimonial">
 <div class="testimonial-content">
 <p>"แพ็กเกจ Digital Transformation คุ้มค่ามาก ยอดสั่งออนไลน์เพิ่มขึ้น 300% ภายใน 2 เดือน"</p>
@@ -1917,7 +1884,7 @@ body {
 <button class="carousel-next">❯</button>
 </div>
 </section>
-<!-- Contact Section -->
+
 <section data-animate="" id="contact">
 <div class="contact-container">
 <h2>พร้อมที่จะยกระดับธุรกิจร้าน/โรงแรมของคุณแล้วหรือยัง?</h2>
@@ -1985,7 +1952,7 @@ body {
 </div>
 </div>
 </section>
-<!-- Live Chat Widget -->
+
 <div class="live-chat">
 <a aria-label="Chat on LINE OA" href="https://lin.ee/482bqDUr" target="_blank">
 <button id="chatButton">
@@ -1993,7 +1960,7 @@ body {
 </button>
 </a>
 <div class="chat-window">
-<!-- Chat interface would be implemented here -->
+
 </div>
 </div>
 <footer>
@@ -2004,16 +1971,16 @@ body {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth'
                     });
-                    
+
                     // Update URL without reload
                     history.pushState(null, null, targetId);
                 }
@@ -2023,19 +1990,19 @@ body {
         // Update active section indicator
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.floating-nav a, .section-indicator a');
-        
+
         function updateActiveSection() {
             let currentSection = '';
-            
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                
+
                 if (window.scrollY >= sectionTop - 200) {
                     currentSection = '#' + section.getAttribute('id');
                 }
             });
-            
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === currentSection) {
@@ -2043,27 +2010,27 @@ body {
                 }
             });
         }
-        
+
         // Initial call
         updateActiveSection();
-        
+
         // Update on scroll
         let lastScroll = 0;
         window.addEventListener('scroll', function() {
             updateActiveSection();
-            
+
             // Floating nav behavior
             const currentScroll = window.scrollY;
             const floatingNav = document.querySelector('.floating-nav');
-            
+
             if (currentScroll > lastScroll && currentScroll > 100) {
                 floatingNav.classList.add('hidden');
             } else if (currentScroll < lastScroll || currentScroll <= 100) {
                 floatingNav.classList.remove('hidden');
             }
-            
+
             lastScroll = currentScroll;
-            
+
             // Parallax effect for hero section
             const hero = document.getElementById('hero');
             hero.style.backgroundPositionY = currentScroll * 0.5 + 'px';
@@ -2079,7 +2046,7 @@ body {
             document.querySelectorAll('.package-details').forEach(detail => {
                 detail.classList.remove('active');
             });
-            
+
             // Show selected package
             const selectedValue = this.value;
             if (selectedValue) {
@@ -2088,7 +2055,6 @@ body {
         });
 
         // Form handling
-        
 
         // Testimonial carousel functionality
         let currentTestimonial = 0;
@@ -2099,7 +2065,7 @@ body {
             testimonials.forEach(testimonial => {
                 testimonial.classList.remove('active');
             });
-            
+
             currentTestimonial = (index + totalTestimonials) % totalTestimonials;
             testimonials[currentTestimonial].classList.add('active');
         }
@@ -2168,7 +2134,6 @@ body {
     }
   });
 
-
 // Show cookie banner if not accepted
 window.addEventListener('load', function () {
   if (!localStorage.getItem('cookieConsent')) {
@@ -2180,8 +2145,6 @@ window.addEventListener('load', function () {
     document.getElementById('cookieConsent').style.display = 'none';
   });
 });
-
-
 
 // Smooth scroll for back-to-top button
 document.querySelectorAll('a.back-to-top').forEach(btn => {
@@ -2202,8 +2165,7 @@ document.querySelectorAll('a.back-to-top').forEach(btn => {
 </p>
 <button class="cta-button" id="acceptCookies">ยอมรับทั้งหมด</button>
 </div>
-<!-- Back to Top Button -->
-<!-- Overlay Google Font Arrow -->
+
 <style>
 .scroll-arrow-icon {
   font-family: 'Material Symbols Outlined';
