@@ -4,2270 +4,424 @@
 <meta charset="utf-8"/>
 <meta content="R&amp;B Transolution – ที่ปรึกษาธุรกิจบริการ" name="description"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
-<title>R&amp;B Transolution - ที่ปรึกษาธุรกิจบริการครบวงจร</title>
+<title>R&amp;B Transolution - บริการที่ปรึกษาครบวงจร</title>
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
-<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&amp;family=Crimson+Text:wght@300;400;600&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
 
 <style>
-        :root {
-
-            --luxury-bronze: #B8860B; 
-            --warm-bronze: #CD853F;
-            --deep-charcoal: #2F2F2F; 
-            --rich-black: #1C1C1C; 
-            --ivory: #FFFEF7; 
-            --pearl-white: #F8F6F2; 
-            --warm-beige: #F5F2E8; 
-            --text-charcoal: #3A3A3A;
-            --text-muted: #6B6B6B;
-            --accent-gold: #DAA520; 
-            --gradient-luxury: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #CD853F 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(47, 47, 47, 0.7) 0%, rgba(28, 28, 28, 0.85) 100%);
-            --section-spacing: 5rem;
-            --shadow-luxury: 0 20px 60px rgba(28, 28, 28, 0.15);
-            --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif;
-            font-weight: 300;
-            line-height: 1.6;
-            background: var(--ivory);
-            color: var(--text-charcoal);
-            overflow-x: hidden;
-            letter-spacing: 0.3px;
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            color: var(--deep-charcoal);
-            line-height: 1.3;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        section {
-            padding: var(--section-spacing) 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        section h2 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--deep-charcoal);
-            position: relative;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 1px;
-            background: var(--gradient-luxury);
-        }
-
-        #hero {
-            height: 100vh;
-            min-height: 700px;
-            background: 
-                var(--gradient-hero),
-                url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            color: var(--text-charcoal);
-        }
-
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(184, 134, 11, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(218, 165, 32, 0.06) 0%, transparent 50%);
-            animation: luxury-shimmer 20s ease-in-out infinite alternate;
-            z-index: 1;
-        }
-
-        @keyframes luxury-shimmer {
-            0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(1.05); }
-        }
-
-        .hero-content {
-            z-index: 3;
-            max-width: 1000px;
-            padding: 2rem;
-            animation: fadeInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        #hero h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--ivory);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .subtitle {
-            font-size: 1.05rem;
-            color: var(--luxury-bronze);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            font-family: 'Crimson Text', serif;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-        }
-
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            color: rgba(255, 255, 247, 0.9);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .cta-button {
-            background: transparent;
-            color: var(--text-charcoal);
-            padding: 1.2rem 3rem;
-            font-size: 0.95rem;
-            font-weight: 400;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            min-height: 44px;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            left: 0;
-        }
-
-        .cta-button:hover {
-            color: var(--rich-black);
-            border-color: var(--accent-gold);
-            transform: translateY(-3px) rotateX(5deg);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 2.5rem 2rem;
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-subtle);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--gradient-luxury);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-luxury);
-            border-color: var(--luxury-bronze);
-            background: var(--ivory);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--luxury-bronze);
-            opacity: 0.8;
-        }
-
-        .feature-title {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--deep-charcoal);
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        .floating-nav {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 1000;
-            background: rgba(248, 246, 242, 0.95);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            border-radius: 0;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            box-shadow: var(--shadow-luxury);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform: translateY(0);
-            opacity: 1;
-            display: flex;
-            align-items: center;
-            -webkit-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-            will-change: transform;
-        }
-
-        .floating-nav.hidden {
-            transform: translateY(-100px);
-            opacity: 0;
-        }
-
-        .floating-nav:hover {
-            border-color: var(--luxury-bronze);
-            transform: translateY(-2px);
-        }
-
-        .floating-nav a {
-            color: var(--deep-charcoal);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: 300;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            position: relative;
-            letter-spacing: 0.5px;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .floating-nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gradient-luxury);
-            transition: width 0.3s ease;
-        }
-
-        .floating-nav a:hover::after {
-            width: 100%;
-        }
-
-        .floating-nav a:hover {
-            color: var(--luxury-bronze);
-        }
-
-        .floating-nav .appointment-btn {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 0.6rem 1.2rem;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 400;
-            margin-left: 1rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid var(--luxury-bronze);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            min-height: 44px;
-        }
-
-        .floating-nav .appointment-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .floating-nav .appointment-btn:hover::before {
-            left: 0;
-        }
-
-        .floating-nav .appointment-btn:hover {
-            color: var(--text-charcoal);
-            transform: translateY(-2px);
-        }
-
-        .trends-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .trend-card {
-            background: var(--pearl-white);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .trend-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .trend-icon {
-            font-size: 2rem;
-            color: var(--luxury-bronze);
-            margin-bottom: 1rem;
-        }
-
-        .case-study {
-            background: var(--deep-charcoal);
-            color: white;
-            padding: 3rem;
-            margin-top: 4rem;
-            border-radius: 8px;
-        }
-
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-
-        .testimonial-carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 3rem auto;
-        }
-
-        .testimonial {
-            display: none;
-            background: var(--pearl-white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .testimonial.active {
-            display: block;
-            animation: fadeIn 0.6s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .testimonial-content p {
-            font-size: 1.05rem;
-            font-style: italic;
-            color: var(--text-charcoal);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .client-photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 1rem;
-            border: 2px solid var(--luxury-bronze);
-        }
-
-        .carousel-prev, .carousel-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--luxury-bronze);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            z-index: 10;
-        }
-
-        .carousel-prev {
-            left: -50px;
-        }
-
-        .carousel-next {
-            right: -50px;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .trust-badges img {
-            height: 80px;
-            object-fit: contain;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .trust-badges img:hover {
-            opacity: 1;
-        }
-
-        .package-dropdown-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 3rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-        }
-
-        .package-dropdown-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-luxury);
-        }
-
-        .package-select-wrapper {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .package-select {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 0;
-            border: 1px solid var(--luxury-bronze);
-            background: var(--ivory);
-            color: var(--deep-charcoal);
-            appearance: none;
-            cursor: pointer;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            min-height: 44px;
-        }
-
-        .package-select:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-        }
-
-        .package-select-wrapper::after {
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--luxury-bronze);
-            pointer-events: none;
-            font-size: 0.9rem;
-        }
-
-        .package-details {
-            display: none;
-            background: var(--ivory);
-            border-radius: 0;
-            padding: 2rem;
-            margin-top: 1.5rem;
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .package-details.active {
-            display: block;
-            animation: luxuryFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        @keyframes luxuryFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .package-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-        }
-
-        .package-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-right: 1.5rem;
-            background: var(--gradient-luxury);
-            color: var(--text-charcoal);
-            flex-shrink: 0;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .package-title-price {
-            flex-grow: 1;
-        }
-
-        .package-title {
-            font-size: 1.05rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-        }
-
-        .package-price {
-            font-size: 1.8rem;
-            font-weight: 300;
-            color: var(--luxury-bronze);
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .package-price::before {
-            content: 'เริ่มต้นที่ ';
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            margin-bottom: 0.3rem;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            letter-spacing: 0.5px;
-        }
-
-        .package-duration {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            text-align: right;
-            padding-right: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .package-features li {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
-            display: flex;
-            align-items: flex-start;
-            color: var(--text-charcoal);
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            line-height: 1.7;
-        }
-
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-
-        .package-features li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--luxury-bronze);
-            margin-right: 1rem;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            flex-shrink: 0;
-            margin-top: 0.2rem;
-        }
-
-        .package-cta {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 1rem 2rem;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 100%;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            position: relative;
-            overflow: hidden;
-            min-height: 44px;
-        }
-
-        .package-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .package-cta:hover::before {
-            left: 0;
-        }
-
-        .package-cta:hover {
-            color: var(--text-charcoal);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .contact-container {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 4rem 3rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-            overflow: hidden;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .contact-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-luxury);
-        }
-
-        .contact-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 60px rgba(28, 28, 28, 0.15);
-        }
-
-        .form-container {
-            background: var(--pearl-white);
-            border-radius: 0;
-            padding: 3rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            max-width: 700px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .form-title {
-            color: var(--deep-charcoal);
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 300;
-            letter-spacing: 1.5px;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.8rem;
-            color: var(--deep-charcoal);
-            font-weight: 400;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input, 
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 1.2rem;
-            border-radius: 0;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            background: var(--ivory);
-            color: var(--deep-charcoal);
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            min-height: 44px;
-        }
-
-        .form-textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .form-input:focus, 
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--luxury-bronze);
-            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-        }
-
-        .form-submit {
-            background: transparent;
-            color: var(--deep-charcoal);
-            padding: 1.2rem 2.5rem;
-            border: 2px solid var(--luxury-bronze);
-            border-radius: 0;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: block;
-            width: 100%;
-            font-size: 1rem;
-            margin-top: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Google Sans', 'Noto Sans Thai', sans-serif; 
-            position: relative;
-            overflow: hidden;
-            min-height: 44px;
-        }
-
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .form-submit:hover::before {
-            left: 0;
-        }
-
-        .form-submit:hover {
-            color: var(--text-charcoal);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-        }
-
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 2.5rem;
-            color: var(--deep-charcoal);
-            font-size: 1.3rem;
-            background: var(--ivory);
-            border-radius: 0;
-            box-shadow: var(--shadow-subtle);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .form-success i {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--luxury-bronze);
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-buttons a {
-            min-width: 180px;
-            text-align: center;
-            padding: 1rem 2rem;
-            border-radius: 0;
-            font-weight: 400;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 2px solid var(--luxury-bronze);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.9rem;
-            min-height: 44px;
-        }
-
-        .contact-buttons a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .contact-buttons a:hover::before {
-            left: 0;
-        }
-
-        .contact-buttons a:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-            color: var(--text-charcoal);
-        }
-
-        footer {
-            background: var(--deep-charcoal);
-            padding: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 247, 0.7);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(184, 134, 11, 0.3);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        [data-animate] {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        [data-animate].animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .live-chat {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-        }
-
-        #chatButton {
-            background: var(--luxury-bronze);
-            color: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.05rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #chatButton:hover {
-            transform: scale(1.1);
-            background: var(--accent-gold);
-        }
-
-        .chat-window {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 350px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .chat-window.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        @media (max-width: 1200px) {
-            :root {
-                --section-spacing: 4rem;
-            }
-
-            #hero h1 {
-                font-size: 3.5rem;
-            }
-
-            section h2 {
-                font-size: 2.5rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .floating-nav {
-                padding: 0.7rem 1.2rem;
-            }
-
-            .floating-nav a {
-                margin: 0 0.8rem;
-                font-size: 0.8rem;
-            }
-
-            .floating-nav .appointment-btn {
-                margin-left: 0.8rem;
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.3rem;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
-            .feature-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .floating-nav {
-                display: flex;
-            }
-
-            .before-after {
-                grid-template-columns: 1fr;
-            }
-
-            .carousel-prev {
-                left: 10px;
-            }
-
-            .carousel-next {
-                right: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #hero {
-                min-height: 600px;
-                padding: 1.5rem;
-            }
-
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .description {
-                font-size: 1rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .form-container,
-            .package-dropdown-container,
-            .contact-container {
-                padding: 2rem 1.5rem;
-            }
-
-            .form-title {
-                font-size: 1.8rem;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.2rem;
-            }
-
-            .contact-buttons a {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .package-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .package-icon {
-                margin-right: 0;
-                margin-bottom: 1.2rem;
-            }
-
-            .trust-badges {
-                gap: 1rem;
-            }
-
-            .trust-badges img {
-                height: 60px;
-            }
-
-            .floating-nav {
-                position: fixed;
-                bottom: 1rem;
-                top: auto;
-                left: 1rem;
-                right: 1rem;
-                width: calc(100% - 2rem);
-                justify-content: space-around;
-                padding: 0.8rem;
-            }
-
-            .floating-nav a {
-                margin: 0;
-                padding: 0.5rem;
-                font-size: 0.7rem;
-                min-width: 44px;
-                min-height: 44px;
-            }
-
-            .floating-nav .appointment-btn {
-                display: none;
-            }
-
-            .section-indicator {
-                display: none;
-            }
-        }
-
-        @media (max-width: 576px) {
-            #hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .package-dropdown-container,
-            .form-container {
-                padding: 1.8rem 1.2rem;
-            }
-
-            .package-select {
-                padding: 1rem 1.2rem;
-                font-size: 0.95rem;
-            }
-
-            .package-details {
-                padding: 1.5rem 1.2rem;
-            }
-
-            .package-title {
-                font-size: 1.3rem;
-            }
-
-            .package-price {
-                font-size: 1.05rem;
-            }
-
-            .feature-card {
-                padding: 1.8rem 1.2rem;
-            }
-
-            .live-chat {
-                bottom: 1rem;
-                right: 1rem;
-            }
-
-            .chat-window {
-                width: calc(100% - 2rem);
-                right: 1rem;
-            }
-        }
-
-        @supports (-webkit-touch-callout: none) {
-
-            .floating-nav {
-                position: fixed;
-                bottom: 1rem;
-                top: auto;
-                left: 1rem;
-                right: 1rem;
-                width: calc(100% - 2rem);
-            }
-
-            a, button, .cta-button, .form-input, .form-select {
-                min-height: 44px;
-            }
-
-            @media (hover: none) {
-                .cta-button:hover::before, 
-                .feature-card:hover,
-                .floating-nav a:hover::after {
-                    all: unset;
-                }
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        .section-indicator {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .section-indicator a {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(184, 134, 11, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .section-indicator a.active {
-            background: var(--luxury-bronze);
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 992px) {
-            .section-indicator {
-                display: none;
-            }
-        }
-
-        #hero .cta-button {
-            color: var(--ivory) !important;
-        }
-
-        #hero .cta-button:hover {
-            color: var(--rich-black) !important;
-        }
-
-body {
-  font-family: 'Google Sans', 'Noto Sans Thai', sans-serif;
-}
-h1, h2, h3, h4 {
-  font-family: 'Playfair Display', serif;
-}
-
-.subtitle {
-  font-family: 'Crimson Text', 'Google Sans', 'Noto Sans Thai', serif;
-}
-::selection {
-  background-color: #FFD700;
-  color: #000;
-}
-
-.cookie-consent {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--deep-charcoal);
-  color: var(--ivory);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-  font-size: 0.95rem;
-}
-
-.cookie-consent p {
-  margin: 0;
-  flex: 1;
-}
-
-.cookie-consent .cta-button {
-  margin-left: 1rem;
-  background: transparent;
-  border: 2px solid var(--luxury-bronze);
-  color: var(--ivory);
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cookie-consent .cta-button:hover {
-  background: var(--gradient-luxury);
-  color: var(--rich-black);
-}
-
-@media (max-width: 480px) {
-  #hero h1 {
-    font-size: 1.6rem;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-  }
-
-  section h2 {
-    font-size: 1.2rem;
-  }
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  background: var(--luxury-bronze);
-  color: white;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.back-to-top:hover {
-  background: var(--accent-gold);
-  transform: translateY(-2px);
-}
-
-</style>
-<style>
-.subtitle {
-  font-size: 1.2rem;
-}
-</style>
-<style>
-#floating-bar {
-  position: fixed;
-  top: 110px;
-  left: 0;
-  transform: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 9999;
-}
-#floating-bar a {
-  display: block;
-  padding: 10px 18px;
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: 500;
-  border: 2px solid #DAA520;
-  border-left: none;
-  border-radius: 0 6px 6px 0;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: background-color 0.35s ease, color 0.35s ease;
-}
-#floating-bar a:hover {
-  background-color: #DAA520;
-  color: #000;
-}
+    :root {
+        
+        
+        
+        --pastel-blue-bg: #e8f0fe;
+        --pastel-blue-text: #1967d2;
+        
+        
+        --pastel-green-bg: #e6f4ea;
+        --pastel-green-text: #137333;
+        
+        
+        --pastel-red-bg: #fce8e6;
+        --pastel-red-text: #c5221f;
+        
+        
+        --pastel-yellow-bg: #fef7e0;
+        --pastel-yellow-text: #ea8600;
+
+        
+        --pastel-purple-bg: #f3e8fd;
+        --pastel-purple-text: #9334e6;
+
+        
+        --bg-white: #ffffff;
+        --bg-soft: #f8f9fa; 
+        --text-head: #202124;
+        --text-body: #5f6368;
+        --border-color: #f1f3f4; 
+        
+        --radius-card: 24px; 
+        --radius-btn: 30px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Google Sans', 'Roboto', sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        background: var(--bg-white);
+        color: var(--text-body);
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Google Sans', sans-serif;
+        color: var(--text-head);
+    }
+
+    
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        font-size: 32px;
+    }
+
+    section {
+        padding: 5rem 1.5rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    section h2 {
+        font-size: 2.25rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 500;
+        color: var(--text-head);
+    }
+
+    
+    #hero {
+        position: relative;
+        height: 85vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+    }
+
+    
+    #hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        
+        
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                    url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
+        
+        
+        filter: blur(2px);
+        -webkit-filter: blur(2px);
+        
+        transform: scale(1.05); 
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        padding: 20px;
+    }
+
+    #hero h1 { 
+        color: white; 
+        font-size: 3.5rem; 
+        margin-bottom: 1rem; 
+        font-weight: 700; 
+        text-shadow: 0 2px 10px rgba(0,0,0,0.4); 
+    }
+    .subtitle { 
+        color: #f1f3f4; 
+        font-size: 1.35rem; 
+        margin-bottom: 2.5rem; 
+        font-weight: 400; 
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    
+    
+    .hero-btn {
+        background: rgba(255,255,255,0.95);
+        color: var(--pastel-blue-text);
+        padding: 14px 36px;
+        border-radius: var(--radius-btn);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: 0.3s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
+
+    
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+    }
+
+    
+    .info-card {
+        background: var(--bg-white);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-card);
+        padding: 32px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .info-card:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transform: translateY(-4px);
+        border-color: transparent;
+    }
+
+    
+    .icon-box {
+        width: 64px; height: 64px; min-width: 64px;
+        border-radius: 20px; 
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+    
+    
+    .theme-blue .icon-box { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
+    .theme-green .icon-box { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
+    .theme-red .icon-box { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
+    .theme-yellow .icon-box { background: var(--pastel-yellow-bg); color: var(--pastel-yellow-text); }
+    .theme-purple .icon-box { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
+
+    .info-card h3 { font-size: 1.25rem; margin-bottom: 12px; font-weight: 500; color: var(--text-head); }
+    .info-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-body); }
+    
+    strong { color: var(--text-head); font-weight: 500; }
+
+    
+    #topbar {
+        position: fixed; top: 0; left: 0; width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0; z-index: 1000;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        display: flex; justify-content: center; gap: 30px;
+    }
+    #topbar a.nav-link { 
+        text-decoration: none; color: var(--text-body); 
+        font-weight: 500; font-size: 0.95rem; 
+        padding: 6px 12px; border-radius: 20px;
+        transition: 0.2s;
+    }
+    #topbar a.nav-link:hover { 
+        background: var(--bg-soft); color: var(--text-head); 
+    }
+
+    .logo-link {
+        position: absolute; left: 32px; 
+        font-weight: bold; color: var(--text-body); font-size: 1.3rem;
+        text-decoration: none; display: flex; align-items: center;
+    }
+    .logo-link span { color: var(--pastel-blue-text); font-weight: 500; margin-left: 6px; }
+
+    
+    .quote-box {
+        text-align: center; margin-top: 4rem;
+        padding: 40px;
+        background: var(--pastel-blue-bg);
+        border-radius: var(--radius-card);
+        font-size: 1.4rem; font-style: italic;
+        color: var(--pastel-blue-text);
+        font-family: 'Google Sans', sans-serif;
+    }
+
+    
+    .tonal-btn {
+        padding: 12px 28px;
+        border-radius: var(--radius-btn);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: 0.2s;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+    }
+
+    .btn-blue { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
+    .btn-blue:hover { filter: brightness(0.95); }
+
+    .btn-green { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
+    .btn-green:hover { filter: brightness(0.95); }
+
+    .btn-red { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
+    .btn-red:hover { filter: brightness(0.95); }
+
+    @media (max-width: 768px) {
+        #topbar { display: none; }
+        #hero h1 { font-size: 2.2rem; }
+        section { padding: 3rem 1.5rem; }
+    }
+    
+    footer { background: var(--bg-soft); padding: 3rem 1rem; text-align: center; font-size: 0.9rem; color: var(--text-body); }
 </style>
 </head>
 <body>
-<style>
-#topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  padding: 14px 0;
-  z-index: 10000;
 
-  border-bottom: 3px solid #DAA520;}
-#topbar a {
-  color: #000000;
-  background-color: transparent;
-  border: none;
-  padding: 8px 0;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-#topbar a:hover {
-  color: #DAA520;
-}
-body {
-  padding-top: 70px;
-}
-</style>
 <div id="topbar">
-
-<div id="logo" style="position: absolute; left: 20px; top: 10px; font-family: 'Playfair Display', serif; text-align: center; line-height: 1.2;">
-<div style="color: #B8860B; font-size: 1.4rem; font-weight: 600;">R &amp; B</div>
-<div style="color: #1C1C1C; font-size: 0.9rem; letter-spacing: 0.08em;">TRANSOLUTION</div>
-</div>
-
-<a href="#hero">หน้าหลัก</a>
-<a href="#services">บริการ</a>
-<a href="#trends">เทรนด์</a>
-<a href="#packages">แพ็กเกจ</a>
-<a href="#case-studies">ผลงาน</a>
-<a href="#contact">ติดต่อ</a>
-<a href="#contact">📅 นัดหมาย</a>
-</div>
-<style>
-#topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  padding: 14px 0;
-  z-index: 10000;
-
-  border-bottom: 3px solid #DAA520;}
-#topbar a {
-  color: #000000;
-  background-color: transparent;
-  border: none;
-  padding: 8px 0;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-#topbar a:hover {
-  color: #DAA520;
-}
-body {
-  padding-top: 70px;
-}
-</style>
-
-<div class="section-indicator">
-<a class="active" href="#hero"></a>
-<a href="#services"></a>
-<a href="#trends"></a>
-<a href="#packages"></a>
-<a href="#testimonials"></a>
-<a href="#contact"></a>
+    <a href="#hero" class="logo-link">
+        R&amp;B <span>Transolution</span>
+    </a>
+    <a href="#hero" class="nav-link">หน้าหลัก</a>
+    <a href="#philosophy" class="nav-link">แนวคิด</a>
+    <a href="#highlights" class="nav-link">จุดเด่น</a>
+    <a href="#services" class="nav-link">บริการของเรา</a>
+    <a href="#contact" class="nav-link">ติดต่อ</a>
 </div>
 
 <section id="hero">
-<div class="hero-content">
-<h1>R&amp;B Transolution</h1>
-<h1 class="subtitle" style="color: #DAA520; font-size: 1.45rem;">ที่ปรึกษาด้านร้านอาหาร บาร์ โรงแรม และธุรกิจบริการระดับพรีเมียม</h1>
-<p class="description">เราช่วยยกระดับร้านอาหาร บาร์ และแผนกต่างๆ ของโรงแรม รวมถึงธุรกิจบริการต่างๆ ให้ประสบความสำเร็จ ด้วยกลยุทธ์ที่ออกแบบเฉพาะสำหรับองค์กรของคุณ ทั้งในด้านการดำเนินงาน การบริการ และประสบการณ์ของลูกค้า เพื่อให้คุณสามารถแข่งขันได้ทุกสภาวะตลาด</p>
-<a class="cta-button" href="#contact">📅 ปรึกษาฟรี</a>
-</div>
-</section>
-<section id="brand-philosophy" data-animate>
-  <h2>แนวคิดเบื้องหลัง R&amp;B Transolution</h2>
-
-  <div class="features-grid">
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-compass"></i>
-      </div>
-      <h3 class="feature-title">R&amp;B — Reach Beyond the Expected</h3>
-      <p>
-        R&amp;B ถือกำเนิดจากความเชื่อว่า  
-        ธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “การดำเนินงานที่ดีพอ”  
-        แต่ต้องไปให้ถึงมาตรฐานที่ควรจะเป็น  
-        และก้าวข้ามขีดจำกัดเดิม ๆ อย่างมีทิศทาง
-      </p>
-      <p>
-        <strong>Reach</strong> คือการพาธุรกิจไปสู่มาตรฐานสากล  
-        และ <strong>Beyond</strong> คือการออกแบบระบบ  
-        ที่ทำให้ธุรกิจสามารถเติบโตได้ต่อเนื่อง  
-        แม้ในสภาวะตลาดที่เปลี่ยนแปลง
-      </p>
+    <div class="hero-content">
+        <h1>R&amp;B Transolution</h1>
+        <div class="subtitle">ที่ปรึกษาด้านร้านอาหาร โรงแรม และธุรกิจบริการระดับมืออาชีพ</div>
+        <a class="hero-btn" href="#contact">
+            <span class="material-symbols-outlined" style="font-size:22px;">calendar_today</span>
+            ปรึกษาฟรี
+        </a>
     </div>
+</section>
 
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-sync-alt"></i>
-      </div>
-      <h3 class="feature-title">Transolution — Transformation with Purpose</h3>
-      <p>
-        Transolution ไม่ได้หมายถึงการแก้ปัญหาเฉพาะหน้า  
-        แต่คือการเปลี่ยนโครงสร้าง วิธีคิด และวิธีทำงาน  
-        เพื่อให้ธุรกิจกลับมาแข็งแรงจากรากฐาน
-        เราผสานแนวคิดของ <em>Transformation</em> และ <em>Solution</em>  
-        เพราะการเปลี่ยนแปลงที่ไม่มีระบบ  
-        ย่อมไม่สามารถสร้างผลลัพธ์ที่ยั่งยืนได้
-      </p>
+<section id="philosophy">
+    <h2>แนวคิดเบื้องหลัง R&B</h2>
+    <div class="grid-3">
+        <div class="info-card theme-blue">
+            <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
+            <h3>Reach Beyond</h3>
+            <p>
+                R&B ถือกำเนิดจากความเชื่อว่า ธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “การดำเนินงานที่ดีพอ” 
+                แต่ต้องไปให้ถึงมาตรฐานที่ควรจะเป็น
+            </p>
+        </div>
+
+        <div class="info-card theme-purple">
+            <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
+            <h3>Transolution</h3>
+            <p>
+                ไม่ใช่แค่การแก้ปัญหาเฉพาะหน้า แต่คือ <strong>Transformation with Purpose</strong> 
+                เปลี่ยนโครงสร้าง วิธีคิด และวิธีทำงาน เพื่อความยั่งยืน
+            </p>
+        </div>
+
+        <div class="info-card theme-green">
+            <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
+            <h3>Our Philosophy</h3>
+            <p>
+                เราทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ต้องวัดผลได้ 
+                เข้ามาเสริมโครงสร้างเพื่อให้ทีมของคุณทำงานได้ดีขึ้น
+            </p>
+        </div>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-gem"></i>
-      </div>
-      <h3 class="feature-title">Our Philosophy</h3>
-      <p>
-        R&amp;B Transolution ทำงานด้วยมาตรฐานเดียวกับ  
-        โรงแรมหรูและองค์กรระดับสากล  
-        ทุกกลยุทธ์ต้องวัดผลได้  
-        ทุกคำแนะนำต้องสามารถนำไปปฏิบัติจริง
-        เราไม่ได้เข้ามาแทนทีมของคุณ  
-        แต่เข้ามาเสริมโครงสร้าง  
-        เพื่อให้ทีมของคุณทำงานได้ดีขึ้น อย่างยั่งยืน
-      </p>
+    
+    <div class="quote-box">
+        “We don’t fix businesses. We redesign how they operate.”
     </div>
-
-  </div>
-
-  <p style="text-align:center; margin-top:3rem; font-style:italic; color:#6B6B6B;">
-    “We don’t fix businesses.  
-    We redesign how they operate, perform, and grow.”
-  </p>
 </section>
 
-<section data-animate="" id="services">
-<h2>ทำไมถึงต้องเลือกเรา?</h2>
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-<h3 class="feature-title">โซลูชันที่ออกแบบเฉพาะสำหรับแต่ละร้าน</h3>
-<p>เราวางแผนและออกแบบกลยุทธ์ให้เหมาะกับสไตล์และเป้าหมายของร้านคุณ เพื่อให้สามารถลดต้นทุน เพิ่มยอดขาย และรักษาคุณภาพการบริการ</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-bolt"></i></div>
-<h3 class="feature-title">ดำเนินการเร็ว เห็นผลไว</h3>
-<p>ไม่ต้องรอนาน — ภายใน 5 วันทำการ เราพร้อมส่งมอบแผนปรับปรุงที่ลงมือได้จริง พร้อมทีมสนับสนุน</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-users"></i></div>
-<h3 class="feature-title">ผู้เชี่ยวชาญตัวจริง</h3>
-<p>ทีมของเรามีประสบการณ์มากกว่า 20+ ปีในแวดวงร้านอาหาร โรงแรม และรีสอร์ตระดับหรู พร้อมถ่ายทอดความรู้ให้ทีมคุณได้ทันที</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-<h3 class="feature-title">ดูแลครบทุกมิติ</h3>
-<p>เราครอบคลุมทั้งการวางแผน กลยุทธ์การตลาด การจัดระบบงาน และการเทรนนิ่งทีมงาน</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
-<h3 class="feature-title">ไม่ทิ้งหลังบริการ</h3>
-<p>เราพร้อมติดตามผล แก้ไขปัญหา และให้คำปรึกษาระยะยาว เพื่อความสำเร็จที่ยั่งยืน</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-gem"></i></div>
-<h3 class="feature-title">ชำนาญในตลาดพรีเมียม</h3>
-<p>เรามีประสบการณ์ตรงกับร้านอาหารหรู บาร์ระดับไฮเอนด์ โรงแรม 5 ดาว และแผนกหลักของโรงแรมทั่วประเทศ</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-<h3 class="feature-title">วิเคราะห์ข้อมูลเชิงลึก</h3>
-<p>ใช้ข้อมูลจริงในการตัดสินใจ ด้วยระบบวิเคราะห์ข้อมูลร้านอาหารแบบครบวงจร</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-<h3 class="feature-title">นวัตกรรมสมัยใหม่</h3>
-<p>นำเสนอเทคโนโลยีและนวัตกรรมล่าสุดเพื่อเพิ่มประสิทธิภาพการดำเนินงาน</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-<h3 class="feature-title">มาตรฐานความปลอดภัย</h3>
-<p>ยกระดับมาตรฐานความปลอดภัยด้านอาหารและการบริการตามหลักสากล</p>
-</div>
-</div>
+<section id="highlights" style="background-color: var(--bg-soft);">
+    <h2>ทำไมต้องเลือกเรา</h2>
+    <div class="grid-3">
+        <div class="info-card theme-yellow">
+            <div class="icon-box"><span class="material-symbols-outlined">verified</span></div>
+            <h3>มาตรฐานสากล</h3>
+            <p>ยกระดับธุรกิจสู่มาตรฐานระดับสากล ด้วยทีมงานที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว</p>
+        </div>
+        <div class="info-card theme-red">
+            <div class="icon-box"><span class="material-symbols-outlined">bolt</span></div>
+            <h3>เห็นผลลัพธ์ไว</h3>
+            <p>กระบวนการทำงานที่กระชับ ชัดเจน เริ่มต้นแก้ไขปัญหาและส่งมอบแผนงานได้ภายใน 5 วันทำการ</p>
+        </div>
+        <div class="info-card theme-blue">
+            <div class="icon-box"><span class="material-symbols-outlined">analytics</span></div>
+            <h3>Data-Driven</h3>
+            <p>ใช้ Data จริงของร้านในการวางแผนและวิเคราะห์ ไม่ใช่การคาดเดา เพื่อผลลัพธ์ที่แม่นยำที่สุด</p>
+        </div>
+        <div class="info-card theme-green">
+            <div class="icon-box"><span class="material-symbols-outlined">tune</span></div>
+            <h3>กลยุทธ์เฉพาะจุด</h3>
+            <p>Tailor-made Strategy ไม่ใช้สูตรสำเร็จ แต่เราออกแบบแผนให้เหมาะกับโจทย์และงบประมาณของร้านคุณ</p>
+        </div>
+        <div class="info-card theme-purple">
+            <div class="icon-box"><span class="material-symbols-outlined">manage_accounts</span></div>
+            <h3>ทีมงานมืออาชีพ</h3>
+            <p>รวมทีมผู้เชี่ยวชาญจากสายงานบริหารโรงแรมและร้านอาหารกว่า 20 ปี ที่เข้าใจปัญหาหน้างานจริง</p>
+        </div>
+        <div class="info-card theme-yellow">
+            <div class="icon-box"><span class="material-symbols-outlined">handshake</span></div>
+            <h3>ดูแลต่อเนื่อง</h3>
+            <p>ไม่ทิ้งงานหลังจบโปรเจกต์ พร้อมเป็นพาร์ทเนอร์ที่ปรึกษาและติดตามผลเพื่อให้คุณมั่นใจในระยะยาว</p>
+        </div>
+    </div>
 </section>
 
-<section data-animate="" id="trends">
-<h2>เทรนด์ร้านอาหารปีนี้ ในประเทศไทยและอาเซียน</h2>
-<div class="trends-container">
-<div class="trend-card">
-<div class="trend-icon"><i class="fas fa-leaf"></i></div>
-<h3>ความยั่งยืน</h3>
-<p>70% ของผู้บริโภคไทยเลือกร้านอาหารที่เป็นมิตรกับสิ่งแวดล้อม เราช่วยคุณนำแนวคิด Zero Waste มาปรับใช้ในครัว</p>
-</div>
-<div class="trend-card">
-<div class="trend-icon"><i class="fas fa-robot"></i></div>
-<h3>เทคโนโลยี</h3>
-<p>เมนู QR Code พนักงานเสิร์ฟ AI และอุปกรณ์ครัวอัจฉริยะ กำลังกลายเป็นมาตรฐานใหม่ของร้านอาหารระดับพรีเมียม</p>
-</div>
-<div class="trend-card">
-<div class="trend-icon"><i class="fas fa-heartbeat"></i></div>
-<h3>สุขภาพ</h3>
-<p>ความต้องการอาหาร Plant-based และ Functional Food ในไทยเพิ่มขึ้น 300% นับตั้งแต่ปี 2563</p>
-</div>
-<div class="trend-card">
-<div class="trend-icon"><i class="fas fa-home"></i></div>
-<h3>แนวคิด Hybrid</h3>
-<p>การผสมผสานระหว่างร้านค้า ร้านอาหาร และ Co-working Space กำลังเป็นเทรนด์ใหม่เพื่อเพิ่มรายได้</p>
-</div>
-</div>
-<div class="case-study">
-<h3><span style="color: #fff;">ผลงานความสำเร็จ: Bistro 45 เชียงใหม่</span></h3>
-<p>"R&amp;B ช่วยให้เรามียอดขายเพิ่มขึ้น 120% ใน 3 เดือน ผ่านการปรับเมนูและการฝึกอบรมพนักงาน กลยุทธ์ Digital Transformation ลดค่าใช้จ่ายในการดำเนินงานลง 25%"</p>
-<div class="before-after">
-<div>
-<h4 style="color: #ffffff;">ก่อนใช้งานบริการ</h4>
-<p>• อัตราการใช้โต๊ะ 60%<br/>• ต้นทุนอาหาร 35%<br/>• คะแนนรีวิว 2.8/5</p>
-</div>
-<div>
-<h4 style="color: #ffffff;">หลังใช้งานบริการ</h4>
-<p>• อัตราการใช้โต๊ะ 95%<br/>• ต้นทุนอาหาร 28%<br/>• คะแนนรีวิว 4.6/5</p>
-</div>
-</div>
-</div>
+<section id="services">
+    <h2>บริการของเรา</h2>
+    <div class="grid-3">
+        <div class="info-card theme-blue">
+            <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
+            <h3>วิเคราะห์ยอดขายเมนู</h3>
+            <p>เจาะลึกข้อมูลยอดขาย จัดทำ Menu Engineering เพื่อดูว่าเมนูไหนทำกำไร หรือควรปรับปรุงเพื่อเพิ่มรายได้</p>
+        </div>
+        <div class="info-card theme-green">
+            <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
+            <h3>ตรวจคุณภาพและประเมินผล</h3>
+            <p>Audit ตรวจสอบมาตรฐานการบริการ ความสะอาด และคุณภาพอาหารอย่างละเอียด พร้อมรายงานผล</p>
+        </div>
+        <div class="info-card theme-yellow">
+            <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
+            <h3>Hospitality Workshop</h3>
+            <p>เวิร์คชอปงานบริการระดับมืออาชีพ พัฒนาบุคลิกภาพและทักษะ Service Mind ให้ทีมงานของคุณ</p>
+        </div>
+        <div class="info-card theme-purple">
+            <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
+            <h3>SWOT Solutions</h3>
+            <p>ปลดล็อกศักยภาพธุรกิจร้านอาหารและโรงแรม วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อสร้างกลยุทธ์ที่เหนือกว่าคู่แข่ง</p>
+        </div>
+        <div class="info-card theme-red">
+            <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
+            <h3>เขียน SOP มาตรฐาน</h3>
+            <p>จัดทำคู่มือปฏิบัติงาน (SOP) สำหรับร้านอาหาร โรงแรม และงานบริการทุกประเภท เพื่อระบบงานที่มั่นคง</p>
+        </div>
+        <div class="info-card theme-blue">
+            <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
+            <h3>ปรับปรุงร้านอาหารและบาร์</h3>
+            <p>โปรแกรมรีโนเวทระบบการจัดการ ปรับภาพลักษณ์ และวางระบบใหม่ (Re-branding & System Set-up)</p>
+        </div>
+    </div>
 </section>
 
-<section data-animate="" id="packages">
-<h2>แพ็กเกจบริการของเรา (ร้านอาหาร/บาร์/แผนกโรงแรม)</h2>
-<div class="package-dropdown-container">
-<div class="package-select-wrapper">
-<select class="package-select" id="packageSelect">
-<option disabled="" selected="" value="">เลือกแพ็กเกจที่สนใจ</option>
-<option value="starter">Starter - โซลูชันด่วน ได้ผลจริง (3,900 บาท)</option>
-<option value="foundation">Foundation - ตรวจสุขภาพร้านอย่างละเอียด (9,900 บาท)</option>
-<option value="growth">Growth - ปรับร้านให้เติบโตอย่างมีกลยุทธ์ (29,900 บาท)</option>
-<option value="premium">Premium - ปรับภาพลักษณ์ร้านทั้งระบบ (59,900 บาท)</option>
-<option value="elite">Elite - ที่ปรึกษาระดับผู้บริหาร (119,000 บาท)</option>
-<option value="signature">Signature - ดูแลการตลาดครบวงจร 6 เดือน (ราคาตามตกลง)</option>
-<option value="custom">Custom Budget - ปรับบริการตามงบของคุณ</option>
-<option value="sop">SOP Essentials - คู่มือมาตรฐาน 2 ฉบับ (500 บาท)</option></select>
-</div>
-<div class="package-details" id="starter">
-<div class="package-header">
-<div class="package-icon starter"><i class="fas fa-seedling"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Starter</h3>
-<div class="package-price">฿3,900</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 5 วัน</div>
-<ul class="package-features">
-<li>แก้ปัญหาด่วนภายใน 48 ชั่วโมง</li>
-<li>คู่มือแผนปฏิบัติแบบตรงจุด</li>
-<li>ปรึกษาติดตามผลหลังบริการ 1 สัปดาห์</li>
-<li>ฟรี! เซสชั่นวางกลยุทธ์ 30 นาที</li>
-</ul>
-</div>
-<div class="package-details" id="foundation">
-<div class="package-header">
-<div class="package-icon foundation"><i class="fas fa-layer-group"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Foundation</h3>
-<div class="package-price">฿9,900</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 10 วัน</div>
-<ul class="package-features">
-<li>ลงพื้นที่ตรวจร้าน 6 ชั่วโมง</li>
-<li>วิเคราะห์ต้นทุน + แผนลดต้นทุน 15–20%</li>
-<li>ปรับปรุงโฟลว์การทำงาน เพิ่มประสิทธิภาพ 15%</li>
-<li>เสนอแผนปฏิบัติ 5 ข้อ พร้อมระยะเวลาดำเนินการ</li>
-<li>สนับสนุนการลงมือ 5 วันเต็ม</li>
-</ul>
-</div>
-<div class="package-details" id="growth">
-<div class="package-header">
-<div class="package-icon growth"><i class="fas fa-chart-line"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Growth</h3>
-<div class="package-price">฿29,900</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 15 วัน</div>
-<ul class="package-features">
-<li>ตรวจจุดแข็ง-จุดอ่อนของแบรนด์</li>
-<li>ปรับเมนูเพื่อเพิ่มกำไร 15%</li>
-<li>ทำคู่มือปฏิบัติการทั้งระบบ</li>
-<li>ทดสอบระบบก่อนเปิดจริง 1 สัปดาห์</li>
-<li>เทรนนิ่งทีมงาน 8 ชั่วโมง</li>
-<li>แดชบอร์ดวัดผลรายสัปดาห์</li>
-</ul>
-</div>
-<div class="package-details" id="premium">
-<div class="package-header">
-<div class="package-icon premium"><i class="fas fa-crown"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Premium</h3>
-<div class="package-price">฿59,900</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 30 วัน</div>
-<ul class="package-features">
-<li>วิเคราะห์ตลาดและกลุ่มลูกค้า</li>
-<li>ออกแบบโครงสร้างการทำงานใหม่ทั้งหมด</li>
-<li>วางระบบแบรนด์ให้ครบทุกมิติ</li>
-<li>กลยุทธ์เพิ่มกำไรแบบขั้นสูง</li>
-<li>พัฒนาแนวทางบริหารทีม</li>
-<li>วางแผนระยะยาว 3 เดือน</li>
-</ul>
-</div>
-<div class="package-details" id="elite">
-<div class="package-header">
-<div class="package-icon elite"><i class="fas fa-chess-queen"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Elite</h3>
-<div class="package-price">฿119,000</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 60 วัน</div>
-<ul class="package-features">
-<li>ปรึกษากลยุทธ์สัปดาห์ละ 2 ชั่วโมง</li>
-<li>พบกันหน้างานเดือนละครั้ง</li>
-<li>วิเคราะห์ผลประกอบการแบบเจาะลึก</li>
-<li>เปรียบเทียบกับคู่แข่งในพื้นที่</li>
-<li>พัฒนาทักษะผู้นำระดับบริหาร</li>
-<li>วางแผน 6 เดือนล่วงหน้า</li>
-</ul>
-</div>
-<div class="package-details" id="signature">
-<div class="package-header">
-<div class="package-icon signature"><i class="fas fa-signature"></i></div>
-<div class="package-title-price">
-<h3 class="package-title">Signature</h3>
-<div class="package-price">ราคาตามตกลง</div>
-</div>
-</div>
-<div class="package-duration">ระยะเวลา: 6 เดือน | บริการครบวงจร</div>
-<ul class="package-features">
-<li>สร้างแบรนด์ &amp; ออกแบบภาพลักษณ์</li>
-<li>วางแผนการตลาดออนไลน์ &amp; ทำโฆษณา</li>
-<li>ดูแลโซเชียลมีเดีย + ผลิตคอนเทนต์</li>
-<li>ทำเว็บไซต์ + ปรับ SEO</li>
-<li>ติดต่อสื่อ/ทำแคมเปญ PR</li>
-<li>รายงานผลการตลาดรายเดือน</li>
-<li>ออกแบบโปรแกรม Loyalty &amp; CRM</li>
-<li>จัดการอินฟลูเอนเซอร์/พาร์ทเนอร์</li>
-</ul>
-</div><div class="package-details" id="sop">
-  <div class="package-header">
-    <div class="package-icon sop" style="background: linear-gradient(135deg, #B8860B 0%, #CD853F 100%);">
-      <i class="fas fa-file-contract"></i>
-    </div>
-    <div class="package-title-price">
-      <h3 class="package-title">SOP Essentials</h3>
-      <div class="package-price">฿500</div>
-    </div>
-  </div>
-  <div class="package-duration">ระยะเวลา: 2-3 วันทำการ</div>
-  <ul class="package-features">
-    <li><strong>Standard Operating Procedures</strong> สำหรับร้านอาหาร/บาร์ และแผนกโรงแรม</li>
-    <li>คู่มือมาตรฐาน 2 ฉบับ (เลือกได้จาก):</li>
-    <li style="padding-left: 1.5rem;">• ระบบหน้าร้านและการบริการ</li>
-    <li style="padding-left: 1.5rem;">• มาตรฐานครัวและเครื่องดื่ม</li>
-    <li style="padding-left: 1.5rem;">• ระบบบริหารและจัดการร้าน</li>
-    <li>รูปแบบไฟล์ PDF/HTML พร้อมใช้งานทันที</li>
-    <li>ปรับแก้ได้ฟรี 1 ครั้งภายใน 7 วัน</li>
-    <li>ตัวอย่าง template ให้เลือก 3 แบบ</li>
-    <li>การันตีคุณภาพโดยทีมผู้เชี่ยวชาญ</li>
-  </ul>
-  <button class="package-cta" onclick="location.href='#contact'">
-    <i class="fas fa-pen-fancy"></i> สั่งทำ SOP วันนี้
-  </button>
-</div>
-</div>
+<section id="contact" style="background-color: var(--bg-soft);">
+    <div style="text-align:center; max-width:700px; margin:0 auto; background:white; padding:48px; border-radius:32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:16px; color:var(--text-body);">contact_mail</span>
+        <h2>ติดต่อเรา</h2>
+        <p style="margin-bottom:30px; color:var(--text-body);">สนใจบริการหรือต้องการคำปรึกษาเบื้องต้น ติดต่อทีมงาน R&B Transolution ได้ทันที</p>
+        
+        <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+            <a class="tonal-btn btn-blue" href="tel:+66891041992">
+                <span class="material-symbols-outlined" style="font-size:20px;">call</span> โทรเลย
+            </a>
+            <a class="tonal-btn btn-green" href="https://lin.ee/482bqDUr" target="_blank">
+                <span class="material-symbols-outlined" style="font-size:20px;">chat</span> LINE Chat
+            </a>
+            <a class="tonal-btn btn-red" href="mailto:rnb.transolution@gmail.com">
+                <span class="material-symbols-outlined" style="font-size:20px;">mail</span> ส่งอีเมล
+            </a>
+        </div>
+    </div>
 </section>
 
-<section data-animate="" id="case-studies">
-<h2>ผลงานที่ผ่านมา</h2>
-<div class="features-grid">
-<div class="feature-card">
-<h3 class="feature-title">ร้านอาหารในย่านสีลม</h3>
-<p>ยอดขายเพิ่มขึ้น 150% ภายใน 3 เดือน หลังการปรับเมนูและเทรนนิ่งทีม พร้อมวาง SOP ครบวงจร</p>
-</div>
-<div class="feature-card">
-<h3 class="feature-title">บาร์ริมทะเลในภูเก็ต</h3>
-<p>ลดของเสียในครัว 40% พร้อมออกแบบเมนูเครื่องดื่มใหม่ เพิ่มยอดเฉลี่ยต่อหัว 22%</p>
-</div>
-<div class="feature-card">
-<h3 class="feature-title">คาเฟ่แนวสุขภาพในเขาใหญ่</h3>
-<p>วาง Branding + Loyalty Program ทำให้ลูกค้าประจำเพิ่มขึ้น 3 เท่า</p>
-</div>
-<div class="feature-card">
-<h3 class="feature-title">ร้านอาหารโรงแรมในกรุงเทพฯ</h3>
-<p>Restructure ระบบ Cost Control ลดต้นทุนรวมลงได้ 17% พร้อมจัดโครงสร้างใหม่ทั้งครัว</p>
-</div>
-<div class="feature-card">
-<h3 class="feature-title">คาเฟ่เปิดใหม่ในหัวหิน</h3>
-<p>ออกแบบเมนู เปิดตัวแบรนด์ พร้อมเทรนนิ่งทีมเสิร์ฟและแคชเชียร์ ช่วยสร้างยอดขายเกินเป้า 135%</p>
-</div>
-<div class="feature-card">
-<h3 class="feature-title">ร้านอาหารญี่ปุ่นในเชียงใหม่</h3>
-<p>แก้ระบบเทิร์นโต๊ะและการรอคิว ลดเวลารอเฉลี่ยจาก 18 นาที เหลือ 5 นาที และเพิ่มรอบโต๊ะต่อวัน 40%</p>
-</div>
-</div>
-</section>
-<section data-animate="" id="testimonials">
-<h2>เสียงตอบรับจากลูกค้า</h2>
-<div class="testimonial-carousel">
-
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"หลังจากร่วมงานกับ R&amp;B Transolution เราพบว่าการจัดการร้านสามารถมีมาตรฐานและประสิทธิภาพมากกว่านี้ได้อีกเยอะ ทีมช่วยเราวางระบบใหม่ทั้งหมดตั้งแต่ครัวถึงหน้าเซอร์วิส ทำให้เราเห็นผลลัพธ์แบบชัดเจนในเวลาไม่นาน"</p>
-<div class="client-info">
-<img alt="ลูกค้า 1" class="client-photo" src="https://cdn-icons-png.flaticon.com/512/5336/5336340.png"/>
-<div>
-<h4>คุณเอก</h4>
-<p>Fine Dining - พัทยา<br/><span style="color:#DAA520;">★★★★★</span></p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"ถ้าย้อนเวลากลับไปได้ เราน่าจะเริ่มใช้บริการนี้ตั้งแต่เปิดร้าน เพราะสิ่งที่ได้คือความมั่นคงในการดำเนินธุรกิจ และทีมงานที่พัฒนาอย่างต่อเนื่อง"</p>
-<div class="client-info">
-<img alt="ลูกค้า 12" class="client-photo" src="https://cdn-icons-png.flaticon.com/512/5336/5336340.png"/>
-<div>
-<h4>คุณแบงค์</h4>
-<p>ร้านอาหารไทย - หัวหิน<br/><span style="color:#DAA520;">★★★★★</span></p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"แพ็กเกจ Digital Transformation คุ้มค่ามาก ยอดสั่งออนไลน์เพิ่มขึ้น 300% ภายใน 2 เดือน"</p>
-<div class="client-info">
-<img alt="ลูกค้าไทย" class="client-photo" src="https://img.freepik.com/free-photo/smiling-asian-woman-barista-cafe_109710-1616.jpg?w=60"/>
-<div>
-<h4>ผู้จัดการร้านคาเฟ่แนวสุขภาพ</h4>
-<p>เขาใหญ่ จังหวัดนครราชสีมา<br/><span style="color:#DAA520;">★★★★☆</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"ทีมงาน R&amp;B ช่วยลดอาหารเหลือทิ้งได้ 40% ในขณะที่เพิ่มความพึงพอใจลูกค้า เป็นการเปลี่ยนแปลงที่คุ้มค่าจริงๆ"</p>
-<div class="client-info">
-<img alt="ลูกค้าไทย" class="client-photo" src="https://img.freepik.com/free-photo/handsome-man-with-beard-wearing-suit-posing_23-2149473466.jpg?w=60"/>
-<div>
-<h4>ผู้บริหารบาร์แนวรักษ์โลก</h4>
-<p>ภูเก็ต<br/><span style="color:#DAA520;">★★★★★</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"พนักงานของเราชอบการเทรนนิ่งจากทีม R&amp;B มาก รู้สึกว่าได้ความรู้และเทคนิคใหม่ๆ ที่นำไปใช้ได้จริง"</p>
-<div class="client-info">
-<img alt="ลูกค้าไทย" class="client-photo" src="https://img.freepik.com/free-photo/young-asian-chef-standing-kitchen_109710-1693.jpg?w=60"/>
-<div>
-<h4>เจ้าของร้านอาหารญี่ปุ่น</h4>
-<p>เชียงใหม่<br/><span style="color:#DAA520;">★★★★☆</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial">
-<div class="testimonial-content">
-<p>"เราสามารถลดต้นทุนวัตถุดิบลงได้อย่างชัดเจน ต้องขอบคุณการวิเคราะห์ต้นทุนที่แม่นยำและคำแนะนำตรงจุด"</p>
-<div class="client-info">
-<img alt="ลูกค้าไทย" class="client-photo" src="https://img.freepik.com/free-photo/portrait-male-barista-standing-modern-cafe_23-2147899260.jpg?w=60"/>
-<div>
-<h4>ผู้จัดการร้านอาหารฟิวชัน</h4>
-<p>ระยอง<br/><span style="color:#DAA520;">★★★★★</span></p>
-</div>
-</div>
-</div>
-</div>
-<button class="carousel-prev">❮</button>
-<button class="carousel-next">❯</button>
-</div>
-</section>
-
-<section data-animate="" id="contact">
-<div class="contact-container">
-<h2>พร้อมที่จะยกระดับธุรกิจร้าน/โรงแรมของคุณแล้วหรือยัง?</h2>
-<p>ปรึกษาฟรี 30 นาที เพื่อหาแผนที่เหมาะสมกับร้านคุณ</p>
-<div class="form-container">
-<h3 class="form-title">กรอกข้อมูลเพื่อนัดหมาย</h3>
-<form action="https://formsubmit.co/rnb.transolution@gmail.com" id="consultationForm" method="POST">
-<input name="_honey" style="display:none" type="text"/>
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://rnbtransolution.github.io/consultant/thank-you.html"/>
-<div class="form-group">
-<label class="form-label" for="name">ชื่อ-นามสกุล</label>
-<input class="form-input" id="name" name="name" required="" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label" for="email">อีเมล</label>
-<input class="form-input" id="email" name="email" required="" type="email"/>
-</div>
-<div class="form-group">
-<label class="form-label" for="phone">เบอร์โทรศัพท์</label>
-<input class="form-input" id="phone" name="phone" required="" type="tel"/>
-</div>
-<div class="form-group">
-<label class="form-label" for="business">ชื่อร้าน/ธุรกิจ</label>
-<input class="form-input" id="business" name="business" required="" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label" for="package">แพ็กเกจที่สนใจ</label>
-<select class="form-select" id="package" name="package" required="">
-<option disabled="" selected="" value="">เลือกแพ็กเกจ</option>
-<option value="Starter">Starter</option>
-<option value="Foundation">Foundation</option>
-<option value="Growth">Growth</option>
-<option value="Premium">Premium</option>
-<option value="Elite">Elite</option>
-<option value="Signature">Signature (ราคาตามตกลง)</option>
-<option value="other">ยังไม่แน่ใจ</option>
-<option value="SOP Essentials">SOP Essentials</option></select>
-</div>
-<div class="form-group">
-<label class="form-label" for="message">รายละเอียดเพิ่มเติม</label>
-<textarea class="form-textarea" id="message" name="message"></textarea>
-</div>
-<button class="form-submit" type="submit">ส่งข้อมูลเพื่อนัดหมาย</button>
-</form>
-<div class="form-success" id="formSuccess">
-<i class="fas fa-check-circle"></i>
-<p>ขอบคุณ! เราได้รับข้อมูลของคุณแล้ว</p>
-<p>ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</p>
-</div>
-</div>
-<div class="contact-buttons">
-<a class="cta-button" href="tel:+66891041992">
-<i class="fas fa-phone"></i> โทรเลย
-                </a>
-<a class="cta-button" href="https://lin.ee/482bqDUr" target="_blank">
-<i class="fab fa-line"></i> LINE
-                </a>
-<a class="cta-button" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank">
-<i class="fab fa-facebook-f"></i> Facebook
-                </a>
-<a class="cta-button" href="mailto:rnb.transolution@gmail.com">
-<i class="fas fa-envelope"></i> อีเมล
-                </a>
-</div>
-</div>
-</section>
-
-<div class="live-chat">
-<a aria-label="Chat on LINE OA" href="https://lin.ee/482bqDUr" target="_blank">
-<button id="chatButton">
-<i class="fas fa-comment-dots"></i>
-</button>
-</a>
-<div class="chat-window">
-
-</div>
-</div>
 <footer>
-<p>© 2025 R&amp;B Transolution. สงวนลิขสิทธิ์</p>
+    <p>© 2026 R&B Transolution. สงวนลิขสิทธิ์</p>
 </footer>
-<script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-
-                    // Update URL without reload
-                    history.pushState(null, null, targetId);
-                }
-            });
-        });
-
-        // Update active section indicator
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.floating-nav a, .section-indicator a');
-
-        function updateActiveSection() {
-            let currentSection = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-
-                if (window.scrollY >= sectionTop - 200) {
-                    currentSection = '#' + section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // Initial call
-        updateActiveSection();
-
-        // Update on scroll
-        let lastScroll = 0;
-        window.addEventListener('scroll', function() {
-            updateActiveSection();
-
-            // Floating nav behavior
-            const currentScroll = window.scrollY;
-            const floatingNav = document.querySelector('.floating-nav');
-
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                floatingNav.classList.add('hidden');
-            } else if (currentScroll < lastScroll || currentScroll <= 100) {
-                floatingNav.classList.remove('hidden');
-            }
-
-            lastScroll = currentScroll;
-
-            // Parallax effect for hero section
-            const hero = document.getElementById('hero');
-            hero.style.backgroundPositionY = currentScroll * 0.5 + 'px';
-        });
-
-        // iOS detection
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-        // Package dropdown functionality
-        document.getElementById('packageSelect').addEventListener('change', function() {
-            // Hide all package details
-            document.querySelectorAll('.package-details').forEach(detail => {
-                detail.classList.remove('active');
-            });
-
-            // Show selected package
-            const selectedValue = this.value;
-            if (selectedValue) {
-                document.getElementById(selectedValue).classList.add('active');
-            }
-        });
-
-        // Form handling
-
-        // Testimonial carousel functionality
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll('.testimonial');
-        const totalTestimonials = testimonials.length;
-
-        function showTestimonial(index) {
-            testimonials.forEach(testimonial => {
-                testimonial.classList.remove('active');
-            });
-
-            currentTestimonial = (index + totalTestimonials) % totalTestimonials;
-            testimonials[currentTestimonial].classList.add('active');
-        }
-
-        document.querySelector('.carousel-prev').addEventListener('click', () => {
-            showTestimonial(currentTestimonial - 1);
-        });
-
-        document.querySelector('.carousel-next').addEventListener('click', () => {
-            showTestimonial(currentTestimonial + 1);
-        });
-
-        // Auto-rotate testimonials
-        setInterval(() => {
-            showTestimonial(currentTestimonial + 1);
-        }, 8000);
-
-        // Live chat toggle
-        document.getElementById('chatButton').addEventListener('click', function() {
-            document.querySelector('.chat-window').classList.toggle('active');
-        });
-
-        // Intersection Observer for scroll animations
-        const animateOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('[data-animate]').forEach(el => {
-            animateOnScroll.observe(el);
-        });
-
-        // Check URL hash on load
-        window.addEventListener('load', function() {
-            const hash = window.location.hash;
-            if (hash) {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }, 100);
-                }
-            }
-        });
-    </script>
-<script>
-  const packageSelector = document.getElementById('packageSelect');
-  const allPackages = document.querySelectorAll('.package-details');
-
-  packageSelector.addEventListener('change', function () {
-    const selectedValue = this.value;
-
-    allPackages.forEach(pkg => {
-      pkg.classList.remove('active');
-    });
-
-    const selectedPackage = document.getElementById(selectedValue);
-    if (selectedPackage) {
-      selectedPackage.classList.add('active');
-      selectedPackage.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-
-// Show cookie banner if not accepted
-window.addEventListener('load', function () {
-  if (!localStorage.getItem('cookieConsent')) {
-    document.getElementById('cookieConsent').style.display = 'flex';
-  }
-
-  document.getElementById('acceptCookies').addEventListener('click', function () {
-    localStorage.setItem('cookieConsent', 'accepted');
-    document.getElementById('cookieConsent').style.display = 'none';
-  });
-});
-
-// Smooth scroll for back-to-top button
-document.querySelectorAll('a.back-to-top').forEach(btn => {
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const target = document.querySelector(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-</script>
-<style>
-.scroll-arrow-icon {
-  font-family: 'Material Symbols Outlined';
-  font-size: 48px;
-  color: #DAA520;
-  animation: bounce 2s infinite;
-}
-#scroll-arrow-overlay {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(10px); }
-}
-</style>
-<style>
-#floating-bar {
-  position: fixed;
-  top: 110px;
-  left: 0;
-  transform: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 9999;
-}
-#floating-bar a {
-  display: block;
-  padding: 10px 18px;
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: 500;
-  border: 2px solid #DAA520;
-  border-left: none;
-  border-radius: 0 6px 6px 0;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: background-color 0.35s ease, color 0.35s ease;
-}
-#floating-bar a:hover {
-  background-color: #DAA520;
-  color: #000;
-}
-</style>
 </body>
 </html>
