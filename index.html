@@ -14,29 +14,17 @@
 
 <style>
     :root {
-        
-        
-        
         --pastel-blue-bg: #e8f0fe;
         --pastel-blue-text: #1967d2;
-        
-        
         --pastel-green-bg: #e6f4ea;
         --pastel-green-text: #137333;
-        
-        
         --pastel-red-bg: #fce8e6;
         --pastel-red-text: #c5221f;
-        
-        
         --pastel-yellow-bg: #fef7e0;
         --pastel-yellow-text: #ea8600;
-
-        
         --pastel-purple-bg: #f3e8fd;
         --pastel-purple-text: #9334e6;
 
-        
         --bg-white: #ffffff;
         --bg-soft: #f8f9fa; 
         --text-head: #202124;
@@ -63,10 +51,27 @@
         color: var(--text-head);
     }
 
-    
     .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
         font-size: 32px;
+        /* Ensure the icon can be transformed/animated */
+        display: inline-block; 
+    }
+
+    /* --- ANIMATION KEYFRAMES --- */
+    
+    /* Floating Effect for Card Icons */
+    @keyframes float-icon {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+    }
+
+    /* Wiggle Effect for Button Icons */
+    @keyframes wiggle-icon {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-15deg); }
+        75% { transform: rotate(15deg); }
     }
 
     section {
@@ -83,7 +88,6 @@
         color: var(--text-head);
     }
 
-    
     #hero {
         position: relative;
         height: 85vh;
@@ -96,20 +100,14 @@
         overflow: hidden;
     }
 
-    
     #hero::before {
         content: '';
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        
-        
         background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
                     url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
-        
-        
         filter: blur(2px);
         -webkit-filter: blur(2px);
-        
         transform: scale(1.05); 
         z-index: 1;
     }
@@ -136,7 +134,6 @@
         text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
     
-    
     .hero-btn {
         background: rgba(255,255,255,0.95);
         color: var(--pastel-blue-text);
@@ -149,15 +146,18 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
-
     
+    /* Animate Hero Button Icon on Hover */
+    .hero-btn:hover .material-symbols-outlined {
+        animation: wiggle-icon 0.5s ease-in-out;
+    }
+
     .grid-3 {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 24px;
     }
 
-    
     .info-card {
         background: var(--bg-white);
         border: 1px solid var(--border-color);
@@ -178,7 +178,11 @@
         border-color: transparent;
     }
 
-    
+    /* Animate Card Icon on Hover */
+    .info-card:hover .icon-box .material-symbols-outlined {
+        animation: float-icon 1s ease-in-out infinite;
+    }
+
     .icon-box {
         width: 64px; height: 64px; min-width: 64px;
         border-radius: 20px; 
@@ -186,7 +190,6 @@
         margin-bottom: 20px;
         transition: 0.3s;
     }
-    
     
     .theme-blue .icon-box { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
     .theme-green .icon-box { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
@@ -199,7 +202,6 @@
     
     strong { color: var(--text-head); font-weight: 500; }
 
-    
     #topbar {
         position: fixed; top: 0; left: 0; width: 100%;
         background: rgba(255,255,255,0.95);
@@ -225,7 +227,6 @@
     }
     .logo-link span { color: var(--pastel-blue-text); font-weight: 500; margin-left: 6px; }
 
-    
     .quote-box {
         text-align: center; margin-top: 4rem;
         padding: 40px;
@@ -236,7 +237,6 @@
         font-family: 'Google Sans', sans-serif;
     }
 
-    
     .tonal-btn {
         padding: 12px 28px;
         border-radius: var(--radius-btn);
@@ -247,6 +247,11 @@
         border: none;
         cursor: pointer;
         font-size: 0.95rem;
+    }
+
+    /* Animate Tonal Buttons on Hover */
+    .tonal-btn:hover .material-symbols-outlined {
+        animation: wiggle-icon 0.4s ease-in-out;
     }
 
     .btn-blue { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
