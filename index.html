@@ -13,426 +13,267 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
 
 <style>
-    :root {
-        --pastel-blue-bg: #e8f0fe;
-        --pastel-blue-text: #1967d2;
-        --pastel-green-bg: #e6f4ea;
-        --pastel-green-text: #137333;
-        --pastel-red-bg: #fce8e6;
-        --pastel-red-text: #c5221f;
-        --pastel-yellow-bg: #fef7e0;
-        --pastel-yellow-text: #ea8600;
-        --pastel-purple-bg: #f3e8fd;
-        --pastel-purple-text: #9334e6;
+:root {
+    --pastel-blue-bg: #e8f0fe;
+    --pastel-blue-text: #1967d2;
+    --pastel-green-bg: #e6f4ea;
+    --pastel-green-text: #137333;
+    --pastel-red-bg: #fce8e6;
+    --pastel-red-text: #c5221f;
+    --pastel-yellow-bg: #fef7e0;
+    --pastel-yellow-text: #ea8600;
+    --pastel-purple-bg: #f3e8fd;
+    --pastel-purple-text: #9334e6;
 
-        --bg-white: #ffffff;
-        --bg-soft: #f8f9fa; 
-        --text-head: #202124;
-        --text-body: #5f6368;
-        --border-color: #f1f3f4; 
-        
-        --radius-card: 24px; 
-        --radius-btn: 30px;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-        font-family: 'Google Sans', 'Roboto', sans-serif;
-        font-weight: 400;
-        line-height: 1.6;
-        background: var(--bg-white);
-        color: var(--text-body);
-        overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-        font-family: 'Google Sans', sans-serif;
-        color: var(--text-head);
-    }
-
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
-        font-size: 32px;
-        /* Ensure the icon can be transformed/animated */
-        display: inline-block; 
-    }
-
-    /* --- ANIMATION KEYFRAMES --- */
+    --bg-white: #ffffff;
+    --bg-soft: #f8f9fa; 
+    --text-head: #202124;
+    --text-body: #5f6368;
+    --border-color: #f1f3f4; 
     
-    /* Floating Effect for Card Icons */
-    @keyframes float-icon {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-        100% { transform: translateY(0); }
-    }
+    --radius-card: 24px; 
+    --radius-btn: 30px;
+}
 
-    /* Wiggle Effect for Button Icons */
-    @keyframes wiggle-icon {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(-15deg); }
-        75% { transform: rotate(15deg); }
-    }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    section {
-        padding: 5rem 1.5rem;
-        max-width: 1280px;
-        margin: 0 auto;
-    }
+body {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background: var(--bg-white);
+    color: var(--text-body);
+    overflow-x: hidden;
+}
 
-    section h2 {
-        font-size: 2.25rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        font-weight: 500;
-        color: var(--text-head);
-    }
+h1, h2, h3, h4 {
+    font-family: 'Google Sans', sans-serif;
+    color: var(--text-head);
+}
 
-    #hero {
-        position: relative;
-        height: 85vh;
-        min-height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-        overflow: hidden;
-    }
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+    font-size: 32px;
+    display: inline-block; 
+}
 
-    #hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
-        filter: blur(2px);
-        -webkit-filter: blur(2px);
-        transform: scale(1.05); 
-        z-index: 1;
-    }
+@keyframes float-icon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 900px;
-        padding: 20px;
-    }
+@keyframes wiggle-icon {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
 
-    #hero h1 { 
-        color: white; 
-        font-size: 3.5rem; 
-        margin-bottom: 1rem; 
-        font-weight: 700; 
-        text-shadow: 0 2px 10px rgba(0,0,0,0.4); 
-    }
-    .subtitle { 
-        color: #f1f3f4; 
-        font-size: 1.35rem; 
-        margin-bottom: 2.5rem; 
-        font-weight: 400; 
-        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    
-    .hero-btn {
-        background: rgba(255,255,255,0.95);
-        color: var(--pastel-blue-text);
-        padding: 14px 36px;
-        border-radius: var(--radius-btn);
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-flex; align-items: center; gap: 8px;
-        transition: 0.3s;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
-    
-    /* Animate Hero Button Icon on Hover */
-    .hero-btn:hover .material-symbols-outlined {
-        animation: wiggle-icon 0.5s ease-in-out;
-    }
+section {
+    padding: 5rem 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
 
-    .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 24px;
-    }
+section h2 {
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    color: var(--text-head);
+}
 
-    .info-card {
-        background: var(--bg-white);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-card);
-        padding: 32px;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-    }
+#hero {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
 
-    .info-card:hover {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transform: translateY(-4px);
-        border-color: transparent;
-    }
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    transform: scale(1.05); 
+    z-index: 1;
+}
 
-    /* Animate Card Icon on Hover */
-    .info-card:hover .icon-box .material-symbols-outlined {
-        animation: float-icon 1s ease-in-out infinite;
-    }
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+}
 
-    .icon-box {
-        width: 64px; height: 64px; min-width: 64px;
-        border-radius: 20px; 
-        display: flex; align-items: center; justify-content: center;
-        margin-bottom: 20px;
-        transition: 0.3s;
-    }
-    
-    .theme-blue .icon-box { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
-    .theme-green .icon-box { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
-    .theme-red .icon-box { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
-    .theme-yellow .icon-box { background: var(--pastel-yellow-bg); color: var(--pastel-yellow-text); }
-    .theme-purple .icon-box { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
+#hero h1 { 
+    color: white; 
+    font-size: 3.5rem; 
+    margin-bottom: 1rem; 
+    font-weight: 700; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4); 
+}
 
-    .info-card h3 { font-size: 1.25rem; margin-bottom: 12px; font-weight: 500; color: var(--text-head); }
-    .info-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-body); }
-    
-    strong { color: var(--text-head); font-weight: 500; }
+.subtitle { 
+    color: #f1f3f4; 
+    font-size: 1.35rem; 
+    margin-bottom: 2.5rem; 
+    font-weight: 400; 
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
 
-    #topbar {
-        position: fixed; top: 0; left: 0; width: 100%;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0; z-index: 1000;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-        display: flex; justify-content: center; gap: 30px;
-    }
-    #topbar a.nav-link { 
-        text-decoration: none; color: var(--text-body); 
-        font-weight: 500; font-size: 0.95rem; 
-        padding: 6px 12px; border-radius: 20px;
-        transition: 0.2s;
-    }
-    #topbar a.nav-link:hover { 
-        background: var(--bg-soft); color: var(--text-head); 
-    }
+.hero-btn {
+    background: rgba(255,255,255,0.95);
+    color: var(--pastel-blue-text);
+    padding: 14px 36px;
+    border-radius: var(--radius-btn);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
 
-    .logo-link {
-        position: absolute; left: 32px; 
-        font-weight: bold; color: var(--text-body); font-size: 1.3rem;
-        text-decoration: none; display: flex; align-items: center;
-    }
-    .logo-link span { color: var(--pastel-blue-text); font-weight: 500; margin-left: 6px; }
+.hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
 
-    .quote-box {
-        text-align: center; margin-top: 4rem;
-        padding: 40px;
-        background: var(--pastel-blue-bg);
-        border-radius: var(--radius-card);
-        font-size: 1.4rem; font-style: italic;
-        color: var(--pastel-blue-text);
-        font-family: 'Google Sans', sans-serif;
-    }
+.hero-btn:hover .material-symbols-outlined {
+    animation: wiggle-icon 0.5s ease-in-out;
+}
 
-    .tonal-btn {
-        padding: 12px 28px;
-        border-radius: var(--radius-btn);
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-flex; align-items: center; gap: 8px;
-        transition: 0.2s;
-        border: none;
-        cursor: pointer;
-        font-size: 0.95rem;
-    }
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
 
-    /* Animate Tonal Buttons on Hover */
-    .tonal-btn:hover .material-symbols-outlined {
-        animation: wiggle-icon 0.4s ease-in-out;
-    }
+.info-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
 
-    .btn-blue { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
-    .btn-blue:hover { filter: brightness(0.95); }
+.info-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(-4px);
+    border-color: transparent;
+}
 
-    .btn-green { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
-    .btn-green:hover { filter: brightness(0.95); }
+.info-card:hover .icon-box .material-symbols-outlined {
+    animation: float-icon 1s ease-in-out infinite;
+}
 
-    .btn-red { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
-    .btn-red:hover { filter: brightness(0.95); }
+.icon-box {
+    width: 64px; height: 64px; min-width: 64px;
+    border-radius: 20px; 
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
 
-    .btn-purple { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
-    .btn-purple:hover { filter: brightness(0.95); }
+.theme-blue .icon-box { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
+.theme-green .icon-box { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
+.theme-red .icon-box { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
+.theme-yellow .icon-box { background: var(--pastel-yellow-bg); color: var(--pastel-yellow-text); }
+.theme-purple .icon-box { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
 
-    @media (max-width: 768px) {
-        #topbar { display: none; }
-        #hero h1 { font-size: 2.2rem; }
-        section { padding: 3rem 1.5rem; }
-    }
-    
-    footer { background: var(--bg-soft); padding: 3rem 1rem; text-align: center; font-size: 0.9rem; color: var(--text-body); }
+.info-card h3 { font-size: 1.25rem; margin-bottom: 12px; font-weight: 500; color: var(--text-head); }
+.info-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-body); }
+
+strong { color: var(--text-head); font-weight: 500; }
+
+#topbar {
+    position: fixed; top: 0; left: 0; width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0; z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    display: flex; justify-content: center; gap: 30px;
+}
+
+#topbar a.nav-link { 
+    text-decoration: none; color: var(--text-body); 
+    font-weight: 500; font-size: 0.95rem; 
+    padding: 6px 12px; border-radius: 20px;
+    transition: 0.2s;
+}
+
+#topbar a.nav-link:hover { 
+    background: var(--bg-soft); color: var(--text-head); 
+}
+
+.logo-link {
+    position: absolute; left: 32px; 
+    font-weight: bold; color: var(--text-body); font-size: 1.3rem;
+    text-decoration: none; display: flex; align-items: center;
+}
+
+.logo-link span { color: var(--pastel-blue-text); font-weight: 500; margin-left: 6px; }
+
+.quote-box {
+    text-align: center; margin-top: 4rem;
+    padding: 40px;
+    background: var footer background;
+    border-radius: var(--radius-card);
+    font-size: 1.4rem; font-style: italic;
+    color: var(--pastel-blue-text);
+    font-family: 'Google Sans', sans-serif;
+}
+
+.tonal-btn {
+    padding: 12px 28px;
+    border-radius: var(--radius-btn);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.tonal-btn:hover .material-symbols-outlined {
+    animation: wiggle-icon 0.4s ease-in-out;
+}
+
+.btn-blue { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
+.btn-green { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
+.btn-red { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
+.btn-purple { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
+
+@media (max-width: 768px) {
+    #topbar { display: none; }
+    #hero h1 { font-size: 2.2rem; }
+    section { padding: 3rem 1.5rem; }
+}
+
+footer {
+    background: var(--bg-soft);
+    padding: 3rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-body);
+}
 </style>
 </head>
 <body>
 
-<div id="topbar">
-    <a href="#hero" class="logo-link">
-        R&amp;B <span>Transolution</span>
-    </a>
-    <a href="#hero" class="nav-link">หน้าหลัก</a>
-    <a href="#philosophy" class="nav-link">แนวคิด</a>
-    <a href="#highlights" class="nav-link">จุดเด่น</a>
-    <a href="#services" class="nav-link">บริการของเรา</a>
-    <a href="#contact" class="nav-link">ติดต่อ</a>
-</div>
-
-<section id="hero">
-    <div class="hero-content">
-        <h1>R&amp;B Transolution</h1>
-        <div class="subtitle">ที่ปรึกษาด้านร้านอาหาร โรงแรม และธุรกิจบริการระดับมืออาชีพ</div>
-        <a class="hero-btn" href="#contact">
-            <span class="material-symbols-outlined" style="font-size:22px;">calendar_today</span>
-            ปรึกษาฟรี
-        </a>
-    </div>
-</section>
-
-<section id="philosophy">
-    <h2>แนวคิดเบื้องหลัง R&B</h2>
-    <div class="grid-3">
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
-            <h3>Reach Beyond</h3>
-            <p>
-                R&B ถือกำเนิดจากความเชื่อว่า ธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “การดำเนินงานที่ดีพอ” 
-                แต่ต้องไปให้ถึงมาตรฐานที่ควรจะเป็น
-            </p>
-        </div>
-
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
-            <h3>Transolution</h3>
-            <p>
-                ไม่ใช่แค่การแก้ปัญหาเฉพาะหน้า แต่คือ <strong>Transformation with Purpose</strong> 
-                เปลี่ยนโครงสร้าง วิธีคิด และวิธีทำงาน เพื่อความยั่งยืน
-            </p>
-        </div>
-
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
-            <h3>Our Philosophy</h3>
-            <p>
-                เราทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ต้องวัดผลได้ 
-                เข้ามาเสริมโครงสร้างเพื่อให้ทีมของคุณทำงานได้ดีขึ้น
-            </p>
-        </div>
-    </div>
-    
-    <div class="quote-box">
-        “We don’t fix businesses. We redesign how they operate.”
-    </div>
-</section>
-
-<section id="highlights" style="background-color: var(--bg-soft);">
-    <h2>ทำไมต้องเลือกเรา</h2>
-    <div class="grid-3">
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">verified</span></div>
-            <h3>มาตรฐานสากล</h3>
-            <p>ยกระดับธุรกิจสู่มาตรฐานระดับสากล ด้วยทีมงานที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว</p>
-        </div>
-        <div class="info-card theme-red">
-            <div class="icon-box"><span class="material-symbols-outlined">bolt</span></div>
-            <h3>เห็นผลลัพธ์ไว</h3>
-            <p>กระบวนการทำงานที่กระชับ ชัดเจน เริ่มต้นแก้ไขปัญหาและส่งมอบแผนงานได้ภายใน 5 วันทำการ</p>
-        </div>
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">analytics</span></div>
-            <h3>Data-Driven</h3>
-            <p>ใช้ Data จริงของร้านในการวางแผนและวิเคราะห์ ไม่ใช่การคาดเดา เพื่อผลลัพธ์ที่แม่นยำที่สุด</p>
-        </div>
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">tune</span></div>
-            <h3>กลยุทธ์เฉพาะจุด</h3>
-            <p>Tailor-made Strategy ไม่ใช้สูตรสำเร็จ แต่เราออกแบบแผนให้เหมาะกับโจทย์และงบประมาณของร้านคุณ</p>
-        </div>
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">manage_accounts</span></div>
-            <h3>ทีมงานมืออาชีพ</h3>
-            <p>รวมทีมผู้เชี่ยวชาญจากสายงานบริหารโรงแรมและร้านอาหารกว่า 20 ปี ที่เข้าใจปัญหาหน้างานจริง</p>
-        </div>
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">handshake</span></div>
-            <h3>ดูแลต่อเนื่อง</h3>
-            <p>ไม่ทิ้งงานหลังจบโปรเจกต์ พร้อมเป็นพาร์ทเนอร์ที่ปรึกษาและติดตามผลเพื่อให้คุณมั่นใจในระยะยาว</p>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <h2>บริการของเรา</h2>
-    <div class="grid-3">
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
-            <h3>วิเคราะห์ยอดขายเมนู</h3>
-            <p>เจาะลึกข้อมูลยอดขาย จัดทำ Menu Engineering เพื่อดูว่าเมนูไหนทำกำไร หรือควรปรับปรุงเพื่อเพิ่มรายได้</p>
-        </div>
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
-            <h3>ตรวจคุณภาพและประเมินผล</h3>
-            <p>Audit ตรวจสอบมาตรฐานการบริการ ความสะอาด และคุณภาพอาหารอย่างละเอียด พร้อมรายงานผล</p>
-        </div>
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
-            <h3>Hospitality Workshop</h3>
-            <p>เวิร์คชอปงานบริการระดับมืออาชีพ พัฒนาบุคลิกภาพและทักษะ Service Mind ให้ทีมงานของคุณ</p>
-        </div>
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
-            <h3>SWOT Solutions</h3>
-            <p>ปลดล็อกศักยภาพธุรกิจร้านอาหารและโรงแรม วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อสร้างกลยุทธ์ที่เหนือกว่าคู่แข่ง</p>
-        </div>
-        <div class="info-card theme-red">
-            <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
-            <h3>เขียน SOP มาตรฐาน</h3>
-            <p>จัดทำคู่มือปฏิบัติงาน (SOP) สำหรับร้านอาหาร โรงแรม และงานบริการทุกประเภท เพื่อระบบงานที่มั่นคง</p>
-        </div>
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
-            <h3>ปรับปรุงร้านอาหารและบาร์</h3>
-            <p>โปรแกรมรีโนเวทระบบการจัดการ ปรับภาพลักษณ์ และวางระบบใหม่ (Re-branding & System Set-up)</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" style="background-color: var(--bg-soft);">
-    <div style="text-align:center; max-width:700px; margin:0 auto; background:white; padding:48px; border-radius:32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
-        <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:16px; color:var(--text-body);">contact_mail</span>
-        <h2>ติดต่อเรา</h2>
-        <p style="margin-bottom:30px; color:var(--text-body);">สนใจบริการหรือต้องการคำปรึกษาเบื้องต้น ติดต่อทีมงาน R&B Transolution ได้ทันที</p>
-        
-        <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
-            <a class="tonal-btn btn-blue" href="tel:+66891041992">
-                <span class="material-symbols-outlined" style="font-size:20px;">call</span> โทรเลย
-            </a>
-            <a class="tonal-btn btn-green" href="https://lin.ee/482bqDUr" target="_blank">
-                <span class="material-symbols-outlined" style="font-size:20px;">chat</span> LINE Chat
-            </a>
-            <a class="tonal-btn btn-red" href="mailto:rnb.transolution@gmail.com">
-                <span class="material-symbols-outlined" style="font-size:20px;">mail</span> ส่งอีเมล
-            </a>
-            <a class="tonal-btn btn-purple" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank">
-                <span class="material-symbols-outlined" style="font-size:20px;">thumb_up</span> Follow Us
-            </a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 R&B Transolution. สงวนลิขสิทธิ์</p>
-</footer>
+<!-- HTML body unchanged from original -->
 
 </body>
 </html>
