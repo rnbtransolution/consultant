@@ -54,20 +54,15 @@
     .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
         font-size: 32px;
-        /* Ensure the icon can be transformed/animated */
         display: inline-block; 
     }
-
-    /* --- ANIMATION KEYFRAMES --- */
     
-    /* Floating Effect for Card Icons */
     @keyframes float-icon {
         0% { transform: translateY(0); }
         50% { transform: translateY(-8px); }
         100% { transform: translateY(0); }
     }
 
-    /* Wiggle Effect for Button Icons */
     @keyframes wiggle-icon {
         0%, 100% { transform: rotate(0deg); }
         25% { transform: rotate(-15deg); }
@@ -147,7 +142,6 @@
     }
     .hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
     
-    /* Animate Hero Button Icon on Hover */
     .hero-btn:hover .material-symbols-outlined {
         animation: wiggle-icon 0.5s ease-in-out;
     }
@@ -178,7 +172,6 @@
         border-color: transparent;
     }
 
-    /* Animate Card Icon on Hover */
     .info-card:hover .icon-box .material-symbols-outlined {
         animation: float-icon 1s ease-in-out infinite;
     }
@@ -249,7 +242,6 @@
         font-size: 0.95rem;
     }
 
-    /* Animate Tonal Buttons on Hover */
     .tonal-btn:hover .material-symbols-outlined {
         animation: wiggle-icon 0.4s ease-in-out;
     }
