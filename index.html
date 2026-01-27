@@ -2,40 +2,41 @@
 <html lang="th">
 <head>
 <meta charset="utf-8"/>
-<meta content="R&amp;B Transolution – ที่ปรึกษาธุรกิจบริการ" name="description"/>
+<meta content="R&B Transolution – ที่ปรึกษาธุรกิจบริการระดับมืออาชีพ" name="description"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>R&amp;B Transolution - บริการที่ปรึกษาครบวงจร</title>
+<title>R&B Transolution - บริการที่ปรึกษาครบวงจร</title>
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet" />
 
 <style>
     :root {
-        --pastel-blue-bg: #e8f0fe;
-        --pastel-blue-text: #1967d2;
-        --pastel-green-bg: #e6f4ea;
-        --pastel-green-text: #137333;
-        --pastel-red-bg: #fce8e6;
-        --pastel-red-text: #c5221f;
-        --pastel-yellow-bg: #fef7e0;
-        --pastel-yellow-text: #ea8600;
-        --pastel-purple-bg: #f3e8fd;
-        --pastel-purple-text: #9334e6;
+        /* Google-inspired Palette */
+        --primary-blue: #1a73e8;
+        --primary-green: #1e8e3e;
+        --primary-red: #d93025;
+        --primary-yellow: #f9ab00;
+        --primary-purple: #9334e6;
 
         --bg-white: #ffffff;
-        --bg-soft: #f8f9fa; 
+        --bg-soft: #f8f9fa;
         --text-head: #202124;
         --text-body: #5f6368;
-        --border-color: #f1f3f4; 
+        --border-color: #dadce0;
         
-        --radius-card: 24px; 
-        --radius-btn: 30px;
+        --radius-card: 24px;
+        --radius-btn: 48px;
+        --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        --shadow-md: 0 4px 6px rgba(60,64,67,0.3);
+        --shadow-hover: 0 8px 12px rgba(60,64,67,0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
         font-family: 'Outfit', 'Anuphan', sans-serif;
@@ -43,389 +44,466 @@
         line-height: 1.6;
         background: var(--bg-white);
         color: var(--text-body);
+        -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
         font-family: 'Outfit', 'Anuphan', sans-serif;
         color: var(--text-head);
+        letter-spacing: -0.5px;
     }
 
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
-        font-size: 32px;
-        display: inline-block; 
-    }
-    
-    @keyframes float-icon {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-        100% { transform: translateY(0); }
+    /* --- Animations --- */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
 
-    @keyframes wiggle-icon {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(-15deg); }
-        75% { transform: rotate(15deg); }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    section {
-        padding: 5rem 1.5rem;
-        max-width: 1280px;
-        margin: 0 auto;
+    /* --- Navigation --- */
+    #topbar {
+        position: fixed; top: 0; left: 0; width: 100%;
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 1rem 2rem; z-index: 1000;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: flex; justify-content: space-between; align-items: center;
+        transition: all 0.3s ease;
     }
 
-    section h2 {
-        font-size: 2.25rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        font-weight: 500;
-        color: var(--text-head);
+    .logo-link {
+        font-weight: 700; color: var(--text-head); font-size: 1.4rem;
+        text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+    .logo-link span { color: var(--primary-blue); font-weight: 500; }
+
+    .nav-menu { display: flex; gap: 8px; }
+
+    #topbar a.nav-link { 
+        text-decoration: none; color: var(--text-body); 
+        font-weight: 500; font-size: 0.95rem; 
+        padding: 8px 16px; border-radius: 24px;
+        transition: all 0.2s ease;
+    }
+    #topbar a.nav-link:hover { 
+        background: var(--bg-soft); color: var(--primary-blue); 
     }
 
+    /* --- Hero Section --- */
     #hero {
         position: relative;
-        height: 85vh;
-        min-height: 500px;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        color: white;
         overflow: hidden;
+        color: white;
     }
 
     #hero::before {
         content: '';
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    url('https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg') center/cover no-repeat;
-        filter: blur(2px);
-        -webkit-filter: blur(2px);
-        transform: scale(1.05); 
+        /* [UPDATED] New Restaurant/Cafe Lobby Image */
+        background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%),
+                    url('https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
         z-index: 1;
     }
 
     .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 900px;
-        padding: 20px;
+        max-width: 800px;
+        padding: 0 24px;
+        animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0; transform: translateY(40px);
+    }
+
+    @keyframes heroFadeUp {
+        to { opacity: 1; transform: translateY(0); }
     }
 
     #hero h1 { 
         color: white; 
-        font-size: 3.5rem; 
-        margin-bottom: 1rem; 
+        font-size: clamp(2.5rem, 5vw, 4.5rem); 
+        margin-bottom: 1.5rem; 
         font-weight: 700; 
-        text-shadow: 0 2px 10px rgba(0,0,0,0.4); 
+        line-height: 1.1;
     }
     .subtitle { 
-        color: #f1f3f4; 
-        font-size: 1.35rem; 
-        margin-bottom: 2.5rem; 
+        color: #e8eaed; 
+        font-size: clamp(1.1rem, 2vw, 1.5rem); 
+        margin-bottom: 3rem; 
         font-weight: 400; 
-        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        max-width: 600px;
+        margin-left: auto; margin-right: auto;
     }
     
     .hero-btn {
-        background: rgba(255,255,255,0.95);
-        color: var(--pastel-blue-text);
-        padding: 14px 36px;
+        background: var(--primary-blue);
+        color: white;
+        padding: 16px 40px;
         border-radius: var(--radius-btn);
         text-decoration: none;
         font-weight: 500;
+        font-size: 1.1rem;
         display: inline-flex; align-items: center; gap: 8px;
-        transition: 0.3s;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: none;
     }
-    .hero-btn:hover { background: #ffffff; transform: translateY(-2px); }
-    
-    .hero-btn:hover .material-symbols-outlined {
-        animation: wiggle-icon 0.5s ease-in-out;
+    .hero-btn:hover { 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
+        background: #1967d2;
     }
 
+    /* --- Sections --- */
+    section {
+        padding: 6rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    section h2 {
+        font-size: clamp(2rem, 3vw, 2.75rem);
+        text-align: center;
+        margin-bottom: 4rem;
+        font-weight: 600;
+        color: var(--text-head);
+    }
+
+    /* --- Philosophy Cards (Clean Style) --- */
     .grid-3 {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
     }
 
     .info-card {
         background: var(--bg-white);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-card);
-        padding: 32px;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        padding: 40px 32px;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         height: 100%;
         position: relative;
-        overflow: hidden;
     }
 
     .info-card:hover {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transform: translateY(-4px);
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
         border-color: transparent;
     }
 
-    .info-card:hover .icon-box .material-symbols-outlined {
-        animation: float-icon 1s ease-in-out infinite;
-    }
-
     .icon-box {
-        width: 64px; height: 64px; min-width: 64px;
-        border-radius: 20px; 
+        width: 56px; height: 56px;
+        border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        margin-bottom: 20px;
-        transition: 0.3s;
-    }
-    
-    .theme-blue .icon-box { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
-    .theme-green .icon-box { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
-    .theme-red .icon-box { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
-    .theme-yellow .icon-box { background: var(--pastel-yellow-bg); color: var(--pastel-yellow-text); }
-    .theme-purple .icon-box { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
-
-    .info-card h3 { font-size: 1.25rem; margin-bottom: 12px; font-weight: 500; color: var(--text-head); }
-    .info-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-body); }
-    
-    strong { color: var(--text-head); font-weight: 500; }
-
-    #topbar {
-        position: fixed; top: 0; left: 0; width: 100%;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0; z-index: 1000;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-        display: flex; justify-content: center; gap: 30px;
-    }
-    #topbar a.nav-link { 
-        text-decoration: none; color: var(--text-body); 
-        font-weight: 500; font-size: 0.95rem; 
-        padding: 6px 12px; border-radius: 20px;
-        transition: 0.2s;
-    }
-    #topbar a.nav-link:hover { 
-        background: var(--bg-soft); color: var(--text-head); 
+        margin-bottom: 24px;
+        font-size: 28px;
     }
 
-    .logo-link {
-        position: absolute; left: 32px; 
-        font-weight: bold; color: var(--text-body); font-size: 1.3rem;
-        text-decoration: none; display: flex; align-items: center;
-    }
-    .logo-link span { color: var(--pastel-blue-text); font-weight: 500; margin-left: 6px; }
+    /* Color Themes for Icons */
+    .theme-blue .icon-box { background: #e8f0fe; color: var(--primary-blue); }
+    .theme-green .icon-box { background: #e6f4ea; color: var(--primary-green); }
+    .theme-red .icon-box { background: #fce8e6; color: var(--primary-red); }
+    .theme-yellow .icon-box { background: #fef7e0; color: #ea8600; }
+    .theme-purple .icon-box { background: #f3e8fd; color: var(--primary-purple); }
 
-    .quote-box {
-        text-align: center; margin-top: 4rem;
-        padding: 40px;
-        background: var(--pastel-blue-bg);
-        border-radius: var(--radius-card);
-        font-size: 1.4rem; font-style: italic;
-        color: var(--pastel-blue-text);
-        font-family: 'Outfit', 'Anuphan', sans-serif;
+    .info-card h3 { 
+        font-size: 1.5rem; margin-bottom: 16px; font-weight: 600; 
+    }
+    .info-card p { 
+        font-size: 1rem; color: var(--text-body); line-height: 1.7; 
     }
 
+    /* --- Quote Section --- */
+    .quote-section {
+        background: var(--bg-soft);
+        border-radius: 32px;
+        padding: 60px 40px;
+        text-align: center;
+        margin-top: 4rem;
+    }
+    .quote-text {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--primary-blue);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* --- Highlights Section --- */
+    #highlights { background-color: var(--bg-soft); }
+
+    /* --- Services Section --- */
+    .service-card {
+        text-align: left;
+        padding: 32px;
+        border-radius: 24px;
+        background: #fff;
+        border: 1px solid transparent;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+    }
+    .service-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-4px);
+    }
+    .service-card .icon-box { margin-bottom: 20px; }
+
+    /* --- Contact Section --- */
+    .contact-wrapper {
+        background: var(--bg-white);
+        border-radius: 32px;
+        padding: 60px 20px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .contact-actions {
+        display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px;
+    }
+
+    /* [UPDATED] Tonal Button Styles for Contact Section */
     .tonal-btn {
-        padding: 12px 28px;
+        padding: 12px 24px;
         border-radius: var(--radius-btn);
         text-decoration: none;
         font-weight: 500;
         display: inline-flex; align-items: center; gap: 8px;
-        transition: 0.2s;
-        border: none;
-        cursor: pointer;
-        font-size: 0.95rem;
-    }
-
-    .tonal-btn:hover .material-symbols-outlined {
-        animation: wiggle-icon 0.4s ease-in-out;
-    }
-
-    .btn-blue { background: var(--pastel-blue-bg); color: var(--pastel-blue-text); }
-    .btn-blue:hover { filter: brightness(0.95); }
-
-    .btn-green { background: var(--pastel-green-bg); color: var(--pastel-green-text); }
-    .btn-green:hover { filter: brightness(0.95); }
-
-    .btn-red { background: var(--pastel-red-bg); color: var(--pastel-red-text); }
-    .btn-red:hover { filter: brightness(0.95); }
-
-    .btn-purple { background: var(--pastel-purple-bg); color: var(--pastel-purple-text); }
-    .btn-purple:hover { filter: brightness(0.95); }
-
-    @media (max-width: 768px) {
-        #topbar { display: none; }
-        #hero h1 { font-size: 2.2rem; }
-        section { padding: 3rem 1.5rem; }
+        transition: 0.2s ease;
+        border: 1px solid transparent;
     }
     
-    footer { background: var(--bg-soft); padding: 3rem 1rem; text-align: center; font-size: 0.9rem; color: var(--text-body); }
+    /* Blue Tonal (Call, FB) */
+    .tonal-btn.blue { background: #e8f0fe; color: var(--primary-blue); }
+    .tonal-btn.blue:hover { background: #d2e3fc; box-shadow: var(--shadow-sm); }
+
+    /* Green Tonal (LINE) */
+    .tonal-btn.green { background: #e6f4ea; color: #06c755; }
+    .tonal-btn.green:hover { background: #ceead6; box-shadow: var(--shadow-sm); }
+
+    /* Red Tonal (Email) */
+    .tonal-btn.red { background: #fce8e6; color: #d93025; }
+    .tonal-btn.red:hover { background: #fad2cf; box-shadow: var(--shadow-sm); }
+
+
+    /* --- Footer --- */
+    footer { 
+        background: #f1f3f4; 
+        padding: 3rem 1rem; 
+        text-align: center; 
+        font-size: 0.9rem; 
+        color: var(--text-body); 
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        #topbar { padding: 1rem; }
+        .nav-menu { display: none; } /* Simplified for demo, ideally hamburger menu */
+        #hero h1 { font-size: 2.5rem; }
+        section { padding: 4rem 1rem; }
+        .grid-3 { grid-template-columns: 1fr; }
+    }
 </style>
-<meta name="google-site-verification" content="WpfHmh8Df7MgGVClzV4SvnS_WY-ZPlSyfXAuqryilBQ" />
 </head>
 <body>
 
 <div id="topbar">
     <a href="#hero" class="logo-link">
-        R&amp;B <span>Transolution</span>
+        R&B <span>Transolution</span>
     </a>
-    <a href="#hero" class="nav-link">หน้าหลัก</a>
-    <a href="#philosophy" class="nav-link">แนวคิด</a>
-    <a href="#highlights" class="nav-link">จุดเด่น</a>
-    <a href="#services" class="nav-link">บริการของเรา</a>
-    <a href="#contact" class="nav-link">ติดต่อ</a>
+    <nav class="nav-menu">
+        <a href="#hero" class="nav-link">หน้าหลัก</a>
+        <a href="#philosophy" class="nav-link">แนวคิด</a>
+        <a href="#highlights" class="nav-link">จุดเด่น</a>
+        <a href="#services" class="nav-link">บริการ</a>
+        <a href="#contact" class="nav-link" style="background:var(--primary-blue); color:white;">ติดต่อเรา</a>
+    </nav>
 </div>
 
-<section id="hero">
-    <div class="hero-content">
-        <h1>R&amp;B Transolution</h1>
-        <div class="subtitle">ที่ปรึกษาด้านร้านอาหาร โรงแรม และธุรกิจบริการระดับมืออาชีพ</div>
-        <a class="hero-btn" href="#contact">
-            <span class="material-symbols-outlined" style="font-size:22px;">calendar_today</span>
-            ปรึกษาฟรี
-        </a>
-    </div>
-</section>
+<main>
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Create Beyond Standard</h1>
+            <div class="subtitle">ที่ปรึกษาด้านร้านอาหารและโรงแรมมืออาชีพ พลิกโฉมธุรกิจบริการด้วยกลยุทธ์ที่วัดผลได้จริง</div>
+            <a class="hero-btn" href="#contact">
+                <span class="material-symbols-outlined">calendar_month</span>
+                นัดหมายปรึกษาฟรี
+            </a>
+        </div>
+    </section>
 
-<section id="philosophy">
-    <h2>แนวคิดเบื้องหลัง R&B</h2>
-    <div class="grid-3">
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
-            <h3>Reach Beyond</h3>
-            <p>
-                R&B ถือกำเนิดจากความเชื่อว่า ธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “การดำเนินงานที่ดีพอ” 
-                แต่ต้องไปให้ถึงมาตรฐานที่ควรจะเป็น
-            </p>
-        </div>
+    <section id="philosophy">
+        <h2 class="reveal">แนวคิดของเรา</h2>
+        <div class="grid-3">
+            <div class="info-card theme-blue reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
+                <h3>Reach Beyond</h3>
+                <p>
+                    เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “ดีพอ” แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้ เพื่อสร้างความประทับใจที่ยั่งยืน
+                </p>
+            </div>
 
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
-            <h3>Transolution</h3>
-            <p>
-                ไม่ใช่แค่การแก้ปัญหาเฉพาะหน้า แต่คือ Transformation with Purpose
-                เปลี่ยนโครงสร้าง วิธีคิด และวิธีทำงาน เพื่อความยั่งยืน
-            </p>
-        </div>
+            <div class="info-card theme-purple reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
+                <h3>Transolution</h3>
+                <p>
+                    มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ <strong>Transformation</strong> เปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงานเพื่อความยั่งยืนในระยะยาว
+                </p>
+            </div>
 
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
-            <h3>Our Philosophy</h3>
-            <p>
-                เราทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ต้องวัดผลได้ 
-                เข้ามาเสริมโครงสร้างเพื่อให้ทีมของคุณทำงานได้ดีขึ้น
-            </p>
+            <div class="info-card theme-green reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
+                <h3>Global Standard</h3>
+                <p>
+                    ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ขับเคลื่อนด้วย Data และวัดผลได้ เพื่อยกระดับทีมของคุณอย่างแท้จริง
+                </p>
+            </div>
         </div>
-    </div>
-    
-    <div class="quote-box">
-        “พันธกิจของเราไม่ใช่การแก้ปัญหาเฉพาะหน้า แต่คือการวางโครงสร้างการบริหารจัดการใหม่”
-    </div>
-</section>
-
-<section id="highlights" style="background-color: var(--bg-soft);">
-    <h2>ทำไมต้องเลือกเรา</h2>
-    <div class="grid-3">
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">verified</span></div>
-            <h3>มาตรฐานสากล</h3>
-            <p>ยกระดับธุรกิจสู่มาตรฐานระดับสากล ด้วยทีมงานที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว</p>
-        </div>
-        <div class="info-card theme-red">
-            <div class="icon-box"><span class="material-symbols-outlined">bolt</span></div>
-            <h3>เห็นผลลัพธ์ไว</h3>
-            <p>กระบวนการทำงานที่กระชับ ชัดเจน เริ่มต้นแก้ไขปัญหาและส่งมอบแผนงานได้ภายใน 5 วันทำการ</p>
-        </div>
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">analytics</span></div>
-            <h3>Data-Driven</h3>
-            <p>ใช้ Data จริงของร้านในการวางแผนและวิเคราะห์ ไม่ใช่การคาดเดา เพื่อผลลัพธ์ที่แม่นยำที่สุด</p>
-        </div>
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">tune</span></div>
-            <h3>กลยุทธ์เฉพาะจุด</h3>
-            <p>Tailor-made Strategy ไม่ใช้สูตรสำเร็จ แต่เราออกแบบแผนให้เหมาะกับโจทย์และงบประมาณของร้านคุณ</p>
-        </div>
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">manage_accounts</span></div>
-            <h3>ทีมงานมืออาชีพ</h3>
-            <p>รวมทีมผู้เชี่ยวชาญจากสายงานบริหารโรงแรมและร้านอาหารกว่า 20 ปี ที่เข้าใจปัญหาหน้างานจริง</p>
-        </div>
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">handshake</span></div>
-            <h3>ดูแลต่อเนื่อง</h3>
-            <p>ไม่ทิ้งงานหลังจบโปรเจกต์ พร้อมเป็นพาร์ทเนอร์ที่ปรึกษาและติดตามผลเพื่อให้คุณมั่นใจในระยะยาว</p>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <h2>บริการของเรา</h2>
-    <div class="grid-3">
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
-            <h3>วิเคราะห์ยอดขายเมนู</h3>
-            <p>เจาะลึกข้อมูลยอดขาย จัดทำ Menu Engineering เพื่อดูว่าเมนูไหนทำกำไร หรือควรปรับปรุงเพื่อเพิ่มรายได้</p>
-        </div>
-        <div class="info-card theme-green">
-            <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
-            <h3>ตรวจคุณภาพและประเมินผล</h3>
-            <p>Audit ตรวจสอบมาตรฐานการบริการ ความสะอาด และคุณภาพอาหารอย่างละเอียด พร้อมรายงานผล</p>
-        </div>
-        <div class="info-card theme-yellow">
-            <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
-            <h3>Hospitality Workshop</h3>
-            <p>เวิร์คชอปงานบริการระดับมืออาชีพ พัฒนาบุคลิกภาพและทักษะ Service Mind ให้ทีมงานของคุณ</p>
-        </div>
-        <div class="info-card theme-purple">
-            <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
-            <h3>SWOT Solutions</h3>
-            <p>ปลดล็อกศักยภาพธุรกิจร้านอาหารและโรงแรม วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อสร้างกลยุทธ์ที่เหนือกว่าคู่แข่ง</p>
-        </div>
-        <div class="info-card theme-red">
-            <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
-            <h3>เขียน SOP มาตรฐาน</h3>
-            <p>จัดทำคู่มือปฏิบัติงาน (SOP) สำหรับร้านอาหาร โรงแรม และงานบริการทุกประเภท เพื่อระบบงานที่มั่นคง</p>
-        </div>
-        <div class="info-card theme-blue">
-            <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
-            <h3>ปรับปรุงร้านอาหารและบาร์</h3>
-            <p>โปรแกรมรีโนเวทระบบการจัดการ ปรับภาพลักษณ์ และวางระบบใหม่ (Re-branding & System Set-up)</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" style="background-color: var(--bg-soft);">
-    <div style="text-align:center; max-width:700px; margin:0 auto; background:white; padding:48px; border-radius:32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
-        <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:16px; color:var(--text-body);">contact_mail</span>
-        <h2>ติดต่อเรา</h2>
-        <p style="margin-bottom:30px; color:var(--text-body);">สนใจบริการหรือต้องการคำปรึกษาเบื้องต้น ติดต่อทีมงาน R&B Transolution ได้ทันที</p>
         
-        <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
-            <a class="tonal-btn btn-blue" href="tel:+66891041992">
-                <span class="material-symbols-outlined" style="font-size:20px;">call</span> โทรเลย
-            </a>
-            <a class="tonal-btn btn-green" href="https://lin.ee/482bqDUr" target="_blank">
-                <span class="material-symbols-outlined" style="font-size:20px;">chat</span> LINE Chat
-            </a>
-            <a class="tonal-btn btn-red" href="mailto:rnb.transolution@gmail.com">
-                <span class="material-symbols-outlined" style="font-size:20px;">mail</span> ส่งอีเมล
-            </a>
-            <a class="tonal-btn btn-purple" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank">
-                <span class="material-symbols-outlined" style="font-size:20px;">thumb_up</span> Follow Us
-            </a>
+        <div class="quote-section reveal">
+            <p class="quote-text">“พันธกิจของเราไม่ใช่แค่การแก้ไขปัญหา แต่คือการวางรากฐานความสำเร็จครั้งใหม่ให้กับธุรกิจของคุณ”</p>
         </div>
-    </div>
-</section>
-<meta name="google-site-verification" content="WpfHmh8Df7MgGVClzV4SvnS_WY-ZPlSyfXAuqryilBQ" />
+    </section>
+
+    <section id="highlights">
+        <h2 class="reveal">ทำไมต้องเลือก R&B</h2>
+        <div class="grid-3">
+            <div class="info-card theme-yellow reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">verified</span></div>
+                <h3>Expertise</h3>
+                <p>ทีมงานประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 20 ปี พร้อมยกระดับมาตรฐานบริการของคุณ</p>
+            </div>
+            <div class="info-card theme-red reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">bolt</span></div>
+                <h3>Fast Action</h3>
+                <p>กระบวนการทำงานกระชับ เริ่มต้นแก้ไขปัญหาและส่งมอบแผนงานเบื้องต้นได้ภายใน 5 วันทำการ</p>
+            </div>
+            <div class="info-card theme-blue reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">analytics</span></div>
+                <h3>Data-Driven</h3>
+                <p>ใช้ข้อมูลจริงของร้านในการวิเคราะห์ ไม่ใช้ความรู้สึก เพื่อผลลัพธ์ที่แม่นยำและแก้ปัญหาได้ตรงจุด</p>
+            </div>
+            <div class="info-card theme-green reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">tune</span></div>
+                <h3>Tailor-made</h3>
+                <p>ไม่มีสูตรสำเร็จตายตัว เราออกแบบแผนกลยุทธ์ให้เหมาะกับโจทย์ ขนาด และงบประมาณของร้านคุณ</p>
+            </div>
+            <div class="info-card theme-purple reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">manage_accounts</span></div>
+                <h3>Professional Team</h3>
+                <p>รวมผู้เชี่ยวชาญหลากสาขาที่เข้าใจหน้างานจริง ทำงานร่วมกันเพื่ออุดรอยรั่วของธุรกิจ</p>
+            </div>
+            <div class="info-card theme-yellow reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">handshake</span></div>
+                <h3>Long-term Partner</h3>
+                <p>เราไม่ทิ้งงาน พร้อมเป็นที่ปรึกษาและติดตามผลต่อเนื่องเพื่อให้คุณมั่นใจในทุกก้าวของการเติบโต</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="reveal">บริการของเรา</h2>
+        <div class="grid-3">
+            <div class="service-card theme-blue reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
+                <h3>Menu Engineering</h3>
+                <p>วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</p>
+            </div>
+            <div class="service-card theme-green reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
+                <h3>Q.A. Audit</h3>
+                <p>ตรวจสอบมาตรฐานความสะอาด การบริการ และคุณภาพอาหาร พร้อมรายงานผลละเอียด</p>
+            </div>
+            <div class="service-card theme-yellow reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
+                <h3>Service Workshop</h3>
+                <p>อบรมพนักงาน ปรับบุคลิกภาพและ Service Mind เพื่อการบริการที่เหนือระดับ</p>
+            </div>
+            <div class="service-card theme-purple reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
+                <h3>SWOT Analysis</h3>
+                <p>วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อหาโอกาสทางธุรกิจใหม่ๆ และสร้างความได้เปรียบเหนือคู่แข่ง</p>
+            </div>
+            <div class="service-card theme-red reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
+                <h3>SOP Creation</h3>
+                <p>จัดทำคู่มือปฏิบัติงานมาตรฐาน (SOP) เพื่อระบบงานที่มั่นคงและตรวจสอบได้</p>
+            </div>
+            <div class="service-card theme-blue reveal">
+                <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
+                <h3>Re-branding</h3>
+                <p>รีโนเวทภาพลักษณ์ วางคอนเซปต์ร้านใหม่ และปรับปรุงระบบบริหารจัดการทั้งระบบ</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrapper reveal">
+            <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:16px; color:var(--primary-blue);">contact_support</span>
+            <h2>พร้อมยกระดับธุรกิจของคุณหรือยัง?</h2>
+            <p style="margin-bottom:30px; color:var(--text-body);">ปรึกษาปัญหาธุรกิจ บริหารจัดการ หรือสอบถามบริการ ทีมงาน R&B Transolution พร้อมดูแลคุณ</p>
+            
+            <div class="contact-actions">
+                <a class="tonal-btn blue" href="tel:+66891041992">
+                    <span class="material-symbols-outlined">call</span> โทรเลย
+                </a>
+                <a class="tonal-btn green" href="https://lin.ee/482bqDUr" target="_blank">
+                    <span class="material-symbols-outlined">chat</span> LINE Chat
+                </a>
+                <a class="tonal-btn red" href="mailto:rnb.transolution@gmail.com">
+                    <span class="material-symbols-outlined">mail</span> ส่งอีเมล
+                </a>
+                <a class="tonal-btn blue" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank">
+                    <span class="material-symbols-outlined">thumb_up</span> Facebook
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
 <footer>
-    <p>© 2026 R&B Transolution. สงวนลิขสิทธิ์</p>
+    <p>© 2026 R&B Transolution. All rights reserved.</p>
 </footer>
+
+<script>
+    // Simple Intersection Observer for Scroll Animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    });
+</script>
 
 </body>
 </html>
