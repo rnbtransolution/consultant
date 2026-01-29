@@ -112,7 +112,6 @@
         content: '';
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        /* [UPDATED] New Restaurant/Cafe Lobby Image */
         background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%),
                     url('https://images.pexels.com/photos/27819651/pexels-photo-27819651.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
         z-index: 1;
@@ -257,12 +256,16 @@
         border: 1px solid transparent;
         box-shadow: var(--shadow-sm);
         transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
     .service-card:hover {
         box-shadow: var(--shadow-md);
         transform: translateY(-4px);
     }
     .service-card .icon-box { margin-bottom: 20px; }
+    .service-card p { flex-grow: 1; }
 
     /* --- Contact Section --- */
     .contact-wrapper {
@@ -280,7 +283,6 @@
         display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px;
     }
 
-    /* [UPDATED] Tonal Button Styles for Contact Section */
     .tonal-btn {
         padding: 12px 24px;
         border-radius: var(--radius-btn);
@@ -291,18 +293,31 @@
         border: 1px solid transparent;
     }
     
-    /* Blue Tonal (Call, FB) */
     .tonal-btn.blue { background: #e8f0fe; color: var(--primary-blue); }
     .tonal-btn.blue:hover { background: #d2e3fc; box-shadow: var(--shadow-sm); }
-
-    /* Green Tonal (LINE) */
     .tonal-btn.green { background: #e6f4ea; color: #06c755; }
     .tonal-btn.green:hover { background: #ceead6; box-shadow: var(--shadow-sm); }
-
-    /* Red Tonal (Email) */
     .tonal-btn.red { background: #fce8e6; color: #d93025; }
     .tonal-btn.red:hover { background: #fad2cf; box-shadow: var(--shadow-sm); }
 
+    /* Modal Styles */
+    #serviceModal {
+        display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+        align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .modal-container {
+        background-color: #fff; padding: 40px; border-radius: 32px; width: 90%; max-width: 700px;
+        max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .close-btn {
+        position: absolute; top: 20px; right: 20px; border: none; background: #f1f3f4;
+        width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    .close-btn:hover { background: #e8eaed; transform: rotate(90deg); }
+    .modal-body ul { margin-left: 20px; margin-top: 10px; }
+    .modal-body li { margin-bottom: 8px; }
 
     /* --- Footer --- */
     footer { 
@@ -316,7 +331,7 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
         #topbar { padding: 1rem; }
-        .nav-menu { display: none; } /* Simplified for demo, ideally hamburger menu */
+        .nav-menu { display: none; }
         #hero h1 { font-size: 2.5rem; }
         section { padding: 4rem 1rem; }
         .grid-3 { grid-template-columns: 1fr; }
@@ -356,28 +371,19 @@
             <div class="info-card theme-blue reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
                 <h3>Reach Beyond</h3>
-                <p>
-                    เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “ดีพอ” แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้ เพื่อสร้างความประทับใจที่ยั่งยืน
-                </p>
+                <p>เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “ดีพอ” แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้ เพื่อสร้างความประทับใจที่ยั่งยืน</p>
             </div>
-
             <div class="info-card theme-purple reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
                 <h3>Transolution</h3>
-                <p>
-                    มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ <strong>Transformation</strong> เปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงานเพื่อความยั่งยืนในระยะยาว
-                </p>
+                <p>มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ <strong>Transformation</strong> เปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงานเพื่อความยั่งยืนในระยะยาว</p>
             </div>
-
             <div class="info-card theme-green reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
                 <h3>Global Standard</h3>
-                <p>
-                    ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ขับเคลื่อนด้วย Data และวัดผลได้ เพื่อยกระดับทีมของคุณอย่างแท้จริง
-                </p>
+                <p>ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ขับเคลื่อนด้วย Data และวัดผลได้ เพื่อยกระดับทีมของคุณอย่างแท้จริง</p>
             </div>
         </div>
-        
         <div class="quote-section reveal">
             <p class="quote-text">“พันธกิจของเราไม่ใช่แค่การแก้ไขปัญหา แต่คือการวางรากฐานความสำเร็จครั้งใหม่ให้กับธุรกิจของคุณ”</p>
         </div>
@@ -426,31 +432,37 @@
                 <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
                 <h3>Menu Engineering</h3>
                 <p>วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</p>
+                <a href="javascript:void(0)" onclick="openService(1)" style="color:var(--primary-blue); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
             <div class="service-card theme-green reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
                 <h3>Q.A. Audit</h3>
                 <p>ตรวจสอบมาตรฐานความสะอาด การบริการ และคุณภาพอาหาร พร้อมรายงานผลละเอียด</p>
+                <a href="javascript:void(0)" onclick="openService(2)" style="color:var(--primary-green); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
             <div class="service-card theme-yellow reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
                 <h3>Service Workshop</h3>
                 <p>อบรมพนักงาน ปรับบุคลิกภาพและ Service Mind เพื่อการบริการที่เหนือระดับ</p>
+                <a href="javascript:void(0)" onclick="openService(3)" style="color:#ea8600; text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
             <div class="service-card theme-purple reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
                 <h3>SWOT Analysis</h3>
                 <p>วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อหาโอกาสทางธุรกิจใหม่ๆ และสร้างความได้เปรียบเหนือคู่แข่ง</p>
+                <a href="javascript:void(0)" onclick="openService(4)" style="color:var(--primary-purple); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
             <div class="service-card theme-red reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
                 <h3>SOP Creation</h3>
                 <p>จัดทำคู่มือปฏิบัติงานมาตรฐาน (SOP) เพื่อระบบงานที่มั่นคงและตรวจสอบได้</p>
+                <a href="javascript:void(0)" onclick="openService(5)" style="color:var(--primary-red); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
             <div class="service-card theme-blue reveal">
                 <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
                 <h3>Re-branding</h3>
                 <p>รีโนเวทภาพลักษณ์ วางคอนเซปต์ร้านใหม่ และปรับปรุงระบบบริหารจัดการทั้งระบบ</p>
+                <a href="javascript:void(0)" onclick="openService(6)" style="color:var(--primary-blue); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
             </div>
         </div>
     </section>
@@ -460,49 +472,95 @@
             <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:16px; color:var(--primary-blue);">contact_support</span>
             <h2>พร้อมยกระดับธุรกิจของคุณหรือยัง?</h2>
             <p style="margin-bottom:30px; color:var(--text-body);">ปรึกษาปัญหาธุรกิจ บริหารจัดการ หรือสอบถามบริการ ทีมงาน R&B Transolution พร้อมดูแลคุณ</p>
-            
             <div class="contact-actions">
-                <a class="tonal-btn blue" href="tel:+66891041992">
-                    <span class="material-symbols-outlined">call</span> โทรเลย
-                </a>
-                <a class="tonal-btn green" href="https://lin.ee/482bqDUr" target="_blank">
-                    <span class="material-symbols-outlined">chat</span> LINE Chat
-                </a>
-                <a class="tonal-btn red" href="mailto:rnb.transolution@gmail.com">
-                    <span class="material-symbols-outlined">mail</span> ส่งอีเมล
-                </a>
-                <a class="tonal-btn blue" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank">
-                    <span class="material-symbols-outlined">thumb_up</span> Facebook
-                </a>
+                <a class="tonal-btn blue" href="tel:+66891041992"><span class="material-symbols-outlined">call</span> โทรเลย</a>
+                <a class="tonal-btn green" href="https://lin.ee/482bqDUr" target="_blank"><span class="material-symbols-outlined">chat</span> LINE Chat</a>
+                <a class="tonal-btn red" href="mailto:rnb.transolution@gmail.com"><span class="material-symbols-outlined">mail</span> ส่งอีเมล</a>
+                <a class="tonal-btn blue" href="https://www.facebook.com/profile.php?id=61578195336598" target="_blank"><span class="material-symbols-outlined">thumb_up</span> Facebook</a>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <p>© 2026 R&B Transolution. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 R&B Transolution. All rights reserved.</p></footer>
+
+<div id="serviceModal">
+    <div class="modal-container">
+        <button class="close-btn" onclick="closeService()"><span class="material-symbols-outlined">close</span></button>
+        <div id="modalContent" class="modal-body"></div>
+        <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; text-align:center;">
+            <button onclick="closeService()" style="padding:12px 30px; border-radius:24px; border:1px solid var(--primary-blue); background:transparent; color:var(--primary-blue); font-weight:600; cursor:pointer;">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+</div>
 
 <script>
-    // Simple Intersection Observer for Scroll Animations
+    // Original Animation Script
     document.addEventListener('DOMContentLoaded', () => {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Animate only once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
-
-        const revealElements = document.querySelectorAll('.reveal');
-        revealElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
+
+    // Modal Logic & Data
+    const serviceData = {
+        1: {
+            title: "Menu Engineering (วิศวกรรมเมนู)",
+            tagline: "เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด",
+            content: "บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยา<ul><li><strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูที่กำไรสูงสุด (Stars) และเมนูที่ควรตัดออก (Dogs)</li><li><strong>Menu Matrix:</strong> จัดกลุ่มเมนูเพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร</li><li><strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาลูกค้าให้สั่งเมนูที่ต้องการขายมากที่สุด</li></ul>"
+        },
+        2: {
+            title: "Q.A. Audit (การตรวจสอบคุณภาพและมาตรฐาน)",
+            tagline: "ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ",
+            content: "บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้น<ul><li><strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล (GHP/HACCP)</li><li><strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล</li><li><strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุด</li></ul>"
+        },
+        3: {
+            title: "Service Workshop (อบรมและพัฒนาบุคลากร)",
+            tagline: "สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟ ให้เป็นนักขายมืออาชีพ",
+            content: "หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน<ul><li><strong>Personality:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม</li><li><strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ</li><li><strong>Up-selling:</strong> เทคนิคการเชียร์ขายเพื่อเพิ่มยอดขายต่อหัว (Ticket Average)</li></ul>"
+        },
+        4: {
+            title: "SWOT Analysis (วิเคราะห์กลยุทธ์ธุรกิจ)",
+            tagline: "รู้เขารู้เรา รบกรร้อยครั้ง ชนะร้อยครั้ง",
+            content: "วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางแม่นยำ<ul><li><strong>Internal (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว</li><li><strong>External (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง</li><li><strong>Strategic Planning:</strong> วางแผนกลยุทธ์ Roadmap เพื่อสร้างความได้เปรียบที่ยั่งยืน</li></ul>"
+        },
+        5: {
+            title: "SOP Creation (จัดทำมาตรฐานการปฏิบัติงาน)",
+            tagline: "สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา",
+            content: "หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง<ul><li><strong>Operations Manual:</strong> จัดทำคู่มือขั้นตอนการทำงานทุกแผนก (Front & Back)</li><li><strong>Recipe Cards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน</li><li><strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาด</li></ul>"
+        },
+        6: {
+            title: "Re-branding (ปรับภาพลักษณ์แบรนด์)",
+            tagline: "ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย",
+            content: "บริการรีโนเวทแบรนด์แบบครบวงจร<ul><li><strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ และ Mood & Tone</li><li><strong>Menu Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์</li><li><strong>Operational Alignment:</strong> ปรับระบบงานให้สอดรับกับ Brand DNA ใหม่</li></ul>"
+        }
+    };
+
+    function openService(id) {
+        const modal = document.getElementById('serviceModal');
+        const content = document.getElementById('modalContent');
+        const data = serviceData[id];
+        content.innerHTML = `
+            <h2 style="color:var(--text-head); margin-bottom:10px; text-align:left; font-size:1.8rem;">${data.title}</h2>
+            <p style="color:var(--primary-blue); font-weight:600; margin-bottom:20px; font-size:1.1rem;">"${data.tagline}"</p>
+            <div style="line-height:1.8; color:var(--text-body); font-size:1rem;">${data.content}</div>`;
+        modal.style.display = 'flex';
+        setTimeout(() => { modal.style.opacity = '1'; }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeService() {
+        const modal = document.getElementById('serviceModal');
+        modal.style.opacity = '0';
+        setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+    }
 </script>
 
 </body>
