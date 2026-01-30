@@ -14,326 +14,143 @@
 
 <style>
     :root {
-        /* Google-inspired Palette */
-        --primary-blue: #1a73e8;
-        --primary-green: #1e8e3e;
-        --primary-red: #d93025;
-        --primary-yellow: #f9ab00;
-        --primary-purple: #9334e6;
-
+        --primary-blue: #1a73e8; /* Google Blue */
         --bg-white: #ffffff;
         --bg-soft: #f8f9fa;
         --text-head: #202124;
         --text-body: #5f6368;
         --border-color: #dadce0;
-        
         --radius-card: 24px;
         --radius-btn: 48px;
         --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-        --shadow-md: 0 4px 6px rgba(60,64,67,0.3);
-        --shadow-hover: 0 8px 12px rgba(60,64,67,0.15);
+        --shadow-hover: 0 12px 24px rgba(26, 115, 232, 0.2);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
         font-family: 'Outfit', 'Anuphan', sans-serif;
-        font-weight: 400;
-        line-height: 1.6;
-        background: var(--bg-white);
-        color: var(--text-body);
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
+        font-weight: 400; line-height: 1.6;
+        background: var(--bg-white); color: var(--text-body);
+        -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 {
-        font-family: 'Outfit', 'Anuphan', sans-serif;
-        color: var(--text-head);
-        letter-spacing: -0.5px;
-    }
+    h1, h2, h3, h4 { font-family: 'Outfit', 'Anuphan', sans-serif; color: var(--text-head); letter-spacing: -0.5px; }
 
     /* --- Animations --- */
-    .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* --- Navigation --- */
     #topbar {
         position: fixed; top: 0; left: 0; width: 100%;
-        background: rgba(255,255,255,0.9);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
         padding: 1rem 2rem; z-index: 1000;
         border-bottom: 1px solid rgba(0,0,0,0.05);
         display: flex; justify-content: space-between; align-items: center;
-        transition: all 0.3s ease;
     }
-
-    .logo-link {
-        font-weight: 700; color: var(--text-head); font-size: 1.4rem;
-        text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
+    .logo-link { font-weight: 700; color: var(--text-head); font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .logo-link span { color: var(--primary-blue); font-weight: 500; }
-
     .nav-menu { display: flex; gap: 8px; }
-
-    #topbar a.nav-link { 
-        text-decoration: none; color: var(--text-body); 
-        font-weight: 500; font-size: 0.95rem; 
-        padding: 8px 16px; border-radius: 24px;
-        transition: all 0.2s ease;
-    }
-    #topbar a.nav-link:hover { 
-        background: var(--bg-soft); color: var(--primary-blue); 
-    }
+    #topbar a.nav-link { text-decoration: none; color: var(--text-body); font-weight: 500; font-size: 0.95rem; padding: 8px 16px; border-radius: 24px; transition: 0.2s; }
+    #topbar a.nav-link:hover { background: var(--bg-soft); color: var(--primary-blue); }
 
     /* --- Hero Section --- */
     #hero {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        overflow: hidden;
-        color: white;
+        position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; color: white;
     }
-
     #hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%),
-                    url('https://images.pexels.com/photos/27819651/pexels-photo-27819651.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+                    url('https://images.pexels.com/photos/35215413/pexels-photo-35215413.jpeg?') center/cover no-repeat;
+        z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 24px; animation: heroFadeUp 1.2s ease forwards; opacity: 0; transform: translateY(40px); }
+    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
+    #hero h1 { color: white; font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1.5rem; font-weight: 700; line-height: 1.1; }
+    .subtitle { color: #e8eaed; font-size: clamp(1.1rem, 2vw, 1.5rem); margin-bottom: 3rem; font-weight: 400; }
+    .hero-btn { background: var(--primary-blue); color: white; padding: 16px 40px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; border: none; cursor: pointer; }
+
+    /* --- Info & Service Cards --- */
+    section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+    section h2 { font-size: clamp(2rem, 3vw, 2.75rem); text-align: center; margin-bottom: 4rem; font-weight: 600; color: var(--text-head); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+
+    .info-card, .service-card {
+        position: relative;
+        background-color: #f1f3f4;
+        background-size: cover;
+        background-position: center;
+        border-radius: var(--radius-card);
+        padding: 48px 32px;
+        min-height: 440px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 1;
     }
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 800px;
-        padding: 0 24px;
-        animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0; transform: translateY(40px);
+    /* Subtle Google Blue Gradient Overlay (Improved) */
+    .info-card::after, .service-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to top, 
+            rgba(26, 115, 232, 0.9) 0%, 
+            rgba(26, 115, 232, 0.45) 45%, 
+            rgba(0, 0, 0, 0) 85%);
+        z-index: -1;
+        transition: 0.3s;
     }
 
-    @keyframes heroFadeUp {
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    #hero h1 { 
-        color: white; 
-        font-size: clamp(2.5rem, 5vw, 4.5rem); 
-        margin-bottom: 1.5rem; 
-        font-weight: 700; 
-        line-height: 1.1;
-    }
-    .subtitle { 
-        color: #e8eaed; 
-        font-size: clamp(1.1rem, 2vw, 1.5rem); 
-        margin-bottom: 3rem; 
-        font-weight: 400; 
-        max-width: 600px;
-        margin-left: auto; margin-right: auto;
-    }
-    
-    .hero-btn {
-        background: var(--primary-blue);
-        color: white;
-        padding: 16px 40px;
-        border-radius: var(--radius-btn);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1.1rem;
-        display: inline-flex; align-items: center; gap: 8px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        border: none;
-    }
-    .hero-btn:hover { 
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
-        background: #1967d2;
-    }
-
-    /* --- Sections --- */
-    section {
-        padding: 6rem 1.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    section h2 {
-        font-size: clamp(2rem, 3vw, 2.75rem);
-        text-align: center;
-        margin-bottom: 4rem;
-        font-weight: 600;
-        color: var(--text-head);
-    }
-
-    /* --- Philosophy Cards (Clean Style) --- */
-    .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 32px;
-    }
-
-    .info-card {
-        background: var(--bg-white);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-card);
-        padding: 40px 32px;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        height: 100%;
-        position: relative;
-    }
-
-    .info-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-hover);
-        border-color: transparent;
-    }
+    .info-card:hover, .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--primary-blue); }
 
     .icon-box {
         width: 56px; height: 56px;
-        border-radius: 50%;
+        border-radius: 16px;
         display: flex; align-items: center; justify-content: center;
-        margin-bottom: 24px;
-        font-size: 28px;
+        margin-bottom: 24px; font-size: 28px;
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* Color Themes for Icons */
-    .theme-blue .icon-box { background: #e8f0fe; color: var(--primary-blue); }
-    .theme-green .icon-box { background: #e6f4ea; color: var(--primary-green); }
-    .theme-red .icon-box { background: #fce8e6; color: var(--primary-red); }
-    .theme-yellow .icon-box { background: #fef7e0; color: #ea8600; }
-    .theme-purple .icon-box { background: #f3e8fd; color: var(--primary-purple); }
-
-    .info-card h3 { 
-        font-size: 1.5rem; margin-bottom: 16px; font-weight: 600; 
+    .info-card h3, .service-card h3 { 
+        color: white !important; font-size: 1.6rem; margin-bottom: 12px; font-weight: 600; 
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-    .info-card p { 
-        font-size: 1rem; color: var(--text-body); line-height: 1.7; 
+    .info-card p, .service-card p { 
+        color: rgba(255, 255, 255, 0.95) !important; font-size: 1rem; line-height: 1.6;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
 
-    /* --- Quote Section --- */
-    .quote-section {
-        background: var(--bg-soft);
-        border-radius: 32px;
-        padding: 60px 40px;
-        text-align: center;
-        margin-top: 4rem;
-    }
-    .quote-text {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: var(--primary-blue);
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.6;
-    }
+    .quote-section { background: var(--bg-soft); border-radius: 32px; padding: 60px 40px; text-align: center; margin-top: 4rem; }
+    .quote-text { font-size: 1.5rem; font-weight: 500; color: var(--primary-blue); max-width: 800px; margin: 0 auto; }
 
-    /* --- Highlights Section --- */
-    #highlights { background-color: var(--bg-soft); }
-
-    /* --- Services Section --- */
-    .service-card {
-        text-align: left;
-        padding: 32px;
-        border-radius: 24px;
-        background: #fff;
-        border: 1px solid transparent;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    .service-card:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-4px);
-    }
-    .service-card .icon-box { margin-bottom: 20px; }
-    .service-card p { flex-grow: 1; }
-
-    /* --- Contact Section --- */
-    .contact-wrapper {
-        background: var(--bg-white);
-        border-radius: 32px;
-        padding: 60px 20px;
-        text-align: center;
-        border: 1px solid var(--border-color);
-        max-width: 800px;
-        margin: 0 auto;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .contact-actions {
-        display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px;
-    }
-
-    .tonal-btn {
-        padding: 12px 24px;
-        border-radius: var(--radius-btn);
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-flex; align-items: center; gap: 8px;
-        transition: 0.2s ease;
-        border: 1px solid transparent;
-    }
-    
+    #highlights { background-color: var(--bg-soft); max-width: 100%; padding: 6rem 5%; }
+    #highlights .grid-3 { max-width: 1200px; margin: 0 auto; }
+    .contact-wrapper { background: var(--bg-white); border-radius: 32px; padding: 60px 20px; text-align: center; border: 1px solid var(--border-color); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-sm); }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px; }
+    .tonal-btn { padding: 12px 24px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s ease; }
     .tonal-btn.blue { background: #e8f0fe; color: var(--primary-blue); }
-    .tonal-btn.blue:hover { background: #d2e3fc; box-shadow: var(--shadow-sm); }
     .tonal-btn.green { background: #e6f4ea; color: #06c755; }
-    .tonal-btn.green:hover { background: #ceead6; box-shadow: var(--shadow-sm); }
     .tonal-btn.red { background: #fce8e6; color: #d93025; }
-    .tonal-btn.red:hover { background: #fad2cf; box-shadow: var(--shadow-sm); }
 
-    /* Modal Styles */
-    #serviceModal {
-        display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
-        background-color: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
-        align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
-    }
-    .modal-container {
-        background-color: #fff; padding: 40px; border-radius: 32px; width: 90%; max-width: 700px;
-        max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    .close-btn {
-        position: absolute; top: 20px; right: 20px; border: none; background: #f1f3f4;
-        width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-        display: flex; align-items: center; justify-content: center; transition: 0.2s;
-    }
-    .close-btn:hover { background: #e8eaed; transform: rotate(90deg); }
-    .modal-body ul { margin-left: 20px; margin-top: 10px; }
-    .modal-body li { margin-bottom: 8px; }
+    #serviceModal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(8px); align-items: center; justify-content: center; opacity: 0; transition: 0.3s; }
+    .modal-container { background-color: #fff; padding: 40px; border-radius: 32px; width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto; position: relative; }
+    .close-btn { position: absolute; top: 20px; right: 20px; border: none; background: #f1f3f4; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
 
-    /* --- Footer --- */
-    footer { 
-        background: #f1f3f4; 
-        padding: 3rem 1rem; 
-        text-align: center; 
-        font-size: 0.9rem; 
-        color: var(--text-body); 
-    }
+    footer { background: #f1f3f4; padding: 3rem 1rem; text-align: center; font-size: 0.9rem; color: var(--text-body); }
 
-    /* Mobile Responsive */
     @media (max-width: 768px) {
-        #topbar { padding: 1rem; }
         .nav-menu { display: none; }
         #hero h1 { font-size: 2.5rem; }
-        section { padding: 4rem 1rem; }
         .grid-3 { grid-template-columns: 1fr; }
     }
 </style>
@@ -341,9 +158,7 @@
 <body>
 
 <div id="topbar">
-    <a href="#hero" class="logo-link">
-        R&B <span>Transolution</span>
-    </a>
+    <a href="#hero" class="logo-link">R&B <span>Transolution</span></a>
     <nav class="nav-menu">
         <a href="#hero" class="nav-link">หน้าหลัก</a>
         <a href="#philosophy" class="nav-link">แนวคิด</a>
@@ -359,8 +174,7 @@
             <h1>Create Beyond Standard</h1>
             <div class="subtitle">ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจด้วยกลยุทธ์ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม</div>
             <a class="hero-btn" href="#contact">
-                <span class="material-symbols-outlined">calendar_month</span>
-                นัดหมายปรึกษาฟรี
+                <span class="material-symbols-outlined">calendar_month</span> นัดหมายปรึกษาฟรี
             </a>
         </div>
     </section>
@@ -368,17 +182,17 @@
     <section id="philosophy">
         <h2 class="reveal">แนวคิดของเรา</h2>
         <div class="grid-3">
-            <div class="info-card theme-blue reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/534219/pexels-photo-534219.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">explore</span></div>
                 <h3>Reach Beyond</h3>
                 <p>เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ “ดีพอ” แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้ เพื่อสร้างความประทับใจที่ยั่งยืน</p>
             </div>
-            <div class="info-card theme-purple reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">transform</span></div>
                 <h3>Transolution</h3>
                 <p>มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ <strong>Transformation</strong> เปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงานเพื่อความยั่งยืนในระยะยาว</p>
             </div>
-            <div class="info-card theme-green reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/30754368/pexels-photo-30754368.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">diamond</span></div>
                 <h3>Global Standard</h3>
                 <p>ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ขับเคลื่อนด้วย Data และวัดผลได้ เพื่อยกระดับทีมของคุณอย่างแท้จริง</p>
@@ -392,32 +206,32 @@
     <section id="highlights">
         <h2 class="reveal">ทำไมต้องเลือก R&B</h2>
         <div class="grid-3">
-            <div class="info-card theme-yellow reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">verified</span></div>
                 <h3>Expertise</h3>
                 <p>ทีมงานประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 20 ปี พร้อมยกระดับมาตรฐานบริการของคุณ</p>
             </div>
-            <div class="info-card theme-red reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/5092827/pexels-photo-5092827.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">bolt</span></div>
                 <h3>Fast Action</h3>
                 <p>กระบวนการทำงานกระชับ เริ่มต้นแก้ไขปัญหาและส่งมอบแผนงานเบื้องต้นได้ภายใน 5 วันทำการ</p>
             </div>
-            <div class="info-card theme-blue reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/7433837/pexels-photo-7433837.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">analytics</span></div>
                 <h3>Data-Driven</h3>
                 <p>ใช้ข้อมูลจริงของร้านในการวิเคราะห์ ไม่ใช้ความรู้สึก เพื่อผลลัพธ์ที่แม่นยำและแก้ปัญหาได้ตรงจุด</p>
             </div>
-            <div class="info-card theme-green reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/7437501/pexels-photo-7437501.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">tune</span></div>
                 <h3>Tailor-made</h3>
                 <p>ไม่มีสูตรสำเร็จตายตัว เราออกแบบแผนกลยุทธ์ให้เหมาะกับโจทย์ ขนาด และงบประมาณของร้านคุณ</p>
             </div>
-            <div class="info-card theme-purple reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">manage_accounts</span></div>
                 <h3>Professional Team</h3>
                 <p>รวมผู้เชี่ยวชาญหลากสาขาที่เข้าใจหน้างานจริง ทำงานร่วมกันเพื่ออุดรอยรั่วของธุรกิจ</p>
             </div>
-            <div class="info-card theme-yellow reveal">
+            <div class="info-card reveal" style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">handshake</span></div>
                 <h3>Long-term Partner</h3>
                 <p>เราไม่ทิ้งงาน พร้อมเป็นที่ปรึกษาและติดตามผลต่อเนื่องเพื่อให้คุณมั่นใจในทุกก้าวของการเติบโต</p>
@@ -428,41 +242,41 @@
     <section id="services">
         <h2 class="reveal">บริการของเรา</h2>
         <div class="grid-3">
-            <div class="service-card theme-blue reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">bar_chart</span></div>
                 <h3>Menu Engineering</h3>
                 <p>วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</p>
-                <a href="javascript:void(0)" onclick="openService(1)" style="color:var(--primary-blue); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(1)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
-            <div class="service-card theme-green reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">fact_check</span></div>
                 <h3>Q.A. Audit</h3>
                 <p>ตรวจสอบมาตรฐานความสะอาด การบริการ และคุณภาพอาหาร พร้อมรายงานผลละเอียด</p>
-                <a href="javascript:void(0)" onclick="openService(2)" style="color:var(--primary-green); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(2)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
-            <div class="service-card theme-yellow reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">school</span></div>
                 <h3>Service Workshop</h3>
                 <p>อบรมพนักงาน ปรับบุคลิกภาพและ Service Mind เพื่อการบริการที่เหนือระดับ</p>
-                <a href="javascript:void(0)" onclick="openService(3)" style="color:#ea8600; text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(3)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
-            <div class="service-card theme-purple reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">extension</span></div>
                 <h3>SWOT Analysis</h3>
                 <p>วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อหาโอกาสทางธุรกิจใหม่ๆ และสร้างความได้เปรียบเหนือคู่แข่ง</p>
-                <a href="javascript:void(0)" onclick="openService(4)" style="color:var(--primary-purple); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(4)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
-            <div class="service-card theme-red reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">menu_book</span></div>
                 <h3>SOP Creation</h3>
                 <p>จัดทำคู่มือปฏิบัติงานมาตรฐาน (SOP) เพื่อระบบงานที่มั่นคงและตรวจสอบได้</p>
-                <a href="javascript:void(0)" onclick="openService(5)" style="color:var(--primary-red); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(5)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
-            <div class="service-card theme-blue reveal">
+            <div class="service-card reveal" style="background-image: url('https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&cs=tinysrgb&w=800');">
                 <div class="icon-box"><span class="material-symbols-outlined">storefront</span></div>
                 <h3>Re-branding</h3>
                 <p>รีโนเวทภาพลักษณ์ วางคอนเซปต์ร้านใหม่ และปรับปรุงระบบบริหารจัดการทั้งระบบ</p>
-                <a href="javascript:void(0)" onclick="openService(6)" style="color:var(--primary-blue); text-decoration:none; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านต่อ...</a>
+                <a href="javascript:void(0)" onclick="openService(6)" style="color:white; text-decoration:underline; margin-top:15px; font-weight:600; font-size:0.9rem;">▶ อ่านรายละเอียด</a>
             </div>
         </div>
     </section>
@@ -488,69 +302,35 @@
     <div class="modal-container">
         <button class="close-btn" onclick="closeService()"><span class="material-symbols-outlined">close</span></button>
         <div id="modalContent" class="modal-body"></div>
-        <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; text-align:center;">
-            <button onclick="closeService()" style="padding:12px 30px; border-radius:24px; border:1px solid var(--primary-blue); background:transparent; color:var(--primary-blue); font-weight:600; cursor:pointer;">ปิดหน้าต่าง</button>
-        </div>
     </div>
 </div>
 
 <script>
-    // Original Animation Script
     document.addEventListener('DOMContentLoaded', () => {
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
 
-    // Modal Logic & Data
     const serviceData = {
-        1: {
-            title: "Menu Engineering (วิศวกรรมเมนู)",
-            tagline: "เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด",
-            content: "บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยา<ul><li><strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูที่กำไรสูงสุด (Stars) และเมนูที่ควรตัดออก (Dogs)</li><li><strong>Menu Matrix:</strong> จัดกลุ่มเมนูเพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร</li><li><strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาลูกค้าให้สั่งเมนูที่ต้องการขายมากที่สุด</li></ul>"
-        },
-        2: {
-            title: "Q.A. Audit (การตรวจสอบคุณภาพและมาตรฐาน)",
-            tagline: "ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ",
-            content: "บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้น<ul><li><strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล (GHP/HACCP)</li><li><strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล</li><li><strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุด</li></ul>"
-        },
-        3: {
-            title: "Service Workshop (อบรมและพัฒนาบุคลากร)",
-            tagline: "สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟ ให้เป็นนักขายมืออาชีพ",
-            content: "หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน<ul><li><strong>Personality:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม</li><li><strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ</li><li><strong>Up-selling:</strong> เทคนิคการเชียร์ขายเพื่อเพิ่มยอดขายต่อหัว (Ticket Average)</li></ul>"
-        },
-        4: {
-            title: "SWOT Analysis (วิเคราะห์กลยุทธ์ธุรกิจ)",
-            tagline: "รู้เขารู้เรา รบกรร้อยครั้ง ชนะร้อยครั้ง",
-            content: "วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางแม่นยำ<ul><li><strong>Internal (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว</li><li><strong>External (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง</li><li><strong>Strategic Planning:</strong> วางแผนกลยุทธ์ Roadmap เพื่อสร้างความได้เปรียบที่ยั่งยืน</li></ul>"
-        },
-        5: {
-            title: "SOP Creation (จัดทำมาตรฐานการปฏิบัติงาน)",
-            tagline: "สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา",
-            content: "หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง<ul><li><strong>Operations Manual:</strong> จัดทำคู่มือขั้นตอนการทำงานทุกแผนก (Front & Back)</li><li><strong>Recipe Cards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน</li><li><strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาด</li></ul>"
-        },
-        6: {
-            title: "Re-branding (ปรับภาพลักษณ์แบรนด์)",
-            tagline: "ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย",
-            content: "บริการรีโนเวทแบรนด์แบบครบวงจร<ul><li><strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ และ Mood & Tone</li><li><strong>Menu Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์</li><li><strong>Operational Alignment:</strong> ปรับระบบงานให้สอดรับกับ Brand DNA ใหม่</li></ul>"
-        }
+        1: { title: "Menu Engineering (วิศวกรรมเมนู)", tagline: "เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด", content: "บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยา<ul><li><strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูที่กำไรสูงสุด และเมนูที่ควรตัดออก</li><li><strong>Menu Matrix:</strong> จัดกลุ่มเมนูเพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร</li><li><strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาลูกค้าให้สั่งเมนูที่ต้องการขายมากที่สุด</li></ul>" },
+        2: { title: "Q.A. Audit (การตรวจสอบคุณภาพและมาตรฐาน)", tagline: "ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ", content: "บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้น<ul><li><strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล (GHP/HACCP)</li><li><strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล</li><li><strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุด</li></ul>" },
+        3: { title: "Service Workshop (อบรมและพัฒนาบุคลากร)", tagline: "สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟ ให้เป็นนักขายมืออาชีพ", content: "หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน<ul><li><strong>Personality:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม</li><li><strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ</li><li><strong>Up-selling:</strong> เทคนิคการเชียร์ขายเพื่อเพิ่มยอดขายต่อหัว</li></ul>" },
+        4: { title: "SWOT Analysis (วิเคราะห์กลยุทธ์ธุรกิจ)", tagline: "รู้เขารู้เรา รบกรร้อยครั้ง ชนะร้อยครั้ง", content: "วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางแม่นยำ<ul><li><strong>Internal (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว</li><li><strong>External (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง</li><li><strong>Strategic Planning:</strong> วางแผนกลยุทธ์ Roadmap เพื่อสร้างความได้เปรียบที่ยั่งยืน</li></ul>" },
+        5: { title: "SOP Creation (จัดทำมาตรฐานการปฏิบัติงาน)", tagline: "สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา", content: "หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง<ul><li><strong>Operations Manual:</strong> จัดทำคู่มือขั้นตอนการทำงานทุกแผนก (Front & Back)</li><li><strong>Recipe Cards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน</li><li><strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาด</li></ul>" },
+        6: { title: "Re-branding (ปรับภาพลักษณ์แบรนด์)", tagline: "ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย", content: "บริการรีโนเวทแบรนด์แบบครบวงจร<ul><li><strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ และ Mood & Tone</li><li><strong>Menu Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์</li><li><strong>Operational Alignment:</strong> ปรับระบบงานให้สอดรับกับ Brand DNA ใหม่</li></ul>" }
     };
 
     function openService(id) {
         const modal = document.getElementById('serviceModal');
         const content = document.getElementById('modalContent');
         const data = serviceData[id];
-        content.innerHTML = `
-            <h2 style="color:var(--text-head); margin-bottom:10px; text-align:left; font-size:1.8rem;">${data.title}</h2>
-            <p style="color:var(--primary-blue); font-weight:600; margin-bottom:20px; font-size:1.1rem;">"${data.tagline}"</p>
-            <div style="line-height:1.8; color:var(--text-body); font-size:1rem;">${data.content}</div>`;
+        content.innerHTML = `<h2 style="margin-bottom:10px;">${data.title}</h2><p style="color:var(--primary-blue); font-weight:600; margin-bottom:20px;">"${data.tagline}"</p><p>${data.content}</p>`;
         modal.style.display = 'flex';
         setTimeout(() => { modal.style.opacity = '1'; }, 10);
         document.body.style.overflow = 'hidden';
