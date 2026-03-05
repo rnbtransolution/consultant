@@ -43,7 +43,7 @@
         color: var(--text-head); 
         letter-spacing: -0.5px; 
     }
-
+#027786
     .reveal { 
         opacity: 0; 
         transform: translateY(30px); 
@@ -299,10 +299,21 @@
         display: inline-flex; 
         align-items: center; 
         gap: 8px; 
-        transition: 0.2s ease; 
+        ttransition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .tonal-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        filter: brightness(0.95);
+    }
+
+    .tonal-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .tonal-btn.blue { 
-        background: #e8f0fe; 
+        background: #e6f1f3;
         color: var(--primary-blue); 
     }
     .tonal-btn.green { 
