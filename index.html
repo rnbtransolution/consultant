@@ -701,7 +701,7 @@ footer{
     </div>
     <div class="stat-div"></div>
     <div class="stat-item">
-      <div class="stat-num" data-count="6">0</div>
+      <div class="stat-num" data-count="7">0</div>
       <div class="stat-label">บริการ<br>เฉพาะทาง</div>
     </div>
     <div class="stat-div"></div>
@@ -935,6 +935,19 @@ footer{
         </button>
       </div>
     </div>
+    <div class="service-card reveal" onclick="openModal(7)" style="transition-delay:0.6s;grid-column:1/-1;border-color:rgba(201,134,44,0.35);">
+      <div class="service-img" style="background-image:url('https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=1200')"></div>
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <div class="service-tag" style="color:var(--gold-light)">07 · Technology · New</div>
+        <div class="service-name">R&B Trans PMS</div>
+        <div class="service-desc">ระบบบริหารจัดการโรงแรม (PMS) ผ่าน Google Apps Script ราคาเบา ลงทุนครั้งเดียว ไม่มีค่ารายเดือน เหมาะสำหรับโรงแรม SME และรีสอร์ทโลคอล</div>
+        <button class="service-link" style="color:var(--gold-light)">
+          รายละเอียด &amp; ราคา
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1015,6 +1028,7 @@ footer{
             <option>SWOT Analysis</option>
             <option>SOP Creation</option>
             <option>Re-branding</option>
+            <option>R&B Trans PMS (Hotel PMS)</option>
             <option>ต้องการหารือก่อน</option>
           </select>
         </div>
@@ -1100,12 +1114,13 @@ document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 
 // ─── MODAL DATA
 const services={
-  1:{tag:'01 · Profitability',title:'Menu Engineering',tagline:'เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด',img:'https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยาผู้บริโภค เพื่อเพิ่มรายได้และลดต้นทุนวัตถุดิบอย่างมีนัยสำคัญ',features:['<strong>Cost & Profit Analysis</strong> — เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูกำไรสูงสุดและเมนูที่ควรตัดออก','<strong>Menu Matrix</strong> — จัดกลุ่มเมนูด้วย BCG Matrix เพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร','<strong>Psychological Design</strong> — ออกแบบ Layout ดึงดูดสายตาให้ลูกค้าสั่งเมนูที่ต้องการขายมากที่สุด']},
-  2:{tag:'02 · Quality',title:'Q.A. Audit',tagline:'ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ',img:'https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800',desc:'บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้นและช่วยให้เจ้าของธุรกิจรับทราบข้อมูลที่ถูกต้อง',features:['<strong>Hygiene Standards</strong> — ตรวจสอบความสะอาดตามหลักสุขาภิบาล GHP/HACCP','<strong>Service Sequence</strong> — ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล','<strong>Detailed Report</strong> — สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุดและปฏิบัติได้จริง']},
-  3:{tag:'03 · People',title:'Service Workshop',tagline:'สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟให้เป็นนักขายมืออาชีพ',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน ออกแบบเพื่อให้เข้าใจง่ายและนำไปใช้ได้จริงในการทำงานประจำวัน',features:['<strong>Personality & Grooming</strong> — ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม','<strong>Service Mindset</strong> — ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ','<strong>Up-selling Techniques</strong> — เทคนิคการเชียร์ขายและแนะนำเมนูเพื่อเพิ่มยอดขายต่อหัว']},
-  4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางที่แม่นยำ โดยผสานข้อมูลภายในและการวิเคราะห์ตลาดภายนอกเข้าด้วยกัน',features:['<strong>Internal Analysis (S-W)</strong> — วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว','<strong>External Analysis (O-T)</strong> — วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง','<strong>Strategic Roadmap</strong> — วางแผนกลยุทธ์ระยะสั้น-ยาว เพื่อสร้างความได้เปรียบที่ยั่งยืน']},
-  5:{tag:'05 · Operations',title:'SOP Creation',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual</strong> — คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards</strong> — สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System</strong> — เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน']},
-  6:{tag:'06 · Brand',title:'Re-branding',tagline:'ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย',img:'https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800',desc:'บริการรีโนเวทแบรนด์แบบครบวงจร ผสานความคิดสร้างสรรค์เข้ากับกลยุทธ์ทางธุรกิจเพื่อให้แบรนด์ของคุณโดดเด่นในตลาด',features:['<strong>Brand Identity</strong> — วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ Mood & Tone และ Brand Guidelines','<strong>Menu & Food Development</strong> — ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์ใหม่','<strong>Operational Alignment</strong> — ปรับระบบงานและการบริการให้สอดรับกับ Brand DNA ที่กำหนดขึ้นใหม่']}
+  1:{tag:'01 · Profitability',title:'Menu Engineering',tagline:'เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด',img:'https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยาผู้บริโภค เพื่อเพิ่มรายได้และลดต้นทุนวัตถุดิบอย่างมีนัยสำคัญ',features:['<strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูกำไรสูงสุดและเมนูที่ควรตัดออก','<strong>Menu Matrix:</strong> จัดกลุ่มเมนูด้วย BCG Matrix เพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร','<strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาให้ลูกค้าสั่งเมนูที่ต้องการขายมากที่สุด']},
+  2:{tag:'02 · Quality',title:'Q.A. Audit',tagline:'ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ',img:'https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800',desc:'บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้นและช่วยให้เจ้าของธุรกิจรับทราบข้อมูลที่ถูกต้อง',features:['<strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล GHP/HACCP','<strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล','<strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุดและปฏิบัติได้จริง']},
+  3:{tag:'03 · People',title:'Service Workshop',tagline:'สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟให้เป็นนักขายมืออาชีพ',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน ออกแบบเพื่อให้เข้าใจง่ายและนำไปใช้ได้จริงในการทำงานประจำวัน',features:['<strong>Personality & Grooming:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม','<strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ','<strong>Up-selling Techniques:</strong> เทคนิคการเชียร์ขายและแนะนำเมนูเพื่อเพิ่มยอดขายต่อหัว']},
+  4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางที่แม่นยำ โดยผสานข้อมูลภายในและการวิเคราะห์ตลาดภายนอกเข้าด้วยกัน',features:['<strong>Internal Analysis (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว','<strong>External Analysis (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง','<strong>Strategic Roadmap:</strong> วางแผนกลยุทธ์ระยะสั้น-ยาว เพื่อสร้างความได้เปรียบที่ยั่งยืน']},
+  5:{tag:'05 · Operations',title:'SOP Creation',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual:</strong> คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน']},
+  6:{tag:'06 · Brand',title:'Re-branding',tagline:'ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย',img:'https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800',desc:'บริการรีโนเวทแบรนด์แบบครบวงจร ผสานความคิดสร้างสรรค์เข้ากับกลยุทธ์ทางธุรกิจเพื่อให้แบรนด์ของคุณโดดเด่นในตลาด',features:['<strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ Mood & Tone และ Brand Guidelines','<strong>Menu & Food Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์ใหม่','<strong>Operational Alignment:</strong> ปรับระบบงานและการบริการให้สอดรับกับ Brand DNA ที่กำหนดขึ้นใหม่']},
+  7:{tag:'07 · Technology',title:'R&B Trans PMS',tagline:'PMS โรงแรม ราคาเบา ใช้งานจริงได้ทันที ไม่ต้องจ่ายรายเดือน',img:'https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=800',desc:'ระบบบริหารจัดการโรงแรม (PMS) สำหรับโรงแรมขนาดเล็ก / SME / รีสอร์ทโลคอล ติดตั้งผ่าน Google Apps Script บน Google Account ของโรงแรม ข้อมูลเป็นของคุณ 100% ค่าติดตั้งครั้งเดียว 2,999 บาท ไม่มีค่าใช้จ่ายรายเดือน ไม่มีสัญญาผูกมัด',features:['<strong>งานจองและบริหารห้องพัก:</strong> รองรับงานจอง บริหารห้อง และติดตามสถานะลูกค้าครบในที่เดียว','<strong>ข้อมูลใน Google Account ของโรงแรม:</strong> ปลอดภัย เป็นของคุณ 100% ไม่ต้องพึ่ง Server ภายนอก','<strong>ค่าติดตั้งครั้งเดียว 2,999 บาท:</strong> ไม่มีรายเดือน ไม่มีสัญญาผูกมัด พร้อม Setup และแนะนำวิธีใช้งาน','<strong>เหมาะกับโรงแรม 10–50 ห้อง:</strong> ใช้งานง่าย ไม่ซับซ้อน ทีมเล็กก็ทำได้ทันที ไม่ต้องมี IT Support']}
 };
 
 function openModal(id){
