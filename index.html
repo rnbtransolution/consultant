@@ -7,7 +7,7 @@
 <title>R&B Transolution - Create Beyond Standard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 <style>
 :root {
   --teal:        #0891b2;
@@ -290,11 +290,16 @@ section.content{
   width:44px;height:44px;border-radius:12px;
   background:var(--teal-pale);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:28px;color:var(--teal);font-size:18px;
+  margin-bottom:28px;
   transition:all 0.3s;
 }
 .philosophy-cell:hover .philosophy-icon{
-  background:var(--teal);color:white;
+  background:var(--white);
+  transform:scale(1.05);
+  box-shadow:0 4px 12px rgba(8,145,178,0.12);
+}
+.philosophy-icon-img{
+  width:24px;height:24px;object-fit:contain;
 }
 .philosophy-cell h3{
   font-family:'Cormorant Garamond',serif;
@@ -361,13 +366,20 @@ section.content{
 .highlight-card:hover .h-card-bg{opacity:1;}
 .h-card-content{position:relative;z-index:1;}
 .h-card-icon{
-  font-size:1.4rem;color:var(--teal);margin-bottom:20px;
+  margin-bottom:20px;
   display:block;
   width:48px;height:48px;background:var(--teal-pale);
   border-radius:12px;display:flex;align-items:center;justify-content:center;
   transition:all 0.3s;
 }
-.highlight-card:hover .h-card-icon{background:var(--teal);color:white;}
+.highlight-card:hover .h-card-icon{
+  background:var(--white);
+  transform:scale(1.05);
+  box-shadow:0 4px 12px rgba(8,145,178,0.12);
+}
+.h-card-icon-img{
+  width:26px;height:26px;object-fit:contain;
+}
 .h-card-title{
   font-family:'Cormorant Garamond',serif;
   font-size:1.5rem;font-weight:500;color:var(--text);
@@ -387,6 +399,11 @@ section.content{
 
 /* ─── SERVICES ─── */
 #services{background:var(--bg);}
+.service-icon-img{
+  width:36px;height:36px;object-fit:contain;
+  margin-bottom:16px;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
 .services-layout{
   display:grid;grid-template-columns:1fr 1fr;
   gap:24px;
@@ -547,14 +564,21 @@ section.content{
   background:linear-gradient(to top,rgba(15,23,42,0.7),transparent);
 }
 .modal-body-inner{padding:32px 40px 40px;}
+.modal-header-wrap{
+  display:flex;align-items:center;gap:16px;margin-bottom:16px;
+}
+.modal-icon-img{
+  width:44px;height:44px;object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
 .modal-tag{
   font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--teal);margin-bottom:8px;font-weight:600;
+  color:var(--teal);margin-bottom:4px;font-weight:600;
 }
 .modal-title{
   font-family:'Cormorant Garamond',serif;
   font-size:2rem;font-weight:500;color:var(--text);
-  margin-bottom:8px;
+  margin-bottom:0;line-height:1.2;
 }
 .modal-tagline{
   font-size:0.875rem;color:var(--gold);margin-bottom:24px;
@@ -638,6 +662,98 @@ footer{
   body{cursor:auto;}
   a,button{cursor:pointer;}
 }
+
+/* ─── THAI FONT FALLBACK SYSTEM ─── */
+body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-submit {
+  font-family: 'Google Sans', 'Anuphan', sans-serif;
+}
+.logo, .hero-h1, .stat-num, .section-title, .philosophy-num, .philosophy-cell h3, .quote-block blockquote, .h-card-title, .service-name, .contact-info, .contact-info h2, .form-title, .modal-title, .footer-brand {
+  font-family: 'Cormorant Garamond', 'Anuphan', serif;
+}
+
+/* ─── THIN FLAT LINE SVG ICONS ─── */
+.thin-ico {
+  width: 20px;
+  height: 20px;
+  color: var(--teal);
+  stroke-width: 1.2px;
+  transition: transform 0.3s, color 0.3s, stroke-width 0.3s;
+  vertical-align: middle;
+}
+.philosophy-cell:hover .thin-ico {
+  color: var(--gold-light);
+  stroke-width: 1.5px;
+  transform: scale(1.08);
+}
+.h-card-icon .thin-ico {
+  width: 22px;
+  height: 22px;
+}
+.highlight-card:hover .thin-ico {
+  color: var(--gold-light);
+  stroke-width: 1.5px;
+  transform: scale(1.08);
+}
+.service-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.7);
+  stroke-width: 1.2px;
+  margin-bottom: 16px;
+  transition: transform 0.3s, color 0.3s, stroke-width 0.3s;
+  display: block;
+}
+.service-card:hover .service-icon-svg {
+  color: var(--gold-light);
+  stroke-width: 1.5px;
+  transform: scale(1.08);
+}
+.modal-icon-svg {
+  width: 38px;
+  height: 38px;
+  color: var(--teal);
+  stroke-width: 1.2px;
+  flex-shrink: 0;
+}
+
+/* ─── NAVIGATION CONTRAST & VISIBILITY ─── */
+#topbar {
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+#topbar .logo {
+  color: #ffffff;
+}
+#topbar nav a {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+#topbar nav a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#topbar.scrolled .logo {
+  color: var(--text);
+}
+#topbar.scrolled nav a {
+  color: var(--text-soft);
+  text-shadow: none;
+}
+#topbar.scrolled nav a:hover {
+  color: var(--text);
+  background: var(--bg-subtle);
+}
+
+#topbar .nav-cta {
+  background: var(--teal) !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+#topbar .nav-cta:hover {
+  background: var(--teal-dark) !important;
+  color: white !important;
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet"/>
 </head>
@@ -665,13 +781,13 @@ footer{
   <div class="hero-bg"></div>
   <div class="hero-noise"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Hospitality Consulting · Bangkok, Thailand</div>
+    <div class="hero-eyebrow">F&B Consulting · Bangkok, Thailand</div>
     <h1 class="hero-h1">
       Create<br>
       <em>Beyond</em><br>
       <strong>Standard</strong>
     </h1>
-    <p class="hero-sub">ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจบริการ ด้วยกลยุทธ์ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม</p>
+    <p class="hero-sub">ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจ F&B ด้วยกลยุทธ์ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
         <span class="ico">calendar_month</span> นัดหมายปรึกษาฟรี
@@ -753,25 +869,47 @@ footer{
   <div class="philosophy-grid">
     <div class="philosophy-cell reveal">
       <span class="philosophy-num">01</span>
-      <div class="philosophy-icon"><span class="ico">explore</span></div>
+      <div class="philosophy-icon">
+        <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+        </svg>
+      </div>
       <h3>Reach Beyond</h3>
       <p>เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ "ดีพอ" แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้ เพื่อสร้างความประทับใจที่ยั่งยืนในทุกจุดสัมผัสของแขก</p>
     </div>
     <div class="philosophy-cell reveal" style="transition-delay:0.1s">
       <span class="philosophy-num">02</span>
-      <div class="philosophy-icon"><span class="ico">transform</span></div>
+      <div class="philosophy-icon">
+        <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.56-.56"></path>
+        </svg>
+      </div>
       <h3>Transolution</h3>
       <p>มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ <strong style="color:var(--text)">Transformation</strong> เปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงานทั้งองค์กรเพื่อความยั่งยืนในระยะยาว</p>
     </div>
     <div class="philosophy-cell reveal" style="transition-delay:0.2s">
       <span class="philosophy-num">03</span>
-      <div class="philosophy-icon"><span class="ico">diamond</span></div>
+      <div class="philosophy-icon">
+        <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </div>
       <h3>Global Standard</h3>
       <p>ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล ทุกกลยุทธ์ขับเคลื่อนด้วย Data และวัดผลได้ เพื่อยกระดับทีมของคุณอย่างแท้จริง</p>
     </div>
     <div class="philosophy-cell reveal" style="transition-delay:0.3s">
       <span class="philosophy-num">04</span>
-      <div class="philosophy-icon"><span class="ico">psychology</span></div>
+      <div class="philosophy-icon">
+        <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      </div>
       <h3>Human-Centered</h3>
       <p>เบื้องหลังทุกระบบและกระบวนการ คือ "คน" ทั้งทีมงานของคุณและลูกค้าที่เข้ามา เราออกแบบทุกอย่างโดยยึดประสบการณ์มนุษย์เป็นศูนย์กลาง</p>
     </div>
@@ -795,7 +933,12 @@ footer{
       <div class="highlight-card reveal">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">verified</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
           <div class="h-card-title">Deep Expertise</div>
           <div class="h-card-body">ประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี พร้อมยกระดับมาตรฐานบริการของคุณสู่ระดับโลก</div>
           <div class="h-card-line"></div>
@@ -804,7 +947,11 @@ footer{
       <div class="highlight-card reveal" style="transition-delay:0.1s">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/5092827/pexels-photo-5092827.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">bolt</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
           <div class="h-card-title">Fast Action</div>
           <div class="h-card-body">กระบวนการทำงานกระชับ เริ่มต้นแก้ไขและส่งมอบแผนงานเบื้องต้นได้ภายใน 5 วันทำการ</div>
           <div class="h-card-line"></div>
@@ -813,7 +960,13 @@ footer{
       <div class="highlight-card reveal" style="transition-delay:0.2s">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/7433837/pexels-photo-7433837.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">analytics</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
           <div class="h-card-title">Data-Driven</div>
           <div class="h-card-body">ใช้ข้อมูลจริงของร้านในการวิเคราะห์ ไม่ใช้ความรู้สึก เพื่อผลลัพธ์ที่แม่นยำและแก้ปัญหาได้ตรงจุด</div>
           <div class="h-card-line"></div>
@@ -822,7 +975,19 @@ footer{
       <div class="highlight-card reveal" style="transition-delay:0.05s">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/7437501/pexels-photo-7437501.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">tune</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+          </div>
           <div class="h-card-title">Tailor-made</div>
           <div class="h-card-body">ไม่มีสูตรสำเร็จตายตัว ออกแบบแผนกลยุทธ์ให้เหมาะกับโจทย์ ขนาด และงบประมาณของร้านคุณ</div>
           <div class="h-card-line"></div>
@@ -831,7 +996,13 @@ footer{
       <div class="highlight-card reveal" style="transition-delay:0.15s">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">manage_accounts</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <polyline points="16 11 18 13 22 9"></polyline>
+            </svg>
+          </div>
           <div class="h-card-title">Expert Team</div>
           <div class="h-card-body">รวมผู้เชี่ยวชาญหลากสาขาที่เข้าใจหน้างานจริง ทำงานร่วมกันเพื่ออุดรอยรั่วของธุรกิจ</div>
           <div class="h-card-line"></div>
@@ -840,7 +1011,11 @@ footer{
       <div class="highlight-card reveal" style="transition-delay:0.25s">
         <div class="h-card-bg" style="background-image:url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&w=600')"></div>
         <div class="h-card-content">
-          <span class="h-card-icon ico">handshake</span>
+          <div class="h-card-icon">
+            <svg class="thin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z"></path>
+            </svg>
+          </div>
           <div class="h-card-title">Long-term Partner</div>
           <div class="h-card-body">เราไม่ทิ้งงาน พร้อมเป็นที่ปรึกษาและติดตามผลต่อเนื่องเพื่อให้มั่นใจในทุกก้าวของการเติบโต</div>
           <div class="h-card-line"></div>
@@ -861,6 +1036,10 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
         <div class="service-tag">01 · Profitability</div>
         <div class="service-name">Menu Engineering</div>
         <div class="service-desc">วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</div>
@@ -874,6 +1053,11 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+          <polyline points="9 14 11 16 15 12"></polyline>
+        </svg>
         <div class="service-tag">02 · Quality</div>
         <div class="service-name">Q.A. Audit</div>
         <div class="service-desc">ตรวจสอบมาตรฐานความสะอาด การบริการ และคุณภาพอาหาร พร้อมรายงานผลละเอียด</div>
@@ -887,6 +1071,10 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+          <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+        </svg>
         <div class="service-tag">03 · People</div>
         <div class="service-name">Service Workshop</div>
         <div class="service-desc">อบรมพนักงาน ปรับบุคลิกภาพและ Service Mind เพื่อการบริการที่เหนือระดับ</div>
@@ -900,6 +1088,13 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+          <line x1="12" y1="2" x2="12" y2="22"></line>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+        </svg>
         <div class="service-tag">04 · Strategy</div>
         <div class="service-name">SWOT Analysis</div>
         <div class="service-desc">วิเคราะห์จุดแข็ง-จุดอ่อน เพื่อหาโอกาสทางธุรกิจและสร้างความได้เปรียบเหนือคู่แข่ง</div>
@@ -913,6 +1108,13 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
         <div class="service-tag">05 · Operations</div>
         <div class="service-name">SOP Creation</div>
         <div class="service-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน (SOP) เพื่อระบบงานที่มั่นคงและตรวจสอบได้ทุกแผนก</div>
@@ -926,6 +1128,9 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364l-2.121 2.121M8.757 15.243l-2.12 2.12m11.728 0l-2.121-2.121M8.757 8.757L6.636 6.636"></path>
+        </svg>
         <div class="service-tag">06 · Brand</div>
         <div class="service-name">Re-branding</div>
         <div class="service-desc">รีโนเวทภาพลักษณ์ วางคอนเซปต์ร้านใหม่ และปรับปรุงระบบบริหารจัดการทั้งระบบ</div>
@@ -939,6 +1144,9 @@ footer{
       <div class="service-img" style="background-image:url('https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=1200')"></div>
       <div class="service-overlay"></div>
       <div class="service-content">
+        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)">
+          <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3M15.5 7.5L14 9"></path>
+        </svg>
         <div class="service-tag" style="color:var(--gold-light)">07 · Technology · New</div>
         <div class="service-name">R&B Trans PMS</div>
         <div class="service-desc">ระบบบริหารจัดการโรงแรม (PMS) ผ่าน Google Apps Script ราคาเบา ลงทุนครั้งเดียว ไม่มีค่ารายเดือน เหมาะสำหรับโรงแรม SME และรีสอร์ทโลคอล</div>
@@ -957,7 +1165,7 @@ footer{
     <div class="contact-grid">
       <div class="reveal-left">
         <div class="section-label">Get in Touch</div>
-        <h2 class="contact-info" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,3.5vw,3.5rem);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:24px;">
+        <h2 class="contact-info" style="font-family:'Cormorant Garamond','Anuphan',serif;font-size:clamp(2.5rem,3.5vw,3.5rem);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:24px;">
           พร้อม<em style="font-style:italic;color:var(--teal)">ยกระดับ</em><br>ธุรกิจของคุณ<br>หรือยัง?
         </h2>
         <p style="font-size:0.95rem;line-height:1.75;color:var(--text-soft);margin-bottom:48px;font-weight:300;">
@@ -1000,16 +1208,16 @@ footer{
         <div class="form-row">
           <div class="form-group">
             <label>ชื่อ-นามสกุล</label>
-            <input type="text" placeholder="คุณ...">
+            <input type="text" id="contact-name" placeholder="คุณ...">
           </div>
           <div class="form-group">
             <label>เบอร์โทรศัพท์</label>
-            <input type="tel" placeholder="08X-XXX-XXXX">
+            <input type="tel" id="contact-phone" placeholder="08X-XXX-XXXX">
           </div>
         </div>
         <div class="form-group">
           <label>ประเภทธุรกิจ</label>
-          <select>
+          <select id="contact-biz">
             <option value="">เลือกประเภทธุรกิจ</option>
             <option>ร้านอาหาร / Restaurant</option>
             <option>คาเฟ่ / Coffee Shop</option>
@@ -1020,7 +1228,7 @@ footer{
         </div>
         <div class="form-group">
           <label>บริการที่สนใจ</label>
-          <select>
+          <select id="contact-service">
             <option value="">เลือกบริการ</option>
             <option>Menu Engineering</option>
             <option>Q.A. Audit</option>
@@ -1034,7 +1242,7 @@ footer{
         </div>
         <div class="form-group">
           <label>รายละเอียดเพิ่มเติม</label>
-          <textarea placeholder="อธิบายสั้นๆ เกี่ยวกับธุรกิจและสิ่งที่ต้องการปรับปรุง..."></textarea>
+          <textarea id="contact-notes" placeholder="อธิบายสั้นๆ เกี่ยวกับธุรกิจและสิ่งที่ต้องการปรับปรุง..."></textarea>
         </div>
         <button class="form-submit" onclick="handleSubmit(this)">
           <span class="ico" style="vertical-align:middle;margin-right:8px">send</span>ส่งข้อความ
@@ -1056,8 +1264,13 @@ footer{
     <button class="modal-close" onclick="closeModal(null,true)">✕</button>
     <div class="modal-top" id="modal-img"></div>
     <div class="modal-body-inner">
-      <div class="modal-tag" id="modal-tag"></div>
-      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-header-wrap">
+        <div id="modal-icon-container"></div>
+        <div>
+          <div class="modal-tag" id="modal-tag"></div>
+          <div class="modal-title" id="modal-title"></div>
+        </div>
+      </div>
       <div class="modal-tagline" id="modal-tagline"></div>
       <div class="modal-desc" id="modal-desc"></div>
       <ul class="modal-features" id="modal-features"></ul>
@@ -1114,13 +1327,13 @@ document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 
 // ─── MODAL DATA
 const services={
-  1:{tag:'01 · Profitability',title:'Menu Engineering',tagline:'เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด',img:'https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยาผู้บริโภค เพื่อเพิ่มรายได้และลดต้นทุนวัตถุดิบอย่างมีนัยสำคัญ',features:['<strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูกำไรสูงสุดและเมนูที่ควรตัดออก','<strong>Menu Matrix:</strong> จัดกลุ่มเมนูด้วย BCG Matrix เพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร','<strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาให้ลูกค้าสั่งเมนูที่ต้องการขายมากที่สุด']},
-  2:{tag:'02 · Quality',title:'Q.A. Audit',tagline:'ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ',img:'https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800',desc:'บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้นและช่วยให้เจ้าของธุรกิจรับทราบข้อมูลที่ถูกต้อง',features:['<strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล GHP/HACCP','<strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล','<strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุดและปฏิบัติได้จริง']},
-  3:{tag:'03 · People',title:'Service Workshop',tagline:'สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟให้เป็นนักขายมืออาชีพ',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน ออกแบบเพื่อให้เข้าใจง่ายและนำไปใช้ได้จริงในการทำงานประจำวัน',features:['<strong>Personality & Grooming:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม','<strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ','<strong>Up-selling Techniques:</strong> เทคนิคการเชียร์ขายและแนะนำเมนูเพื่อเพิ่มยอดขายต่อหัว']},
-  4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางที่แม่นยำ โดยผสานข้อมูลภายในและการวิเคราะห์ตลาดภายนอกเข้าด้วยกัน',features:['<strong>Internal Analysis (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว','<strong>External Analysis (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง','<strong>Strategic Roadmap:</strong> วางแผนกลยุทธ์ระยะสั้น-ยาว เพื่อสร้างความได้เปรียบที่ยั่งยืน']},
-  5:{tag:'05 · Operations',title:'SOP Creation',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual:</strong> คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน']},
-  6:{tag:'06 · Brand',title:'Re-branding',tagline:'ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย',img:'https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800',desc:'บริการรีโนเวทแบรนด์แบบครบวงจร ผสานความคิดสร้างสรรค์เข้ากับกลยุทธ์ทางธุรกิจเพื่อให้แบรนด์ของคุณโดดเด่นในตลาด',features:['<strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ Mood & Tone และ Brand Guidelines','<strong>Menu & Food Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์ใหม่','<strong>Operational Alignment:</strong> ปรับระบบงานและการบริการให้สอดรับกับ Brand DNA ที่กำหนดขึ้นใหม่']},
-  7:{tag:'07 · Technology',title:'R&B Trans PMS',tagline:'PMS โรงแรม ราคาเบา ใช้งานจริงได้ทันที ไม่ต้องจ่ายรายเดือน',img:'https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=800',desc:'ระบบบริหารจัดการโรงแรม (PMS) สำหรับโรงแรมขนาดเล็ก / SME / รีสอร์ทโลคอล ติดตั้งผ่าน Google Apps Script บน Google Account ของโรงแรม ข้อมูลเป็นของคุณ 100% ค่าติดตั้งครั้งเดียว 2,999 บาท ไม่มีค่าใช้จ่ายรายเดือน ไม่มีสัญญาผูกมัด',features:['<strong>งานจองและบริหารห้องพัก:</strong> รองรับงานจอง บริหารห้อง และติดตามสถานะลูกค้าครบในที่เดียว','<strong>ข้อมูลใน Google Account ของโรงแรม:</strong> ปลอดภัย เป็นของคุณ 100% ไม่ต้องพึ่ง Server ภายนอก','<strong>ค่าติดตั้งครั้งเดียว 2,999 บาท:</strong> ไม่มีรายเดือน ไม่มีสัญญาผูกมัด พร้อม Setup และแนะนำวิธีใช้งาน','<strong>เหมาะกับโรงแรม 10–50 ห้อง:</strong> ใช้งานง่าย ไม่ซับซ้อน ทีมเล็กก็ทำได้ทันที ไม่ต้องมี IT Support']}
+  1:{tag:'01 · Profitability',title:'Menu Engineering',tagline:'เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด',img:'https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยาผู้บริโภค เพื่อเพิ่มรายได้และลดต้นทุนวัตถุดิบอย่างมีนัยสำคัญ',features:['<strong>Cost & Profit Analysis:</strong> เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูกำไรสูงสุดและเมนูที่ควรตัดออก','<strong>Menu Matrix:</strong> จัดกลุ่มเมนูด้วย BCG Matrix เพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร','<strong>Psychological Design:</strong> ออกแบบ Layout ดึงดูดสายตาให้ลูกค้าสั่งเมนูที่ต้องการขายมากที่สุด'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`},
+  2:{tag:'02 · Quality',title:'Q.A. Audit',tagline:'ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ',img:'https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800',desc:'บริการตรวจสอบหน้าร้านโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนความเป็นจริงที่เกิดขึ้นและช่วยให้เจ้าของธุรกิจรับทราบข้อมูลที่ถูกต้อง',features:['<strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล GHP/HACCP','<strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล','<strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุดและปฏิบัติได้จริง'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><polyline points="9 14 11 16 15 12"></polyline></svg>`},
+  3:{tag:'03 · People',title:'Service Workshop',tagline:'สร้างทีมที่แข็งแกร่ง เปลี่ยนพนักงานเสิร์ฟให้เป็นนักขายมืออาชีพ',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมของร้าน ออกแบบเพื่อให้เข้าใจง่ายและนำไปใช้ได้จริงในการทำงานประจำวัน',features:['<strong>Personality & Grooming:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม','<strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ','<strong>Up-selling Techniques:</strong> เทคนิคการเชียร์ขายและแนะนำเมนูเพื่อเพิ่มยอดขายต่อหัว'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>`},
+  4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางที่แม่นยำ โดยผสานข้อมูลภายในและการวิเคราะห์ตลาดภายนอกเข้าด้วยกัน',features:['<strong>Internal Analysis (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว','<strong>External Analysis (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง','<strong>Strategic Roadmap:</strong> วางแผนกลยุทธ์ระยะสั้น-ยาว เพื่อสร้างความได้เปรียบที่ยั่งยืน'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle><line x1="12" y1="2" x2="12" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>`},
+  5:{tag:'05 · Operations',title:'SOP Creation',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual:</strong> คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`},
+  6:{tag:'06 · Brand',title:'Re-branding',tagline:'ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย',img:'https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800',desc:'บริการรีโนเวทแบรนด์แบบครบวงจร ผสานความคิดสร้างสรรค์เข้ากับกลยุทธ์ทางธุรกิจเพื่อให้แบรนด์ของคุณโดดเด่นในตลาด',features:['<strong>Brand Identity:</strong> วางคอนเซปต์ร้านใหม่ ออกแบบโลโก้ Mood & Tone และ Brand Guidelines','<strong>Menu & Food Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์ใหม่','<strong>Operational Alignment:</strong> ปรับระบบงานและการบริการให้สอดรับกับ Brand DNA ที่กำหนดขึ้นใหม่'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364l-2.121 2.121M8.757 15.243l-2.12 2.12m11.728 0l-2.121-2.121M8.757 8.757L6.636 6.636"></path></svg>`},
+  7:{tag:'07 · Technology',title:'R&B Trans PMS',tagline:'PMS โรงแรม ราคาเบา ใช้งานจริงได้ทันที ไม่ต้องจ่ายรายเดือน',img:'https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=800',desc:'ระบบบริหารจัดการโรงแรม (PMS) สำหรับโรงแรมขนาดเล็ก / SME / รีสอร์ทโลคอล ติดตั้งผ่าน Google Apps Script บน Google Account ของโรงแรม ข้อมูลเป็นของคุณ 100% ค่าติดตั้งครั้งเดียว 2,999 บาท ไม่มีค่าใช้จ่ายรายเดือน ไม่มีสัญญาผูกมัด',features:['<strong>งานจองและบริหารห้องพัก:</strong> รองรับงานจอง บริหารห้อง และติดตามสถานะลูกค้าครบในที่เดียว','<strong>ข้อมูลใน Google Account ของโรงแรม:</strong> ปลอดภัย เป็นของคุณ 100% ไม่ต้องพึ่ง Server ภายนอก','<strong>ค่าติดตั้งครั้งเดียว 2,999 บาท:</strong> ไม่มีรายเดือน ไม่มีสัญญาผูกมัด พร้อม Setup และแนะนำวิธีใช้งาน','<strong>เหมาะกับโรงแรม 10–50 ห้อง:</strong> ใช้งานง่าย ไม่ซับซ้อน ทีมเล็กก็ทำได้ทันที ไม่ต้องมี IT Support'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3M15.5 7.5L14 9"></path></svg>`}
 };
 
 function openModal(id){
@@ -1130,6 +1343,7 @@ function openModal(id){
   document.getElementById('modal-tagline').textContent='"'+d.tagline+'"';
   document.getElementById('modal-desc').textContent=d.desc;
   document.getElementById('modal-img').style.backgroundImage=`url('${d.img}')`;
+  document.getElementById('modal-icon-container').innerHTML=d.icon;
   const ul=document.getElementById('modal-features');
   ul.innerHTML=d.features.map(f=>`<li>${f}</li>`).join('');
   document.getElementById('modal-overlay').classList.add('open');
@@ -1143,15 +1357,72 @@ function closeModal(e,force){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal(null,true);});
 
-// ─── FORM SUBMIT
+// ─── CONFIG: GOOGLE APPS SCRIPT WEB APP URL
+// เพื่อรับข้อมูลติดต่อและบันทึกลง Google Sheets และส่งอีเมลแจ้งเตือน
+// โปรดใส่ URL ที่ได้จากการ Deploy Web App ในช่องด้านล่าง
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybtCkTXIS2fguC7VB0-uX7aWb03fifZ9LNu6f02uZX5hoBvJq56CFvhj-fywE70t1x/exec"; 
+
 function handleSubmit(btn){
-  btn.textContent='✓ ส่งข้อความแล้ว';
-  btn.style.background='#0d9488';
-  btn.disabled=true;
-  setTimeout(()=>{
-    btn.innerHTML='<span class="ico" style="vertical-align:middle;margin-right:8px">send</span>ส่งข้อความ';
-    btn.style.background='';btn.disabled=false;
-  },3000);
+  const nameInput = document.getElementById('contact-name');
+  const phoneInput = document.getElementById('contact-phone');
+  const bizSelect = document.getElementById('contact-biz');
+  const serviceSelect = document.getElementById('contact-service');
+  const notesTextarea = document.getElementById('contact-notes');
+  
+  const payload = {
+    name: nameInput ? nameInput.value.trim() : "",
+    phone: phoneInput ? phoneInput.value.trim() : "",
+    businessType: bizSelect ? bizSelect.value : "",
+    service: serviceSelect ? serviceSelect.value : "",
+    message: notesTextarea ? notesTextarea.value.trim() : ""
+  };
+  
+  if(!payload.name || !payload.phone){
+    alert("กรุณากรอกชื่อและเบอร์โทรศัพท์เพื่อการติดต่อกลับ");
+    return;
+  }
+  
+  btn.textContent = 'กำลังส่ง...';
+  btn.disabled = true;
+  
+  if (APPS_SCRIPT_URL) {
+    fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      handleSuccess(btn, nameInput, phoneInput, bizSelect, serviceSelect, notesTextarea);
+    })
+    .catch((error) => {
+      console.error("Submission error:", error);
+      alert("ขออภัย เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาติดต่อเราโดยตรงผ่านทาง LINE หรือ โทรศัพท์");
+      btn.innerHTML = '<span class="ico" style="vertical-align:middle;margin-right:8px">send</span>ส่งข้อความ';
+      btn.disabled = false;
+    });
+  } else {
+    console.log("Mock Submit payload:", payload);
+    handleSuccess(btn, nameInput, phoneInput, bizSelect, serviceSelect, notesTextarea);
+  }
+}
+
+function handleSuccess(btn, ...inputs) {
+  btn.textContent = '✓ ส่งข้อความแล้ว';
+  btn.style.background = '#0d9488';
+  btn.disabled = true;
+  
+  inputs.forEach(input => {
+    if(input) input.value = "";
+  });
+  
+  setTimeout(() => {
+    btn.innerHTML = '<span class="ico" style="vertical-align:middle;margin-right:8px">send</span>ส่งข้อความ';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3000);
 }
 </script>
 </body>
