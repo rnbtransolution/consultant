@@ -214,30 +214,32 @@ nav a:hover{color:var(--text);background:var(--bg-subtle);}
   background:var(--teal-light);animation:scrollDown 2s 2s infinite;
 }
 
-/* ─── STATS TICKER ─── */
+/* ─── CREDENTIALS BAR ─── */
 .stats-bar{
   background:var(--teal-pale);
   border-top:1px solid rgba(8,145,178,0.15);
   border-bottom:1px solid rgba(8,145,178,0.15);
-  padding:20px 4vw;overflow:hidden;
+  padding:28px 4vw;
 }
-.stats-track{
-  display:flex;gap:64px;
-  animation:ticker 30s linear infinite;
-  white-space:nowrap;
+.cred-row{
+  display:flex;align-items:center;
+  justify-content:space-around;flex-wrap:wrap;
+  max-width:1280px;margin:0 auto;gap:0;
 }
-.stat-item{
-  display:flex;align-items:center;gap:14px;flex-shrink:0;
+.cred-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:8px 28px;gap:4px;
 }
-.stat-num{
+.cred-num{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.8rem;font-weight:600;color:var(--teal-dark);
+  font-size:1.7rem;font-weight:600;color:var(--teal-dark);line-height:1.1;
 }
-.stat-label{
-  font-size:0.8rem;color:var(--text-soft);
-  letter-spacing:0.5px;line-height:1.3;max-width:100px;
+.cred-txt{
+  font-size:0.75rem;color:var(--text-soft);
+  text-align:center;letter-spacing:0.2px;
 }
-.stat-div{width:1px;height:32px;background:rgba(8,145,178,0.2);}
+.cred-sep{width:1px;height:40px;background:rgba(8,145,178,0.2);flex-shrink:0;}
+@media(max-width:768px){.cred-sep{display:none;}.cred-item{padding:8px 14px;}}
 
 /* ─── SECTION BASE ─── */
 section.content{
@@ -278,14 +280,7 @@ section.content{
   transform:scaleX(0);transition:transform 0.5s;
 }
 .philosophy-cell:hover::before{transform:scaleX(1);}
-.philosophy-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:5rem;font-weight:300;
-  color:rgba(8,145,178,0.06);
-  position:absolute;top:20px;right:32px;line-height:1;
-  transition:color 0.4s;
-}
-.philosophy-cell:hover .philosophy-num{color:rgba(8,145,178,0.1);}
+.philosophy-num{display:none;}
 .philosophy-icon{
   width:44px;height:44px;border-radius:12px;
   background:var(--teal-pale);
@@ -633,7 +628,6 @@ footer{
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{to{opacity:1;}}
 @keyframes scrollDown{0%{top:-100%;}100%{top:200%;}}
-@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar{width:4px;}
@@ -781,10 +775,9 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
   <div class="hero-bg"></div>
   <div class="hero-noise"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Hospitality Consulting · Bangkok, Thailand</div>
+    <div class="hero-eyebrow">ประสบการณ์จริงจากหน้างาน · Bangkok, Thailand</div>
     <h1 class="hero-h1">
-      Create<br>
-      <em>Beyond</em><br>
+      Create <em>Beyond</em><br>
       <strong>Standard</strong>
     </h1>
     <p class="hero-sub">ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจการบริการ (Hospitality) ด้วยกลยุทธ์ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม</p>
@@ -803,67 +796,39 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
   </div>
 </section>
 
-<!-- STATS TICKER -->
+<!-- CREDENTIALS BAR -->
 <div class="stats-bar">
-  <div class="stats-track" id="stats-track">
-    <div class="stat-item">
-      <div class="stat-num" data-count="24">0</div>
-      <div class="stat-label">ปีประสบการณ์<br>ระดับ 5 ดาว</div>
+  <div class="cred-row">
+    <div class="cred-item">
+      <span class="cred-num">24+</span>
+      <span class="cred-txt">ปีประสบการณ์<br>เครือโรงแรม 5 ดาว</span>
     </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="120">0</div>
-      <div class="stat-label">โครงการ<br>ที่ปรึกษา</div>
+    <div class="cred-sep"></div>
+    <div class="cred-item">
+      <span class="cred-num">กว่า 80</span>
+      <span class="cred-txt">โครงการที่ปรึกษา<br>ทั่วประเทศ</span>
     </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="7">0</div>
-      <div class="stat-label">บริการ<br>เฉพาะทาง</div>
+    <div class="cred-sep"></div>
+    <div class="cred-item">
+      <span class="cred-num">7</span>
+      <span class="cred-txt">บริการเฉพาะทาง<br>ครบวงจร</span>
     </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="5">0</div>
-      <div class="stat-label">วันทำการ<br>เริ่มต้นโครงการ</div>
+    <div class="cred-sep"></div>
+    <div class="cred-item">
+      <span class="cred-num">ภายใน 5</span>
+      <span class="cred-txt">วันทำการ<br>เริ่มต้นโครงการ</span>
     </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Data-Driven<br>Approach</div>
+    <div class="cred-sep"></div>
+    <div class="cred-item">
+      <span class="cred-num">Data-Driven</span>
+      <span class="cred-txt">ทุกกลยุทธ์วัดผล<br>ได้จริง</span>
     </div>
-    <div class="stat-div"></div>
-    <!-- Duplicate for infinite -->
-    <div class="stat-item">
-      <div class="stat-num">24+</div>
-      <div class="stat-label">ปีประสบการณ์<br>ระดับ 5 ดาว</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">120+</div>
-      <div class="stat-label">โครงการ<br>ที่ปรึกษา</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">6</div>
-      <div class="stat-label">บริการ<br>เฉพาะทาง</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">5</div>
-      <div class="stat-label">วันทำการ<br>เริ่มต้นโครงการ</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Data-Driven<br>Approach</div>
-    </div>
-    <div class="stat-div"></div>
   </div>
 </div>
 
 <!-- PHILOSOPHY -->
 <section class="content" id="philosophy">
   <div class="reveal">
-    <div class="section-label">Our Philosophy</div>
     <h2 class="section-title">แนวคิดที่<br><em>ขับเคลื่อน</em>ทุกอย่าง</h2>
   </div>
   <div class="philosophy-grid">
@@ -915,9 +880,9 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
     </div>
     <div class="philosophy-cell philosophy-full quote-block reveal" style="transition-delay:0.2s">
       <blockquote>
-        "พันธกิจของเราไม่ใช่แค่การแก้ไขปัญหา แต่คือการวางรากฐานความสำเร็จครั้งใหม่ให้กับธุรกิจของคุณ"
+        "ไม่มีร้านไหนที่แก้ไม่ได้ มีแต่ปัญหาที่ยังไม่ถูกมองอย่างถูกต้อง — นั่นคือสิ่งที่เราเข้ามาทำ"
       </blockquote>
-      <cite>— R&B Transolution · Core Belief</cite>
+      <cite>— Itthirat, Founder · R&B Transolution</cite>
     </div>
   </div>
 </section>
@@ -926,8 +891,7 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
 <section id="highlights" style="padding:100px 4vw;">
   <div style="max-width:1280px;margin:0 auto;">
     <div class="reveal">
-      <div class="section-label">Why Choose Us</div>
-      <h2 class="section-title">ทำไมต้องเลือก<br><em>R&B</em></h2>
+      <h2 class="section-title">สิ่งที่ทำให้<br><em>R&B</em> ต่างออกไป</h2>
     </div>
     <div class="highlights-grid">
       <div class="highlight-card reveal">
@@ -1028,7 +992,6 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
 <!-- SERVICES -->
 <section class="content" id="services">
   <div class="reveal">
-    <div class="section-label">Our Services</div>
     <h2 class="section-title">บริการ<em>เฉพาะทาง</em><br>ที่ครบวงจร</h2>
   </div>
   <div class="services-layout">
@@ -1216,6 +1179,10 @@ body, input, select, textarea, button, .logo-mark, .quote-block cite, .form-subm
           </div>
         </div>
         <div class="form-group">
+          <label>อีเมล</label>
+          <input type="email" id="contact-email" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
           <label>ประเภทธุรกิจ</label>
           <select id="contact-biz">
             <option value="">เลือกประเภทธุรกิจ</option>
@@ -1305,25 +1272,6 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
 
-// ─── COUNTER ANIMATION
-const countObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const el=e.target;
-      const target=+el.dataset.count;
-      if(!target)return;
-      let start=0;
-      const dur=1500;const step=dur/60;
-      const timer=setInterval(()=>{
-        start+=target/60;
-        el.textContent=Math.min(Math.round(start),target)+(target>=24?'+':'');
-        if(start>=target)clearInterval(timer);
-      },step);
-      countObs.unobserve(el);
-    }
-  });
-},{threshold:0.5});
-document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 
 // ─── MODAL DATA
 const services={
@@ -1365,26 +1313,28 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybtCkTXIS2fguC
 function handleSubmit(btn){
   const nameInput = document.getElementById('contact-name');
   const phoneInput = document.getElementById('contact-phone');
+  const emailInput = document.getElementById('contact-email');
   const bizSelect = document.getElementById('contact-biz');
   const serviceSelect = document.getElementById('contact-service');
   const notesTextarea = document.getElementById('contact-notes');
-  
+
   const payload = {
     name: nameInput ? nameInput.value.trim() : "",
     phone: phoneInput ? phoneInput.value.trim() : "",
+    email: emailInput ? emailInput.value.trim() : "",
     businessType: bizSelect ? bizSelect.value : "",
     service: serviceSelect ? serviceSelect.value : "",
     message: notesTextarea ? notesTextarea.value.trim() : ""
   };
-  
+
   if(!payload.name || !payload.phone){
     alert("กรุณากรอกชื่อและเบอร์โทรศัพท์เพื่อการติดต่อกลับ");
     return;
   }
-  
+
   btn.textContent = 'กำลังส่ง...';
   btn.disabled = true;
-  
+
   if (APPS_SCRIPT_URL) {
     fetch(APPS_SCRIPT_URL, {
       method: "POST",
@@ -1395,7 +1345,7 @@ function handleSubmit(btn){
       body: JSON.stringify(payload)
     })
     .then(() => {
-      handleSuccess(btn, nameInput, phoneInput, bizSelect, serviceSelect, notesTextarea);
+      handleSuccess(btn, nameInput, phoneInput, emailInput, bizSelect, serviceSelect, notesTextarea);
     })
     .catch((error) => {
       console.error("Submission error:", error);
@@ -1405,7 +1355,7 @@ function handleSubmit(btn){
     });
   } else {
     console.log("Mock Submit payload:", payload);
-    handleSuccess(btn, nameInput, phoneInput, bizSelect, serviceSelect, notesTextarea);
+    handleSuccess(btn, nameInput, phoneInput, emailInput, bizSelect, serviceSelect, notesTextarea);
   }
 }
 
