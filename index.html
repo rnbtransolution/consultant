@@ -831,6 +831,20 @@ nav a:hover {
   margin-left: 6px;
   vertical-align: middle;
 }
+.badge-popular {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  background: var(--color-emerald);
+  color: var(--color-gold-pale);
+  border: 1px solid var(--color-gold);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
 
 /* Visual Showcase Side */
 .services-showcase-panel {
@@ -1568,16 +1582,16 @@ section {
     </div>
     <div class="hero-visual-side">
       <div class="gallery-wrapper">
-        <div class="gallery-img col-hotel" style="background-image: url('/hotel_lobby.png');">
+        <div class="gallery-img col-hotel" style="background-image: url('hotel_lobby.png');">
           <div class="gallery-label">Hotels &amp; Resorts</div>
         </div>
-        <div class="gallery-img col-cafe" style="background-image: url('/cafe.png');">
+        <div class="gallery-img col-cafe" style="background-image: url('cafe.png');">
           <div class="gallery-label">Cafés &amp; Restaurants</div>
         </div>
-        <div class="gallery-img col-clinic" style="background-image: url('/clinic.png');">
+        <div class="gallery-img col-clinic" style="background-image: url('clinic.png');">
           <div class="gallery-label">Clinics &amp; Wellness</div>
         </div>
-        <div class="gallery-img col-pet" style="background-image: url('/pet_care.png');">
+        <div class="gallery-img col-pet" style="background-image: url('pet_care.png');">
           <div class="gallery-label">Pet Care &amp; Hospitality</div>
         </div>
       </div>
@@ -1810,7 +1824,7 @@ section {
       <div class="service-list-item" data-id="5" onclick="openModal(5)">
         <span class="service-num">05</span>
         <div class="service-info-wrap">
-          <div class="service-item-title">SOP Creation</div>
+          <div class="service-item-title">SOP Creation <span class="badge-popular">POPULAR</span></div>
           <div class="service-item-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน (SOP) เพื่อระบบงานที่มั่นคงและตรวจสอบได้ทุกแผนก</div>
         </div>
         <span class="service-arrow">→</span>
@@ -2008,7 +2022,7 @@ const services={
   2:{tag:'02 · Quality',title:'Q.A. Audit',tagline:'ปิดจุดบอดทางธุรกิจ ยกระดับมาตรฐานสู่ความเป็นเลิศ',img:'https://images.pexels.com/photos/33175657/pexels-photo-33175657.jpeg?auto=compress&w=800',desc:'บริการตรวจสอบมาตรฐานการดำเนินงานโดยทีมงานผู้เชี่ยวชาญ เพื่อสะท้อนภาพความเป็นจริงจากมุมมองผู้ใช้บริการ และช่วยให้ผู้บริหารรับทราบข้อมูลที่ถูกต้องครบถ้วน',features:['<strong>Hygiene Standards:</strong> ตรวจสอบความสะอาดตามหลักสุขาภิบาล GHP/HACCP','<strong>Service Sequence:</strong> ประเมินขั้นตอนการบริการตั้งแต่ต้อนรับจนถึงเช็คบิล','<strong>Detailed Report:</strong> สรุปคะแนนพร้อมข้อเสนอแนะในการแก้ไขที่ตรงจุดและปฏิบัติได้จริง'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><polyline points="9 14 11 16 15 12"></polyline></svg>`},
   3:{tag:'03 · People',title:'Service Workshop',tagline:'สร้างทีมที่แข็งแกร่ง พัฒนาบุคลากรสู่มาตรฐานการบริการระดับสากล',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Tailor-made ตามวัฒนธรรมองค์กร ออกแบบให้เข้าใจง่ายและนำไปปฏิบัติได้จริงในทุกระดับของบุคลากร ตั้งแต่พนักงาน Front-of-House ถึงผู้จัดการ',features:['<strong>Personality & Grooming:</strong> ปรับบุคลิกภาพ การแต่งกาย และภาษากายที่สง่างาม','<strong>Service Mindset:</strong> ปลูกฝังทัศนคติบริการและการรับมือข้อร้องเรียนอย่างมืออาชีพ','<strong>Up-selling Techniques:</strong> เทคนิคการเชียร์ขายและแนะนำเมนูเพื่อเพิ่มยอดขายต่อหัว'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>`},
   4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'วิเคราะห์ภาพรวมธุรกิจ 360 องศา เพื่อกำหนดทิศทางที่แม่นยำ โดยผสานข้อมูลภายในและการวิเคราะห์ตลาดภายนอกเข้าด้วยกัน',features:['<strong>Internal Analysis (S-W):</strong> วิเคราะห์จุดแข็งเพื่อรักษามาตรฐาน และจุดอ่อนเพื่ออุดรอยรั่ว','<strong>External Analysis (O-T):</strong> วิเคราะห์โอกาสทางตลาด เทรนด์ผู้บริโภค และภัยคุกคามจากคู่แข่ง','<strong>Strategic Roadmap:</strong> วางแผนกลยุทธ์ระยะสั้น-ยาว เพื่อสร้างความได้เปรียบที่ยั่งยืน'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle><line x1="12" y1="2" x2="12" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>`},
-  5:{tag:'05 · Operations',title:'SOP Creation',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual:</strong> คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`},
+  5:{tag:'05 · Operations',title:'SOP Creation <span class="badge-popular">POPULAR</span>',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'https://images.pexels.com/photos/8245686/pexels-photo-8245686.jpeg?auto=compress&w=800',desc:'หัวใจสำคัญของการทำธุรกิจคือคู่มือที่ชัดเจนและใช้งานได้จริง เราจัดทำ SOP ที่ครอบคลุมทุกแผนกของธุรกิจของคุณ',features:['<strong>Operations Manual:</strong> คู่มือขั้นตอนการทำงานทุกแผนก Front-of-House และ Back-of-House','<strong>Recipe Cards & Standards:</strong> สูตรมาตรฐานพร้อมรูปภาพประกอบ และ Checklist ตรวจสอบประจำวัน','<strong>Training System:</strong> เครื่องมือสอนงานพนักงานใหม่เพื่อลดความผิดพลาดและรักษามาตรฐาน'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`},
   6:{tag:'06 · Brand',title:'Re-branding',tagline:'ชุบชีวิตธุรกิจใหม่ ให้ทันสมัยและเข้าถึงกลุ่มเป้าหมาย',img:'https://images.pexels.com/photos/12702006/pexels-photo-12702006.jpeg?auto=compress&w=800',desc:'บริการรีโนเวทแบรนด์แบบครบวงจร ผสานความคิดสร้างสรรค์เข้ากับกลยุทธ์ทางธุรกิจเพื่อให้แบรนด์ของคุณโดดเด่นในตลาด',features:['<strong>Brand Identity:</strong> วางคอนเซปต์แบรนด์ใหม่ ออกแบบโลโก้ Mood & Tone และ Brand Guidelines','<strong>Menu & Food Development:</strong> ปรับปรุงหน้าตาอาหารและรายการเมนูให้เข้ากับภาพลักษณ์ใหม่','<strong>Operational Alignment:</strong> ปรับระบบงานและการบริการให้สอดรับกับ Brand DNA ที่กำหนดขึ้นใหม่'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364l-2.121 2.121M8.757 15.243l-2.12 2.12m11.728 0l-2.121-2.121M8.757 8.757L6.636 6.636"></path></svg>`},
   7:{tag:'07 · Technology',title:'R&B Trans PMS',tagline:'PMS โรงแรม ราคาเบา ใช้งานจริงได้ทันที ไม่ต้องจ่ายรายเดือน',img:'https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=800',desc:'ระบบบริหารจัดการโรงแรม (PMS) สำหรับโรงแรมขนาดเล็ก / SME / รีสอร์ทโลคอล ติดตั้งผ่าน Google Apps Script บน Google Account ของโรงแรม ข้อมูลเป็นของคุณ 100% ค่าติดตั้งครั้งเดียว 2,999 บาท ไม่มีค่าใช้จ่ายรายเดือน ไม่มีสัญญาผูกมัด',features:['<strong>งานจองและบริหารห้องพัก:</strong> รองรับงานจอง บริหารห้อง และติดตามสถานะลูกค้าครบในที่เดียว','<strong>ข้อมูลใน Google Account ของโรงแรม:</strong> ปลอดภัย เป็นของคุณ 100% ไม่ต้องพึ่ง Server ภายนอก','<strong>ค่าติดตั้งครั้งเดียว 2,999 บาท:</strong> ไม่มีรายเดือน ไม่มีสัญญาผูกมัด พร้อม Setup และแนะนำวิธีใช้งาน','<strong>เหมาะกับโรงแรม 10–50 ห้อง:</strong> ใช้งานง่าย ไม่ซับซ้อน ทีมเล็กก็ทำได้ทันที ไม่ต้องมี IT Support'],icon:`<svg class="modal-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-gold-dark)"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`}
 };
@@ -2087,7 +2101,7 @@ window.addEventListener('resize', updateShowcasePosition);
 function openModal(id){
   const d=services[id];
   document.getElementById('modal-tag').textContent=d.tag;
-  document.getElementById('modal-title').textContent=d.title;
+  document.getElementById('modal-title').innerHTML=d.title;
   document.getElementById('modal-tagline').textContent='"'+d.tagline+'"';
   document.getElementById('modal-desc').textContent=d.desc;
   document.getElementById('modal-img').style.backgroundImage=`url('${d.img}')`;
