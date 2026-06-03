@@ -301,6 +301,46 @@ nav a:hover {
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   transition: var(--transition-smooth);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+  overflow: hidden;
+}
+.gallery-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 22, 20, 0.92) 0%, rgba(8, 22, 20, 0.3) 50%, transparent 100%);
+  z-index: 1;
+  transition: var(--transition-smooth);
+}
+.gallery-img:hover::after {
+  background: linear-gradient(to top, rgba(15, 56, 50, 0.95) 0%, rgba(15, 56, 50, 0.45) 60%, transparent 100%);
+}
+.gallery-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 1px 4px rgba(8, 22, 20, 0.8);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+  transform: translateY(4px);
+  opacity: 0.9;
+  transition: var(--transition-smooth);
+  width: 90%;
+  margin: 0 auto;
+  line-height: 1.35;
+}
+.gallery-img:hover .gallery-label {
+  transform: translateY(0);
+  opacity: 1;
+  color: var(--color-gold);
 }
 .gallery-img:hover {
   transform: scale(1.04) translateY(-8px);
@@ -308,25 +348,32 @@ nav a:hover {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
   z-index: 5;
 }
-.img-large {
-  width: 31%;
-  height: 90%;
-  top: 5%;
+.col-hotel {
+  width: 23.5%;
+  height: 82%;
+  top: 10%;
   left: 0;
   z-index: 2;
 }
-.img-medium {
-  width: 31%;
-  height: 90%;
-  top: 5%;
-  left: 34.5%;
+.col-cafe {
+  width: 23.5%;
+  height: 95%;
+  top: 0;
+  left: 25.5%;
   z-index: 2;
 }
-.img-small {
-  width: 31%;
-  height: 90%;
-  top: 5%;
-  left: 69%;
+.col-clinic {
+  width: 23.5%;
+  height: 88%;
+  top: 6%;
+  left: 51%;
+  z-index: 2;
+}
+.col-pet {
+  width: 23.5%;
+  height: 76%;
+  top: 16%;
+  left: 76.5%;
   z-index: 2;
 }
 
@@ -1521,9 +1568,18 @@ section {
     </div>
     <div class="hero-visual-side">
       <div class="gallery-wrapper">
-        <div class="gallery-img img-large" style="background-image: url('https://images.pexels.com/photos/12934594/pexels-photo-12934594.jpeg?auto=compress&w=600');"></div>
-        <div class="gallery-img img-medium" style="background-image: url('https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=600');"></div>
-        <div class="gallery-img img-small" style="background-image: url('https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&w=600');"></div>
+        <div class="gallery-img col-hotel" style="background-image: url('assets/hotel_lobby.png');">
+          <div class="gallery-label">Hotels &amp; Resorts</div>
+        </div>
+        <div class="gallery-img col-cafe" style="background-image: url('assets/cafe.png');">
+          <div class="gallery-label">Cafés &amp; Restaurants</div>
+        </div>
+        <div class="gallery-img col-clinic" style="background-image: url('assets/clinic.png');">
+          <div class="gallery-label">Clinics &amp; Wellness</div>
+        </div>
+        <div class="gallery-img col-pet" style="background-image: url('assets/pet_care.png');">
+          <div class="gallery-label">Pet Care &amp; Hospitality</div>
+        </div>
       </div>
     </div>
   </div>
