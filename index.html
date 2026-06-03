@@ -576,6 +576,12 @@ nav a:hover {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  transition: var(--transition-smooth);
+}
+.philosophy-cell.quote-block:hover {
+  background: var(--color-emerald) !important;
+  border-color: var(--color-gold) !important;
+  box-shadow: var(--shadow-premium) !important;
 }
 .quote-block::before {
   content: '“';
@@ -1233,7 +1239,7 @@ footer {
 .footer-brand {
   font-family: var(--font-serif);
   font-size: 1.35rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
 .footer-brand span {
@@ -1242,13 +1248,13 @@ footer {
 }
 .footer-label {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--color-gold);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 .footer-copy {
   font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ─── REVEAL ANIMATIONS ─── */
