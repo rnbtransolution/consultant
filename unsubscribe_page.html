@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ยกเลิกการรับจดหมาย | R&B Transolution</title>
+  <meta name="description" content="ยกเลิกการรับอีเมลจาก R&B Transolution" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:    #0f3832;
+      --green-bg: #FAF9F6;
+      --gold:     #c5a273;
+      --gold-dark:#a58458;
+      --border:   #d4dedb;
+      --muted:    #8fa09d;
+      --body-txt: #4d5e5b;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--green-bg);
+      font-family: 'Sarabun', 'TH Sarabun New', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 480px;
+      width: 100%;
+      padding: 52px 44px 44px;
+      text-align: center;
+      box-shadow: 0 16px 56px rgba(15,56,50,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--gold) 100%);
+    }
+
+    /* ── Brand ── */
+    .brand {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.4px;
+      text-decoration: none;
+      margin-bottom: 36px;
+    }
+    .brand em { color: var(--gold); font-style: normal; font-weight: 300; }
+
+    /* ── Status icon ── */
+    .status-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 30px;
+      transition: transform 0.4s ease;
+    }
+    .status-icon.success  { background: #edf7f3; }
+    .status-icon.info     { background: #edf3f8; }
+    .status-icon.warning  { background: #fdf5e8; }
+    .status-icon.danger   { background: #fdf0f0; }
+    .status-icon.loading  { background: #f0f5f3; animation: pulse 1.4s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.5; }
+    }
+
+    /* ── Text ── */
+    .title-th {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .title-en {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 14.5px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .message {
+      font-size: 13.5px;
+      color: var(--body-txt);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* ── Email badge ── */
+    .email-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #f0f5f3;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 28px;
+      word-break: break-all;
+      max-width: 100%;
+    }
+    .email-badge svg { flex-shrink: 0; }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #edf3f1;
+      margin: 4px 0 22px;
+    }
+
+    /* ── Footer ── */
+    .footer-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+
+    /* ── Back button ── */
+    .back-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 11px 26px;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .back-btn:hover { background: #0a2d28; transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+
+    <a href="https://www.rnb-transolution.com" class="brand">
+      R&amp;B <em>Transolution</em>
+    </a>
+
+    <!-- Loading state (shown while API call is in progress) -->
+    <div id="state-loading">
+      <div class="status-icon loading">⏳</div>
+      <p class="title-th">กำลังดำเนินการ…</p>
+      <p class="title-en">Processing your request</p>
+      <p class="message">กรุณารอสักครู่</p>
+    </div>
+
+    <!-- Result state (shown after API responds) -->
+    <div id="state-result" style="display:none;">
+      <div class="status-icon" id="result-icon"></div>
+      <p class="title-th"  id="result-title-th"></p>
+      <p class="title-en"  id="result-title-en"></p>
+      <div class="email-badge" id="result-email-badge" style="display:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0f3832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <span id="result-email-text"></span>
+      </div>
+      <p class="message" id="result-message"></p>
+      <hr class="divider" />
+      <p class="footer-note">
+        © 2026 R&amp;B Transolution. All Rights Reserved.<br />
+        <a href="https://www.rnb-transolution.com">www.rnb-transolution.com</a>
+      </p>
+      <a href="https://www.rnb-transolution.com" class="back-btn">กลับสู่เว็บไซต์</a>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Replace this URL after deploying unsubscribe.gs as a Web App ──
+    const GAS_API = "https://script.google.com/macros/s/YOUR_WEBAPP_DEPLOYMENT_ID/exec";
+
+    const MESSAGES = {
+      ok: {
+        iconClass : "success",
+        icon      : "✅",
+        th        : "ยกเลิกการรับจดหมายสำเร็จ",
+        en        : "You have been successfully unsubscribed.",
+        msg       : "เราจะไม่ส่งอีเมลถึงคุณอีกต่อไป<br>หากเปลี่ยนใจ สามารถติดต่อเราได้ที่ <a href='mailto:rnb.transolution@gmail.com' style='color:#c5a273;'>rnb.transolution@gmail.com</a>"
+      },
+      already: {
+        iconClass : "info",
+        icon      : "ℹ️",
+        th        : "ยกเลิกการสมัครไปแล้ว",
+        en        : "This address is already unsubscribed.",
+        msg       : "ไม่ต้องดำเนินการใดๆ เพิ่มเติม คุณจะไม่ได้รับอีเมลจากเราอีกต่อไป"
+      },
+      notfound: {
+        iconClass : "warning",
+        icon      : "⚠️",
+        th        : "ไม่พบอีเมลนี้ในระบบ",
+        en        : "We could not find this address in our list.",
+        msg       : "หากคิดว่าเกิดข้อผิดพลาด กรุณาติดต่อ <a href='mailto:rnb.transolution@gmail.com' style='color:#c5a273;'>rnb.transolution@gmail.com</a>"
+      },
+      error: {
+        iconClass : "danger",
+        icon      : "❌",
+        th        : "เกิดข้อผิดพลาด",
+        en        : "Something went wrong. Please try again later.",
+        msg       : "กรุณาติดต่อ <a href='mailto:rnb.transolution@gmail.com' style='color:#c5a273;'>rnb.transolution@gmail.com</a> หากปัญหายังคงอยู่"
+      },
+      invalid: {
+        iconClass : "danger",
+        icon      : "❌",
+        th        : "คำขอไม่ถูกต้อง",
+        en        : "Invalid request.",
+        msg       : "กรุณาคลิกลิงก์ยกเลิกการสมัครจากอีเมลที่คุณได้รับโดยตรง"
+      }
+    };
+
+    function showResult(status, email) {
+      const m = MESSAGES[status] || MESSAGES.invalid;
+
+      document.getElementById("result-icon").className = "status-icon " + m.iconClass;
+      document.getElementById("result-icon").textContent = m.icon;
+      document.getElementById("result-title-th").textContent = m.th;
+      document.getElementById("result-title-en").textContent = m.en;
+      document.getElementById("result-message").innerHTML  = m.msg;
+
+      if (email) {
+        document.getElementById("result-email-text").textContent = email;
+        document.getElementById("result-email-badge").style.display = "inline-flex";
+      }
+
+      document.getElementById("state-loading").style.display = "none";
+      document.getElementById("state-result").style.display  = "block";
+    }
+
+    async function processUnsubscribe() {
+      const params = new URLSearchParams(window.location.search);
+      const email  = (params.get("e") || "").trim();
+
+      if (!email || !email.includes("@")) {
+        showResult("invalid", "");
+        return;
+      }
+
+      try {
+        // Silent background call — recipient never sees the GAS URL
+        const url  = GAS_API + "?action=unsubscribe&e=" + encodeURIComponent(email);
+        const resp = await fetch(url, { method: "GET", mode: "cors" });
+        const json = await resp.json();
+        showResult(json.status || "error", email);
+      } catch (err) {
+        // Network error fallback — still show branded page
+        showResult("error", email);
+      }
+    }
+
+    // Run on page load
+    processUnsubscribe();
+  </script>
+
+</body>
+</html>
