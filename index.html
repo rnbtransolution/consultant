@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="description" content="R&B Transolution – ที่ปรึกษาธุรกิจบริการระดับมืออาชีพ ยกระดับและพลิกโฉมธุรกิจการบริการ (Hospitality) ด้วยกลยุทธ์และมาตรฐาน SOP ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>R&B Transolution — Create Beyond Standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── CUSTOM LUXURY DESIGN SYSTEM ─── */
+:root {
+  /* Master Color Palette: Deep Blue-Green & Champagne Gold */
+  --color-bg-white: #ffffff;
+  --color-bg-gray: #f5f7f6;
+  --color-bg-dark: #061815;
+  --color-surface-dark: #0a221e;
+  --color-surface-card: #ffffff;
+  --color-text-primary: #121e1c;
+  --color-text-secondary: #5a6e6a;
+  --color-text-tertiary: #8fa09d;
+  --color-text-light: #f5f7f6;
+  
+  /* Master Color: Deep Blue-Green (#0a3d34 / #0f3832) */
+  --color-accent-master: #0a3d34;
+  --color-accent-master-hover: #124e43;
+  --color-accent-master-light: rgba(10, 61, 52, 0.08);
+  
+  /* Secondary Accent: Champagne Gold */
+  --color-accent-gold: #c5a273;
+  --color-accent-gold-dark: #a58458;
+  
+  --color-border-light: rgba(10, 61, 52, 0.1);
+  --color-border-subtle: rgba(10, 61, 52, 0.05);
+  
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Anuphan", "Sukhumvit Set", sans-serif;
+  
+  --shadow-card: 0 4px 20px rgba(10, 61, 52, 0.04);
+  --shadow-hover: 0 12px 32px rgba(10, 61, 52, 0.1);
+  --shadow-modal: 0 24px 60px rgba(6, 24, 21, 0.25);
+  
+  /* Motion Timing & Easing Curves */
+  --ease-fluid: cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-fluid-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 320ms;
+  --duration-smooth: 800ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-break: relaxed;
+  word-break: normal;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Line Breaking Rules for Thai Language */
+h1, h2, h3, h4, .hero-h1, .section-title, .bento-title, .strength-title, .service-item-title {
+  word-break: keep-all;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .strength-body, .service-item-desc {
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+  line-break: relaxed;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-accent-master);
+  outline-offset: 2px;
+}
+
+/* ─── GLOBAL NAVIGATION ─── */
+#global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--duration-fast) var(--ease-fluid), border-color var(--duration-fast) var(--ease-fluid);
+}
+
+.nav-container {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+.nav-brand:hover {
+  opacity: 0.7;
+}
+.nav-brand span {
+  color: var(--color-accent-master);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--duration-fast) var(--ease-fluid), color var(--duration-fast) var(--ease-fluid);
+}
+.nav-menu a:hover {
+  opacity: 1;
+  color: var(--color-accent-master);
+}
+
+.nav-btn {
+  background: var(--color-accent-master);
+  color: var(--color-bg-white) !important;
+  font-weight: 400 !important;
+  padding: 6px 14px;
+  border-radius: 980px;
+  opacity: 1 !important;
+  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid) !important;
+}
+.nav-btn:hover {
+  background-color: var(--color-accent-master-hover) !important;
+  transform: scale(1.02);
+}
+
+/* ─── HERO SECTION ─── */
+#hero {
+  padding-top: 140px;
+  padding-bottom: 90px;
+  text-align: center;
+  background: radial-gradient(50% 50% at 50% 30%, rgba(10, 61, 52, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.hero-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.hero-eyebrow {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--color-accent-master);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.hero-h1 {
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2.5vw, 21px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin: 0 auto 32px auto;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.btn-primary-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-master);
+  color: var(--color-bg-white);
+  font-size: 17px;
+  font-weight: 400;
+  padding: 12px 24px;
+  border-radius: 980px;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.btn-primary-pill:hover {
+  background-color: var(--color-accent-master-hover);
+  transform: scale(1.02);
+}
+
+.btn-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-accent-master);
+  font-size: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+.btn-link-arrow:hover {
+  opacity: 0.7;
+}
+.btn-link-arrow::after {
+  content: " ›";
+  font-size: 20px;
+  margin-left: 4px;
+  transition: transform var(--duration-fast) var(--ease-fluid);
+}
+.btn-link-arrow:hover::after {
+  transform: translateX(4px);
+}
+
+/* HERO VISUAL GALLERY */
+.hero-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.hero-visual-card {
+  position: relative;
+  height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-fast) var(--ease-fluid), box-shadow var(--duration-fast) var(--ease-fluid);
+  cursor: pointer;
+}
+.hero-visual-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.hero-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 24, 21, 0) 40%, rgba(6, 24, 21, 0.75) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.hero-visual-title {
+  color: var(--color-bg-white);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ─── CREDENTIALS STATS BAR ─── */
+.stats-section {
+  background: var(--color-bg-gray);
+  padding: 40px 22px;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.stats-grid {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-accent-master);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* ─── SECTION COMMON STYLES ─── */
+.main-section {
+  padding: 120px 22px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 60px auto;
+}
+
+.section-eyebrow {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-accent-master);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+/* ─── BENTO GRID: PHILOSOPHY ─── */
+.bento-grid-4 {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.bento-card {
+  background: var(--color-bg-gray);
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--duration-fast) var(--ease-fluid), box-shadow var(--duration-fast) var(--ease-fluid);
+}
+.bento-card:hover {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-card);
+}
+
+.bento-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.bento-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+  letter-spacing: 0.05em;
+}
+
+.bento-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--color-accent-master);
+}
+
+.bento-title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+.bento-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.bento-card-wide {
+  grid-column: span 2;
+  background: var(--color-surface-dark);
+  color: var(--color-text-light);
+  padding: 56px 44px;
+  text-align: center;
+}
+.bento-card-wide .bento-quote {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+.bento-card-wide cite {
+  font-style: normal;
+  font-size: 15px;
+  color: var(--color-accent-gold);
+  display: block;
+}
+
+/* ─── STRENGTHS GRID ─── */
+.strengths-grid {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.strength-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 24px;
+  padding: 32px;
+  transition: transform var(--duration-fast) var(--ease-fluid), box-shadow var(--duration-fast) var(--ease-fluid);
+}
+.strength-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.strength-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  color: var(--color-accent-master);
+}
+
+.strength-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--color-text-primary);
+}
+
+.strength-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+/* ─── SERVICES EXPLORER ─── */
+.services-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-item-card {
+  background: var(--color-bg-gray);
+  border-radius: 20px;
+  padding: 20px 24px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color var(--duration-fast) var(--ease-fluid), border-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.service-item-card:hover, .service-item-card.active {
+  background: var(--color-bg-white);
+  border-color: var(--color-accent-master);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-card);
+}
+
+.service-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.service-item-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+}
+
+.badge-popular {
+  background: var(--color-accent-master-light);
+  color: var(--color-accent-master);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 980px;
+  text-transform: uppercase;
+}
+
+.badge-flagship {
+  background: rgba(197, 162, 115, 0.18);
+  color: var(--color-accent-gold-dark);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 980px;
+  text-transform: uppercase;
+}
+
+.service-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.service-item-desc {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.services-preview-panel {
+  position: sticky;
+  top: 80px;
+  background: var(--color-surface-dark);
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow-modal);
+}
+
+.preview-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+.preview-bg-image.active {
+  opacity: 0.65;
+}
+
+.preview-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 36px;
+  background: linear-gradient(180deg, rgba(6, 24, 21, 0) 0%, rgba(6, 24, 21, 0.9) 100%);
+  color: var(--color-bg-white);
+}
+
+.preview-tag {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.preview-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.preview-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--color-bg-white);
+  padding: 10px 18px;
+  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--duration-fast) var(--ease-fluid);
+}
+.preview-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ─── CONTACT SECTION ─── */
+.contact-grid {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-info-title {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.contact-info-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-channel-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  padding: 12px 16px;
+  border-radius: 16px;
+  transition: background-color var(--duration-fast) var(--ease-fluid);
+}
+.contact-channel-item:hover {
+  background-color: var(--color-bg-gray);
+}
+
+.channel-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-accent-master-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-master);
+}
+
+.channel-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.channel-value {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact-form-card {
+  background: var(--color-bg-gray);
+  border-radius: 28px;
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: var(--font-family);
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+  background: var(--color-bg-white);
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-fast) var(--ease-fluid), box-shadow var(--duration-fast) var(--ease-fluid);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-master);
+  box-shadow: 0 0 0 3px rgba(10, 61, 52, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-bg-white);
+  background: var(--color-accent-master);
+  border: none;
+  border-radius: 980px;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.form-submit-btn:hover {
+  background-color: var(--color-accent-master-hover);
+  transform: scale(1.01);
+}
+
+/* ─── FOOTER ─── */
+#global-footer {
+  background: var(--color-bg-gray);
+  border-top: 1px solid var(--color-border-light);
+  padding: 40px 22px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.footer-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-fluid);
+}
+.footer-links a:hover {
+  color: var(--color-text-primary);
+}
+
+/* ─── MODAL OVERLAY ─── */
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(6, 24, 21, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+#modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--color-bg-white);
+  border-radius: 28px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-modal);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform var(--duration-fast) var(--ease-fluid-out);
+}
+#modal-overlay.open .modal-box {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--duration-fast) var(--ease-fluid);
+  z-index: 10;
+}
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-hero-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-content {
+  padding: 32px;
+}
+
+.modal-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+  margin-bottom: 6px;
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+}
+
+.modal-tagline {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.modal-desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+}
+
+.modal-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-features-list li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  padding-left: 20px;
+  position: relative;
+}
+.modal-features-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-master);
+  font-weight: bold;
+}
+
+/* ─── SCROLL REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-smooth) var(--ease-fluid-out), transform var(--duration-smooth) var(--ease-fluid-out);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE DESIGN ─── */
+@media (max-width: 900px) {
+  .hero-visual-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-grid-4, .strengths-grid, .services-container, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-card-wide {
+    grid-column: span 1;
+  }
+  .services-preview-panel {
+    display: none;
+  }
+  .nav-menu li:not(:last-child) {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="global-nav" aria-label="Global Navigation">
+  <div class="nav-container">
+    <a href="#hero" class="nav-brand">
+      R&B <span>Transolution</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#philosophy">แนวคิด</a></li>
+      <li><a href="#strengths">จุดเด่น</a></li>
+      <li><a href="#services">บริการ</a></li>
+      <li><a href="showcase.html" style="color:var(--color-accent-master);font-weight:500;">บริการ SOP ↗</a></li>
+      <li><a href="#contact" class="nav-btn">ติดต่อเรา</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-wrapper reveal">
+      <div class="hero-eyebrow">Reach &amp; Beyond · Hospitality Consulting</div>
+      <h1 class="hero-h1">Create Beyond Standard</h1>
+      <p class="hero-sub">ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจ Hospitality<br>ด้วยกลยุทธ์และมาตรฐาน SOP ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary-pill">นัดหมายปรึกษาฟรี</a>
+        <a href="showcase.html" class="btn-link-arrow">ค้นพบ SOP Standard</a>
+      </div>
+    </div>
+
+    <!-- HERO VISUAL GALLERY -->
+    <div class="hero-visual-grid reveal" style="transition-delay: 0.15s">
+      <div class="hero-visual-card" style="background-image: url('hotel_lobby.png');">
+        <div class="hero-visual-overlay">
+          <div class="hero-visual-title">Hotels &amp; Resorts</div>
+        </div>
+      </div>
+      <div class="hero-visual-card" style="background-image: url('cafe.png');">
+        <div class="hero-visual-overlay">
+          <div class="hero-visual-title">Cafés &amp; Restaurants</div>
+        </div>
+      </div>
+      <div class="hero-visual-card" style="background-image: url('clinic.png');">
+        <div class="hero-visual-overlay">
+          <div class="hero-visual-title">Clinics &amp; Wellness</div>
+        </div>
+      </div>
+      <div class="hero-visual-card" style="background-image: url('pet_care.png');">
+        <div class="hero-visual-overlay">
+          <div class="hero-visual-title">Pet Care &amp; Hospitality</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS STATS BAR -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number">24+</div>
+        <div class="stat-label">ปีประสบการณ์<br>เครือโรงแรม 5 ดาว</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.1s">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">โครงการที่ปรึกษา<br>ทั่วประเทศ</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.2s">
+        <div class="stat-number">8</div>
+        <div class="stat-label">บริการเฉพาะทาง<br>ครบวงจร</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.3s">
+        <div class="stat-number">5 วัน</div>
+        <div class="stat-label">ส่งมอบแผนงาน<br>เบื้องต้น</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.4s">
+        <div class="stat-number">Data-Driven</div>
+        <div class="stat-label">ทุกกลยุทธ์วัดผล<br>ได้จริง</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY SECTION -->
+  <section id="philosophy" class="main-section">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Our Philosophy</div>
+      <h2 class="section-title">แนวคิดที่ขับเคลื่อนทุกอย่าง</h2>
+    </div>
+
+    <div class="bento-grid-4">
+      <!-- Card 01 -->
+      <div class="bento-card reveal">
+        <div class="bento-card-header">
+          <span class="bento-number">01</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </div>
+        <div>
+          <h3 class="bento-title">Reach Beyond</h3>
+          <p class="bento-desc">เราเชื่อว่าธุรกิจระดับพรีเมียมไม่ควรหยุดอยู่แค่ "ดีพอ"<br>แต่ต้องไปให้ถึงมาตรฐานสูงสุดที่เป็นไปได้<br>เพื่อสร้างความประทับใจที่ยั่งยืนในทุกจุดสัมผัสของลูกค้า</p>
+        </div>
+      </div>
+
+      <!-- Card 02 -->
+      <div class="bento-card reveal" style="transition-delay: 0.1s">
+        <div class="bento-card-header">
+          <span class="bento-number">02</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.56-.56"/></svg>
+        </div>
+        <div>
+          <h3 class="bento-title">Transolution</h3>
+          <p class="bento-desc">มากกว่าการแก้ปัญหาเฉพาะหน้า คือการ Transformation<br>ปรับเปลี่ยนโครงสร้าง วิธีคิด และระบบการทำงาน<br>ของทั้งองค์กรเพื่อความยั่งยืนในระยะยาว</p>
+        </div>
+      </div>
+
+      <!-- Card 03 -->
+      <div class="bento-card reveal" style="transition-delay: 0.15s">
+        <div class="bento-card-header">
+          <span class="bento-number">03</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <h3 class="bento-title">Global Standard</h3>
+          <p class="bento-desc">ทำงานด้วยมาตรฐานเดียวกับองค์กรระดับสากล<br>ทุกกลยุทธ์ขับเคลื่อนด้วยข้อมูลจริง (Data-Driven)<br>และวัดผลได้อย่างเป็นรูปธรรม เพื่อยกระดับทีมอย่างแท้จริง</p>
+        </div>
+      </div>
+
+      <!-- Card 04 -->
+      <div class="bento-card reveal" style="transition-delay: 0.2s">
+        <div class="bento-card-header">
+          <span class="bento-number">04</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <h3 class="bento-title">Human-Centered</h3>
+          <p class="bento-desc">เบื้องหลังทุกระบบและกระบวนการคือ "คน"<br>เราออกแบบทุกขั้นตอน โดยยึดประสบการณ์<br>ของทั้งพนักงานและลูกค้าเป็นศูนย์กลาง</p>
+        </div>
+      </div>
+
+      <!-- Centered Dark Quote Banner Card -->
+      <div class="bento-card bento-card-wide reveal" style="transition-delay: 0.25s">
+        <blockquote class="bento-quote">
+          "ไม่มีธุรกิจบริการไหนที่แก้ไม่ได้ มีแต่ปัญหาที่ยังไม่ถูกมองอย่างถูกต้อง<br>— นั่นคือสิ่งที่เราเข้ามาทำ"
+        </blockquote>
+        <cite>— Itthirat, Founder · R&B Transolution</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS SECTION -->
+  <section id="strengths" class="main-section" style="background: var(--color-bg-gray);">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Our Strengths</div>
+      <h2 class="section-title">สิ่งที่ทำให้ R&B ต่างออกไป</h2>
+    </div>
+
+    <div class="strengths-grid">
+      <div class="strength-card reveal">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        <h3 class="strength-title">Deep Expertise</h3>
+        <p class="strength-body">ประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี<br>พร้อมยกระดับมาตรฐานบริการของคุณสู่ระดับโลก</p>
+      </div>
+
+      <div class="strength-card reveal" style="transition-delay: 0.1s">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <h3 class="strength-title">Fast Action</h3>
+        <p class="strength-body">กระบวนการทำงานกระชับ เริ่มต้นแก้ไขและส่งมอบแผนงานเบื้องต้น<br>ได้ภายใน 5 วันทำการ</p>
+      </div>
+
+      <div class="strength-card reveal" style="transition-delay: 0.15s">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <h3 class="strength-title">Data-Driven</h3>
+        <p class="strength-body">ใช้ข้อมูลจริงขององค์กรในการวิเคราะห์ ไม่ใช้ความรู้สึก<br>เพื่อผลลัพธ์ที่แม่นยำและตรงจุด</p>
+      </div>
+
+      <div class="strength-card reveal" style="transition-delay: 0.2s">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="21" x2="4" y2="14"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="20" y1="21" x2="20" y2="16"/></svg>
+        <h3 class="strength-title">Tailor-made</h3>
+        <p class="strength-body">ไม่มีสูตรสำเร็จตายตัว ออกแบบแผนกลยุทธ์ให้เหมาะกับโจทย์<br>ขนาด และงบประมาณของคุณ</p>
+      </div>
+
+      <div class="strength-card reveal" style="transition-delay: 0.25s">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+        <h3 class="strength-title">Expert Team</h3>
+        <p class="strength-body">รวมผู้เชี่ยวชาญหลากสาขาที่เข้าใจหน้างานจริง<br>ทำงานร่วมกันเพื่ออุดรอยรั่วของธุรกิจ</p>
+      </div>
+
+      <div class="strength-card reveal" style="transition-delay: 0.3s">
+        <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z"/></svg>
+        <h3 class="strength-title">Long-term Partner</h3>
+        <p class="strength-body">เราไม่ทิ้งงาน พร้อมเป็นที่ปรึกษาและติดตามผลต่อเนื่อง<br>เพื่อให้มั่นใจในทุกก้าวของการเติบโต</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="main-section">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Our Services</div>
+      <h2 class="section-title">บริการเฉพาะทางที่ครบวงจร</h2>
+    </div>
+
+    <div class="services-container">
+      <!-- Service Items List -->
+      <div class="services-list">
+        <div class="service-item-card" data-id="1" onclick="openServiceModal(1)">
+          <div class="service-item-top">
+            <span class="service-item-num">01</span>
+          </div>
+          <div class="service-item-title">Menu Engineering</div>
+          <div class="service-item-desc">วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบ<br>อย่างมีประสิทธิภาพ</div>
+        </div>
+
+        <div class="service-item-card" data-id="2" onclick="openServiceModal(2)">
+          <div class="service-item-top">
+            <span class="service-item-num">02</span>
+          </div>
+          <div class="service-item-title">Monthly P&amp;L Report</div>
+          <div class="service-item-desc">จัดทำและวิเคราะห์รายงานกำไร-ขาดทุนรายเดือนสำหรับธุรกิจบริการ<br>อย่างถูกต้องและเป็นระบบ</div>
+        </div>
+
+        <div class="service-item-card" data-id="3" onclick="openServiceModal(3)">
+          <div class="service-item-top">
+            <span class="service-item-num">03</span>
+          </div>
+          <div class="service-item-title">Hospitality Workshop</div>
+          <div class="service-item-desc">เวิร์กชอปอบรมทักษะงานบริการ Service Mind<br>และการสื่อสารอย่างมืออาชีพ</div>
+        </div>
+
+        <div class="service-item-card" data-id="4" onclick="openServiceModal(4)">
+          <div class="service-item-top">
+            <span class="service-item-num">04</span>
+          </div>
+          <div class="service-item-title">SWOT Analysis</div>
+          <div class="service-item-desc">วิเคราะห์จุดแข็ง-จุดอ่อน และประเมินโอกาสอุปสรรค<br>เพื่อปลดล็อกศักยภาพสูงสุดของธุรกิจ</div>
+        </div>
+
+        <div class="service-item-card active" data-id="5" onclick="window.location.href='showcase.html'">
+          <div class="service-item-top">
+            <span class="service-item-num">05</span>
+            <span class="badge-flagship">FLAGSHIP SERVICE ↗</span>
+          </div>
+          <div class="service-item-title">SOP Creation &amp; Engineering ↗</div>
+          <div class="service-item-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน เพื่อคงคุณภาพการดำเนินงาน<br>และรองรับการขยายสาขา</div>
+        </div>
+
+        <div class="service-item-card" data-id="6" onclick="openServiceModal(6)">
+          <div class="service-item-top">
+            <span class="service-item-num">06</span>
+          </div>
+          <div class="service-item-title">Recipe SOPs</div>
+          <div class="service-item-desc">จัดทำคู่มือสูตรมาตรฐาน ปรับภาษาหน้างาน<br>และวิเคราะห์ต้นทุนวัตถุดิบเฉลี่ยต่อเมนู</div>
+        </div>
+
+        <div class="service-item-card" data-id="7" onclick="openServiceModal(7)">
+          <div class="service-item-top">
+            <span class="service-item-num">07</span>
+            <span class="badge-popular">NEW</span>
+          </div>
+          <div class="service-item-title">R&B Trans PMS</div>
+          <div class="service-item-desc">ระบบบริหารจัดการโรงแรมออนไลน์ จ่ายครั้งเดียว 2,999 บาท<br>ไม่มีค่าบริการรายเดือน</div>
+        </div>
+
+        <div class="service-item-card" data-id="8" onclick="openServiceModal(8)">
+          <div class="service-item-top">
+            <span class="service-item-num">08</span>
+          </div>
+          <div class="service-item-title">Price Optimization</div>
+          <div class="service-item-desc">วางกลยุทธ์ราคาห้องพักและวิเคราะห์คู่แข่ง<br>เพื่อยอดจองและผลกำไรสูงสุด</div>
+        </div>
+      </div>
+
+      <!-- Preview Dynamic Panel -->
+      <div class="services-preview-panel">
+        <div class="preview-bg-image" data-id="1" style="background-image: url('https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800');"></div>
+        <div class="preview-bg-image" data-id="2" style="background-image: url('https://images.pexels.com/photos/6863515/pexels-photo-6863515.jpeg?auto=compress&w=800');"></div>
+        <div class="preview-bg-image" data-id="3" style="background-image: url('https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800');"></div>
+        <div class="preview-bg-image" data-id="4" style="background-image: url('https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800');"></div>
+        <div class="preview-bg-image active" data-id="5" style="background-image: url('sop_suite_mockup.jpg');"></div>
+        <div class="preview-bg-image" data-id="6" style="background-image: url('https://images.pexels.com/photos/4252139/pexels-photo-4252139.jpeg?auto=compress&w=800');"></div>
+        <div class="preview-bg-image" data-id="7" style="background-image: url('pms_dashboard_mockup.jpg');"></div>
+        <div class="preview-bg-image" data-id="8" style="background-image: url('https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&w=800');"></div>
+
+        <div class="preview-overlay">
+          <div class="preview-tag" id="preview-tag">05 · Operations</div>
+          <h3 class="preview-title" id="preview-title">SOP Creation &amp; Engineering</h3>
+          <p class="preview-desc" id="preview-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน เพื่อคงคุณภาพการดำเนินงานและรองรับการขยายสาขา</p>
+          <button class="preview-btn" onclick="triggerActiveModal()">
+            ดูรายละเอียดบริการ ›
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="main-section" style="background: var(--color-bg-gray);">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="contact-info-title">พร้อมยกระดับ<br>ธุรกิจของคุณหรือยัง</h2>
+        <p class="contact-info-desc">ทีมงาน R&B Transolution พร้อมรับฟังโจทย์และออกแบบแนวทางที่เหมาะสม<br>สำหรับโรงแรม รีสอร์ท สปา ร้านอาหาร และเครือบริการระดับสากล</p>
+        
+        <div class="contact-channels">
+          <a class="contact-channel-item" href="tel:+66891041992">
+            <div class="channel-icon">📞</div>
+            <div>
+              <div class="channel-label">Telephone</div>
+              <div class="channel-value">089 104 1992</div>
+            </div>
+          </a>
+          <a class="contact-channel-item" href="https://lin.ee/482bqDUr" target="_blank">
+            <div class="channel-icon">💬</div>
+            <div>
+              <div class="channel-label">LINE Official</div>
+              <div class="channel-value">@rnbtransolution</div>
+            </div>
+          </a>
+          <a class="contact-channel-item" href="mailto:rnb.transolution@gmail.com">
+            <div class="channel-icon">✉️</div>
+            <div>
+              <div class="channel-label">Email</div>
+              <div class="channel-value">rnb.transolution@gmail.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form Card -->
+      <div class="contact-form-card reveal" style="transition-delay: 0.15s">
+        <form onsubmit="event.preventDefault(); handleSubmitForm(this);">
+          <div class="form-group">
+            <label for="contact-name">ชื่อ-นามสกุล</label>
+            <input type="text" id="contact-name" class="form-input" placeholder="คุณ..." required>
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">เบอร์โทรศัพท์</label>
+            <input type="tel" id="contact-phone" class="form-input" placeholder="08X-XXX-XXXX" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">อีเมล</label>
+            <input type="email" id="contact-email" class="form-input" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label for="contact-biz">ประเภทธุรกิจ</label>
+            <select id="contact-biz" class="form-select">
+              <option value="">เลือกประเภทธุรกิจ</option>
+              <option>โรงแรม / Hotel</option>
+              <option>รีสอร์ท / Resort</option>
+              <option>วิลล่า &amp; Boutique Property</option>
+              <option>สปา &amp; เวลเนส / Spa &amp; Wellness</option>
+              <option>ร้านอาหาร / Restaurant</option>
+              <option>คาเฟ่ / Café &amp; Coffee Shop</option>
+              <option>อื่นๆ / Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-service">บริการที่สนใจ</label>
+            <select id="contact-service" class="form-select">
+              <option value="">เลือกบริการ</option>
+              <option>SOP Creation &amp; Engineering</option>
+              <option>Recipe SOPs</option>
+              <option>R&B Trans PMS (Hotel PMS)</option>
+              <option>Menu Engineering</option>
+              <option>Monthly P&amp;L Report</option>
+              <option>Hospitality Workshop</option>
+              <option>SWOT Analysis</option>
+              <option>Price Optimization</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-notes">รายละเอียดเพิ่มเติม</label>
+            <textarea id="contact-notes" class="form-textarea" placeholder="อธิบายสั้นๆ เกี่ยวกับธุรกิจและโจทย์ของคุณ..."></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="form-submit-btn">ส่งข้อความหาเรา</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- GLOBAL FOOTER -->
+<footer id="global-footer">
+  <div class="footer-container">
+    <div>© 2026 R&B Transolution. All rights reserved. Create Beyond Standard</div>
+    <ul class="footer-links">
+      <li><a href="#hero">หน้าแรก</a></li>
+      <li><a href="#philosophy">แนวคิด</a></li>
+      <li><a href="showcase.html">บริการ SOP</a></li>
+      <li><a href="#contact">ติดต่อเรา</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- SERVICE MODAL -->
+<div id="modal-overlay" role="dialog" aria-modal="true" onclick="closeServiceModal(event)">
+  <div class="modal-box">
+    <button class="modal-close-btn" aria-label="Close modal" onclick="closeServiceModal(null, true)">✕</button>
+    <div class="modal-hero-img" id="modal-img"></div>
+    <div class="modal-content">
+      <div class="modal-tag" id="modal-tag"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-tagline" id="modal-tagline"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <ul class="modal-features-list" id="modal-features"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── SERVICES DATA REGISTRY
+const servicesData = {
+  1:{tag:'01 · Profitability',title:'Menu Engineering',tagline:'เปลี่ยนเมนูธรรมดา ให้เป็นเครื่องมือทำกำไรสูงสุด',img:'https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์โครงสร้างเมนูอาหารอย่างเป็นระบบ โดยใช้หลักการทางสถิติและจิตวิทยาผู้บริโภค เพื่อเพิ่มรายได้และลดต้นทุนวัตถุดิบอย่างมีนัยสำคัญ',features:['Cost & Profit Analysis: เจาะลึกต้นทุนอาหารต่อจาน เพื่อหาเมนูกำไรสูงสุด','Menu Matrix: จัดกลุ่มเมนูเพื่อวางกลยุทธ์ปรับปรุงยอดขายและกำไร','Psychological Design: ออกแบบ Layout ดึงดูดสายตาให้ลูกค้าสั่งเมนูหลัก']},
+  2:{tag:'02 · Financial',title:'Monthly P&L Report',tagline:'บริหารผลลัพธ์และวิเคราะห์รายงานกำไร-ขาดทุนรายเดือน',img:'https://images.pexels.com/photos/6863515/pexels-photo-6863515.jpeg?auto=compress&w=800',desc:'บริการจัดทำและวิเคราะห์รายงานกำไร-ขาดทุนรายเดือน ออกแบบมาเฉพาะสำหรับธุรกิจบริการ เพื่อการควบคุมต้นทุนอย่างมีประสิทธิภาพ',features:['Financial Reporting: จัดทำรายงาน P&L Statement ที่ถูกต้องตามมาตรฐาน','Variance Analysis: วิเคราะห์เปรียบเทียบผลประกอบการจริงกับงบประมาณ','Strategic Feedback: สรุปบทวิเคราะห์เชิงกลยุทธ์ในรูปแบบที่เข้าใจง่าย']},
+  3:{tag:'03 · People',title:'Hospitality Workshop',tagline:'สร้างทีมที่แข็งแกร่ง พัฒนาบุคลากรสู่มาตรฐานการบริการระดับสากล',img:'https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800',desc:'หลักสูตรฝึกอบรมแบบ Interactive Workshop เต็มวัน ด้านงานบริการ ปรับ Service Mind, บุคลิกภาพ, การสื่อสาร และการรับมือข้อร้องเรียนอย่างมืออาชีพ',features:['Personality & Grooming: ปรับบุคลิกภาพและการแต่งกายในการต้อนรับ','Service Mindset: ปลูกฝังจิตสำนึกรักบริการ เทคนิคการรับมือข้อร้องเรียน','Interactive Practice: เน้นการลงมือทำจริง และการจำลองสถานการณ์ Role Play']},
+  4:{tag:'04 · Strategy',title:'SWOT Analysis',tagline:'รู้เขารู้เรา วิเคราะห์จุดแข็งจุดอ่อนเพื่อหาโอกาสเติบโต',img:'https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800',desc:'บริการวิเคราะห์ SWOT Solutions เจาะลึก 360 องศา สำหรับธุรกิจร้านอาหารและโรงแรม ระบุแนวทางการสร้างความได้เปรียบเหนือคู่แข่ง',features:['SWOT Matrix Report: รายงานฉบับเต็มระบุจุดแข็ง-จุดอ่อน และโอกาส-อุปสรรค','Personal Consultation: พูดคุยให้คำปรึกษาส่วนตัวผ่าน Video Call 30 นาที','Strategic Roadmap: จัดวางแผนกลยุทธ์การตลาดและการจัดการเฉพาะองค์กร']},
+  5:{tag:'05 · Operations',title:'SOP Creation & Engineering',tagline:'สร้างระบบที่มั่นคง เพื่อการเติบโตและขยายสาขา',img:'sop_suite_mockup.jpg',desc:'บริการเขียนคู่มือขั้นตอนการปฏิบัติงานมาตรฐาน (SOPs) สำหรับร้านอาหาร โรงแรม คลินิก สปา เพื่อควบคุมคุณภาพ และรองรับการขยายสาขา',features:['Operations Manual: คู่มือระบบปฏิบัติงานแบบเข้าใจง่ายสำหรับทุกแผนก','Recipe Cards & Standards: จัดทำมาตรฐานสูตรและเช็คลิสต์ตรวจสอบความสะอาด','Scalable Systems: จัดวางโครงสร้างมาตรฐานเพื่อการเทรนพนักงานใหม่']},
+  6:{tag:'06 · Standards',title:'Recipe SOPs',tagline:'ปรับสูตรอาหารสู่มาตรฐาน พร้อมคำนวณต้นทุนต่อจานอย่างแม่นยำ',img:'https://images.pexels.com/photos/4252139/pexels-photo-4252139.jpeg?auto=compress&w=800',desc:'บริการรับเขียนและจัดทำคู่มือสูตรอาหารและเครื่องดื่มมาตรฐาน ปรับภาษาหน้างานเป็นเอกสารระบบมืออาชีพ พร้อมวิเคราะห์ต้นทุนวัตถุดิบต่อจาน',features:['Recipe Standardization: ปรับภาษาหน้างานเป็นสูตรมาตรฐาน ละเอียดเป็นระบบ','Cost & Pricing Analysis: คำนวณต้นทุนวัตถุดิบต่อจาน พร้อมแนะนำราคาขาย','Premium Design: จัดทำรูปเล่ม PDF สวยงาม ระดับโรงแรม 5 ดาว']},
+  7:{tag:'07 · Technology',title:'R&B Trans PMS',tagline:'ระบบ PMS โรงแรม ราคาเบา ใช้งานจริงได้ทันที ไม่ต้องจ่ายรายเดือน',img:'pms_dashboard_mockup.jpg',desc:'ระบบบริหารจัดการโรงแรม (PMS) สำหรับโรงแรมขนาดเล็ก / SME / รีสอร์ทโลคอล ติดตั้งออนไลน์ ข้อมูลเป็นของคุณ 100% ค่าติดตั้งครั้งเดียว 2,999 บาท',features:['บริหารห้องพัก: รองรับงานจอง บริหารห้อง และติดตามสถานะลูกค้าครบถ้วน','ข้อมูลปลอดภัย: เป็นของคุณ 100% ไม่ต้องพึ่งพา Server ภายนอก','ค่าติดตั้งครั้งเดียว 2,999 บาท: ไม่มีค่าบริการรายเดือน ไม่มีสัญญาผูกมัด','เหมาะกับโรงแรม 10–50 ห้อง: ใช้งานง่าย ไม่ซับซ้อน ทีมเล็กทำได้ทันที']},
+  8:{tag:'08 · Revenue',title:'Price Optimization',tagline:'วางกลยุทธ์ราคาห้องพัก เพื่อยอดจองเฉลี่ยและกำไรสูงสุด',img:'https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&w=800',desc:'บริการวางโครงสร้างและให้คำแนะนำกลยุทธ์ราคาห้องพักที่เหมาะสม สำหรับโรงแรม บูทีครีสอร์ต หรือวิลล่าขนาดเล็ก อิงข้อมูลอุปสงค์คู่แข่ง',features:['Market Pricing Strategy: วิเคราะห์โครงสร้างราคากลางและฤดูกาล','Dynamic Pricing Guide: แนะนำการปรับราคายืดหยุ่นตาม Demand-Driven','Channel Consultation: ให้คำปรึกษาการตั้งราคาขายผ่านช่องทางออนไลน์ต่างๆ']}
+};
+
+// ─── DYNAMIC EXPLORER INTERACTION
+let activeId = 5;
+const serviceCards = document.querySelectorAll('.service-item-card');
+const previewBgs = document.querySelectorAll('.preview-bg-image');
+const previewTag = document.getElementById('preview-tag');
+const previewTitle = document.getElementById('preview-title');
+const previewDesc = document.getElementById('preview-desc');
+
+serviceCards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    const id = parseInt(card.getAttribute('data-id'));
+    if (!id || !servicesData[id]) return;
+    activeId = id;
+    const data = servicesData[id];
+    
+    serviceCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    
+    previewBgs.forEach(bg => {
+      bg.classList.toggle('active', parseInt(bg.getAttribute('data-id')) === id);
+    });
+    
+    if (previewTag) previewTag.textContent = data.tag;
+    if (previewTitle) previewTitle.textContent = data.title;
+    if (previewDesc) previewDesc.textContent = data.desc;
+  });
+});
+
+function triggerActiveModal() {
+  if (activeId === 5) {
+    window.location.href = 'showcase.html';
+  } else {
+    openServiceModal(activeId);
+  }
+}
+
+// ─── MODAL CONTROLLER
+function openServiceModal(id) {
+  const data = servicesData[id];
+  if (!data) return;
+  document.getElementById('modal-tag').textContent = data.tag;
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-tagline').textContent = `"${data.tagline}"`;
+  document.getElementById('modal-desc').textContent = data.desc;
+  document.getElementById('modal-img').style.backgroundImage = `url('${data.img}')`;
+  
+  const ul = document.getElementById('modal-features');
+  ul.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+  
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeServiceModal(e, force) {
+  if (force || e.target === document.getElementById('modal-overlay')) {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeServiceModal(null, true);
+});
+
+// ─── SCROLL REVEAL (INTERSECTION OBSERVER)
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── GOOGLE APPS SCRIPT FORM SUBMISSION
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybtCkTXIS2fguC7VB0-uX7aWb03fifZ9LNu6f02uZX5hoBvJq56CFvhj-fywE70t1x/exec";
+
+function handleSubmitForm(form) {
+  const btn = document.getElementById('submit-btn');
+  const name = document.getElementById('contact-name').value.trim();
+  const phone = document.getElementById('contact-phone').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const biz = document.getElementById('contact-biz').value;
+  const service = document.getElementById('contact-service').value;
+  const notes = document.getElementById('contact-notes').value.trim();
+
+  if (!name || !phone) {
+    alert("กรุณากรอกชื่อและเบอร์โทรศัพท์เพื่อการติดต่อกลับ");
+    return;
+  }
+
+  btn.textContent = 'กำลังส่ง...';
+  btn.disabled = true;
+
+  const payload = { name, phone, email, businessType: biz, service, message: notes };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    btn.textContent = '✓ ส่งข้อความเรียบร้อยแล้ว';
+    btn.style.background = '#34c759';
+    form.reset();
+    setTimeout(() => {
+      btn.textContent = 'ส่งข้อความหาเรา';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  })
+  .catch((err) => {
+    console.error("Submission error:", err);
+    alert("ขออภัย เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาติดต่อเราโดยตรงผ่านทาง LINE หรือโทรศัพท์");
+    btn.textContent = 'ส่งข้อความหาเรา';
+    btn.disabled = false;
+  });
+}
+</script>
+
+</body>
+</html>

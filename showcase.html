@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="description" content="R&B SOP Standard — บริการจัดทำคู่มือและระบบปฏิบัติงานมาตรฐาน (SOPs) สำหรับโรงแรม ร้านอาหาร สปา และธุรกิจบริการ ยกระดับสู่มาตรฐานระดับสากล"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>R&B SOP Standard — Operational Perfection. Built to Scale.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── CUSTOM LUXURY PRODUCT SHOWCASE SPECIFICATIONS ─── */
+:root {
+  --color-bg-white: #ffffff;
+  --color-bg-gray: #f5f7f6;
+  --color-bg-dark: #061815;
+  --color-surface-dark: #0a221e;
+  --color-surface-card: #ffffff;
+  --color-text-primary: #121e1c;
+  --color-text-secondary: #5a6e6a;
+  --color-text-tertiary: #8fa09d;
+  --color-text-light: #f5f7f6;
+  
+  /* Master Color: Deep Blue-Green (#0a3d34 / #0f3832) */
+  --color-accent-master: #0a3d34;
+  --color-accent-master-hover: #124e43;
+  --color-accent-master-light: rgba(10, 61, 52, 0.08);
+  
+  /* Secondary Accent: Champagne Gold */
+  --color-accent-gold: #c5a273;
+  --color-accent-gold-dark: #a58458;
+  --color-accent-green: #34c759;
+  
+  --color-border-light: rgba(10, 61, 52, 0.1);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+  
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Anuphan", "Sukhumvit Set", sans-serif;
+  
+  --shadow-card: 0 4px 20px rgba(10, 61, 52, 0.04);
+  --shadow-hover: 0 12px 32px rgba(10, 61, 52, 0.1);
+  --shadow-pro: 0 30px 80px rgba(6, 24, 21, 0.35);
+  
+  --ease-fluid: cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-fluid-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 320ms;
+  --duration-smooth: 800ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-break: relaxed;
+  word-break: normal;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Line Breaking Rules for Thai Language */
+h1, h2, h3, h4, .product-headline, .section-title, .h-card-title, .story-heading, .subnav-title {
+  word-break: keep-all;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+p, span, label, input, select, textarea, button, .product-subheadline, .h-card-desc, .story-body, .faq-answer {
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+  line-break: relaxed;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-accent-master);
+  outline-offset: 2px;
+}
+
+/* ─── GLOBAL NAV ─── */
+#global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.nav-container {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.nav-brand span { color: var(--color-accent-master); }
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-size: 14px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+.nav-menu a:hover { opacity: 1; color: var(--color-accent-master); }
+
+/* ─── PRODUCT STICKY SUB-NAV BAR ─── */
+#product-subnav {
+  position: sticky;
+  top: 48px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--color-border-light);
+  height: 52px;
+}
+
+.subnav-container {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subnav-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.subnav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.subnav-links a {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-fluid);
+}
+.subnav-links a:hover { color: var(--color-accent-master); }
+
+.subnav-cta-btn {
+  background: var(--color-accent-master);
+  color: var(--color-bg-white) !important;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 14px;
+  border-radius: 980px;
+  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.subnav-cta-btn:hover {
+  background-color: var(--color-accent-master-hover);
+  transform: scale(1.02);
+}
+
+/* ─── PRODUCT HERO ─── */
+#product-hero {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  text-align: center;
+  background: radial-gradient(60% 60% at 50% 35%, rgba(10, 61, 52, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.hero-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.product-eyebrow {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.product-headline {
+  font-size: clamp(48px, 6.5vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+}
+
+.product-subheadline {
+  font-size: clamp(18px, 2.5vw, 22px);
+  color: var(--color-text-secondary);
+  max-width: 780px;
+  margin: 0 auto 24px auto;
+  line-height: 1.55;
+}
+
+.price-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent-master-light);
+  color: var(--color-accent-master);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 980px;
+  margin-bottom: 40px;
+}
+
+/* PRODUCT SHOWCASE HERO GRAPHIC MOCKUP */
+.product-mockup-wrap {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 22px;
+  position: relative;
+}
+
+.product-mockup-img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: var(--shadow-pro);
+  transition: transform var(--duration-smooth) var(--ease-fluid-out);
+  border: 1px solid rgba(10, 61, 52, 0.12);
+}
+.product-mockup-img:hover {
+  transform: scale(1.01);
+}
+
+/* ─── SECTION COMMON ─── */
+.showcase-section {
+  padding: 120px 22px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 60px auto;
+}
+
+.section-eyebrow {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-accent-master);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+/* ─── BENTO GRID: HIGHLIGHTS ─── */
+.highlights-bento-grid {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.highlight-bento-card {
+  background: var(--color-bg-gray);
+  border-radius: 28px;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--duration-fast) var(--ease-fluid);
+}
+.highlight-bento-card:hover {
+  transform: scale(1.015);
+}
+
+.h-card-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.h-card-title {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+.h-card-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+/* ─── STORYTELLING FEATURE SECTIONS ─── */
+.feature-story-row {
+  max-width: 1024px;
+  margin: 0 auto 120px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.feature-story-row.reverse {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+.feature-story-row.reverse > * {
+  direction: ltr;
+}
+
+.story-text-col {
+  padding: 20px 0;
+}
+
+.story-tag {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent-master);
+  margin-bottom: 8px;
+}
+
+.story-heading {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.story-body {
+  font-size: 17px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.story-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.story-bullets li {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+}
+.story-bullets li::before {
+  content: "✓";
+  color: var(--color-accent-master);
+  font-weight: bold;
+}
+
+.story-visual-card {
+  background: var(--color-bg-gray);
+  border-radius: 28px;
+  padding: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.story-visual-card img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+
+/* ─── TECHNICAL SPECS COMPARISON GRID ─── */
+.specs-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+.specs-table th, .specs-table td {
+  padding: 20px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+  line-height: 1.5;
+}
+
+.specs-table th {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.specs-table td.highlight-col {
+  background: var(--color-accent-master-light);
+  font-weight: 600;
+  color: var(--color-accent-master);
+}
+
+/* ─── PRICING CARD ─── */
+.pricing-card-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--color-surface-dark);
+  color: var(--color-text-light);
+  border-radius: 36px;
+  padding: 56px;
+  text-align: center;
+  box-shadow: var(--shadow-pro);
+}
+
+.pricing-title {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.pricing-sub {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.pricing-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto 40px auto;
+  font-size: 15px;
+}
+
+.pricing-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+}
+.pricing-checklist li::before {
+  content: "✓";
+  color: var(--color-accent-gold);
+  font-weight: bold;
+}
+
+.pricing-cta-btn {
+  display: inline-block;
+  background: var(--color-accent-master);
+  color: var(--color-bg-white);
+  font-size: 17px;
+  font-weight: 500;
+  padding: 14px 36px;
+  border-radius: 980px;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.pricing-cta-btn:hover {
+  background-color: var(--color-accent-master-hover);
+  transform: scale(1.02);
+}
+
+/* ─── FAQ ACCORDION ─── */
+.faq-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 24px 0;
+}
+
+.faq-question {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-toggle {
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  transition: transform var(--duration-fast) var(--ease-fluid);
+}
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+  color: var(--color-accent-master);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  transition: max-height var(--duration-fast) var(--ease-fluid), margin-top var(--duration-fast) var(--ease-fluid);
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  margin-top: 14px;
+}
+
+/* ─── FOOTER ─── */
+#global-footer {
+  background: var(--color-bg-gray);
+  border-top: 1px solid var(--color-border-light);
+  padding: 40px 22px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.footer-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.footer-links a { color: var(--color-text-secondary); text-decoration: none; }
+.footer-links a:hover { color: var(--color-text-primary); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-smooth) var(--ease-fluid-out), transform var(--duration-smooth) var(--ease-fluid-out);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+  .highlights-bento-grid, .feature-story-row, .feature-story-row.reverse {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="global-nav" aria-label="Global Navigation">
+  <div class="nav-container">
+    <a href="./" class="nav-brand">
+      R&B <span>Transolution</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="./#philosophy">แนวคิด</a></li>
+      <li><a href="./#services">บริการทั้งหมด</a></li>
+      <li><a href="./#contact">ติดต่อเรา</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PRODUCT STICKY SUB-NAVIGATION BAR -->
+<header id="product-subnav">
+  <div class="subnav-container">
+    <div class="subnav-title">R&B SOP Standard</div>
+    <ul class="subnav-links">
+      <li><a href="#overview">ภาพรวม</a></li>
+      <li><a href="#features">คุณสมบัติ</a></li>
+      <li><a href="#specs">ข้อมูลเปรียบเทียบ</a></li>
+      <li><a href="#pricing">แพ็กเกจจัดทำ</a></li>
+      <li><a href="./#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- HERO SECTION -->
+  <section id="product-hero">
+    <div class="hero-content reveal">
+      <div class="product-eyebrow">R&B SOP Standard</div>
+      <h1 class="product-headline">Operational Perfection.<br>Built to Scale.</h1>
+      <p class="product-subheadline">ยกระดับคุณภาพบริการ ควบคุมมาตรฐานทุกแผนก<br>และวางรากฐานที่มั่นคงเพื่อการขยายสาขาอย่างมืออาชีพ<br>ด้วยระบบคู่มือปฏิบัติงานมาตรฐานระดับโรงแรม 5 ดาว</p>
+      
+      <div class="price-tag-badge">
+        <span>✓</span> ออกแบบเฉพาะสำหรับธุรกิจของคุณ · พร้อมจัดฝึกอบรมทีมงานจริง
+      </div>
+    </div>
+
+    <!-- MOCKUP DISPLAY -->
+    <div class="product-mockup-wrap reveal" style="transition-delay: 0.15s">
+      <img src="sop_suite_mockup.jpg" alt="R&B SOP Standard Suite Mockup" class="product-mockup-img">
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS BENTO GRID -->
+  <section id="overview" class="showcase-section" style="background: var(--color-bg-gray);">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Core Standards</div>
+      <h2 class="section-title">ออกแบบอย่างปราณีต<br>เพื่อมาตรฐานการบริการ<br>ที่ไม่สะดุด</h2>
+    </div>
+
+    <div class="highlights-bento-grid">
+      <div class="highlight-bento-card reveal">
+        <div class="h-card-tag">Excellence</div>
+        <h3 class="h-card-title">5-Star Executive Blueprint</h3>
+        <p class="h-card-desc">เรียบเรียงและวางโครงสร้างมาตรฐานโดยผู้เชี่ยวชาญ<br>ที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี<br>ถ่ายทอดเป็นขั้นตอนที่ปฏิบัติได้จริง</p>
+      </div>
+
+      <div class="highlight-bento-card reveal" style="transition-delay: 0.1s">
+        <div class="h-card-tag">Visual Clarity</div>
+        <h3 class="h-card-title">Step-by-Step Flowcharts</h3>
+        <p class="h-card-desc">เปลี่ยนคู่มือหนาทึบแบบเดิม เป็นผังกระบวนการทำงานที่เข้าใจง่าย<br>พร้อมเช็คลิสต์ประจำวัน และ Recipe Cards รูปภาพคมชัด</p>
+      </div>
+
+      <div class="highlight-bento-card reveal" style="transition-delay: 0.15s">
+        <div class="h-card-tag">Onboarding</div>
+        <h3 class="h-card-title">70% Faster Staff Training</h3>
+        <p class="h-card-desc">ลดระยะเวลาและภาระในการเทรนพนักงานใหม่<br>ช่วยให้ทีมงานทำงานทดแทนกันได้อย่างราบรื่น ไร้ข้อผิดพลาด</p>
+      </div>
+
+      <div class="highlight-bento-card reveal" style="transition-delay: 0.2s">
+        <div class="h-card-tag">Coverage</div>
+        <h3 class="h-card-title">End-to-End Department Scope</h3>
+        <p class="h-card-desc">ครอบคลุมทุกแผนกหลัก ตั้งแต่ Front Office, Housekeeping,<br>F&amp;B Service, Kitchen Operations ไปจนถึง Spa และ Management</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE DEEP-DIVE SECTIONS -->
+  <section id="features" class="showcase-section">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Features</div>
+      <h2 class="section-title">โครงสร้างมาตรฐาน SOP ทุกมิติ</h2>
+    </div>
+
+    <!-- Feature Row 1 -->
+    <div class="feature-story-row reveal">
+      <div class="story-text-col">
+        <div class="story-tag">Front-of-House Excellence</div>
+        <h3 class="story-heading">มาตรฐานงานบริการหน้าบ้าน<br>ต้อนรับประทับใจระดับสากล</h3>
+        <p class="story-body">จัดทำคู่มือขั้นตอนตั้งแต่ Guest Arrival, Check-in<br>และ Concierge Service ไปจนถึงการรับมือข้อร้องเรียน<br>(Complaint Handling) อย่างมืออาชีพ</p>
+        <ul class="story-bullets">
+          <li>ขั้นตอน Check-in &amp; Check-out ลื่นไหลไร้ข้อผิดพลาด</li>
+          <li>คู่มือ Service Mindset &amp; Grooming บุคลิกภาพพนักงาน</li>
+          <li>Script การแนะนำบริการและอัปยอดขาย (Upselling Protocols)</li>
+        </ul>
+      </div>
+      <div class="story-visual-card">
+        <img src="sop_flowchart_mockup.jpg" alt="Guest Arrival & Check-In SOP Workflow Diagram">
+      </div>
+    </div>
+
+    <!-- Feature Row 2 (Reverse) -->
+    <div class="feature-story-row reverse reveal">
+      <div class="story-text-col">
+        <div class="story-tag">Back-of-House &amp; Recipe SOPs</div>
+        <h3 class="story-heading">มาตรฐานงานหลังบ้านและสูตรอาหาร<br>ควบคุมต้นทุนและคุณภาพคงที่</h3>
+        <p class="story-body">จัดทำคู่มือสูตรมาตรฐาน (Recipe SOP Cards)<br>รายละเอียดปริมาณวัตถุดิบ ขั้นตอนการปรุง รูปภาพประกอบ<br>และคำนวณต้นทุนต่อจานอย่างแม่นยำ</p>
+        <ul class="story-bullets">
+          <li>Recipe Standard Cards ภาษาหน้างานอ่านง่าย ชั่งวัดแม่นยำ</li>
+          <li>เช็คลิสต์ตรวจความสะอาดและ Hygiene Standards ประจำวัน</li>
+          <li>ระบบควบคุมการสูญเสียวัตถุดิบ (Yield Management &amp; Waste Control)</li>
+        </ul>
+      </div>
+      <div class="story-visual-card">
+        <img src="https://images.pexels.com/photos/4252139/pexels-photo-4252139.jpeg?auto=compress&w=800" alt="Recipe Standard SOPs Visual">
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SPECS COMPARISON -->
+  <section id="specs" class="showcase-section" style="background: var(--color-bg-gray);">
+    <div class="specs-container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Comparison</div>
+        <h2 class="section-title">ทำไมธุรกิจบริการต้องมี R&B SOP Standard</h2>
+      </div>
+
+      <table class="specs-table reveal">
+        <thead>
+          <tr>
+            <th>มิติการดำเนินงาน</th>
+            <th class="highlight-col">R&B SOP Standard</th>
+            <th>การทำงานแบบไร้ระบบมาตรฐาน</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ความสม่ำเสมอของบริการ</strong></td>
+            <td class="highlight-col">คุณภาพเท่ากัน 100% ทุกคน ทุกสาขา</td>
+            <td>ขึ้นอยู่กับพนักงานแต่ละคน (บริการไม่นิ่ง)</td>
+          </tr>
+          <tr>
+            <td><strong>เวลาเทรนพนักงานใหม่</strong></td>
+            <td class="highlight-col">3 – 5 วัน (มีผังและรูปเล่มชัดเจน)</td>
+            <td>2 – 4 สัปดาห์ (ใช้การบอกเล่าปากต่อปาก)</td>
+          </tr>
+          <tr>
+            <td><strong>การควบคุมต้นทุนวัตถุดิบ</strong></td>
+            <td class="highlight-col">คุมต้นทุนต่อจานได้ตามเป้าหมาย</td>
+            <td>วัตถุดิบรั่วไหล รสชาติไม่คงที่</td>
+          </tr>
+          <tr>
+            <td><strong>การขยายสาขา (Scale-up)</strong></td>
+            <td class="highlight-col">พร้อมก็อปปี้โมเดลเปิดสาขาใหม่ได้ทันที</td>
+            <td>ขยายสาขายาก ติดขัดเรื่องการคุมคุณภาพ</td>
+          </tr>
+          <tr>
+            <td><strong>รูปแบบเอกสาร</strong></td>
+            <td class="highlight-col">รูปเล่ม PDF + Digital Diagram ระดับ 5 ดาว</td>
+            <td>ไม่มีเอกสาร หรือมีแค่ข้อความยาวอ่านยาก</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PRICING CARD SECTION -->
+  <section id="pricing" class="showcase-section">
+    <div class="pricing-card-wrap reveal">
+      <div class="pricing-title">Tailor-Made SOP Engineering</div>
+      <p class="pricing-sub">ออกแบบและจัดทำคู่มือ SOP เฉพาะสำหรับโครงสร้างธุรกิจและงบประมาณของคุณ</p>
+
+      <ul class="pricing-checklist">
+        <li>เข้าสำรวจหน้างานและสัมภาษณ์ทีมงานเชิงลึก</li>
+        <li>จัดทำคู่มือปฏิบัติงานมาตรฐานฉบับเต็ม (PDF &amp; Print Ready)</li>
+        <li>จัดทำผังกระบวนการทำงาน Diagram &amp; Daily Checklists</li>
+        <li>จัดทำ Recipe Standard Cards พร้อมวิเคราะห์ต้นทุนต่อจาน</li>
+        <li>บริการ Onsite / Online Interactive Workshop ฝึกอบรมทีมงาน</li>
+      </ul>
+
+      <a href="./#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี</a>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="showcase-section" style="background: var(--color-bg-gray);">
+    <div class="faq-wrap">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">FAQ</div>
+        <h2 class="section-title">คำถามที่พบบ่อยเกี่ยวกับการทำ SOP</h2>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ใช้ระยะเวลาในการจัดทำ SOP นานเท่าไหร่?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          ขึ้นอยู่กับขนาดและจำนวนแผนกของธุรกิจ โดยเฉลี่ยใช้เวลาประมาณ 2 ถึง 4 สัปดาห์<br>ครอบคลุมตั้งแต่การสัมภาษณ์ เก็บข้อมูล เรียบเรียงคู่มือ ไปจนถึงการทดลองใช้และเทรนนิ่ง
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay: 0.1s">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ถ้าธุรกิจมีขั้นตอนการทำงานเฉพาะตัว จะปรับแต่งได้ไหม?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          ได้ 100% เราออกแบบ SOP แบบ Tailor-made โดยยึดบริบท วัฒนธรรมองค์กร<br>และลักษณะการทำงานจริงของธุรกิจคุณเป็นหลัก ไม่ใช่การใช้เทมเพลตสำเร็จรูปทั่วไป
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay: 0.15s">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          มีการฝึกอบรมพนักงานหลังจัดทำคู่มือเสร็จหรือไม่?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          มีครับ ทีมงาน R&B Transolution จะจัดอบรม Hospitality Workshop เพื่อถ่ายทอด SOP ให้กับพนักงานทุกคน<br>มั่นใจว่าทีมสามารถนำไปปฏิบัติจริงได้อย่างถูกต้อง
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- GLOBAL FOOTER -->
+<footer id="global-footer">
+  <div class="footer-container">
+    <div>© 2026 R&B Transolution. All rights reserved. Create Beyond Standard</div>
+    <ul class="footer-links">
+      <li><a href="./">หน้าแรก</a></li>
+      <li><a href="./#services">บริการทั้งหมด</a></li>
+      <li><a href="./#contact">ติดต่อเรา</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// ─── FAQ ACCORDION TOGGLE
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// ─── SCROLL REVEAL (INTERSECTION OBSERVER)
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
