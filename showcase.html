@@ -10,17 +10,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
 <script>
-// Clean URL Normalization (Strips .html and index.html from browser address bar)
+// Clean URL Normalization (Strips .html, index.html, and hashtags from browser address bar)
 (function() {
   try {
     if (window.location.protocol !== 'file:') {
       var p = window.location.pathname;
+      var clean = p;
       if (p.endsWith('/index.html') || p === '/index.html') {
-        var clean = p.replace(/\/index\.html$/, '/') || '/';
-        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+        clean = p.replace(/\/index\.html$/, '/') || '/';
       } else if (p.endsWith('.html')) {
-        var clean = p.replace(/\.html$/, '');
-        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+        clean = p.replace(/\.html$/, '');
+      }
+
+      var initialHash = window.location.hash;
+      if (clean !== p || initialHash) {
+        // Strip .html, index.html, and hashtag from address bar immediately
+        window.history.replaceState(null, '', clean + window.location.search);
+
+        if (initialHash && initialHash.length > 1) {
+          window.addEventListener('DOMContentLoaded', function() {
+            var target = document.querySelector(initialHash);
+            if (target) {
+              setTimeout(function() {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }, 120);
+            }
+          });
+        }
       }
     } else {
       document.addEventListener('DOMContentLoaded', function() {
@@ -92,6 +108,10 @@ html {
   font-size: 16px;
   line-break: relaxed;
   word-break: normal;
+}
+
+section[id], header[id], div[id] {
+  scroll-margin-top: 130px;
 }
 
 body {
@@ -1471,6 +1491,26 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── INTERCEPT INTERNAL ANCHOR CLICKS (SMOOTH SCROLL WITHOUT HASHTAGS IN URL)
+document.addEventListener('click', function(e) {
+  var anchor = e.target.closest('a[href^="#"]');
+  if (anchor) {
+    var href = anchor.getAttribute('href');
+    if (href && href.startsWith('#') && href.length > 1) {
+      var targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+        
+        var drawer = document.getElementById('mobile-drawer');
+        if (drawer && drawer.classList.contains('open')) {
+          drawer.classList.remove('open');
+        }
+      }
+    }
+  }
+});
 </script>
 
 </body>
