@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
 <script>
-// Clean URL Normalization (Strips 'index.html' from browser address bar)
+// Clean URL Normalization (Strips .html and index.html from browser address bar)
 (function() {
   try {
     if (window.location.protocol !== 'file:') {
@@ -18,7 +18,16 @@
       if (p.endsWith('/index.html') || p === '/index.html') {
         var clean = p.replace(/\/index\.html$/, '/') || '/';
         window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      } else if (p.endsWith('.html')) {
+        var clean = p.replace(/\.html$/, '');
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
       }
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href="showcase"]').forEach(function(el) {
+          el.setAttribute('href', 'showcase.html');
+        });
+      });
     }
   } catch(e) {}
 })();
@@ -1455,7 +1464,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       <li><a href="#philosophy">แนวคิด</a></li>
       <li><a href="#strengths">จุดเด่น</a></li>
       <li><a href="#services">บริการ</a></li>
-      <li><a href="showcase.html" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
+      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
       <li><a href="#contact" class="nav-btn">ติดต่อเรา</a></li>
     </ul>
 
@@ -1471,7 +1480,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       <li><a href="#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
       <li><a href="#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
       <li><a href="#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
-      <li><a href="showcase.html">บริการ SOP Standard ↗</a></li>
+      <li><a href="showcase">บริการ SOP Standard ↗</a></li>
       <li><a href="#contact" onclick="toggleMobileDrawer()" style="color:var(--color-accent-master);font-weight:600;">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
@@ -1487,7 +1496,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       
       <div class="hero-actions">
         <a href="#contact" class="btn-primary-editorial">นัดหมายปรึกษาฟรี</a>
-        <a href="showcase.html" class="btn-link-editorial">ค้นพบ SOP Standard ›</a>
+        <a href="showcase" class="btn-link-editorial">ค้นพบ SOP Standard ›</a>
       </div>
     </div>
 
@@ -1711,7 +1720,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
           <div class="service-item-desc">วิเคราะห์จุดแข็ง-จุดอ่อน และประเมินโอกาสอุปสรรคเพื่อปลดล็อกศักยภาพสูงสุดของธุรกิจ</div>
         </div>
 
-        <div class="service-item-card active" data-id="5" onclick="window.location.href='showcase.html'">
+        <div class="service-item-card active" data-id="5" onclick="window.location.href='showcase'">
           <div class="service-item-top">
             <span class="service-item-num">05 · Operations</span>
             <span class="badge-flagship">FLAGSHIP SERVICE ↗</span>
@@ -1875,7 +1884,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
         <li><a href="#philosophy">แนวคิด (Our Philosophy)</a></li>
         <li><a href="#strengths">จุดเด่น (Our Strengths)</a></li>
         <li><a href="#services">บริการทั้งหมด (Services)</a></li>
-        <li><a href="showcase.html">SOP Standard Showcase ↗</a></li>
+        <li><a href="showcase">SOP Standard Showcase ↗</a></li>
         <li><a href="#contact">นัดหมายปรึกษา (Contact)</a></li>
       </ul>
     </div>
@@ -1884,7 +1893,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
     <div>
       <div class="footer-col-title">Solutions</div>
       <ul class="footer-col-list">
-        <li><a href="showcase.html">SOP Creation &amp; Engineering</a></li>
+        <li><a href="showcase">SOP Creation &amp; Engineering</a></li>
         <li><a href="#services" onclick="openServiceModal(6)">Recipe SOPs</a></li>
         <li><a href="#services" onclick="openServiceModal(1)">Menu Engineering</a></li>
         <li><a href="#services" onclick="openServiceModal(2)">Monthly P&amp;L Report</a></li>
@@ -1972,7 +1981,7 @@ serviceCards.forEach(card => {
 
 function triggerActiveModal() {
   if (activeId === 5) {
-    window.location.href = 'showcase.html';
+    window.location.href = 'showcase';
   } else {
     openServiceModal(activeId);
   }

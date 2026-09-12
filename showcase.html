@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
 <script>
-// Clean URL Normalization (Strips 'index.html' from browser address bar)
+// Clean URL Normalization (Strips .html and index.html from browser address bar)
 (function() {
   try {
     if (window.location.protocol !== 'file:') {
@@ -18,7 +18,16 @@
       if (p.endsWith('/index.html') || p === '/index.html') {
         var clean = p.replace(/\/index\.html$/, '/') || '/';
         window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      } else if (p.endsWith('.html')) {
+        var clean = p.replace(/\.html$/, '');
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
       }
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href="showcase"]').forEach(function(el) {
+          el.setAttribute('href', 'showcase.html');
+        });
+      });
     }
   } catch(e) {}
 })();
@@ -1103,7 +1112,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="./#philosophy">แนวคิด</a></li>
       <li><a href="./#strengths">จุดเด่น</a></li>
       <li><a href="./#services">บริการ</a></li>
-      <li><a href="showcase.html" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
+      <li><a href="showcase" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
       <li><a href="./#contact" class="nav-btn">ติดต่อเรา</a></li>
     </ul>
 
@@ -1119,7 +1128,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="./#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
       <li><a href="./#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
       <li><a href="./#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
-      <li><a href="showcase.html" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard ↗</a></li>
+      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard ↗</a></li>
       <li><a href="./#contact" onclick="toggleMobileDrawer()">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
@@ -1398,7 +1407,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <li><a href="./#philosophy">แนวคิด (Our Philosophy)</a></li>
         <li><a href="./#strengths">จุดเด่น (Our Strengths)</a></li>
         <li><a href="./#services">บริการทั้งหมด (Services)</a></li>
-        <li><a href="showcase.html">SOP Standard Showcase ↗</a></li>
+        <li><a href="showcase">SOP Standard Showcase ↗</a></li>
         <li><a href="./#contact">นัดหมายปรึกษา (Contact)</a></li>
       </ul>
     </div>
@@ -1407,7 +1416,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     <div>
       <div class="footer-col-title">Solutions</div>
       <ul class="footer-col-list">
-        <li><a href="showcase.html">SOP Creation &amp; Engineering</a></li>
+        <li><a href="showcase">SOP Creation &amp; Engineering</a></li>
         <li><a href="./#services">Recipe SOPs</a></li>
         <li><a href="./#services">Menu Engineering</a></li>
         <li><a href="./#services">Monthly P&amp;L Report</a></li>
