@@ -4,53 +4,63 @@
 <meta charset="utf-8"/>
 <meta name="description" content="R&B SOP Standard — บริการจัดทำคู่มือและระบบปฏิบัติงานมาตรฐาน (SOPs) สำหรับโรงแรม ร้านอาหาร สปา และธุรกิจบริการ ยกระดับสู่มาตรฐานระดับสากล"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>R&B SOP Standard — Operational Perfection. Built to Scale.</title>
+<title>R&B SOP Standard — Operational Perfection. Built to Scale. | R&B Transolution</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
 <style>
-/* ─── CUSTOM LUXURY PRODUCT SHOWCASE SPECIFICATIONS ─── */
+/* ─── MAGNOLIA EDITORIAL LUXURY DESIGN SYSTEM ─── */
 :root {
   --color-bg-white: #ffffff;
-  --color-bg-gray: #f5f7f6;
+  --color-bg-warm: #faf9f6;
+  --color-bg-gray: #f7f8f7;
   --color-bg-dark: #061815;
   --color-surface-dark: #0a221e;
   --color-surface-card: #ffffff;
+  
   --color-text-primary: #121e1c;
   --color-text-secondary: #5a6e6a;
   --color-text-tertiary: #8fa09d;
   --color-text-light: #f5f7f6;
   
-  /* Master Color: Deep Blue-Green (#0a3d34 / #0f3832) */
+  /* Master Color: Deep Forest Green (#0a3d34 / #0f3832) */
   --color-accent-master: #0a3d34;
   --color-accent-master-hover: #124e43;
-  --color-accent-master-light: rgba(10, 61, 52, 0.08);
+  --color-accent-master-light: rgba(10, 61, 52, 0.06);
+  --color-accent-master-soft: rgba(10, 61, 52, 0.03);
   
   /* Secondary Accent: Champagne Gold */
   --color-accent-gold: #c5a273;
   --color-accent-gold-dark: #a58458;
-  --color-accent-green: #34c759;
+  --color-accent-gold-light: rgba(197, 162, 115, 0.14);
   
-  --color-border-light: rgba(10, 61, 52, 0.1);
-  --color-border-dark: rgba(255, 255, 255, 0.12);
+  /* Refined Hairline Borders (Replacing all box-shadows) */
+  --color-border-light: rgba(10, 61, 52, 0.08);
+  --color-border-subtle: rgba(10, 61, 52, 0.04);
+  --color-border-medium: rgba(10, 61, 52, 0.14);
+  --color-border-gold: rgba(197, 162, 115, 0.35);
   
-  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Anuphan", "Sukhumvit Set", sans-serif;
+  /* Magnolia Typography Stack */
+  --font-heading: 'Petrona', 'Cormorant Garamond', 'Anuphan', serif;
+  --font-editorial: 'Cormorant Garamond', serif;
+  --font-meta: 'Montserrat', sans-serif;
+  --font-body: 'Anuphan', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
-  --shadow-card: 0 4px 20px rgba(10, 61, 52, 0.04);
-  --shadow-hover: 0 12px 32px rgba(10, 61, 52, 0.1);
-  --shadow-pro: 0 30px 80px rgba(6, 24, 21, 0.35);
-  
-  --ease-fluid: cubic-bezier(0.4, 0, 0.6, 1);
-  --ease-fluid-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-fast: 320ms;
-  --duration-smooth: 800ms;
+  /* Motion & Transitions */
+  --ease-fluid: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 260ms;
+  --duration-smooth: 650ms;
 }
 
+/* Global Reset & Strict Prohibition of Box-Shadows */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 html {
@@ -61,19 +71,23 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   background-color: var(--color-bg-white);
   color: var(--color-text-primary);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Line Breaking Rules for Thai Language */
-h1, h2, h3, h4, .product-headline, .section-title, .h-card-title, .story-heading, .subnav-title {
+/* Typography Line Breaking Rules */
+h1, h2, h3, h4, h5, h6, .product-headline, .section-title, .h-card-title, .story-heading, .subnav-title {
+  font-family: var(--font-heading);
   word-break: keep-all;
   text-wrap: balance;
   overflow-wrap: break-word;
+  font-weight: 400;
+  color: var(--color-text-primary);
 }
 
 p, span, label, input, select, textarea, button, .product-subheadline, .h-card-desc, .story-body, .faq-answer {
@@ -85,269 +99,515 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 
 /* Accessibility Focus States */
 :focus-visible {
-  outline: 2px solid var(--color-accent-master);
+  outline: 1.5px solid var(--color-accent-master);
   outline-offset: 2px;
 }
 
-/* ─── GLOBAL NAV ─── */
+/* ─── TOP UTILITY STRIP (MAGNOLIA EDITORIAL TOUCH) ─── */
+.top-utility-bar {
+  background: var(--color-bg-warm);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 8px 32px;
+  font-family: var(--font-meta);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-utility-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.top-utility-tag {
+  color: var(--color-accent-gold-dark);
+  font-weight: 600;
+}
+
+.top-utility-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.top-utility-right a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-fluid);
+}
+.top-utility-right a:hover {
+  color: var(--color-accent-master);
+}
+
+/* ─── GLOBAL NAVIGATION (MAGNOLIA EDITORIAL HEADER) ─── */
 #global-nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  height: 48px;
   z-index: 9999;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--duration-fast) var(--ease-fluid);
 }
 
 .nav-container {
-  max-width: 1024px;
-  height: 100%;
+  max-width: 1180px;
+  height: 74px;
   margin: 0 auto;
-  padding: 0 22px;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav-brand {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--color-text-primary);
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
-.nav-brand span { color: var(--color-accent-master); }
+
+.nav-brand-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity var(--duration-fast) var(--ease-fluid);
+}
+.nav-brand-title span {
+  color: var(--color-accent-master);
+  font-weight: 600;
+}
+
+.nav-brand-subtitle {
+  font-family: var(--font-meta);
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  font-weight: 600;
+}
+
+.nav-brand:hover .nav-brand-title {
+  opacity: 0.8;
+}
 
 .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-family: var(--font-meta);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+  opacity: 0.85;
+  transition: color var(--duration-fast) var(--ease-fluid), opacity var(--duration-fast) var(--ease-fluid);
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--color-accent-master);
+  transition: width var(--duration-fast) var(--ease-fluid), left var(--duration-fast) var(--ease-fluid);
+}
+
+.nav-menu a:hover {
+  opacity: 1;
+  color: var(--color-accent-master);
+}
+
+.nav-menu a:hover::after, .nav-menu a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-btn {
+  font-family: var(--font-meta) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--color-accent-master) !important;
+  background: var(--color-accent-master) !important;
+  color: #ffffff !important;
+  padding: 9px 18px !important;
+  border-radius: 2px !important;
+  opacity: 1 !important;
+  transition: all var(--duration-fast) var(--ease-fluid) !important;
+}
+.nav-btn:hover {
+  background: var(--color-accent-master-hover) !important;
+  border-color: var(--color-accent-master-hover) !important;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-family: var(--font-meta);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+/* Mobile Slide-down Drawer */
+.mobile-drawer {
+  display: none;
+  background: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 20px 24px;
+}
+.mobile-drawer.open {
+  display: block;
+}
+.mobile-drawer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mobile-drawer-list a {
+  font-family: var(--font-meta);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: block;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* ─── PRODUCT STICKY SUB-NAV BAR (MAGNOLIA EDITORIAL) ─── */
+#product-subnav {
+  position: sticky;
+  top: 74px;
+  z-index: 998;
+  background: rgba(250, 249, 246, 0.95);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--color-border-light);
+  height: 52px;
+}
+
+.subnav-container {
+  max-width: 1180px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subnav-brand-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.subnav-title {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-master);
+}
+
+.subnav-badge {
+  font-family: var(--font-meta);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  font-weight: 600;
+}
+
+.subnav-links {
   display: flex;
   align-items: center;
   gap: 24px;
   list-style: none;
 }
 
-.nav-menu a {
-  font-size: 14px;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity var(--duration-fast) var(--ease-fluid);
-}
-.nav-menu a:hover { opacity: 1; color: var(--color-accent-master); }
-
-/* ─── PRODUCT STICKY SUB-NAV BAR ─── */
-#product-subnav {
-  position: sticky;
-  top: 48px;
-  z-index: 999;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--color-border-light);
-  height: 52px;
-}
-
-.subnav-container {
-  max-width: 1024px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.subnav-title {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--color-text-primary);
-}
-
-.subnav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  list-style: none;
-}
-
 .subnav-links a {
-  font-size: 13px;
+  font-family: var(--font-meta);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-fluid);
 }
-.subnav-links a:hover { color: var(--color-accent-master); }
+.subnav-links a:hover {
+  color: var(--color-accent-master);
+}
 
 .subnav-cta-btn {
+  font-family: var(--font-meta) !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
   background: var(--color-accent-master);
-  color: var(--color-bg-white) !important;
-  font-size: 13px;
-  font-weight: 400;
-  padding: 6px 14px;
-  border-radius: 980px;
-  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+  color: #ffffff !important;
+  padding: 7px 16px;
+  border-radius: 2px;
+  border: 1px solid var(--color-accent-master);
+  transition: background-color var(--duration-fast) var(--ease-fluid), border-color var(--duration-fast) var(--ease-fluid);
 }
 .subnav-cta-btn:hover {
   background-color: var(--color-accent-master-hover);
-  transform: scale(1.02);
+  border-color: var(--color-accent-master-hover);
 }
 
-/* ─── PRODUCT HERO ─── */
+/* ─── PRODUCT HERO (MAGNOLIA EDITORIAL) ─── */
 #product-hero {
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding-top: 72px;
+  padding-bottom: 96px;
   text-align: center;
-  background: radial-gradient(60% 60% at 50% 35%, rgba(10, 61, 52, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, var(--color-bg-warm) 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .hero-content {
-  max-width: 980px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 0 22px;
+  padding: 0 24px;
 }
 
 .product-eyebrow {
-  font-size: 21px;
+  font-family: var(--font-meta);
+  font-size: 11.5px;
   font-weight: 600;
-  color: var(--color-accent-master);
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  margin-bottom: 16px;
+  display: inline-block;
+  position: relative;
+}
+.product-eyebrow::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent-gold);
+  margin: 8px auto 0 auto;
 }
 
 .product-headline {
-  font-size: clamp(48px, 6.5vw, 72px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5.8vw, 68px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
   color: var(--color-text-primary);
   margin-bottom: 24px;
 }
+.product-headline em {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-master);
+}
 
 .product-subheadline {
-  font-size: clamp(18px, 2.5vw, 22px);
+  font-size: clamp(16px, 2vw, 19px);
   color: var(--color-text-secondary);
-  max-width: 780px;
-  margin: 0 auto 24px auto;
-  line-height: 1.55;
+  max-width: 760px;
+  margin: 0 auto 32px auto;
+  line-height: 1.75;
 }
 
 .price-tag-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--color-accent-master-light);
+  gap: 10px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-gold);
   color: var(--color-accent-master);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 980px;
-  margin-bottom: 40px;
+  font-family: var(--font-meta);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 8px 22px;
+  border-radius: 2px;
+  margin-bottom: 50px;
+}
+.price-tag-badge span.check-icon {
+  color: var(--color-accent-gold-dark);
+  font-weight: 700;
 }
 
 /* PRODUCT SHOWCASE HERO GRAPHIC MOCKUP */
 .product-mockup-wrap {
-  max-width: 1024px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 22px;
+  padding: 0 24px;
   position: relative;
+}
+
+.product-mockup-frame {
+  background: #ffffff;
+  border: 1px solid var(--color-border-medium);
+  padding: 12px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .product-mockup-img {
   width: 100%;
-  border-radius: 24px;
-  box-shadow: var(--shadow-pro);
-  transition: transform var(--duration-smooth) var(--ease-fluid-out);
-  border: 1px solid rgba(10, 61, 52, 0.12);
+  border-radius: 4px;
+  display: block;
+  border: 1px solid var(--color-border-subtle);
+  transition: transform var(--duration-smooth) var(--ease-out-soft);
 }
-.product-mockup-img:hover {
-  transform: scale(1.01);
+.product-mockup-frame:hover .product-mockup-img {
+  transform: scale(1.008);
 }
 
-/* ─── SECTION COMMON ─── */
+/* ─── SECTION COMMON (MAGNOLIA EDITORIAL) ─── */
 .showcase-section {
-  padding: 120px 22px;
+  padding: 110px 32px;
+  position: relative;
 }
 
 .section-header {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 60px auto;
+  max-width: 720px;
+  margin: 0 auto 64px auto;
 }
 
 .section-eyebrow {
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--color-accent-master);
-  margin-bottom: 8px;
-}
-
-.section-title {
-  font-size: clamp(36px, 5vw, 56px);
+  font-family: var(--font-meta);
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--color-text-primary);
-}
-
-/* ─── BENTO GRID: HIGHLIGHTS ─── */
-.highlights-bento-grid {
-  max-width: 1024px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.highlight-bento-card {
-  background: var(--color-bg-gray);
-  border-radius: 28px;
-  padding: 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform var(--duration-fast) var(--ease-fluid);
-}
-.highlight-bento-card:hover {
-  transform: scale(1.015);
-}
-
-.h-card-tag {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-accent-master);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
   margin-bottom: 12px;
 }
 
-.h-card-title {
-  font-size: 26px;
-  font-weight: 600;
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4.2vw, 48px);
+  font-weight: 400;
   letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+.section-title em {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-master);
+}
+
+/* ─── BENTO GRID: HIGHLIGHTS (MAGNOLIA CARDS) ─── */
+.highlights-bento-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.highlight-bento-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  padding: 44px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+}
+.highlight-bento-card:hover {
+  border-color: var(--color-border-gold);
+  transform: translateY(-2px);
+}
+
+.h-card-top {
+  margin-bottom: 24px;
+}
+
+.h-card-number {
+  font-family: var(--font-editorial);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--color-accent-gold);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.h-card-tag {
+  font-family: var(--font-meta);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent-gold-dark);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.h-card-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   margin-bottom: 12px;
   color: var(--color-text-primary);
 }
 
 .h-card-desc {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-text-secondary);
-  line-height: 1.55;
+  line-height: 1.7;
 }
 
 /* ─── STORYTELLING FEATURE SECTIONS ─── */
 .feature-story-row {
-  max-width: 1024px;
-  margin: 0 auto 120px auto;
+  max-width: 1120px;
+  margin: 0 auto 100px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
   align-items: center;
 }
+.feature-story-row:last-child {
+  margin-bottom: 0;
+}
+
 .feature-story-row.reverse {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   direction: rtl;
 }
 .feature-story-row.reverse > * {
@@ -355,28 +615,38 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 }
 
 .story-text-col {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .story-tag {
-  font-size: 15px;
+  font-family: var(--font-meta);
+  font-size: 11px;
   font-weight: 600;
-  color: var(--color-accent-master);
-  margin-bottom: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  margin-bottom: 12px;
 }
 
 .story-heading {
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: 1.25;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+}
+.story-heading em {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent-master);
 }
 
 .story-body {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.75;
   margin-bottom: 24px;
 }
 
@@ -384,113 +654,154 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .story-bullets li {
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--color-text-primary);
   display: flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1.5;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.6;
 }
 .story-bullets li::before {
-  content: "✓";
-  color: var(--color-accent-master);
-  font-weight: bold;
+  content: "—";
+  color: var(--color-accent-gold-dark);
+  font-weight: 700;
 }
 
 .story-visual-card {
-  background: var(--color-bg-gray);
-  border-radius: 28px;
-  padding: 24px;
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+  padding: 14px;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
 }
 
 .story-visual-card img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 4px;
   display: block;
+  border: 1px solid var(--color-border-subtle);
 }
 
 /* ─── TECHNICAL SPECS COMPARISON GRID ─── */
 .specs-container {
-  max-width: 1024px;
+  max-width: 1120px;
   margin: 0 auto;
+}
+
+.specs-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  background: #ffffff;
 }
 
 .specs-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 40px;
-  font-size: 15px;
+  font-size: 14.5px;
+  min-width: 720px;
 }
 
 .specs-table th, .specs-table td {
-  padding: 20px 24px;
+  padding: 22px 28px;
   text-align: left;
   border-bottom: 1px solid var(--color-border-light);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .specs-table th {
-  font-size: 13px;
+  font-family: var(--font-meta);
+  font-size: 11px;
   font-weight: 600;
   color: var(--color-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.16em;
+  background: var(--color-bg-warm);
+}
+
+.specs-table th.highlight-col-head {
+  color: var(--color-accent-master);
+  background: rgba(10, 61, 52, 0.05);
+  border-left: 2px solid var(--color-accent-master);
 }
 
 .specs-table td.highlight-col {
-  background: var(--color-accent-master-light);
-  font-weight: 600;
+  background: rgba(10, 61, 52, 0.03);
+  font-weight: 500;
   color: var(--color-accent-master);
+  border-left: 2px solid var(--color-accent-master);
 }
 
-/* ─── PRICING CARD ─── */
+.specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── PRICING CARD (MAGNOLIA DARK EDITORIAL) ─── */
 .pricing-card-wrap {
-  max-width: 680px;
+  max-width: 820px;
   margin: 0 auto;
   background: var(--color-surface-dark);
   color: var(--color-text-light);
-  border-radius: 36px;
-  padding: 56px;
+  border: 1px solid rgba(197, 162, 115, 0.25);
+  border-radius: 6px;
+  padding: 64px 54px;
   text-align: center;
-  box-shadow: var(--shadow-pro);
+  position: relative;
+}
+
+.pricing-eyebrow {
+  font-family: var(--font-meta);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .pricing-title {
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+.pricing-title em {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  color: var(--color-accent-gold);
 }
 
 .pricing-sub {
-  font-size: 18px;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 24px;
+  font-size: 16px;
+  color: rgba(245, 247, 246, 0.75);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 36px auto;
 }
 
 .pricing-checklist {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   text-align: left;
-  max-width: 480px;
-  margin: 0 auto 40px auto;
-  font-size: 15px;
+  max-width: 520px;
+  margin: 0 auto 44px auto;
+  font-size: 14.5px;
 }
 
 .pricing-checklist li {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1.5;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.6;
+  color: rgba(245, 247, 246, 0.9);
 }
 .pricing-checklist li::before {
   content: "✓";
@@ -500,44 +811,61 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 
 .pricing-cta-btn {
   display: inline-block;
-  background: var(--color-accent-master);
-  color: var(--color-bg-white);
-  font-size: 17px;
-  font-weight: 500;
-  padding: 14px 36px;
-  border-radius: 980px;
+  background: var(--color-accent-gold);
+  color: var(--color-surface-dark);
+  font-family: var(--font-meta);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 38px;
+  border-radius: 2px;
   text-decoration: none;
-  transition: background-color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+  border: 1px solid var(--color-accent-gold);
+  transition: all var(--duration-fast) var(--ease-fluid);
 }
 .pricing-cta-btn:hover {
-  background-color: var(--color-accent-master-hover);
-  transform: scale(1.02);
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--color-accent-master);
 }
 
-/* ─── FAQ ACCORDION ─── */
+/* ─── FAQ ACCORDION (MAGNOLIA EDITORIAL) ─── */
 .faq-wrap {
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
 }
 
 .faq-item {
   border-bottom: 1px solid var(--color-border-light);
-  padding: 24px 0;
+  padding: 26px 0;
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--color-border-light);
 }
 
 .faq-question {
-  font-size: 19px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: -0.01em;
+  color: var(--color-text-primary);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
+  transition: color var(--duration-fast) var(--ease-fluid);
+}
+.faq-question:hover {
+  color: var(--color-accent-master);
 }
 
 .faq-toggle {
-  font-size: 20px;
-  color: var(--color-text-secondary);
+  font-family: var(--font-meta);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--color-accent-gold-dark);
   transition: transform var(--duration-fast) var(--ease-fluid);
 }
 .faq-item.open .faq-toggle {
@@ -548,53 +876,186 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.75;
   color: var(--color-text-secondary);
   transition: max-height var(--duration-fast) var(--ease-fluid), margin-top var(--duration-fast) var(--ease-fluid);
 }
 .faq-item.open .faq-answer {
-  max-height: 300px;
+  max-height: 320px;
   margin-top: 14px;
 }
 
-/* ─── FOOTER ─── */
+/* ─── MAGNOLIA 4-COLUMN EDITORIAL FOOTER ─── */
 #global-footer {
-  background: var(--color-bg-gray);
+  background: var(--color-bg-warm);
   border-top: 1px solid var(--color-border-light);
-  padding: 40px 22px;
-  font-size: 12px;
-  color: var(--color-text-secondary);
+  padding: 80px 32px 32px 32px;
 }
-.footer-container {
-  max-width: 1024px;
+
+.footer-top-grid {
+  max-width: 1140px;
+  margin: 0 auto 56px auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.3fr;
+  gap: 48px;
+}
+
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-brand-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+.footer-brand-title span {
+  color: var(--color-accent-master);
+  font-weight: 600;
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-meta);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-dark);
+  font-weight: 600;
+}
+
+.footer-brand-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 320px;
+}
+
+.footer-col-title {
+  font-family: var(--font-meta);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+}
+.footer-col-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 1.5px;
+  background: var(--color-accent-gold);
+}
+
+.footer-col-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col-list a {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-fluid), transform var(--duration-fast) var(--ease-fluid);
+  display: inline-block;
+}
+.footer-col-list a:hover {
+  color: var(--color-accent-master);
+  transform: translateX(3px);
+}
+
+.footer-contact-info {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-bottom-bar {
+  max-width: 1140px;
   margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: var(--font-meta);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
 }
-.footer-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-.footer-links a { color: var(--color-text-secondary); text-decoration: none; }
-.footer-links a:hover { color: var(--color-text-primary); }
 
-/* ─── SCROLL REVEAL ─── */
+/* ─── SCROLL REVEAL ANIMATION ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--duration-smooth) var(--ease-fluid-out), transform var(--duration-smooth) var(--ease-fluid-out);
+  transform: translateY(24px);
+  transition: opacity var(--duration-smooth) var(--ease-out-soft), transform var(--duration-smooth) var(--ease-out-soft);
 }
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-@media (max-width: 800px) {
-  .highlights-bento-grid, .feature-story-row, .feature-story-row.reverse {
+/* ─── RESPONSIVE DESIGN ─── */
+@media (max-width: 1024px) {
+  .highlights-bento-grid {
     grid-template-columns: 1fr;
+  }
+  .feature-story-row, .feature-story-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 860px) {
+  .top-utility-bar {
+    display: none;
+  }
+  #product-subnav {
+    top: 64px;
+  }
+  .nav-container {
+    height: 64px;
+    padding: 0 20px;
+  }
+  .nav-menu {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .subnav-links {
+    display: none;
+  }
+  .pricing-card-wrap {
+    padding: 44px 24px;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
 }
 </style>
@@ -602,16 +1063,49 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 
 <body>
 
-<!-- GLOBAL NAVIGATION -->
+<!-- TOP UTILITY STRIP -->
+<div class="top-utility-bar">
+  <div class="top-utility-left">
+    <span class="top-utility-tag">Hospitality Practice</span>
+    <span>Hotels &amp; Resorts · Cafés &amp; Restaurants · Clinics &amp; Wellness</span>
+  </div>
+  <div class="top-utility-right">
+    <a href="tel:+66891041992">📞 089 104 1992</a>
+    <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">💬 @rnbtransolution</a>
+    <a href="index.html#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี ↗</a>
+  </div>
+</div>
+
+<!-- GLOBAL NAVIGATION (MAGNOLIA EDITORIAL) -->
 <nav id="global-nav" aria-label="Global Navigation">
   <div class="nav-container">
-    <a href="./" class="nav-brand">
-      R&B <span>Transolution</span>
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-title">R&B <span>Transolution</span></div>
+      <div class="nav-brand-subtitle">Hospitality Consulting</div>
     </a>
+    
     <ul class="nav-menu">
-      <li><a href="./#philosophy">แนวคิด</a></li>
-      <li><a href="./#services">บริการทั้งหมด</a></li>
-      <li><a href="./#contact">ติดต่อเรา</a></li>
+      <li><a href="index.html#philosophy">แนวคิด</a></li>
+      <li><a href="index.html#strengths">จุดเด่น</a></li>
+      <li><a href="index.html#services">บริการ</a></li>
+      <li><a href="showcase.html" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
+      <li><a href="index.html#contact" class="nav-btn">ติดต่อเรา</a></li>
+    </ul>
+
+    <button class="mobile-nav-toggle" onclick="toggleMobileDrawer()" aria-label="Toggle navigation">
+      Menu ☰
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <ul class="mobile-drawer-list">
+      <li><a href="index.html#hero" onclick="toggleMobileDrawer()">หน้าแรก</a></li>
+      <li><a href="index.html#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
+      <li><a href="index.html#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
+      <li><a href="index.html#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
+      <li><a href="showcase.html" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard ↗</a></li>
+      <li><a href="index.html#contact" onclick="toggleMobileDrawer()">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
 </nav>
@@ -619,83 +1113,101 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 <!-- PRODUCT STICKY SUB-NAVIGATION BAR -->
 <header id="product-subnav">
   <div class="subnav-container">
-    <div class="subnav-title">R&B SOP Standard</div>
+    <div class="subnav-brand-wrap">
+      <div class="subnav-title">R&B SOP Standard™</div>
+      <span class="subnav-badge">Excellence System</span>
+    </div>
     <ul class="subnav-links">
       <li><a href="#overview">ภาพรวม</a></li>
       <li><a href="#features">คุณสมบัติ</a></li>
       <li><a href="#specs">ข้อมูลเปรียบเทียบ</a></li>
       <li><a href="#pricing">แพ็กเกจจัดทำ</a></li>
-      <li><a href="./#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
+      <li><a href="#faq">คำถามที่พบบ่อย</a></li>
+      <li><a href="index.html#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
     </ul>
   </div>
 </header>
 
 <main>
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (MAGNOLIA EDITORIAL) -->
   <section id="product-hero">
     <div class="hero-content reveal">
-      <div class="product-eyebrow">R&B SOP Standard</div>
-      <h1 class="product-headline">Operational Perfection.<br>Built to Scale.</h1>
-      <p class="product-subheadline">ยกระดับคุณภาพบริการ ควบคุมมาตรฐานทุกแผนก<br>และวางรากฐานที่มั่นคงเพื่อการขยายสาขาอย่างมืออาชีพ<br>ด้วยระบบคู่มือปฏิบัติงานมาตรฐานระดับโรงแรม 5 ดาว</p>
+      <div class="product-eyebrow">R&B SOP Standard · Operational Excellence</div>
+      <h1 class="product-headline">Operational Perfection.<br><em>Built to Scale.</em></h1>
+      <p class="product-subheadline">ยกระดับคุณภาพบริการ ควบคุมมาตรฐานทุกแผนก และวางรากฐานที่มั่นคงเพื่อการขยายสาขาอย่างมืออาชีพ ด้วยระบบคู่มือปฏิบัติงานมาตรฐานระดับโรงแรม 5 ดาว</p>
       
       <div class="price-tag-badge">
-        <span>✓</span> ออกแบบเฉพาะสำหรับธุรกิจของคุณ · พร้อมจัดฝึกอบรมทีมงานจริง
+        <span class="check-icon">✓</span> ออกแบบเฉพาะสำหรับธุรกิจของคุณ · พร้อมจัดฝึกอบรมทีมงานจริง
       </div>
     </div>
 
     <!-- MOCKUP DISPLAY -->
     <div class="product-mockup-wrap reveal" style="transition-delay: 0.15s">
-      <img src="sop_suite_mockup.jpg" alt="R&B SOP Standard Suite Mockup" class="product-mockup-img">
+      <div class="product-mockup-frame">
+        <img src="assets/sop_suite_mockup.jpg" alt="R&B SOP Standard Suite Mockup" class="product-mockup-img">
+      </div>
     </div>
   </section>
 
-  <!-- HIGHLIGHTS BENTO GRID -->
+  <!-- HIGHLIGHTS BENTO GRID (MAGNOLIA EDITORIAL) -->
   <section id="overview" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="section-header reveal">
       <div class="section-eyebrow">Core Standards</div>
-      <h2 class="section-title">ออกแบบอย่างปราณีต<br>เพื่อมาตรฐานการบริการ<br>ที่ไม่สะดุด</h2>
+      <h2 class="section-title">ออกแบบอย่างปราณีต<br><em>เพื่อมาตรฐานการบริการที่ไม่สะดุด</em></h2>
     </div>
 
     <div class="highlights-bento-grid">
       <div class="highlight-bento-card reveal">
-        <div class="h-card-tag">Excellence</div>
-        <h3 class="h-card-title">5-Star Executive Blueprint</h3>
-        <p class="h-card-desc">เรียบเรียงและวางโครงสร้างมาตรฐานโดยผู้เชี่ยวชาญ<br>ที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี<br>ถ่ายทอดเป็นขั้นตอนที่ปฏิบัติได้จริง</p>
+        <div class="h-card-top">
+          <div class="h-card-number">01</div>
+          <div class="h-card-tag">Excellence</div>
+          <h3 class="h-card-title">5-Star Executive Blueprint</h3>
+        </div>
+        <p class="h-card-desc">เรียบเรียงและวางโครงสร้างมาตรฐานโดยผู้เชี่ยวชาญที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี ถ่ายทอดเป็นขั้นตอนที่ปฏิบัติได้จริง</p>
       </div>
 
       <div class="highlight-bento-card reveal" style="transition-delay: 0.1s">
-        <div class="h-card-tag">Visual Clarity</div>
-        <h3 class="h-card-title">Step-by-Step Flowcharts</h3>
-        <p class="h-card-desc">เปลี่ยนคู่มือหนาทึบแบบเดิม เป็นผังกระบวนการทำงานที่เข้าใจง่าย<br>พร้อมเช็คลิสต์ประจำวัน และ Recipe Cards รูปภาพคมชัด</p>
+        <div class="h-card-top">
+          <div class="h-card-number">02</div>
+          <div class="h-card-tag">Visual Clarity</div>
+          <h3 class="h-card-title">Step-by-Step Flowcharts</h3>
+        </div>
+        <p class="h-card-desc">เปลี่ยนคู่มือหนาทึบแบบเดิม เป็นผังกระบวนการทำงานที่เข้าใจง่าย พร้อมเช็คลิสต์ประจำวัน และ Recipe Cards รูปภาพคมชัด</p>
       </div>
 
       <div class="highlight-bento-card reveal" style="transition-delay: 0.15s">
-        <div class="h-card-tag">Onboarding</div>
-        <h3 class="h-card-title">70% Faster Staff Training</h3>
-        <p class="h-card-desc">ลดระยะเวลาและภาระในการเทรนพนักงานใหม่<br>ช่วยให้ทีมงานทำงานทดแทนกันได้อย่างราบรื่น ไร้ข้อผิดพลาด</p>
+        <div class="h-card-top">
+          <div class="h-card-number">03</div>
+          <div class="h-card-tag">Onboarding</div>
+          <h3 class="h-card-title">70% Faster Staff Training</h3>
+        </div>
+        <p class="h-card-desc">ลดระยะเวลาและภาระในการเทรนพนักงานใหม่ ช่วยให้ทีมงานทำงานทดแทนกันได้อย่างราบรื่น ปฏิบัติงานได้ถูกต้องตั้งแต่วันแรก</p>
       </div>
 
       <div class="highlight-bento-card reveal" style="transition-delay: 0.2s">
-        <div class="h-card-tag">Coverage</div>
-        <h3 class="h-card-title">End-to-End Department Scope</h3>
-        <p class="h-card-desc">ครอบคลุมทุกแผนกหลัก ตั้งแต่ Front Office, Housekeeping,<br>F&amp;B Service, Kitchen Operations ไปจนถึง Spa และ Management</p>
+        <div class="h-card-top">
+          <div class="h-card-number">04</div>
+          <div class="h-card-tag">Coverage</div>
+          <h3 class="h-card-title">End-to-End Department Scope</h3>
+        </div>
+        <p class="h-card-desc">ครอบคลุมทุกแผนกหลัก ตั้งแต่ Front Office, Housekeeping, F&amp;B Service, Kitchen Operations ไปจนถึง Spa และ Management</p>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE DEEP-DIVE SECTIONS -->
+  <!-- FEATURE DEEP-DIVE SECTIONS (MAGNOLIA EDITORIAL) -->
   <section id="features" class="showcase-section">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Features</div>
-      <h2 class="section-title">โครงสร้างมาตรฐาน SOP ทุกมิติ</h2>
+      <div class="section-eyebrow">Departmental Scope &amp; Features</div>
+      <h2 class="section-title">โครงสร้างมาตรฐาน SOP <em>ทุกมิติการดำเนินงาน</em></h2>
     </div>
 
-    <!-- Feature Row 1 -->
+    <!-- Feature Row 1: Front-of-House -->
     <div class="feature-story-row reveal">
       <div class="story-text-col">
-        <div class="story-tag">Front-of-House Excellence</div>
-        <h3 class="story-heading">มาตรฐานงานบริการหน้าบ้าน<br>ต้อนรับประทับใจระดับสากล</h3>
-        <p class="story-body">จัดทำคู่มือขั้นตอนตั้งแต่ Guest Arrival, Check-in<br>และ Concierge Service ไปจนถึงการรับมือข้อร้องเรียน<br>(Complaint Handling) อย่างมืออาชีพ</p>
+        <div class="story-tag">01 · Front-of-House Standard</div>
+        <h3 class="story-heading">มาตรฐานงานบริการหน้าบ้าน<br><em>ต้อนรับประทับใจระดับสากล</em></h3>
+        <p class="story-body">จัดทำคู่มือขั้นตอนตั้งแต่ Guest Arrival, Check-in และ Concierge Service ไปจนถึงการรับมือข้อร้องเรียน (Complaint Handling) อย่างมืออาชีพ</p>
         <ul class="story-bullets">
           <li>ขั้นตอน Check-in &amp; Check-out ลื่นไหลไร้ข้อผิดพลาด</li>
           <li>คู่มือ Service Mindset &amp; Grooming บุคลิกภาพพนักงาน</li>
@@ -703,16 +1215,16 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         </ul>
       </div>
       <div class="story-visual-card">
-        <img src="sop_flowchart_mockup.jpg" alt="Guest Arrival & Check-In SOP Workflow Diagram">
+        <img src="assets/sop_flowchart_mockup.jpg" alt="Guest Arrival & Check-In SOP Workflow Diagram">
       </div>
     </div>
 
-    <!-- Feature Row 2 (Reverse) -->
+    <!-- Feature Row 2: Kitchen & Recipe SOPs (Reverse) -->
     <div class="feature-story-row reverse reveal">
       <div class="story-text-col">
-        <div class="story-tag">Back-of-House &amp; Recipe SOPs</div>
-        <h3 class="story-heading">มาตรฐานงานหลังบ้านและสูตรอาหาร<br>ควบคุมต้นทุนและคุณภาพคงที่</h3>
-        <p class="story-body">จัดทำคู่มือสูตรมาตรฐาน (Recipe SOP Cards)<br>รายละเอียดปริมาณวัตถุดิบ ขั้นตอนการปรุง รูปภาพประกอบ<br>และคำนวณต้นทุนต่อจานอย่างแม่นยำ</p>
+        <div class="story-tag">02 · Kitchen &amp; Recipe Engineering</div>
+        <h3 class="story-heading">มาตรฐานงานหลังบ้านและสูตรอาหาร<br><em>ควบคุมต้นทุนและคุณภาพคงที่</em></h3>
+        <p class="story-body">จัดทำคู่มือสูตรมาตรฐาน (Recipe SOP Cards) รายละเอียดปริมาณวัตถุดิบ ขั้นตอนการปรุง รูปภาพประกอบ และคำนวณต้นทุนต่อจานอย่างแม่นยำ</p>
         <ul class="story-bullets">
           <li>Recipe Standard Cards ภาษาหน้างานอ่านง่าย ชั่งวัดแม่นยำ</li>
           <li>เช็คลิสต์ตรวจความสะอาดและ Hygiene Standards ประจำวัน</li>
@@ -723,123 +1235,190 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <img src="https://images.pexels.com/photos/4252139/pexels-photo-4252139.jpeg?auto=compress&w=800" alt="Recipe Standard SOPs Visual">
       </div>
     </div>
+
+    <!-- Feature Row 3: PMS & Operations Dashboard -->
+    <div class="feature-story-row reveal">
+      <div class="story-text-col">
+        <div class="story-tag">03 · Operations &amp; Digital Integration</div>
+        <h3 class="story-heading">ผสานระบบการจัดการ<br><em>สู่การควบคุมคุณภาพแบบไร้รอยต่อ</em></h3>
+        <p class="story-body">เชื่อมโยงขั้นตอนปฏิบัติการเข้ากับเทคโนโลยีและระบบ PMS บริหารห้องพักและจุดขาย ตรวจสอบรายงานแบบเรียลไทม์ และประเมินผล KPI ทีมงานได้อย่างชัดเจน</p>
+        <ul class="story-bullets">
+          <li>บูรณาการเชื่อมต่อระบบ Hotel PMS &amp; Cloud Operations</li>
+          <li>ระบบ Daily Duty Log และ Manager On Duty Handover ดิจิทัล</li>
+          <li>รายงานวิเคราะห์ผลดำเนินงานและการปฏิบัติตามมาตรฐาน SOP</li>
+        </ul>
+      </div>
+      <div class="story-visual-card">
+        <img src="assets/pms_dashboard_mockup.jpg" alt="Hotel PMS & Operations Dashboard Mockup">
+      </div>
+    </div>
   </section>
 
-  <!-- TECHNICAL SPECS COMPARISON -->
+  <!-- TECHNICAL SPECS COMPARISON (MAGNOLIA EDITORIAL) -->
   <section id="specs" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="specs-container">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Comparison</div>
-        <h2 class="section-title">ทำไมธุรกิจบริการต้องมี R&B SOP Standard</h2>
+        <div class="section-eyebrow">Competitive Advantage</div>
+        <h2 class="section-title">ทำไมธุรกิจบริการ <em>ต้องมี R&B SOP Standard</em></h2>
       </div>
 
-      <table class="specs-table reveal">
-        <thead>
-          <tr>
-            <th>มิติการดำเนินงาน</th>
-            <th class="highlight-col">R&B SOP Standard</th>
-            <th>การทำงานแบบไร้ระบบมาตรฐาน</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ความสม่ำเสมอของบริการ</strong></td>
-            <td class="highlight-col">คุณภาพเท่ากัน 100% ทุกคน ทุกสาขา</td>
-            <td>ขึ้นอยู่กับพนักงานแต่ละคน (บริการไม่นิ่ง)</td>
-          </tr>
-          <tr>
-            <td><strong>เวลาเทรนพนักงานใหม่</strong></td>
-            <td class="highlight-col">3 – 5 วัน (มีผังและรูปเล่มชัดเจน)</td>
-            <td>2 – 4 สัปดาห์ (ใช้การบอกเล่าปากต่อปาก)</td>
-          </tr>
-          <tr>
-            <td><strong>การควบคุมต้นทุนวัตถุดิบ</strong></td>
-            <td class="highlight-col">คุมต้นทุนต่อจานได้ตามเป้าหมาย</td>
-            <td>วัตถุดิบรั่วไหล รสชาติไม่คงที่</td>
-          </tr>
-          <tr>
-            <td><strong>การขยายสาขา (Scale-up)</strong></td>
-            <td class="highlight-col">พร้อมก็อปปี้โมเดลเปิดสาขาใหม่ได้ทันที</td>
-            <td>ขยายสาขายาก ติดขัดเรื่องการคุมคุณภาพ</td>
-          </tr>
-          <tr>
-            <td><strong>รูปแบบเอกสาร</strong></td>
-            <td class="highlight-col">รูปเล่ม PDF + Digital Diagram ระดับ 5 ดาว</td>
-            <td>ไม่มีเอกสาร หรือมีแค่ข้อความยาวอ่านยาก</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="specs-table-wrap reveal">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>มิติการดำเนินงาน</th>
+              <th class="highlight-col-head">R&B SOP Standard (Recommended)</th>
+              <th>การทำงานแบบไร้ระบบมาตรฐาน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ความสม่ำเสมอของบริการ</strong></td>
+              <td class="highlight-col">คุณภาพเท่ากัน 100% ทุกคน ทุกสาขา</td>
+              <td>ขึ้นอยู่กับพนักงานแต่ละคน (บริการไม่นิ่ง)</td>
+            </tr>
+            <tr>
+              <td><strong>เวลาเทรนพนักงานใหม่</strong></td>
+              <td class="highlight-col">3 – 5 วัน (มีผังและรูปเล่มชัดเจน)</td>
+              <td>2 – 4 สัปดาห์ (ใช้การบอกเล่าปากต่อปาก)</td>
+            </tr>
+            <tr>
+              <td><strong>การควบคุมต้นทุนวัตถุดิบ</strong></td>
+              <td class="highlight-col">คุมต้นทุนต่อจานได้ตามเป้าหมาย</td>
+              <td>วัตถุดิบรั่วไหล รสชาติไม่คงที่</td>
+            </tr>
+            <tr>
+              <td><strong>การขยายสาขา (Scale-up)</strong></td>
+              <td class="highlight-col">พร้อมก็อปปี้โมเดลเปิดสาขาใหม่ได้ทันที</td>
+              <td>ขยายสาขายาก ติดขัดเรื่องการคุมคุณภาพ</td>
+            </tr>
+            <tr>
+              <td><strong>รูปแบบเอกสารและระบบ</strong></td>
+              <td class="highlight-col">รูปเล่ม PDF + Digital Diagram ระดับ 5 ดาว</td>
+              <td>ไม่มีเอกสาร หรือมีแค่ข้อความยาวอ่านยาก</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <!-- PRICING CARD SECTION -->
+  <!-- PRICING CARD SECTION (MAGNOLIA DARK EDITORIAL) -->
   <section id="pricing" class="showcase-section">
     <div class="pricing-card-wrap reveal">
-      <div class="pricing-title">Tailor-Made SOP Engineering</div>
-      <p class="pricing-sub">ออกแบบและจัดทำคู่มือ SOP เฉพาะสำหรับโครงสร้างธุรกิจและงบประมาณของคุณ</p>
+      <div class="pricing-eyebrow">Tailor-Made Consulting Engagement</div>
+      <h2 class="pricing-title">Bespoke SOP Engineering<br><em>&amp; Implementation</em></h2>
+      <p class="pricing-sub">ออกแบบและจัดทำคู่มือ SOP เฉพาะสำหรับโครงสร้างธุรกิจและงบประมาณของคุณ พร้อมฝึกอบรมทีมงานจริง</p>
 
       <ul class="pricing-checklist">
-        <li>เข้าสำรวจหน้างานและสัมภาษณ์ทีมงานเชิงลึก</li>
+        <li>เข้าสำรวจหน้างานและสัมภาษณ์ทีมงานเชิงลึก (Onsite Audit)</li>
         <li>จัดทำคู่มือปฏิบัติงานมาตรฐานฉบับเต็ม (PDF &amp; Print Ready)</li>
         <li>จัดทำผังกระบวนการทำงาน Diagram &amp; Daily Checklists</li>
         <li>จัดทำ Recipe Standard Cards พร้อมวิเคราะห์ต้นทุนต่อจาน</li>
-        <li>บริการ Onsite / Online Interactive Workshop ฝึกอบรมทีมงาน</li>
+        <li>บริการ Onsite / Online Interactive Workshop ฝึกอบรมทีมงานจริง</li>
       </ul>
 
-      <a href="./#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี</a>
+      <a href="index.html#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี ↗</a>
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
-  <section class="showcase-section" style="background: var(--color-bg-gray);">
+  <!-- FAQ SECTION (MAGNOLIA EDITORIAL) -->
+  <section id="faq" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="faq-wrap">
       <div class="section-header reveal">
-        <div class="section-eyebrow">FAQ</div>
-        <h2 class="section-title">คำถามที่พบบ่อยเกี่ยวกับการทำ SOP</h2>
+        <div class="section-eyebrow">Frequently Asked Questions</div>
+        <h2 class="section-title">คำถามที่พบบ่อย <em>เกี่ยวกับการทำ SOP</em></h2>
       </div>
 
       <div class="faq-item reveal">
         <div class="faq-question" onclick="toggleFaq(this)">
-          ใช้ระยะเวลาในการจัดทำ SOP นานเท่าไหร่?
+          <span>ใช้ระยะเวลาในการจัดทำ SOP นานเท่าไหร่?</span>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          ขึ้นอยู่กับขนาดและจำนวนแผนกของธุรกิจ โดยเฉลี่ยใช้เวลาประมาณ 2 ถึง 4 สัปดาห์<br>ครอบคลุมตั้งแต่การสัมภาษณ์ เก็บข้อมูล เรียบเรียงคู่มือ ไปจนถึงการทดลองใช้และเทรนนิ่ง
+          ขึ้นอยู่กับขนาดและจำนวนแผนกของธุรกิจ โดยเฉลี่ยใช้เวลาประมาณ 2 ถึง 4 สัปดาห์ ครอบคลุมตั้งแต่การสัมภาษณ์ เก็บข้อมูล เรียบเรียงคู่มือ ไปจนถึงการทดลองใช้และเทรนนิ่ง
         </div>
       </div>
 
       <div class="faq-item reveal" style="transition-delay: 0.1s">
         <div class="faq-question" onclick="toggleFaq(this)">
-          ถ้าธุรกิจมีขั้นตอนการทำงานเฉพาะตัว จะปรับแต่งได้ไหม?
+          <span>ถ้าธุรกิจมีขั้นตอนการทำงานเฉพาะตัว จะปรับแต่งได้ไหม?</span>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          ได้ 100% เราออกแบบ SOP แบบ Tailor-made โดยยึดบริบท วัฒนธรรมองค์กร<br>และลักษณะการทำงานจริงของธุรกิจคุณเป็นหลัก ไม่ใช่การใช้เทมเพลตสำเร็จรูปทั่วไป
+          ได้ 100% เราออกแบบ SOP แบบ Tailor-made โดยยึดบริบท วัฒนธรรมองค์กร และลักษณะการทำงานจริงของธุรกิจคุณเป็นหลัก ไม่ใช่การใช้เทมเพลตสำเร็จรูปทั่วไป
         </div>
       </div>
 
       <div class="faq-item reveal" style="transition-delay: 0.15s">
         <div class="faq-question" onclick="toggleFaq(this)">
-          มีการฝึกอบรมพนักงานหลังจัดทำคู่มือเสร็จหรือไม่?
+          <span>มีการฝึกอบรมพนักงานหลังจัดทำคู่มือเสร็จหรือไม่?</span>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          มีครับ ทีมงาน R&B Transolution จะจัดอบรม Hospitality Workshop เพื่อถ่ายทอด SOP ให้กับพนักงานทุกคน<br>มั่นใจว่าทีมสามารถนำไปปฏิบัติจริงได้อย่างถูกต้อง
+          มีครับ ทีมงาน R&B Transolution จะจัดอบรม Hospitality Workshop เพื่อถ่ายทอด SOP ให้กับพนักงานทุกคน มั่นใจว่าทีมสามารถนำไปปฏิบัติจริงได้อย่างถูกต้อง
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- GLOBAL FOOTER -->
+<!-- MAGNOLIA 4-COLUMN EDITORIAL FOOTER -->
 <footer id="global-footer">
-  <div class="footer-container">
-    <div>© 2026 R&B Transolution. All rights reserved. Create Beyond Standard</div>
-    <ul class="footer-links">
-      <li><a href="./">หน้าแรก</a></li>
-      <li><a href="./#services">บริการทั้งหมด</a></li>
-      <li><a href="./#contact">ติดต่อเรา</a></li>
-    </ul>
+  <div class="footer-top-grid">
+    <!-- Col 1: Brand Info -->
+    <div class="footer-col-brand">
+      <div class="footer-brand-title">R&B <span>Transolution</span></div>
+      <div class="footer-brand-tagline">Hospitality Consulting</div>
+      <p class="footer-brand-desc">
+        Create Beyond Standard — ที่ปรึกษาธุรกิจบริการครบวงจร ยกระดับและพลิกโฉมธุรกิจ Hospitality ด้วยกลยุทธ์และมาตรฐาน SOP ที่สร้างผลลัพธ์อย่างเป็นรูปธรรม
+      </p>
+    </div>
+
+    <!-- Col 2: Navigation -->
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-col-list">
+        <li><a href="index.html#hero">หน้าแรก (Home)</a></li>
+        <li><a href="index.html#philosophy">แนวคิด (Our Philosophy)</a></li>
+        <li><a href="index.html#strengths">จุดเด่น (Our Strengths)</a></li>
+        <li><a href="index.html#services">บริการทั้งหมด (Services)</a></li>
+        <li><a href="showcase.html">SOP Standard Showcase ↗</a></li>
+        <li><a href="index.html#contact">นัดหมายปรึกษา (Contact)</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Solutions -->
+    <div>
+      <div class="footer-col-title">Solutions</div>
+      <ul class="footer-col-list">
+        <li><a href="showcase.html">SOP Creation &amp; Engineering</a></li>
+        <li><a href="index.html#services">Recipe SOPs</a></li>
+        <li><a href="index.html#services">Menu Engineering</a></li>
+        <li><a href="index.html#services">Monthly P&amp;L Report</a></li>
+        <li><a href="index.html#services">Hospitality Workshop</a></li>
+        <li><a href="index.html#services">SWOT Analysis</a></li>
+        <li><a href="index.html#services">R&B Trans PMS</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: Connect -->
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-contact-info">
+        <div><strong>Tel:</strong> 089 104 1992</div>
+        <div><strong>LINE:</strong> @rnbtransolution</div>
+        <div><strong>Email:</strong> rnb.transolution@gmail.com</div>
+        <div style="margin-top: 8px;"><strong>Office:</strong> กรุงเทพมหานคร, ประเทศไทย</div>
+        <div style="margin-top: 4px; color: var(--color-accent-gold-dark);">Mon – Sat: 09:00 – 18:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom Bar -->
+  <div class="footer-bottom-bar">
+    <div>© 2026 R&B Transolution - Hospitality Consulting. All rights reserved.</div>
+    <div>Create Beyond Standard · Hospitality Consulting</div>
   </div>
 </footer>
 
@@ -848,6 +1427,14 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 function toggleFaq(el) {
   const item = el.parentElement;
   item.classList.toggle('open');
+}
+
+// ─── MOBILE DRAWER TOGGLE
+function toggleMobileDrawer() {
+  const drawer = document.getElementById('mobile-drawer');
+  if (drawer) {
+    drawer.classList.toggle('open');
+  }
 }
 
 // ─── SCROLL REVEAL (INTERSECTION OBSERVER)
