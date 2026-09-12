@@ -9,6 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+<script>
+// Clean URL Normalization (Strips 'index.html' from browser address bar)
+(function() {
+  try {
+    if (window.location.protocol !== 'file:') {
+      var p = window.location.pathname;
+      if (p.endsWith('/index.html') || p === '/index.html') {
+        var clean = p.replace(/\/index\.html$/, '/') || '/';
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+
 <style>
 /* ─── MAGNOLIA EDITORIAL LUXURY DESIGN SYSTEM ─── */
 :root {
@@ -1072,24 +1087,24 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <div class="top-utility-right">
     <a href="tel:+66891041992">📞 089 104 1992</a>
     <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">💬 @rnbtransolution</a>
-    <a href="index.html#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี ↗</a>
+    <a href="./#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี ↗</a>
   </div>
 </div>
 
 <!-- GLOBAL NAVIGATION (MAGNOLIA EDITORIAL) -->
 <nav id="global-nav" aria-label="Global Navigation">
   <div class="nav-container">
-    <a href="index.html" class="nav-brand">
+    <a href="./" class="nav-brand">
       <div class="nav-brand-title">R&B <span>Transolution</span></div>
       <div class="nav-brand-subtitle">Hospitality Consulting</div>
     </a>
     
     <ul class="nav-menu">
-      <li><a href="index.html#philosophy">แนวคิด</a></li>
-      <li><a href="index.html#strengths">จุดเด่น</a></li>
-      <li><a href="index.html#services">บริการ</a></li>
+      <li><a href="./#philosophy">แนวคิด</a></li>
+      <li><a href="./#strengths">จุดเด่น</a></li>
+      <li><a href="./#services">บริการ</a></li>
       <li><a href="showcase.html" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
-      <li><a href="index.html#contact" class="nav-btn">ติดต่อเรา</a></li>
+      <li><a href="./#contact" class="nav-btn">ติดต่อเรา</a></li>
     </ul>
 
     <button class="mobile-nav-toggle" onclick="toggleMobileDrawer()" aria-label="Toggle navigation">
@@ -1100,12 +1115,12 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <!-- Mobile Navigation Drawer -->
   <div id="mobile-drawer" class="mobile-drawer">
     <ul class="mobile-drawer-list">
-      <li><a href="index.html#hero" onclick="toggleMobileDrawer()">หน้าแรก</a></li>
-      <li><a href="index.html#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
-      <li><a href="index.html#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
-      <li><a href="index.html#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
+      <li><a href="./#hero" onclick="toggleMobileDrawer()">หน้าแรก</a></li>
+      <li><a href="./#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
+      <li><a href="./#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
+      <li><a href="./#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
       <li><a href="showcase.html" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard ↗</a></li>
-      <li><a href="index.html#contact" onclick="toggleMobileDrawer()">ติดต่อเรา (Contact Us)</a></li>
+      <li><a href="./#contact" onclick="toggleMobileDrawer()">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
 </nav>
@@ -1123,7 +1138,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="#specs">ข้อมูลเปรียบเทียบ</a></li>
       <li><a href="#pricing">แพ็กเกจจัดทำ</a></li>
       <li><a href="#faq">คำถามที่พบบ่อย</a></li>
-      <li><a href="index.html#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
+      <li><a href="./#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
     </ul>
   </div>
 </header>
@@ -1318,7 +1333,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <li>บริการ Onsite / Online Interactive Workshop ฝึกอบรมทีมงานจริง</li>
       </ul>
 
-      <a href="index.html#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี ↗</a>
+      <a href="./#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี ↗</a>
     </div>
   </section>
 
@@ -1379,12 +1394,12 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     <div>
       <div class="footer-col-title">Navigation</div>
       <ul class="footer-col-list">
-        <li><a href="index.html#hero">หน้าแรก (Home)</a></li>
-        <li><a href="index.html#philosophy">แนวคิด (Our Philosophy)</a></li>
-        <li><a href="index.html#strengths">จุดเด่น (Our Strengths)</a></li>
-        <li><a href="index.html#services">บริการทั้งหมด (Services)</a></li>
+        <li><a href="./#hero">หน้าแรก (Home)</a></li>
+        <li><a href="./#philosophy">แนวคิด (Our Philosophy)</a></li>
+        <li><a href="./#strengths">จุดเด่น (Our Strengths)</a></li>
+        <li><a href="./#services">บริการทั้งหมด (Services)</a></li>
         <li><a href="showcase.html">SOP Standard Showcase ↗</a></li>
-        <li><a href="index.html#contact">นัดหมายปรึกษา (Contact)</a></li>
+        <li><a href="./#contact">นัดหมายปรึกษา (Contact)</a></li>
       </ul>
     </div>
 
@@ -1393,12 +1408,12 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <div class="footer-col-title">Solutions</div>
       <ul class="footer-col-list">
         <li><a href="showcase.html">SOP Creation &amp; Engineering</a></li>
-        <li><a href="index.html#services">Recipe SOPs</a></li>
-        <li><a href="index.html#services">Menu Engineering</a></li>
-        <li><a href="index.html#services">Monthly P&amp;L Report</a></li>
-        <li><a href="index.html#services">Hospitality Workshop</a></li>
-        <li><a href="index.html#services">SWOT Analysis</a></li>
-        <li><a href="index.html#services">R&B Trans PMS</a></li>
+        <li><a href="./#services">Recipe SOPs</a></li>
+        <li><a href="./#services">Menu Engineering</a></li>
+        <li><a href="./#services">Monthly P&amp;L Report</a></li>
+        <li><a href="./#services">Hospitality Workshop</a></li>
+        <li><a href="./#services">SWOT Analysis</a></li>
+        <li><a href="./#services">R&B Trans PMS</a></li>
       </ul>
     </div>
 

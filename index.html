@@ -9,6 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
+<script>
+// Clean URL Normalization (Strips 'index.html' from browser address bar)
+(function() {
+  try {
+    if (window.location.protocol !== 'file:') {
+      var p = window.location.pathname;
+      if (p.endsWith('/index.html') || p === '/index.html') {
+        var clean = p.replace(/\/index\.html$/, '/') || '/';
+        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+
 <style>
 /* ─── MAGNOLIA EDITORIAL LUXURY DESIGN SYSTEM ─── */
 :root {
