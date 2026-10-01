@@ -134,8 +134,9 @@ git commit -m "feat: render R&B SOP TikTok promo video"
 - Verify: `edit/AUDIO-CREDITS.md`
 - Verify unchanged: `index.html`, `showcase.html`, all source assets
 
-- [ ] **Step 1: Run the complete unit suite.** Run `python3 -m unittest edit.test_render_sop_tiktok -v`; expected: all tests pass.
-- [ ] **Step 2: Run the final `ffprobe` acceptance command.** Confirm a 25–30 second 9:16 1080 × 1920 MP4 with audio and video.
+- [x] **Step 1: Run the complete unit suite.** Run `python3 -m unittest edit.test_render_sop_tiktok -v`; expected: all tests pass.
+- [x] **Step 2: Run the final `ffprobe` acceptance command.** Confirm a 25–30 second 9:16 1080 × 1920 MP4 with audio and video.
 - [ ] **Step 3: Reinspect the final export.** Confirm Thai narration is understandable, instrumental music contains no voice/recognizable borrowed melody, no clipping or cut-off words, text remains within TikTok safe areas, and final CTA is legible.
-- [ ] **Step 4: Check project scope.** Run `git status --short` and `git diff --check`; expected changed files are limited to `edit/` and the approved planning documents; website HTML remains unchanged.
+- Verification note: all scenes and transitions were visually inspected; the 30-second output has stereo AAC at 48 kHz and a measured -6.1 dBFS sample peak. Audible listening was unavailable in this environment and remains for human review.
+- [x] **Step 4: Check project scope.** Run `git status --short` and `git diff --check`; expected changed files are limited to `edit/` and the approved planning documents; website HTML remains unchanged.
 - [ ] **Step 5: Deliver the MP4 path and summarize its verified format, length, audio, and any caveat.**
