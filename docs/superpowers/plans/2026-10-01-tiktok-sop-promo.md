@@ -139,4 +139,5 @@ git commit -m "feat: render R&B SOP TikTok promo video"
 - [ ] **Step 3: Reinspect the final export.** Confirm Thai narration is understandable, instrumental music contains no voice/recognizable borrowed melody, no clipping or cut-off words, text remains within TikTok safe areas, and final CTA is legible.
 - Verification note: all scenes and transitions were visually inspected; the 30-second output has stereo AAC at 48 kHz and a measured -6.0 dBFS sample peak. Audible listening was unavailable in this environment and remains for human review.
 - [x] **Step 4: Check project scope.** Run `git status --short` and `git diff --check`; expected changed files are limited to `edit/` and the approved planning documents; website HTML remains unchanged.
-- [ ] **Step 5: Deliver the MP4 path and summarize its verified format, length, audio, and any caveat.**
+- [x] **Step 5: Deliver the MP4 path and summarize its verified format, length, audio, and any caveat.**
+- Delivery note: `edit/final.mp4` is 30 seconds, 1080 × 1920 H.264/yuv420p at 30 fps, with stereo AAC at 48 kHz and -6.0 dBFS measured sample peak. Manual listening remains for the user because this environment cannot monitor playback.
