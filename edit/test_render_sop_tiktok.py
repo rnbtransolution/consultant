@@ -1,17 +1,29 @@
+import io
 import unittest
 import subprocess
 import tempfile
 import wave
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
+
+from PIL import Image
 
 from edit.render_sop_tiktok import (
+    DEEP_GREEN,
+    FRAME_HEIGHT,
+    FRAME_WIDTH,
+    LAYOUT_BOXES,
     NARRATION_TH,
     SCENES,
+    FPS,
     create_instrumental,
     mix_audio,
     preflight_audio_tools,
+    preflight_visual_assets,
     render_audio,
+    render_frame,
+    render_video,
+    scene_index_at,
     total_duration_s,
     validate_timeline,
 )
@@ -143,6 +155,76 @@ class AudioTests(unittest.TestCase):
 
             with wave.open(str(output_path), "rb") as mixed:
                 self.assertAlmostEqual(mixed.getnframes() / mixed.getframerate(), 2)
+
+
+class VisualTests(unittest.TestCase):
+    def test_frame_uses_vertical_rgb_canvas_and_brand_background(self):
+        frame = render_frame(1)
+
+        self.assertEqual(frame.size, (FRAME_WIDTH, FRAME_HEIGHT))
+        self.assertEqual(frame.mode, "RGB")
+        self.assertEqual(frame.getpixel((1, 500)), DEEP_GREEN)
+        self.assertEqual(frame.getpixel((1, FRAME_HEIGHT - 2)), DEEP_GREEN)
+
+    def test_scene_selection_switches_on_each_timeline_boundary(self):
+        boundaries = [scene["start_s"] for scene in SCENES]
+        self.assertEqual([scene_index_at(time_s) for time_s in boundaries], list(range(6)))
+        self.assertEqual(scene_index_at(total_duration_s()), 5)
+
+    def test_layout_boxes_respect_tiktok_safe_zones(self):
+        for name, (left, top, right, bottom) in LAYOUT_BOXES.items():
+            with self.subTest(name=name):
+                self.assertGreaterEqual(left, 0)
+                self.assertGreaterEqual(top, 260)
+                self.assertLessEqual(right, 860)
+                self.assertLessEqual(bottom, 1380)
+        self.assertGreaterEqual(LAYOUT_BOXES["header"][1], 270)
+        self.assertGreaterEqual(LAYOUT_BOXES["captions"][1], 1200)
+        self.assertLessEqual(LAYOUT_BOXES["captions"][3], 1370)
+
+    @patch(
+        "edit.render_sop_tiktok.SUITE_IMAGE_PATH",
+        Path("/tmp/missing-sop-suite-mockup.jpg"),
+    )
+    def test_visual_preflight_reports_a_missing_required_mockup(self):
+        with self.assertRaisesRegex(RuntimeError, "missing-sop-suite-mockup"):
+            preflight_visual_assets()
+
+    @patch(
+        "edit.render_sop_tiktok.TITLE_FONT_PATH",
+        Path("/tmp/missing-thai-title-font.ttf"),
+    )
+    def test_visual_preflight_reports_a_missing_required_font(self):
+        with self.assertRaisesRegex(RuntimeError, "missing-thai-title-font"):
+            preflight_visual_assets()
+
+    def test_failed_ffmpeg_render_leaves_no_final_or_temporary_video(self):
+        with tempfile.TemporaryDirectory() as temporary_dir:
+            directory = Path(temporary_dir)
+            output_path = directory / "final.mp4"
+            fake_process = Mock()
+            fake_process.stdin = io.BytesIO()
+            fake_process.stderr = io.BytesIO(b"encode failed")
+            fake_process.wait.return_value = 1
+            fake_process.poll.return_value = 1
+            fake_audio = directory / "audio.wav"
+
+            with (
+                patch("edit.render_sop_tiktok.FRAME_WIDTH", 4),
+                patch("edit.render_sop_tiktok.FRAME_HEIGHT", 4),
+                patch("edit.render_sop_tiktok.FPS", 1),
+                patch("edit.render_sop_tiktok.preflight_visual_assets"),
+                patch("edit.render_sop_tiktok.preflight_audio_tools"),
+                patch("edit.render_sop_tiktok.render_audio", return_value=(fake_audio, fake_audio)),
+                patch("edit.render_sop_tiktok.mix_audio", return_value=fake_audio),
+                patch("edit.render_sop_tiktok.render_frame", return_value=Image.new("RGB", (4, 4))),
+                patch("edit.render_sop_tiktok.subprocess.Popen", return_value=fake_process),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "encode failed"):
+                    render_video(output_path)
+
+            self.assertFalse(output_path.exists())
+            self.assertEqual(list(directory.glob(".final.*.tmp.mp4")), [])
 
 
 if __name__ == "__main__":

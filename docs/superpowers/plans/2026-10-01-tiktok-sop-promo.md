@@ -58,12 +58,12 @@
 - Produces `NARRATION_TH: str`, the approved Thai voiceover script consumed by Task 2.
 - Consumes the approved six storyboard beats and final CTA from the design spec.
 
-- [ ] **Step 1: Write failing timeline tests.** Test the six approved beats, contiguous increasing boundaries, a total in `[25, 30]`, non-empty Thai/English copy, and rejection of overlap, zero-length, and missing scenes.
-- [ ] **Step 2: Run `python3 -m unittest edit.test_render_sop_tiktok -v`.** Expected: import/test failure because the module and timeline functions do not yet exist.
-- [ ] **Step 3: Add exact scene timing and copy.** Use the storyboard windows `0–3`, `3–7`, `7–13`, `13–19`, `19–24`, and `24–30` seconds; write concise bilingual captions and a Thai narration script that expresses only site-backed benefits and the free-consultation CTA.
-- [ ] **Step 4: Implement `total_duration_s()` and `validate_timeline()` minimally.** Reject non-contiguous bounds and content that would render an empty caption.
-- [ ] **Step 5: Run the timeline tests.** Expected: all pass; runtime is exactly 30 seconds.
-- [ ] **Step 6: Commit the content/timeline slice.**
+- [x] **Step 1: Write failing timeline tests.** Test the six approved beats, contiguous increasing boundaries, a total in `[25, 30]`, non-empty Thai/English copy, and rejection of overlap, zero-length, and missing scenes.
+- [x] **Step 2: Run `python3 -m unittest edit.test_render_sop_tiktok -v`.** Expected: import/test failure because the module and timeline functions do not yet exist.
+- [x] **Step 3: Add exact scene timing and copy.** Use the storyboard windows `0–3`, `3–7`, `7–13`, `13–19`, `19–24`, and `24–30` seconds; write concise bilingual captions and a Thai narration script that expresses only site-backed benefits and the free-consultation CTA.
+- [x] **Step 4: Implement `total_duration_s()` and `validate_timeline()` minimally.** Reject non-contiguous bounds and content that would render an empty caption.
+- [x] **Step 5: Run the timeline tests.** Expected: all pass; runtime is exactly 30 seconds.
+- [x] **Step 6: Commit the content/timeline slice.**
 
 ```bash
 git add edit/render_sop_tiktok.py edit/test_render_sop_tiktok.py docs/superpowers/plans/2026-10-01-tiktok-sop-promo.md
@@ -91,7 +91,7 @@ git commit -m "feat: define SOP TikTok promo timeline"
 - [x] **Step 7: Add `AUDIO-CREDITS.md`.** State that the instrumental was procedurally composed for this video and the voice uses `edge-tts` voice `th-TH-NiwatNeural`; record TTS source/engine and date without claiming an external license.
 - [ ] **Step 8: Run unit tests and a short audio preflight render.** Listen to the complete Thai script/music mix and adjust only for intelligibility, clipping, and duration; expected peak remains below 0 dBFS.
 - Verification note: unit tests passed; the complete 17.64-second narration and 30-second 48 kHz stereo mix rendered, with a measured peak of -6.1 dBFS. Auditory monitoring was unavailable in this environment, so the listening portion remains for human review.
-- [ ] **Step 9: Commit the audio-generation slice.**
+- [x] **Step 9: Commit the audio-generation slice.**
 
 ```bash
 git add edit/render_sop_tiktok.py edit/test_render_sop_tiktok.py edit/AUDIO-CREDITS.md
@@ -110,15 +110,16 @@ git commit -m "feat: generate narrated instrumental promo audio"
 - Produces `preflight_visual_assets() -> None`, `render_frame(time_s: float) -> PIL.Image.Image`, and `render_video(output_path: Path) -> Path`.
 - `render_video` invokes the audio functions from Task 2, streams enough 1080 × 1920 RGB frames to cover the narration plus at least a 1-second final hold (total 25–30 seconds) to FFmpeg, muxes the final audio, and returns the final path only after encoding succeeds.
 
-- [ ] **Step 1: Write failing frame/layout tests.** Assert the frame size/mode, timeline boundary scene selection, no out-of-bounds text/CTA boxes, visible branded colors, and a clear exception for missing/unreadable required JPGs or font.
-- [ ] **Step 2: Run focused tests and confirm failure before implementation.**
-- [ ] **Step 3: Implement source-asset/font preflight.** Load both SOP mockups, `/Users/ittmacair/Library/Fonts/ThaiSansNeue-Bold.ttf`, and `/Users/ittmacair/Library/Fonts/THSarabun Bold.ttf` before creating render output; raise a clear error if any required file is absent or unreadable.
-- [ ] **Step 4: Compose the six scenes with Pillow.** Use the site's deep green and champagne palette, high-contrast backgrounds, subtle cards, restrained pan/zoom/parallax on the owned SOP mockups, animated checklist/workflow accents with cubic easing, and sequential reveals.
-- [ ] **Step 5: Add scene transitions and captions.** Keep all important visuals/text left of `x=860`, leave `y=0..260` and `y>1380` clear, start the header below `y=270`, and composite Thai/English captions last within `y=1200..1370`. Hold the final “นัดหมายปรึกษาฟรี / Book a free consultation” end card for at least 1 second with the site’s public LINE identity.
-- [ ] **Step 6: Stream frames to FFmpeg and encode.** Use H.264 MP4 (`yuv420p`, 1080 × 1920, 30 fps), mux Task 2 audio, and render to a temporary filename; atomically rename to `edit/final.mp4` only after FFmpeg exits successfully and verifies the file. Add a mocked-FFmpeg failure test that asserts the final path is absent and the temporary file is cleaned up.
-- [ ] **Step 7: Run tests and render the MP4.** Expected: unit tests pass and output exists at `edit/final.mp4`.
-- [ ] **Step 8: Verify media metadata.** Run `ffprobe -v error -show_entries format=duration:stream=codec_type,width,height,sample_rate -of json edit/final.mp4`; verify duration 25–30 s, vertical dimensions 1080 × 1920, video+audio streams, and audio sample rate 48 kHz.
+- [x] **Step 1: Write failing frame/layout tests.** Assert the frame size/mode, timeline boundary scene selection, no out-of-bounds text/CTA boxes, visible branded colors, and a clear exception for missing/unreadable required JPGs or font.
+- [x] **Step 2: Run focused tests and confirm failure before implementation.**
+- [x] **Step 3: Implement source-asset/font preflight.** Load both SOP mockups, `/Users/ittmacair/Library/Fonts/ThaiSansNeue-Bold.ttf`, and `/Users/ittmacair/Library/Fonts/THSarabun Bold.ttf` before creating render output; raise a clear error if any required file is absent or unreadable.
+- [x] **Step 4: Compose the six scenes with Pillow.** Use the site's deep green and champagne palette, high-contrast backgrounds, subtle cards, restrained pan/zoom/parallax on the owned SOP mockups, animated checklist/workflow accents with cubic easing, and sequential reveals.
+- [x] **Step 5: Add scene transitions and captions.** Keep all important visuals/text left of `x=860`, leave `y=0..260` and `y>1380` clear, start the header below `y=270`, and composite Thai/English captions last within `y=1200..1370`. Hold the final “นัดหมายปรึกษาฟรี / Book a free consultation” end card for at least 1 second with the site’s public LINE identity.
+- [x] **Step 6: Stream frames to FFmpeg and encode.** Use H.264 MP4 (`yuv420p`, 1080 × 1920, 30 fps), mux Task 2 audio, and render to a temporary filename; atomically rename to `edit/final.mp4` only after FFmpeg exits successfully and verifies the file. Add a mocked-FFmpeg failure test that asserts the final path is absent and the temporary file is cleaned up.
+- [x] **Step 7: Run tests and render the MP4.** Expected: unit tests pass and output exists at `edit/final.mp4`.
+- [x] **Step 8: Verify media metadata.** Run `ffprobe -v error -show_entries format=duration:stream=codec_type,width,height,sample_rate -of json edit/final.mp4`; verify duration 25–30 s, vertical dimensions 1080 × 1920, video+audio streams, and audio sample rate 48 kHz.
 - [ ] **Step 9: Create a contact sheet inside a temporary directory and listen/watch the MP4.** Inspect each scene and transition for Thai glyph rendering, spelling, readable text, safe margins, image crop, CTA, narration/music balance, clipping, and sync; let the temporary-directory cleanup remove only that contact sheet.
+- Verification note: all six scenes and each transition were visually inspected, and the encoded mix is below 0 dBFS. Audible playback could not be monitored in this environment; the listening portion remains for human review.
 - [ ] **Step 10: Commit the renderer and approved final media.**
 
 ```bash
