@@ -79,18 +79,18 @@ git commit -m "feat: define SOP TikTok promo timeline"
 
 **Interfaces:**
 - Produces `preflight_audio_tools() -> None`, `render_audio(output_dir: Path) -> tuple[Path, Path]` returning voice/music WAV paths, and `mix_audio(voice_path: Path, music_path: Path, output_path: Path, duration_s: float) -> Path`.
-- Consumes `NARRATION_TH`; uses `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...` and local FFmpeg, without adding a project dependency.
+- Consumes `NARRATION_BY_SCENE` and `NARRATION_TH`; uses `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...` plus `assemble_narration_by_scene()` to align speech to scene starts, with local FFmpeg and no new project dependency.
 - Produces an original, no-vocals instrumental bed; no third-party track licensing is needed.
 
 - [x] **Step 1: Add tests for tool preflight and audio command failure.** Mock subprocess calls to assert missing `edge-tts`/FFmpeg raises a clear exception and a failed Edge TTS/FFmpeg process is not treated as success.
 - [x] **Step 2: Run the focused tests and confirm the missing behavior fails.**
 - [x] **Step 3: Implement preflight.** Check `python3 -m edge_tts` and `ffmpeg`; verify `th-TH-NiwatNeural` is listed by the Edge TTS service, and fail with an actionable message if not.
-- [x] **Step 4: Generate narration from the Thai script.** Render `NARRATION_TH` with `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...` into a temporary MP3, convert to mono 48 kHz WAV with FFmpeg, and measure speech length. Do not speed speech beyond the required `+5%`.
+- [x] **Step 4: Generate narration from the Thai script.** Render one `NARRATION_BY_SCENE` clip per storyboard scene with `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...`, convert to mono 48 kHz WAV with FFmpeg, and place each clip at its matching scene start. Fail if a clip overruns its scene or the narration leaves less than one second for the final hold. Do not speed speech beyond the required `+5%`.
 - [x] **Step 5: Synthesize the instrumental bed locally.** Produce a gentle, lyric-free piano/plucked-string-style original motif with a quiet light pulse, 48 kHz stereo WAV, 30-second duration, and fade-in/out. Avoid copying an existing song or melody.
 - [x] **Step 6: Mix narration over the bed with FFmpeg.** Duck music under speech, preserve headroom, fade the bed at the end, and output AAC-ready stereo audio at 48 kHz. Fail the render if narration is absent or audio duration is outside scene tolerance.
 - [x] **Step 7: Add `AUDIO-CREDITS.md`.** State that the instrumental was procedurally composed for this video and the voice uses `edge-tts` voice `th-TH-NiwatNeural`; record TTS source/engine and date without claiming an external license.
 - [ ] **Step 8: Run unit tests and a short audio preflight render.** Listen to the complete Thai script/music mix and adjust only for intelligibility, clipping, and duration; expected peak remains below 0 dBFS.
-- Verification note: unit tests passed; the complete 17.64-second narration and 30-second 48 kHz stereo mix rendered, with a measured peak of -6.1 dBFS. Auditory monitoring was unavailable in this environment, so the listening portion remains for human review.
+- Verification note: the six narration clips fit their respective scene windows; the final CTA is spoken during its 24–30-second scene. The 30-second 48 kHz stereo mix measures -6.0 dBFS peak. Auditory monitoring was unavailable in this environment, so the listening portion remains for human review.
 - [x] **Step 9: Commit the audio-generation slice.**
 
 ```bash
@@ -120,7 +120,7 @@ git commit -m "feat: generate narrated instrumental promo audio"
 - [x] **Step 8: Verify media metadata.** Run `ffprobe -v error -show_entries format=duration:stream=codec_type,width,height,sample_rate -of json edit/final.mp4`; verify duration 25–30 s, vertical dimensions 1080 × 1920, video+audio streams, and audio sample rate 48 kHz.
 - [ ] **Step 9: Create a contact sheet inside a temporary directory and listen/watch the MP4.** Inspect each scene and transition for Thai glyph rendering, spelling, readable text, safe margins, image crop, CTA, narration/music balance, clipping, and sync; let the temporary-directory cleanup remove only that contact sheet.
 - Verification note: all six scenes and each transition were visually inspected, and the encoded mix is below 0 dBFS. Audible playback could not be monitored in this environment; the listening portion remains for human review.
-- [ ] **Step 10: Commit the renderer and approved final media.**
+- [x] **Step 10: Commit the renderer and approved final media.**
 
 ```bash
 git add edit/render_sop_tiktok.py edit/test_render_sop_tiktok.py edit/AUDIO-CREDITS.md edit/final.mp4
@@ -137,6 +137,6 @@ git commit -m "feat: render R&B SOP TikTok promo video"
 - [x] **Step 1: Run the complete unit suite.** Run `python3 -m unittest edit.test_render_sop_tiktok -v`; expected: all tests pass.
 - [x] **Step 2: Run the final `ffprobe` acceptance command.** Confirm a 25–30 second 9:16 1080 × 1920 MP4 with audio and video.
 - [ ] **Step 3: Reinspect the final export.** Confirm Thai narration is understandable, instrumental music contains no voice/recognizable borrowed melody, no clipping or cut-off words, text remains within TikTok safe areas, and final CTA is legible.
-- Verification note: all scenes and transitions were visually inspected; the 30-second output has stereo AAC at 48 kHz and a measured -6.1 dBFS sample peak. Audible listening was unavailable in this environment and remains for human review.
+- Verification note: all scenes and transitions were visually inspected; the 30-second output has stereo AAC at 48 kHz and a measured -6.0 dBFS sample peak. Audible listening was unavailable in this environment and remains for human review.
 - [x] **Step 4: Check project scope.** Run `git status --short` and `git diff --check`; expected changed files are limited to `edit/` and the approved planning documents; website HTML remains unchanged.
 - [ ] **Step 5: Deliver the MP4 path and summarize its verified format, length, audio, and any caveat.**

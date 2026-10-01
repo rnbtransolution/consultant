@@ -42,6 +42,19 @@ class TimelineTests(unittest.TestCase):
         self.assertIn("เอส โอ พี", NARRATION_TH)
         validate_timeline(SCENES)
 
+    def test_narration_uses_male_polite_particles_for_selected_voice(self):
+        self.assertNotIn("คะ?", NARRATION_TH)
+        self.assertNotIn("ค่ะ", NARRATION_TH)
+        self.assertTrue(NARRATION_TH.endswith("ครับ"))
+
+    def test_scene_narration_has_one_line_per_storyboard_scene(self):
+        from edit.render_sop_tiktok import NARRATION_BY_SCENE
+
+        self.assertEqual(len(NARRATION_BY_SCENE), len(SCENES))
+        self.assertTrue(all(line.strip() for line in NARRATION_BY_SCENE))
+        self.assertEqual(NARRATION_BY_SCENE[0], SCENES[0]["th"])
+        self.assertIn("นัดหมายปรึกษาฟรี", NARRATION_BY_SCENE[-1])
+
     def test_total_duration_is_thirty_seconds(self):
         self.assertEqual(total_duration_s(), 30)
 
@@ -155,6 +168,30 @@ class AudioTests(unittest.TestCase):
 
             with wave.open(str(output_path), "rb") as mixed:
                 self.assertAlmostEqual(mixed.getnframes() / mixed.getframerate(), 2)
+
+    def test_narration_audio_starts_at_each_matching_scene_boundary(self):
+        from edit.render_sop_tiktok import assemble_narration_by_scene
+
+        with tempfile.TemporaryDirectory() as temporary_dir:
+            directory = Path(temporary_dir)
+            clips = []
+            for index in range(len(SCENES)):
+                clip_path = directory / f"clip-{index}.wav"
+                with wave.open(str(clip_path), "wb") as clip:
+                    clip.setnchannels(1)
+                    clip.setsampwidth(2)
+                    clip.setframerate(48000)
+                    clip.writeframes(b"\x01\x00" * 4800)
+                clips.append(clip_path)
+            output_path = assemble_narration_by_scene(clips, directory / "voice.wav")
+
+            with wave.open(str(output_path), "rb") as voice:
+                frames = voice.readframes(voice.getnframes())
+                frame_bytes = voice.getsampwidth() * voice.getnchannels()
+                self.assertAlmostEqual(voice.getnframes() / voice.getframerate(), 24.1)
+            self.assertEqual(frames[round(2.9 * 48000) * frame_bytes :][:2], b"\x00\x00")
+            self.assertEqual(frames[3 * 48000 * frame_bytes :][:2], b"\x01\x00")
+            self.assertEqual(frames[24 * 48000 * frame_bytes :][:2], b"\x01\x00")
 
 
 class VisualTests(unittest.TestCase):

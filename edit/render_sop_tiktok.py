@@ -54,7 +54,7 @@ SCENES: list[Scene] = [
     {
         "start_s": 0,
         "end_s": 3,
-        "th": "ธุรกิจบริการพร้อมเติบโตทุกสาขาหรือยังคะ?",
+        "th": "ธุรกิจพร้อมเติบโตหรือยังครับ?",
         "en": "READY TO SCALE?",
     },
     {
@@ -89,13 +89,15 @@ SCENES: list[Scene] = [
     },
 ]
 
-NARRATION_TH = (
-    "ธุรกิจบริการของคุณ พร้อมเติบโตทุกสาขาหรือยังคะ? "
-    "อาร์แอนด์บี ทานโซลูชั่น ออกแบบ เอส โอ พี ให้เหมาะกับธุรกิจของคุณ "
-    "ทั้งขั้นตอนบริการ เช็กลิสต์ และสูตรมาตรฐาน "
-    "พร้อมเวิร์กช็อปฝึกทีม เพื่อให้บริการสม่ำเสมอและเติบโตอย่างมั่นใจ "
-    "นัดหมายปรึกษาฟรี กับอาร์แอนด์บี ทานโซลูชั่นค่ะ"
+NARRATION_BY_SCENE = (
+    "ธุรกิจพร้อมเติบโตหรือยังครับ?",
+    "ออกแบบ เอส โอ พี ให้เหมาะกับธุรกิจคุณ",
+    "คู่มือที่ทีมใช้ได้จริง",
+    "ขั้นตอนบริการ เช็กลิสต์ และสูตรมาตรฐาน",
+    "ฝึกทีมให้บริการสม่ำเสมอ พร้อมเติบโตมั่นใจ",
+    "นัดหมายปรึกษาฟรี กับอาร์แอนด์บี ทานโซลูชั่นครับ",
 )
+NARRATION_TH = " ".join(NARRATION_BY_SCENE)
 
 TTS_VOICE = "th-TH-NiwatNeural"
 TTS_RATE = "+5%"
@@ -197,62 +199,113 @@ def _wav_duration(path: Path) -> float:
         return audio.getnframes() / audio.getframerate()
 
 
+def assemble_narration_by_scene(clip_paths: Sequence[Path], output_path: Path) -> Path:
+    if len(clip_paths) != len(SCENES):
+        raise ValueError("Narration must contain exactly one audio clip per scene")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    previous_end_frame = 0
+    with wave.open(str(output_path), "wb") as narration:
+        narration.setnchannels(1)
+        narration.setsampwidth(2)
+        narration.setframerate(SAMPLE_RATE)
+
+        for index, (scene, clip_path) in enumerate(zip(SCENES, clip_paths)):
+            try:
+                with wave.open(str(clip_path), "rb") as clip:
+                    if (
+                        clip.getnchannels() != 1
+                        or clip.getsampwidth() != 2
+                        or clip.getframerate() != SAMPLE_RATE
+                    ):
+                        raise ValueError(f"Narration clip must be mono 48 kHz PCM: {clip_path.name}")
+                    clip_frames = clip.getnframes()
+                    clip_duration = clip_frames / SAMPLE_RATE
+                    scene_duration = scene["end_s"] - scene["start_s"]
+                    if clip_duration > scene_duration:
+                        raise ValueError(
+                            f"Narration clip for scene {index + 1} exceeds its "
+                            f"{scene_duration:g}-second window"
+                        )
+                    start_frame = round(scene["start_s"] * SAMPLE_RATE)
+                    if start_frame < previous_end_frame:
+                        raise ValueError("Narration clips overlap their storyboard scenes")
+                    narration.writeframes(b"\x00\x00" * (start_frame - previous_end_frame))
+                    narration.writeframes(clip.readframes(clip_frames))
+                    previous_end_frame = start_frame + clip_frames
+            except (OSError, wave.Error) as exc:
+                raise RuntimeError(
+                    f"Could not read narration clip for scene {index + 1}: {clip_path.name}"
+                ) from exc
+
+    if _wav_duration(output_path) > total_duration_s() - 1:
+        output_path.unlink(missing_ok=True)
+        raise ValueError("Narration must finish at least one second before the video ends")
+    return output_path
+
+
 def render_audio(output_dir: Path) -> tuple[Path, Path]:
     preflight_audio_tools()
     output_dir.mkdir(parents=True, exist_ok=True)
-    voice_mp3 = output_dir / "voice.mp3"
     voice_wav = output_dir / "voice.wav"
     music_wav = output_dir / "music.wav"
+    clip_wavs = []
 
-    try:
-        subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "edge_tts",
-                "--voice",
-                TTS_VOICE,
-                f"--rate={TTS_RATE}",
-                "--text",
-                NARRATION_TH,
-                "--write-media",
-                str(voice_mp3),
-            ],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=90,
-        )
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-hide_banner",
-                "-loglevel",
-                "error",
-                "-y",
-                "-i",
-                str(voice_mp3),
-                "-ac",
-                "1",
-                "-ar",
-                str(SAMPLE_RATE),
-                "-c:a",
-                "pcm_s16le",
-                str(voice_wav),
-            ],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=30,
-        )
-    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
-        detail = getattr(exc, "stderr", None) or str(exc)
-        raise RuntimeError(f"Thai narration generation/conversion failed: {detail}") from exc
+    for index, text in enumerate(NARRATION_BY_SCENE):
+        voice_mp3 = output_dir / f"voice-{index + 1}.mp3"
+        clip_wav = output_dir / f"voice-{index + 1}.wav"
+        try:
+            subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "edge_tts",
+                    "--voice",
+                    TTS_VOICE,
+                    f"--rate={TTS_RATE}",
+                    "--text",
+                    text,
+                    "--write-media",
+                    str(voice_mp3),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=90,
+            )
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-hide_banner",
+                    "-loglevel",
+                    "error",
+                    "-y",
+                    "-i",
+                    str(voice_mp3),
+                    "-ac",
+                    "1",
+                    "-ar",
+                    str(SAMPLE_RATE),
+                    "-c:a",
+                    "pcm_s16le",
+                    str(clip_wav),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+            detail = getattr(exc, "stderr", None) or str(exc)
+            raise RuntimeError(
+                f"Thai narration generation/conversion failed for scene {index + 1}: {detail}"
+            ) from exc
 
-    if not voice_wav.is_file() or voice_wav.stat().st_size == 0:
-        raise RuntimeError("Thai narration conversion produced no audio")
-    if _wav_duration(voice_wav) > total_duration_s() - 1:
-        raise ValueError("Thai narration must finish at least one second before the video ends")
+        if not clip_wav.is_file() or clip_wav.stat().st_size == 0:
+            raise RuntimeError(f"Thai narration conversion produced no audio for scene {index + 1}")
+        clip_wavs.append(clip_wav)
+
+    assemble_narration_by_scene(clip_wavs, voice_wav)
 
     create_instrumental(music_wav, duration_s=total_duration_s())
     return voice_wav, music_wav
