@@ -17,8 +17,10 @@ Create one concise, export-ready TikTok video promoting R&B SOP Standard, using 
 - **Style:** Premium editorial animation aligned with the website's deep forest green, champagne-gold accents, refined serif headings, and hospitality imagery.
 - **Visual language:** Animate existing product visuals (`assets/sop_suite_mockup.jpg` and `assets/sop_flowchart_mockup.jpg`) with restrained parallax, document/card reveals, checklist ticks, workflow-line motion, and clean typography. Avoid relying on new unlicensed stock imagery.
 - **Language:** Thai narration with concise bilingual Thai/English on-screen text.
-- **Sound:** A tasteful instrumental-only music bed (for example, soft piano/plucked strings with light percussion), sourced from a properly licensed track or composed for this project. No lyrics. Keep narration clear above the music and provide a clean ending.
-- **Deliverables:** A single final MP4 in the Website project directory. Do not modify `index.html`, add a website embed, or deploy/publish the video as part of this work.
+- **Sound:** A tasteful instrumental-only music bed (for example, soft piano/plucked strings with light percussion), sourced from a properly licensed track or composed for this project. No lyrics. Generate Thai narration with `edge-tts`, the user-approved alternate voice `th-TH-NiwatNeural`, at `+5%` speed; pronounce the brand as “อาร์แอนด์บี ทานโซลูชั่น” and SOP as “เอส โอ พี”. Keep narration clear above the music and provide a clean ending.
+- **Typography:** Use `/Users/ittmacair/Library/Fonts/ThaiSansNeue-Bold.ttf` for corporate titles and `/Users/ittmacair/Library/Fonts/THSarabun Bold.ttf` for body/subtitle text; do not rely on fallback fonts.
+- **TikTok safe zones:** Keep `y=0..260` empty; start headers at `y>=270`; keep critical content left of `x=860`; place subtitles within `y=1200..1370`; keep `y>1380` empty.
+- **Deliverables:** A single final MP4 at `edit/final.mp4` inside the Website project directory. Keep all session output under `edit/`. Do not modify `index.html`, add a website embed, or deploy/publish the video as part of this work.
 
 ## Storyboard
 
