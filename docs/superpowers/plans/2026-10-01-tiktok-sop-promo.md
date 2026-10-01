@@ -4,7 +4,7 @@
 
 **Goal:** Produce one 25–30 second 1080 × 1920 Thai-narrated, bilingual-captioned TikTok MP4 promoting R&B SOP Standard.
 
-**Architecture:** Use a small, self-contained Python/Pillow renderer to animate the site's existing SOP imagery into timed vertical scenes and pipe frames to local FFmpeg. Generate Thai narration with `edge-tts` using `th-TH-PremwadeeNeural` at `+5%` speed, compose an original instrumental-only music bed, mix them with FFmpeg, and validate the finished MP4 with ffprobe plus visual/audio inspection. Keep all session outputs under `edit/`; do not edit or embed into website HTML.
+**Architecture:** Use a small, self-contained Python/Pillow renderer to animate the site's existing SOP imagery into timed vertical scenes and pipe frames to local FFmpeg. Generate Thai narration with `edge-tts` using the user-approved alternate voice `th-TH-NiwatNeural` at `+5%` speed, compose an original instrumental-only music bed, mix them with FFmpeg, and validate the finished MP4 with ffprobe plus visual/audio inspection. Keep all session outputs under `edit/`; do not edit or embed into website HTML.
 
 **Tech Stack:** Python 3 standard library + installed Pillow, `edge-tts`, FFmpeg/ffprobe, website-owned JPG assets.
 
@@ -19,7 +19,7 @@
 - “Do not modify `index.html`, add a website embed, or deploy/publish the video as part of this work.”
 - “Use only assets belonging to the website or media with a clear license; document soundtrack source/license alongside the final asset.”
 - “Do not fabricate client endorsements, quantified savings/results, or product functionality not stated on the site.”
-- Thai speech must pronounce the brand “อาร์แอนด์บี ทานโซลูชั่น” and spell SOP as “เอส โอ พี”; use `edge-tts`, voice `th-TH-PremwadeeNeural`, at `+5%` speed.
+- Thai speech must pronounce the brand “อาร์แอนด์บี ทานโซลูชั่น” and spell SOP as “เอส โอ พี”; use `edge-tts`, voice `th-TH-NiwatNeural` (user-approved alternate), at `+5%` speed.
 - Use `/Users/ittmacair/Library/Fonts/ThaiSansNeue-Bold.ttf` for corporate titles and `/Users/ittmacair/Library/Fonts/THSarabun Bold.ttf` for body/subtitle text; never rely on fallback fonts.
 - Preserve the TikTok safe zones: top `y=0..260` empty, header starts at `y>=270`, right `x>860` empty, subtitles within `y=1200..1370`, bottom `y>1380` empty.
 - Use non-linear cubic easing; keep the final frame visible for at least 1 second and total duration at least narration length plus 1 second.
@@ -79,17 +79,18 @@ git commit -m "feat: define SOP TikTok promo timeline"
 
 **Interfaces:**
 - Produces `preflight_audio_tools() -> None`, `render_audio(output_dir: Path) -> tuple[Path, Path]` returning voice/music WAV paths, and `mix_audio(voice_path: Path, music_path: Path, output_path: Path, duration_s: float) -> Path`.
-- Consumes `NARRATION_TH`; uses `python3 -m edge_tts --voice th-TH-PremwadeeNeural --rate=+5% --text ... --write-media ...` and local FFmpeg, without adding a project dependency.
+- Consumes `NARRATION_TH`; uses `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...` and local FFmpeg, without adding a project dependency.
 - Produces an original, no-vocals instrumental bed; no third-party track licensing is needed.
 
-- [ ] **Step 1: Add tests for tool preflight and audio command failure.** Mock subprocess calls to assert a missing Thai voice/FFmpeg raises a clear exception and a failed `say`/FFmpeg process is not treated as success.
-- [ ] **Step 2: Run the focused tests and confirm the missing behavior fails.**
-- [ ] **Step 3: Implement preflight.** Check `python3 -m edge_tts` and `ffmpeg`; verify `th-TH-PremwadeeNeural` is listed by the Edge TTS service, and fail with an actionable message if not.
-- [ ] **Step 4: Generate narration from the Thai script.** Render `NARRATION_TH` with `python3 -m edge_tts --voice th-TH-PremwadeeNeural --rate=+5% --text ... --write-media ...` into a temporary MP3, convert to mono 48 kHz WAV with FFmpeg, and measure speech length. Do not speed speech beyond the required `+5%`.
-- [ ] **Step 5: Synthesize the instrumental bed locally.** Produce a gentle, lyric-free piano/plucked-string-style original motif with a quiet light pulse, 48 kHz stereo WAV, 30-second duration, and fade-in/out. Avoid copying an existing song or melody.
-- [ ] **Step 6: Mix narration over the bed with FFmpeg.** Duck music under speech, preserve headroom, fade the bed at the end, and output AAC-ready stereo audio at 48 kHz. Fail the render if narration is absent or audio duration is outside scene tolerance.
-- [ ] **Step 7: Add `AUDIO-CREDITS.md`.** State that the instrumental was procedurally composed for this video and the voice uses `edge-tts` voice `th-TH-PremwadeeNeural`; record TTS source/engine and date without claiming an external license.
+- [x] **Step 1: Add tests for tool preflight and audio command failure.** Mock subprocess calls to assert missing `edge-tts`/FFmpeg raises a clear exception and a failed Edge TTS/FFmpeg process is not treated as success.
+- [x] **Step 2: Run the focused tests and confirm the missing behavior fails.**
+- [x] **Step 3: Implement preflight.** Check `python3 -m edge_tts` and `ffmpeg`; verify `th-TH-NiwatNeural` is listed by the Edge TTS service, and fail with an actionable message if not.
+- [x] **Step 4: Generate narration from the Thai script.** Render `NARRATION_TH` with `python3 -m edge_tts --voice th-TH-NiwatNeural --rate=+5% --text ... --write-media ...` into a temporary MP3, convert to mono 48 kHz WAV with FFmpeg, and measure speech length. Do not speed speech beyond the required `+5%`.
+- [x] **Step 5: Synthesize the instrumental bed locally.** Produce a gentle, lyric-free piano/plucked-string-style original motif with a quiet light pulse, 48 kHz stereo WAV, 30-second duration, and fade-in/out. Avoid copying an existing song or melody.
+- [x] **Step 6: Mix narration over the bed with FFmpeg.** Duck music under speech, preserve headroom, fade the bed at the end, and output AAC-ready stereo audio at 48 kHz. Fail the render if narration is absent or audio duration is outside scene tolerance.
+- [x] **Step 7: Add `AUDIO-CREDITS.md`.** State that the instrumental was procedurally composed for this video and the voice uses `edge-tts` voice `th-TH-NiwatNeural`; record TTS source/engine and date without claiming an external license.
 - [ ] **Step 8: Run unit tests and a short audio preflight render.** Listen to the complete Thai script/music mix and adjust only for intelligibility, clipping, and duration; expected peak remains below 0 dBFS.
+- Verification note: unit tests passed; the complete 17.64-second narration and 30-second 48 kHz stereo mix rendered, with a measured peak of -6.1 dBFS. Auditory monitoring was unavailable in this environment, so the listening portion remains for human review.
 - [ ] **Step 9: Commit the audio-generation slice.**
 
 ```bash
