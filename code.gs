@@ -8,7 +8,7 @@
 //    - Who has access: Anyone
 // 5. Copy URL ที่ได้ไปใส่ใน const APPS_SCRIPT_URL ใน index.html
 
-const NOTIFY_EMAIL = "rnb.transolution@gmail.com";
+const NOTIFY_EMAIL = "md@rnb-transolution.com";
 
 function doPost(e) {
   try {
