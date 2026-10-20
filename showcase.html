@@ -7,7 +7,7 @@
 <title>R&B SOP Standard — Operational Perfection. Built to Scale. | R&B Transolution</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
 <script>
 // Clean URL Normalization (Strips .html, index.html, and hashtags from browser address bar)
@@ -82,9 +82,9 @@
   --color-border-gold: rgba(197, 162, 115, 0.35);
   
   /* Magnolia Typography Stack */
-  --font-heading: 'Petrona', 'Cormorant Garamond', 'Anuphan', serif;
+  --font-heading: 'Cormorant Garamond', 'Anuphan', serif;
   --font-editorial: 'Cormorant Garamond', serif;
-  --font-meta: 'Montserrat', sans-serif;
+  --font-meta: 'Anuphan', sans-serif;
   --font-body: 'Anuphan', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
   /* Motion & Transitions */
@@ -853,6 +853,29 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   font-weight: bold;
 }
 
+.process-steps {
+  list-style: none;
+  max-width: 560px;
+  margin: 0 auto 44px auto;
+  text-align: left;
+}
+.process-steps li {
+  display: flex;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(245, 247, 246, 0.14);
+}
+.process-steps li:last-child { border-bottom: 1px solid rgba(245, 247, 246, 0.14); }
+.process-step-num {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--color-accent-gold);
+  min-width: 20px;
+}
+.process-step-title { font-size: 16px; font-weight: 500; color: #ffffff; margin-bottom: 2px; }
+.process-step-desc { font-size: 14px; line-height: 1.6; color: rgba(245, 247, 246, 0.72); }
+
 .pricing-cta-btn {
   display: inline-block;
   background: var(--color-accent-gold);
@@ -1046,8 +1069,8 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
 /* ─── SCROLL REVEAL ANIMATION ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--duration-smooth) var(--ease-out-soft), transform var(--duration-smooth) var(--ease-out-soft);
+  transform: translateY(10px);
+  transition: opacity 450ms var(--ease-out-soft), transform 450ms var(--ease-out-soft);
 }
 .reveal.active {
   opacity: 1;
@@ -1114,9 +1137,9 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     <span>Hotels &amp; Resorts · Cafés &amp; Restaurants · Clinics &amp; Wellness</span>
   </div>
   <div class="top-utility-right">
-    <a href="tel:+66891041992">📞 089 104 1992</a>
-    <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">💬 @rnbtransolution</a>
-    <a href="./#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี ↗</a>
+    <a href="tel:+66891041992">Tel 089 104 1992</a>
+    <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">LINE @rnbtransolution</a>
+    <a href="./#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี</a>
   </div>
 </div>
 
@@ -1132,12 +1155,12 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="./#philosophy">แนวคิด</a></li>
       <li><a href="./#strengths">จุดเด่น</a></li>
       <li><a href="./#services">บริการ</a></li>
-      <li><a href="showcase" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
+      <li><a href="showcase" class="active" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP</a></li>
       <li><a href="./#contact" class="nav-btn">ติดต่อเรา</a></li>
     </ul>
 
     <button class="mobile-nav-toggle" onclick="toggleMobileDrawer()" aria-label="Toggle navigation">
-      Menu ☰
+      เมนู
     </button>
   </div>
 
@@ -1148,7 +1171,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="./#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
       <li><a href="./#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
       <li><a href="./#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
-      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard ↗</a></li>
+      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP Standard</a></li>
       <li><a href="./#contact" onclick="toggleMobileDrawer()">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
@@ -1165,7 +1188,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
       <li><a href="#overview">ภาพรวม</a></li>
       <li><a href="#features">คุณสมบัติ</a></li>
       <li><a href="#specs">ข้อมูลเปรียบเทียบ</a></li>
-      <li><a href="#pricing">แพ็กเกจจัดทำ</a></li>
+      <li><a href="#process">ขั้นตอนการทำงาน</a></li>
       <li><a href="#faq">คำถามที่พบบ่อย</a></li>
       <li><a href="./#contact" class="subnav-cta-btn">นัดหมายจัดทำ SOP</a></li>
     </ul>
@@ -1186,7 +1209,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     </div>
 
     <!-- MOCKUP DISPLAY -->
-    <div class="product-mockup-wrap reveal" style="transition-delay: 0.15s">
+    <div class="product-mockup-wrap reveal">
       <div class="product-mockup-frame">
         <img src="assets/sop_suite_mockup.jpg" alt="R&B SOP Standard Suite Mockup" class="product-mockup-img">
       </div>
@@ -1196,8 +1219,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <!-- HIGHLIGHTS BENTO GRID (MAGNOLIA EDITORIAL) -->
   <section id="overview" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Core Standards</div>
-      <h2 class="section-title">ออกแบบอย่างปราณีต<br><em>เพื่อมาตรฐานการบริการที่ไม่สะดุด</em></h2>
+      <h2 class="section-title">ออกแบบอย่างปราณีต<br>เพื่อมาตรฐานการบริการที่ไม่สะดุด</h2>
     </div>
 
     <div class="highlights-bento-grid">
@@ -1210,7 +1232,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <p class="h-card-desc">เรียบเรียงและวางโครงสร้างมาตรฐานโดยผู้เชี่ยวชาญที่มีประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี ถ่ายทอดเป็นขั้นตอนที่ปฏิบัติได้จริง</p>
       </div>
 
-      <div class="highlight-bento-card reveal" style="transition-delay: 0.1s">
+      <div class="highlight-bento-card reveal">
         <div class="h-card-top">
           <div class="h-card-number">02</div>
           <div class="h-card-tag">Visual Clarity</div>
@@ -1219,7 +1241,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <p class="h-card-desc">เปลี่ยนคู่มือหนาทึบแบบเดิม เป็นผังกระบวนการทำงานที่เข้าใจง่าย พร้อมเช็คลิสต์ประจำวัน และ Recipe Cards รูปภาพคมชัด</p>
       </div>
 
-      <div class="highlight-bento-card reveal" style="transition-delay: 0.15s">
+      <div class="highlight-bento-card reveal">
         <div class="h-card-top">
           <div class="h-card-number">03</div>
           <div class="h-card-tag">Onboarding</div>
@@ -1228,7 +1250,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <p class="h-card-desc">ลดระยะเวลาและภาระในการเทรนพนักงานใหม่ ช่วยให้ทีมงานทำงานทดแทนกันได้อย่างราบรื่น ปฏิบัติงานได้ถูกต้องตั้งแต่วันแรก</p>
       </div>
 
-      <div class="highlight-bento-card reveal" style="transition-delay: 0.2s">
+      <div class="highlight-bento-card reveal">
         <div class="h-card-top">
           <div class="h-card-number">04</div>
           <div class="h-card-tag">Coverage</div>
@@ -1242,15 +1264,14 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <!-- FEATURE DEEP-DIVE SECTIONS (MAGNOLIA EDITORIAL) -->
   <section id="features" class="showcase-section">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Departmental Scope &amp; Features</div>
-      <h2 class="section-title">โครงสร้างมาตรฐาน SOP <em>ทุกมิติการดำเนินงาน</em></h2>
+      <h2 class="section-title">โครงสร้างมาตรฐาน SOP ทุกมิติการดำเนินงาน</h2>
     </div>
 
     <!-- Feature Row 1: Front-of-House -->
     <div class="feature-story-row reveal">
       <div class="story-text-col">
         <div class="story-tag">01 · Front-of-House Standard</div>
-        <h3 class="story-heading">มาตรฐานงานบริการหน้าบ้าน<br><em>ต้อนรับประทับใจระดับสากล</em></h3>
+        <h3 class="story-heading">มาตรฐานงานบริการหน้าบ้าน<br>ต้อนรับประทับใจระดับสากล</h3>
         <p class="story-body">จัดทำคู่มือขั้นตอนตั้งแต่ Guest Arrival, Check-in และ Concierge Service ไปจนถึงการรับมือข้อร้องเรียน (Complaint Handling) อย่างมืออาชีพ</p>
         <ul class="story-bullets">
           <li>ขั้นตอน Check-in &amp; Check-out ลื่นไหลไร้ข้อผิดพลาด</li>
@@ -1267,7 +1288,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     <div class="feature-story-row reverse reveal">
       <div class="story-text-col">
         <div class="story-tag">02 · Kitchen &amp; Recipe Engineering</div>
-        <h3 class="story-heading">มาตรฐานงานหลังบ้านและสูตรอาหาร<br><em>ควบคุมต้นทุนและคุณภาพคงที่</em></h3>
+        <h3 class="story-heading">มาตรฐานงานหลังบ้านและสูตรอาหาร<br>ควบคุมต้นทุนและคุณภาพคงที่</h3>
         <p class="story-body">จัดทำคู่มือสูตรมาตรฐาน (Recipe SOP Cards) รายละเอียดปริมาณวัตถุดิบ ขั้นตอนการปรุง รูปภาพประกอบ และคำนวณต้นทุนต่อจานอย่างแม่นยำ</p>
         <ul class="story-bullets">
           <li>Recipe Standard Cards ภาษาหน้างานอ่านง่าย ชั่งวัดแม่นยำ</li>
@@ -1284,7 +1305,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
     <div class="feature-story-row reveal">
       <div class="story-text-col">
         <div class="story-tag">03 · Operations &amp; Digital Integration</div>
-        <h3 class="story-heading">ผสานระบบการจัดการ<br><em>สู่การควบคุมคุณภาพแบบไร้รอยต่อ</em></h3>
+        <h3 class="story-heading">ผสานระบบการจัดการ<br>สู่การควบคุมคุณภาพแบบไร้รอยต่อ</h3>
         <p class="story-body">เชื่อมโยงขั้นตอนปฏิบัติการเข้ากับเทคโนโลยีและระบบ PMS บริหารห้องพักและจุดขาย ตรวจสอบรายงานแบบเรียลไทม์ และประเมินผล KPI ทีมงานได้อย่างชัดเจน</p>
         <ul class="story-bullets">
           <li>บูรณาการเชื่อมต่อระบบ Hotel PMS &amp; Cloud Operations</li>
@@ -1302,8 +1323,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <section id="specs" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="specs-container">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Competitive Advantage</div>
-        <h2 class="section-title">ทำไมธุรกิจบริการ <em>ต้องมี R&B SOP Standard</em></h2>
+        <h2 class="section-title">ทำไมธุรกิจบริการ ต้องมี R&B SOP Standard</h2>
       </div>
 
       <div class="specs-table-wrap reveal">
@@ -1348,21 +1368,43 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   </section>
 
   <!-- PRICING CARD SECTION (MAGNOLIA DARK EDITORIAL) -->
-  <section id="pricing" class="showcase-section">
+  <section id="process" class="showcase-section">
     <div class="pricing-card-wrap reveal">
-      <div class="pricing-eyebrow">Tailor-Made Consulting Engagement</div>
-      <h2 class="pricing-title">Bespoke SOP Engineering<br><em>&amp; Implementation</em></h2>
-      <p class="pricing-sub">ออกแบบและจัดทำคู่มือ SOP เฉพาะสำหรับโครงสร้างธุรกิจและงบประมาณของคุณ พร้อมฝึกอบรมทีมงานจริง</p>
+      <h2 class="pricing-title">ขั้นตอนการทำงาน</h2>
+      <p class="pricing-sub">โดยเฉลี่ยใช้เวลา 2 – 4 สัปดาห์ ขึ้นอยู่กับขนาดและจำนวนแผนกของธุรกิจ</p>
 
-      <ul class="pricing-checklist">
-        <li>เข้าสำรวจหน้างานและสัมภาษณ์ทีมงานเชิงลึก (Onsite Audit)</li>
-        <li>จัดทำคู่มือปฏิบัติงานมาตรฐานฉบับเต็ม (PDF &amp; Print Ready)</li>
-        <li>จัดทำผังกระบวนการทำงาน Diagram &amp; Daily Checklists</li>
-        <li>จัดทำ Recipe Standard Cards พร้อมวิเคราะห์ต้นทุนต่อจาน</li>
-        <li>บริการ Onsite / Online Interactive Workshop ฝึกอบรมทีมงานจริง</li>
-      </ul>
+      <ol class="process-steps">
+        <li>
+          <span class="process-step-num">1</span>
+          <div>
+            <div class="process-step-title">สำรวจหน้างานและสัมภาษณ์ทีม</div>
+            <div class="process-step-desc">เข้าหน้างานจริง (Onsite Audit) และเก็บข้อมูลขั้นตอนที่ทีมทำอยู่ในปัจจุบัน</div>
+          </div>
+        </li>
+        <li>
+          <span class="process-step-num">2</span>
+          <div>
+            <div class="process-step-title">เรียบเรียงคู่มือ</div>
+            <div class="process-step-desc">คู่มือฉบับเต็ม (PDF &amp; Print Ready) ผังกระบวนการ Daily Checklists และ Recipe Standard Cards พร้อมต้นทุนต่อจาน</div>
+          </div>
+        </li>
+        <li>
+          <span class="process-step-num">3</span>
+          <div>
+            <div class="process-step-title">ทดลองใช้งานจริง</div>
+            <div class="process-step-desc">นำคู่มือไปใช้กับทีมของคุณ</div>
+          </div>
+        </li>
+        <li>
+          <span class="process-step-num">4</span>
+          <div>
+            <div class="process-step-title">ฝึกอบรมทีมงาน</div>
+            <div class="process-step-desc">Workshop แบบ Onsite หรือ Online เพื่อถ่ายทอด SOP ให้พนักงานทุกคน</div>
+          </div>
+        </li>
+      </ol>
 
-      <a href="./#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี ↗</a>
+      <a href="./#contact" class="pricing-cta-btn">ปรึกษาและประเมินราคาฟรี</a>
     </div>
   </section>
 
@@ -1370,8 +1412,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
   <section id="faq" class="showcase-section" style="background: var(--color-bg-gray);">
     <div class="faq-wrap">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Frequently Asked Questions</div>
-        <h2 class="section-title">คำถามที่พบบ่อย <em>เกี่ยวกับการทำ SOP</em></h2>
+        <h2 class="section-title">คำถามที่พบบ่อย เกี่ยวกับการทำ SOP</h2>
       </div>
 
       <div class="faq-item reveal">
@@ -1384,7 +1425,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         </div>
       </div>
 
-      <div class="faq-item reveal" style="transition-delay: 0.1s">
+      <div class="faq-item reveal">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>ถ้าธุรกิจมีขั้นตอนการทำงานเฉพาะตัว จะปรับแต่งได้ไหม?</span>
           <span class="faq-toggle">+</span>
@@ -1394,7 +1435,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         </div>
       </div>
 
-      <div class="faq-item reveal" style="transition-delay: 0.15s">
+      <div class="faq-item reveal">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>มีการฝึกอบรมพนักงานหลังจัดทำคู่มือเสร็จหรือไม่?</span>
           <span class="faq-toggle">+</span>
@@ -1427,7 +1468,7 @@ p, span, label, input, select, textarea, button, .product-subheadline, .h-card-d
         <li><a href="./#philosophy">แนวคิด (Our Philosophy)</a></li>
         <li><a href="./#strengths">จุดเด่น (Our Strengths)</a></li>
         <li><a href="./#services">บริการทั้งหมด (Services)</a></li>
-        <li><a href="showcase">SOP Standard Showcase ↗</a></li>
+        <li><a href="showcase">SOP Standard Showcase</a></li>
         <li><a href="./#contact">นัดหมายปรึกษา (Contact)</a></li>
       </ul>
     </div>

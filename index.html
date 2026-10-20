@@ -7,7 +7,7 @@
 <title>R&B Transolution — Create Beyond Standard | Hospitality Consulting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Petrona:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
 <script>
 // Clean URL Normalization (Strips .html, index.html, and hashtags from browser address bar)
@@ -83,9 +83,9 @@
   --color-border-gold: rgba(197, 162, 115, 0.35);
   
   /* Magnolia Typography Stack */
-  --font-heading: 'Petrona', 'Cormorant Garamond', 'Anuphan', serif;
+  --font-heading: 'Cormorant Garamond', 'Anuphan', serif;
   --font-editorial: 'Cormorant Garamond', serif;
-  --font-meta: 'Montserrat', sans-serif;
+  --font-meta: 'Anuphan', sans-serif;
   --font-body: 'Anuphan', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
   /* Motion & Transitions */
@@ -1349,11 +1349,123 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
   font-weight: bold;
 }
 
+/* ─── SERVICES: SOP FEATURE + SECONDARY LIST ─── */
+.sop-feature {
+  max-width: 1140px;
+  margin: 0 auto 64px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  background: var(--color-bg-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  color: var(--color-text-light);
+}
+.sop-feature-text { padding: 56px 56px 52px; }
+.sop-feature-tag {
+  font-family: var(--font-meta);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-gold);
+  margin-bottom: 16px;
+}
+.sop-feature-title {
+  font-size: clamp(30px, 3.4vw, 42px);
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.sop-feature-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 24px;
+}
+.sop-feature-list { list-style: none; margin-bottom: 36px; }
+.sop-feature-list li {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.sop-feature-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.sop-feature-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.sop-btn-primary {
+  background: var(--color-accent-gold);
+  color: var(--color-bg-dark);
+  padding: 14px 28px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-fluid);
+}
+.sop-btn-primary:hover { background: #d4b386; }
+.sop-btn-link {
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+.sop-btn-link:hover { text-decoration-color: #ffffff; }
+.sop-feature-visual { background: var(--color-surface-dark); min-height: 320px; position: relative; }
+.sop-feature-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.services-more { max-width: 1140px; margin: 0 auto; }
+.services-more-title {
+  font-size: 22px;
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-medium);
+}
+.services-more-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px;
+}
+.service-row {
+  display: block;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  text-decoration: none;
+  color: inherit;
+}
+.service-row-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  transition: color var(--duration-fast) var(--ease-fluid);
+}
+.service-row-desc {
+  display: block;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.service-row:hover .service-row-title { color: var(--color-accent-master-hover); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--color-accent-gold); }
+
+@media (max-width: 900px) {
+  .sop-feature { grid-template-columns: 1fr; }
+  .sop-feature-text { padding: 36px 28px; }
+  .sop-feature-visual { min-height: 220px; order: -1; }
+  .services-more-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── SCROLL REVEAL ANIMATION ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--duration-smooth) var(--ease-out-soft), transform var(--duration-smooth) var(--ease-out-soft);
+  transform: translateY(10px);
+  transition: opacity 450ms var(--ease-out-soft), transform 450ms var(--ease-out-soft);
 }
 .reveal.active {
   opacity: 1;
@@ -1466,9 +1578,9 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
     <span>Hotels &amp; Resorts · Cafés &amp; Restaurants · Clinics &amp; Wellness</span>
   </div>
   <div class="top-utility-right">
-    <a href="tel:+66891041992">📞 089 104 1992</a>
-    <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">💬 @rnbtransolution</a>
-    <a href="#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี ↗</a>
+    <a href="tel:+66891041992">Tel 089 104 1992</a>
+    <a href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">LINE @rnbtransolution</a>
+    <a href="#contact" style="color:var(--color-accent-master);font-weight:600;">นัดหมายปรึกษาฟรี</a>
   </div>
 </div>
 
@@ -1484,12 +1596,12 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       <li><a href="#philosophy">แนวคิด</a></li>
       <li><a href="#strengths">จุดเด่น</a></li>
       <li><a href="#services">บริการ</a></li>
-      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP ↗</a></li>
+      <li><a href="showcase" style="color:var(--color-accent-master);font-weight:600;">บริการ SOP</a></li>
       <li><a href="#contact" class="nav-btn">ติดต่อเรา</a></li>
     </ul>
 
     <button class="mobile-nav-toggle" onclick="toggleMobileDrawer()" aria-label="Toggle navigation">
-      Menu ☰
+      เมนู
     </button>
   </div>
 
@@ -1500,7 +1612,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       <li><a href="#philosophy" onclick="toggleMobileDrawer()">แนวคิด (Our Philosophy)</a></li>
       <li><a href="#strengths" onclick="toggleMobileDrawer()">จุดเด่น (Our Strengths)</a></li>
       <li><a href="#services" onclick="toggleMobileDrawer()">บริการเฉพาะทาง (Services)</a></li>
-      <li><a href="showcase">บริการ SOP Standard ↗</a></li>
+      <li><a href="showcase">บริการ SOP Standard</a></li>
       <li><a href="#contact" onclick="toggleMobileDrawer()" style="color:var(--color-accent-master);font-weight:600;">ติดต่อเรา (Contact Us)</a></li>
     </ul>
   </div>
@@ -1521,7 +1633,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
     </div>
 
     <!-- HERO VISUAL GALLERY (MAGNOLIA FRAMES) -->
-    <div class="hero-visual-grid reveal" style="transition-delay: 0.15s">
+    <div class="hero-visual-grid reveal">
       <div class="hero-visual-card" style="background-image: url('hotel_lobby.png');">
         <div class="hero-visual-overlay">
           <div class="hero-visual-tag">01 · Luxury Stays</div>
@@ -1556,19 +1668,19 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
         <div class="stat-number">24+</div>
         <div class="stat-label">ปีประสบการณ์<br>เครือโรงแรม 5 ดาว</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay: 0.1s">
+      <div class="stat-item reveal">
         <div class="stat-number">40+</div>
         <div class="stat-label">โครงการที่ปรึกษา<br>ทั่วประเทศ</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay: 0.2s">
+      <div class="stat-item reveal">
         <div class="stat-number">8</div>
         <div class="stat-label">บริการเฉพาะทาง<br>ครบวงจร</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay: 0.3s">
+      <div class="stat-item reveal">
         <div class="stat-number">5 วัน</div>
         <div class="stat-label">ส่งมอบแผนงาน<br>เบื้องต้น</div>
       </div>
-      <div class="stat-item reveal" style="transition-delay: 0.4s">
+      <div class="stat-item reveal">
         <div class="stat-number">Data</div>
         <div class="stat-label">ทุกกลยุทธ์วัดผล<br>ได้จริง</div>
       </div>
@@ -1578,8 +1690,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
   <!-- PHILOSOPHY SECTION (MAGNOLIA EDITORIAL 4-PILLAR) -->
   <section id="philosophy" class="main-section">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Our Philosophy</div>
-      <h2 class="section-title">แนวคิดที่ขับเคลื่อน <em>ทุกมาตรฐาน</em></h2>
+      <h2 class="section-title">แนวคิดที่ขับเคลื่อน ทุกมาตรฐาน</h2>
     </div>
 
     <div class="bento-grid-4">
@@ -1596,7 +1707,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       </div>
 
       <!-- Card 02 -->
-      <div class="bento-card reveal" style="transition-delay: 0.1s">
+      <div class="bento-card reveal">
         <div class="bento-card-header">
           <span class="bento-number">02</span>
           <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.56-.56"/></svg>
@@ -1608,7 +1719,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       </div>
 
       <!-- Card 03 -->
-      <div class="bento-card reveal" style="transition-delay: 0.15s">
+      <div class="bento-card reveal">
         <div class="bento-card-header">
           <span class="bento-number">03</span>
           <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1620,7 +1731,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       </div>
 
       <!-- Card 04 -->
-      <div class="bento-card reveal" style="transition-delay: 0.2s">
+      <div class="bento-card reveal">
         <div class="bento-card-header">
           <span class="bento-number">04</span>
           <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
@@ -1632,7 +1743,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       </div>
 
       <!-- Centered Dark Quote Banner Card -->
-      <div class="bento-card-wide reveal" style="transition-delay: 0.25s">
+      <div class="bento-card-wide reveal">
         <span class="quote-emblem">“</span>
         <blockquote class="bento-quote">
           ไม่มีธุรกิจบริการไหนที่แก้ไม่ได้ มีแต่ปัญหาที่ยังไม่ถูกมองอย่างถูกต้อง<br>— นั่นคือสิ่งที่เราเข้ามาทำ
@@ -1645,8 +1756,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
   <!-- STRENGTHS SECTION (MAGNOLIA EDITORIAL GRID) -->
   <section id="strengths" class="main-section" style="background: var(--color-bg-gray);">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Our Strengths</div>
-      <h2 class="section-title">สิ่งที่ทำให้ R&B <em>ต่างออกไป</em></h2>
+      <h2 class="section-title">สิ่งที่ทำให้ R&B ต่างออกไป</h2>
     </div>
 
     <div class="strengths-grid">
@@ -1656,19 +1766,19 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
         <p class="strength-body">ประสบการณ์ตรงจากเครือโรงแรม 5 ดาว กว่า 24 ปี พร้อมยกระดับมาตรฐานบริการของคุณสู่ระดับสากล</p>
       </div>
 
-      <div class="strength-card reveal" style="transition-delay: 0.1s">
+      <div class="strength-card reveal">
         <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         <h3 class="strength-title">Fast Action</h3>
         <p class="strength-body">กระบวนการทำงานกระชับ เริ่มต้นแก้ไขและส่งมอบแผนงานเบื้องต้นได้ภายใน 5 วันทำการ</p>
       </div>
 
-      <div class="strength-card reveal" style="transition-delay: 0.15s">
+      <div class="strength-card reveal">
         <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <h3 class="strength-title">Data-Driven</h3>
         <p class="strength-body">ใช้ข้อมูลจริงขององค์กรในการวิเคราะห์ ไม่ใช้ความรู้สึก เพื่อผลลัพธ์ที่แม่นยำและตรงจุดที่สุด</p>
       </div>
 
-      <div class="strength-card reveal" style="transition-delay: 0.2s">
+      <div class="strength-card reveal">
         <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" y1="21" x2="4" y2="14"></line>
           <line x1="4" y1="10" x2="4" y2="3"></line>
@@ -1684,13 +1794,13 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
         <p class="strength-body">ไม่มีสูตรสำเร็จตายตัว ออกแบบแผนกลยุทธ์ให้เหมาะกับโจทย์ ขนาด และงบประมาณเฉพาะของธุรกิจคุณ</p>
       </div>
 
-      <div class="strength-card reveal" style="transition-delay: 0.25s">
+      <div class="strength-card reveal">
         <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
         <h3 class="strength-title">Expert Team</h3>
         <p class="strength-body">รวมผู้เชี่ยวชาญหลากสาขาที่เข้าใจหน้างานจริง ร่วมมือกันเพื่ออุดรอยรั่วและสร้างโอกาสเติบโต</p>
       </div>
 
-      <div class="strength-card reveal" style="transition-delay: 0.3s">
+      <div class="strength-card reveal">
         <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z"/></svg>
         <h3 class="strength-title">Long-term Partner</h3>
         <p class="strength-body">เราไม่ทิ้งงาน พร้อมเป็นที่ปรึกษาและติดตามผลต่อเนื่อง เพื่อให้มั่นใจในทุกก้าวของการขยายตัว</p>
@@ -1701,99 +1811,61 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
   <!-- SERVICES SECTION (MAGNOLIA EDITORIAL LOOKBOOK) -->
   <section id="services" class="main-section">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Our Services</div>
-      <h2 class="section-title">บริการเฉพาะทางที่ <em>ครบวงจร</em></h2>
+      <h2 class="section-title">บริการเฉพาะทางที่ ครบวงจร</h2>
     </div>
 
-    <div class="services-container">
-      <!-- Service Items List -->
-      <div class="services-list">
-        <div class="service-item-card" data-id="1" onclick="openServiceModal(1)">
-          <div class="service-item-top">
-            <span class="service-item-num">01 · Profitability</span>
-          </div>
-          <div class="service-item-title">Menu Engineering</div>
-          <div class="service-item-desc">วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</div>
-        </div>
-
-        <div class="service-item-card" data-id="2" onclick="openServiceModal(2)">
-          <div class="service-item-top">
-            <span class="service-item-num">02 · Financial</span>
-          </div>
-          <div class="service-item-title">Monthly P&amp;L Report</div>
-          <div class="service-item-desc">จัดทำและวิเคราะห์รายงานกำไร-ขาดทุนรายเดือนสำหรับธุรกิจบริการอย่างถูกต้องและเป็นระบบ</div>
-        </div>
-
-        <div class="service-item-card" data-id="3" onclick="openServiceModal(3)">
-          <div class="service-item-top">
-            <span class="service-item-num">03 · People</span>
-          </div>
-          <div class="service-item-title">Hospitality Workshop</div>
-          <div class="service-item-desc">เวิร์กชอปอบรมทักษะงานบริการ Service Mind และการสื่อสารอย่างมืออาชีพ</div>
-        </div>
-
-        <div class="service-item-card" data-id="4" onclick="openServiceModal(4)">
-          <div class="service-item-top">
-            <span class="service-item-num">04 · Strategy</span>
-          </div>
-          <div class="service-item-title">SWOT Analysis</div>
-          <div class="service-item-desc">วิเคราะห์จุดแข็ง-จุดอ่อน และประเมินโอกาสอุปสรรคเพื่อปลดล็อกศักยภาพสูงสุดของธุรกิจ</div>
-        </div>
-
-        <div class="service-item-card active" data-id="5" onclick="window.location.href='showcase'">
-          <div class="service-item-top">
-            <span class="service-item-num">05 · Operations</span>
-            <span class="badge-flagship">FLAGSHIP SERVICE ↗</span>
-          </div>
-          <div class="service-item-title">SOP Creation &amp; Engineering ↗</div>
-          <div class="service-item-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน เพื่อคงคุณภาพการดำเนินงานและรองรับการขยายสาขา</div>
-        </div>
-
-        <div class="service-item-card" data-id="6" onclick="openServiceModal(6)">
-          <div class="service-item-top">
-            <span class="service-item-num">06 · Standards</span>
-          </div>
-          <div class="service-item-title">Recipe SOPs</div>
-          <div class="service-item-desc">จัดทำคู่มือสูตรมาตรฐาน ปรับภาษาหน้างาน และวิเคราะห์ต้นทุนวัตถุดิบเฉลี่ยต่อเมนู</div>
-        </div>
-
-        <div class="service-item-card" data-id="7" onclick="openServiceModal(7)">
-          <div class="service-item-top">
-            <span class="service-item-num">07 · Technology</span>
-            <span class="badge-popular">HOT</span>
-          </div>
-          <div class="service-item-title">R&B Trans PMS</div>
-          <div class="service-item-desc">ระบบบริหารจัดการโรงแรมออนไลน์ จ่ายครั้งเดียว 2,999 บาท ไม่มีค่าบริการรายเดือน</div>
-        </div>
-
-        <div class="service-item-card" data-id="8" onclick="openServiceModal(8)">
-          <div class="service-item-top">
-            <span class="service-item-num">08 · Revenue</span>
-          </div>
-          <div class="service-item-title">Price Optimization</div>
-          <div class="service-item-desc">วางกลยุทธ์ราคาห้องพักและวิเคราะห์คู่แข่งเพื่อยอดจองและผลกำไรสูงสุด</div>
+    <div class="sop-feature reveal">
+      <div class="sop-feature-text">
+        <div class="sop-feature-tag">บริการหลัก</div>
+        <h3 class="sop-feature-title">SOP Creation &amp; Engineering</h3>
+        <p class="sop-feature-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน เพื่อคงคุณภาพการดำเนินงานและรองรับการขยายสาขา</p>
+        <ul class="sop-feature-list">
+          <li>เข้าสำรวจหน้างานและสัมภาษณ์ทีมงาน (Onsite Audit)</li>
+          <li>คู่มือฉบับเต็ม ผังกระบวนการ และ Daily Checklist</li>
+          <li>Recipe Standard Cards พร้อมวิเคราะห์ต้นทุนต่อจาน</li>
+          <li>Workshop ฝึกอบรมทีมงานจริง</li>
+        </ul>
+        <div class="sop-feature-actions">
+          <a href="showcase" class="sop-btn-primary">ดูรายละเอียด SOP</a>
+          <a href="#contact" class="sop-btn-link">ปรึกษาฟรี</a>
         </div>
       </div>
+      <div class="sop-feature-visual">
+        <img src="assets/sop_suite_mockup.jpg" alt="R&amp;B SOP Standard Suite" onerror="this.style.display='none'">
+      </div>
+    </div>
 
-      <!-- Preview Dynamic Panel -->
-      <div class="services-preview-panel">
-        <div class="preview-bg-image" data-id="1" style="background-image: url('https://images.pexels.com/photos/4349825/pexels-photo-4349825.jpeg?auto=compress&w=800');"></div>
-        <div class="preview-bg-image" data-id="2" style="background-image: url('https://images.pexels.com/photos/6863515/pexels-photo-6863515.jpeg?auto=compress&w=800');"></div>
-        <div class="preview-bg-image" data-id="3" style="background-image: url('https://images.pexels.com/photos/7693107/pexels-photo-7693107.jpeg?auto=compress&w=800');"></div>
-        <div class="preview-bg-image" data-id="4" style="background-image: url('https://images.pexels.com/photos/669612/pexels-photo-669612.jpeg?auto=compress&w=800');"></div>
-        <div class="preview-bg-image active" data-id="5" style="background-image: url('assets/sop_suite_mockup.jpg');"></div>
-        <div class="preview-bg-image" data-id="6" style="background-image: url('https://images.pexels.com/photos/4252139/pexels-photo-4252139.jpeg?auto=compress&w=800');"></div>
-        <div class="preview-bg-image" data-id="7" style="background-image: url('assets/pms_dashboard_mockup.jpg');"></div>
-        <div class="preview-bg-image" data-id="8" style="background-image: url('https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&w=800');"></div>
-
-        <div class="preview-overlay">
-          <div class="preview-tag" id="preview-tag">05 · Operations</div>
-          <h3 class="preview-title" id="preview-title">SOP Creation &amp; Engineering</h3>
-          <p class="preview-desc" id="preview-desc">จัดทำคู่มือปฏิบัติงานมาตรฐาน เพื่อคงคุณภาพการดำเนินงานและรองรับการขยายสาขา</p>
-          <button class="preview-btn" onclick="triggerActiveModal()">
-            ดูรายละเอียดบริการ ›
-          </button>
-        </div>
+    <div class="services-more reveal">
+      <h3 class="services-more-title">บริการอื่น ๆ</h3>
+      <div class="services-more-grid">
+        <a href="#services" class="service-row" onclick="openServiceModal(1);return false;">
+          <span class="service-row-title">Menu Engineering</span>
+          <span class="service-row-desc">วิเคราะห์เจาะลึกยอดขายเมนู เพื่อเพิ่มกำไรและลดต้นทุนวัตถุดิบอย่างมีประสิทธิภาพ</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(6);return false;">
+          <span class="service-row-title">Recipe SOPs</span>
+          <span class="service-row-desc">จัดทำคู่มือสูตรมาตรฐาน ปรับภาษาหน้างาน และวิเคราะห์ต้นทุนวัตถุดิบเฉลี่ยต่อเมนู</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(2);return false;">
+          <span class="service-row-title">Monthly P&amp;L Report</span>
+          <span class="service-row-desc">จัดทำและวิเคราะห์รายงานกำไร-ขาดทุนรายเดือนสำหรับธุรกิจบริการอย่างถูกต้องและเป็นระบบ</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(3);return false;">
+          <span class="service-row-title">Hospitality Workshop</span>
+          <span class="service-row-desc">เวิร์กชอปอบรมทักษะงานบริการ Service Mind และการสื่อสารอย่างมืออาชีพ</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(4);return false;">
+          <span class="service-row-title">SWOT Analysis</span>
+          <span class="service-row-desc">วิเคราะห์จุดแข็ง-จุดอ่อน และประเมินโอกาสอุปสรรคเพื่อปลดล็อกศักยภาพสูงสุดของธุรกิจ</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(8);return false;">
+          <span class="service-row-title">Price Optimization</span>
+          <span class="service-row-desc">วางกลยุทธ์ราคาห้องพักและวิเคราะห์คู่แข่งเพื่อยอดจองและผลกำไรสูงสุด</span>
+        </a>
+        <a href="#services" class="service-row" onclick="openServiceModal(7);return false;">
+          <span class="service-row-title">R&amp;B Trans PMS</span>
+          <span class="service-row-desc">ระบบบริหารจัดการโรงแรมออนไลน์ จ่ายครั้งเดียว 2,999 บาท ไม่มีค่าบริการรายเดือน</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1802,27 +1874,26 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
   <section id="contact" class="main-section" style="background: var(--color-bg-gray);">
     <div class="contact-grid">
       <div class="reveal">
-        <div class="section-eyebrow">Get in Touch</div>
-        <h2 class="contact-info-title">พร้อมยกระดับ<br><em>ธุรกิจบริการ</em> ของคุณหรือยัง</h2>
+        <h2 class="contact-info-title">พร้อมยกระดับ<br>ธุรกิจบริการ ของคุณหรือยัง</h2>
         <p class="contact-info-desc">ทีมงาน R&B Transolution พร้อมรับฟังโจทย์และร่วมออกแบบแนวทางที่เหมาะสมที่สุด สำหรับโรงแรม รีสอร์ท สปา ร้านอาหาร และเครือบริการระดับสากล</p>
         
         <div class="contact-channels">
           <a class="contact-channel-item" href="tel:+66891041992">
-            <div class="channel-icon">📞</div>
+            <div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div>
               <div class="channel-label">Direct Telephone</div>
               <div class="channel-value">089 104 1992</div>
             </div>
           </a>
           <a class="contact-channel-item" href="https://lin.ee/482bqDUr" target="_blank" rel="noopener noreferrer">
-            <div class="channel-icon">💬</div>
+            <div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
             <div>
               <div class="channel-label">LINE Official Account</div>
               <div class="channel-value">@rnbtransolution</div>
             </div>
           </a>
           <a class="contact-channel-item" href="mailto:md@rnb-transolution.com">
-            <div class="channel-icon">✉️</div>
+            <div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
             <div>
               <div class="channel-label">Direct Email</div>
               <div class="channel-value">md@rnb-transolution.com</div>
@@ -1832,7 +1903,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
       </div>
 
       <!-- Contact Form Card -->
-      <div class="contact-form-card reveal" style="transition-delay: 0.15s">
+      <div class="contact-form-card reveal">
         <form onsubmit="event.preventDefault(); handleSubmitForm(this);">
           <div class="form-group">
             <label for="contact-name">ชื่อ-นามสกุล / Name</label>
@@ -1904,7 +1975,7 @@ p, span, label, input, select, textarea, button, .hero-sub, .bento-desc, .streng
         <li><a href="#philosophy">แนวคิด (Our Philosophy)</a></li>
         <li><a href="#strengths">จุดเด่น (Our Strengths)</a></li>
         <li><a href="#services">บริการทั้งหมด (Services)</a></li>
-        <li><a href="showcase">SOP Standard Showcase ↗</a></li>
+        <li><a href="showcase">SOP Standard Showcase</a></li>
         <li><a href="#contact">นัดหมายปรึกษา (Contact)</a></li>
       </ul>
     </div>
