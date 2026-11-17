@@ -1,101 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ขอบคุณสำหรับการติดต่อ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #FFFEF7;
-      color: #2F2F2F;
-      margin: 0;
-      padding: 2rem;
-      text-align: center;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 2rem;
-      line-height: 1.3;
-    }
-    .logo div:first-child {
-      font-size: 2rem;
-      color: #B8860B;
-    }
-    .logo div:nth-child(2) {
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      color: #1C1C1C;
-    }
-    .logo div:last-child {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: #2F2F2F;
-    }
-    h1 {
-      color: #B8860B;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-    }
-    p {
-      font-size: 1.05rem;
-      margin-bottom: 2.5rem;
-    }
-    .cta-container {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 132px;
-      height: 48px;
-      background: linear-gradient(to bottom, #F0EEEA, #FFFEF7);
-      border: 2px solid #B8860B;
-      border-radius: 2px;
-      color: #2F2F2F;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .cta-btn:hover {
-      background: #B8860B;
-      color: white;
-    }
-    .cta-btn img {
-      width: 18px;
-      height: 18px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#162623" />
+<meta name="robots" content="noindex" />
+<title>ขอบคุณสำหรับการติดต่อ | R&B Transolution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Noto+Serif+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #162623;
+    --teal: #295255;
+    --teal-hover: #1e3f42;
+    --teal-soft: #577877;
+    --sage: #a8c6c1;
+    --mist: #f0f5f7;
+    --mist-deep: #e4ecee;
+    --muted: #4f6a67;
+    --line: rgba(22, 38, 35, 0.1);
+    --display: 'Newsreader', 'Noto Serif Thai', Georgia, serif;
+    --body: 'Anuphan', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--body);
+    background: var(--ink);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px 36px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    background: linear-gradient(180deg, #f7fafb 0%, var(--mist) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 30px;
+    padding: 52px 48px 44px;
+    text-align: center;
+  }
+
+  .brand {
+    font-family: var(--display);
+    font-size: 19px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .brand span { color: var(--teal-soft); }
+
+  .brand-sub {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--teal-soft);
+    margin-bottom: 36px;
+  }
+
+  .mark {
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(41, 82, 85, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 26px;
+    color: var(--teal);
+  }
+  .mark svg { width: 24px; height: 24px; stroke-width: 1.4; }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(26px, 4.6vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 40ch;
+    margin: 0 auto 10px;
+    text-wrap: pretty;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 30px 0 26px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: background 260ms cubic-bezier(0.4, 0, 0.2, 1), border-color 260ms, color 260ms;
+  }
+  .btn svg { width: 15px; height: 15px; stroke-width: 1.5; }
+  .btn:hover { background: #ffffff; border-color: rgba(22, 38, 35, 0.2); }
+
+  .btn-primary {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #ffffff;
+  }
+  .btn-primary:hover { background: var(--teal-hover); border-color: var(--teal-hover); color: #ffffff; }
+
+  .contact-line {
+    font-size: 12px;
+    color: var(--teal-soft);
+    letter-spacing: 0.02em;
+    margin-top: 20px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    font-size: 12.5px;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(41, 82, 85, 0.35);
+    padding-bottom: 3px;
+  }
+  .back:hover { color: var(--ink); border-color: var(--ink); }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(234, 241, 241, 0.45);
+  }
+  .foot::before, .foot::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: rgba(234, 241, 241, 0.2);
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 28px 14px; }
+    .shell { padding: 34px 24px 30px; border-radius: 24px; }
+    .actions { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+</style>
 </head>
 <body>
-  <div class="logo">
-    <div>R & B</div>
-    <div>TRANSOLUTION</div>
-    <div>CONSULTING</div>
+
+<main class="shell">
+  <div class="brand">R&amp;B <span>Transolution</span></div>
+  <div class="brand-sub">Hospitality Consulting</div>
+
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
 
   <h1>ขอบคุณสำหรับการติดต่อกับเรา</h1>
   <p>เราได้รับข้อมูลของคุณเรียบร้อยแล้ว ทีมที่ปรึกษาของเราจะติดต่อกลับภายใน 24 ชั่วโมง</p>
+
+  <div class="divider"></div>
+
   <p>หากคุณต้องการติดต่อด่วน กรุณาเลือกช่องทางด้านล่าง</p>
 
-  <div class="cta-container">
-    <a href="tel:+66891041992" class="cta-btn">
-      <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" alt="Phone Icon"> โทรเลย
+  <div class="actions">
+    <a href="tel:+66891041992" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      โทรเลย
     </a>
-    <a href="https://lin.ee/482bqDUr" class="cta-btn" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111527.png" alt="LINE Icon"> LINE
+    <a href="https://lin.ee/482bqDUr" class="btn" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+      LINE
     </a>
-    <a href="https://www.facebook.com/profile.php?id=61578195336598" class="cta-btn" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2175/2175193.png" alt="Facebook Icon"> Facebook
+    <a href="https://www.facebook.com/profile.php?id=61578195336598" class="btn" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook
     </a>
   </div>
+
+  <div class="contact-line">089 104 1992 · @rnbtransolution · services@rnb-transolution.com</div>
+
+  <a href="./" class="back">กลับสู่หน้าแรก →</a>
+</main>
+
+<div class="foot">Create Beyond Standard</div>
+
 </body>
 </html>
